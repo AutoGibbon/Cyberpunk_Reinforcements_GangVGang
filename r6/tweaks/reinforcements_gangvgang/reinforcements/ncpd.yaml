@@ -1,0 +1,266 @@
+DynamicSpawnSystem.GRNCPDWeakBike1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_brennan_apollo_bike
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_biker_ranged2_omaha_ma
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDPatrol1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_villefort_cortes_heat_1
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_melee2_baton_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_lexington_wa
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDPatrol2:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_villefort_cortes_heat_1
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_lexington_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_melee2_baton_wa
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDPatrol3:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_villefort_cortes_heat_1
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_saratoga_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_melee2_baton_wa
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDPatrol4:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_villefort_cortes_heat_1
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_inspector_ranged1_lexington_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_saratoga_wa
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDPatrol5:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_villefort_cortes_heat_1
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_constable_ranged1_lexington_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_inspector_ranged1_lexington_ma
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDStandardSquad1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_archer_hella_heat_3
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_saratoga_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_investigator_officer_omaha_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_investigator_officer_omaha_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_copperhead_ma
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDStandardSquad2:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_archer_hella_heat_3
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_saratoga_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_copperhead_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_android_android2_lexington_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_copperhead_wa
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDStandardSquad3:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_archer_hella_heat_3
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_inspector_ranged1_lexington_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_saratoga_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_saratoga_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_android_android2_ajax_ma
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDStandardSquad4:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_archer_hella_heat_3
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_investigator_officer_omaha_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_copperhead_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_copperhead_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_enforcer_shotgun2_tactician_ma_rare
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDRareSquad1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_suv_chevalier_emperor_heat_4
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_copperhead_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_android_android2_ajax_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_shotgun3_crusher_mb_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_enforcer_shotgun2_tactician_ma_rare
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDRareSquad2:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_suv_chevalier_emperor_heat_4
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_ranged2_copperhead_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_shotgun3_crusher_mb_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_police_shotgun3_crusher_mb_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_hwp_gunner2_defender_mb_rare
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDRareSquad3:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_suv_chevalier_emperor_heat_4
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_android_android2_ajax_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_android_android2_ajax_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_android_android2_ajax_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_investigator_officer_omaha_ma
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDRareSquad4:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_suv_chevalier_emperor_heat_4
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_enforcer_shotgun2_tactician_ma_rare
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_hwp_gunner2_defender_mb_rare
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_hwp_gunner2_defender_mb_rare
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_ncpd_enforcer_shotgun2_tactician_ma_rare
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDEliteSquad1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_hellhound_heat_5
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_rifle_ma_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_rifle_ma_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_rifle_wa_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_rifle_wa_elite
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDEliteSquad2:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_hellhound_heat_5
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_av_LMG_mb
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_av_mantis_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_melee_ma_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_av_LMG_mb
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDEliteSquad3:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_hellhound_heat_5
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_shotgun_ma_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_shotgun_ma_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_sniper_wa_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_av_LMG_mb
+          weight: 1.0
+
+DynamicSpawnSystem.GRNCPDEliteSquad4:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_ncpd_hellhound_heat_5
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_sniper_wa_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_sniper_wa_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_rifle_ma_elite
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maxtac_av_mantis_wa
+          weight: 1.0

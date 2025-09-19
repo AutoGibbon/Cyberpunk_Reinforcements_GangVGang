@@ -1,0 +1,37 @@
+module Gibbon.GR.Localization.Packages
+import Codeware.Localization.*
+
+public class GR_ru_ru extends ModLocalizationPackage{
+
+	protected func DefineTexts(){
+        this.Text("GibbonGR-Title","Reinforcements Gang Vs Gang");
+		this.Text("GibbonGR-Enabled-Name", "Включено");
+        this.Text("GibbonGR-EnabledInCombat-Name", "Включено когда игрок в бою");
+        this.Text("GibbonGR-EnabledWhenPlayerIsPassenger-Name", "Включено когда игрок пассажир");
+        this.Text("GibbonGR-GracePeriodMin-Name", "Минимальный льготный период");
+        this.Text("GibbonGR-GracePeriodMin-Description", "Минимальное время перед тем как банда может впервые вызвать подкрепление в бою");
+        this.Text("GibbonGR-GracePeriodMax-Name", "Максимальный льготный период");
+        this.Text("GibbonGR-GracePeriodMax-Description", "Максимальное время перед тем как банда может впервые вызвать подкрепление в бою");
+        this.Text("GibbonGR-CallSuccessCooldownMin-Name", "Минимальный кулдаун вызова");
+        this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Минимальное время которое банда должна ждать перед повторным вызовом подкрепления в том же бою");
+        this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Максимальный кулдаун вызова");
+        this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Максимальное время которое банда должна ждать перед повторным вызовом подкрепления в том же бою");
+        this.Text("GibbonGR-HeatResetCooldown-Name", "Лимит кулдаун");
+        this.Text("GibbonGR-HeatResetCooldown-Description", "Сколько времени банда должна ждать перед повторным вызовом после достижения лимита вызовов");
+        this.Text("GibbonGR-InitialHeat-Name", "Начальная жара");
+        this.Text("GibbonGR-InitialHeat-Description", "Насколько сильным будет первый вызов подкрепления");
+        this.Text("GibbonGR-HeatEscalation-Name", "Эскалация жары");
+        this.Text("GibbonGR-HeatEscalation-Description", "На сколько увеличивается жара на банду за вызов");
+        this.Text("GibbonGR-CallsLimit-Name", "Лимит вызовов");
+        this.Text("GibbonGR-CallsLimit-Description", "Количество вызовов которое банда может сделать перед тем как должна ждать лимит кулдаун");
+        this.Text("GibbonGR-StrongCallChance-Name", "Шанс сильного вызова");
+        this.Text("GibbonGR-StrongCallChance-Description", "Шанс что следующий вызов подкрепления будет сильнее текущего уровня жары");
+        this.Text("GibbonGR-StrongCallHeatBonus-Name", "Бонус жары за сильный вызов");
+        this.Text("GibbonGR-StrongCallHeatBonus-Description", "Сколько дополнительной жары будет у сильного вызова");
+        this.Text("GibbonGR-TurfHeatBonus-Name", "Бонус жары за территорию");
+        this.Text("GibbonGR-TurfHeatBonus-Description", "Дополнительная начальная жара когда банда вызывает на своей территории");
+        this.Text("GibbonGR-GracePeriod-Category", "Льготный период");
+        this.Text("GibbonGR-Cooldowns-Category", "Кулдауны");
+        this.Text("GibbonGR-Heat-Category", "Жара");
+	}
+}

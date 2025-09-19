@@ -1,0 +1,37 @@
+module Gibbon.GR.Localization.Packages
+import Codeware.Localization.*
+
+public class GR_de_de extends ModLocalizationPackage{
+
+	protected func DefineTexts(){
+        this.Text("GibbonGR-Title","Reinforcements Gang Vs Gang");
+		this.Text("GibbonGR-Enabled-Name", "Aktiviert");
+        this.Text("GibbonGR-EnabledInCombat-Name", "Aktiviert wenn Spieler im Kampf ist");
+        this.Text("GibbonGR-EnabledWhenPlayerIsPassenger-Name", "Aktiviert wenn Spieler Beifahrer ist");
+        this.Text("GibbonGR-GracePeriodMin-Name", "Minimale Schonfrist");
+        this.Text("GibbonGR-GracePeriodMin-Description", "Minimale Zeit bevor ein Gang das erste Mal in einem Kampf Verstärkung rufen kann");
+        this.Text("GibbonGR-GracePeriodMax-Name", "Maximale Schonfrist");
+        this.Text("GibbonGR-GracePeriodMax-Description", "Maximale Zeit bevor ein Gang das erste Mal in einem Kampf Verstärkung rufen kann");
+        this.Text("GibbonGR-CallSuccessCooldownMin-Name", "Minimale Anruf-Abklingzeit");
+        this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Minimale Zeit die ein Gang warten muss bevor er im selben Kampf wieder Verstärkung rufen kann");
+        this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Maximale Anruf-Abklingzeit");
+        this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Maximale Zeit die ein Gang warten muss bevor er im selben Kampf wieder Verstärkung rufen kann");
+        this.Text("GibbonGR-HeatResetCooldown-Name", "Limit Abklingzeit");
+        this.Text("GibbonGR-HeatResetCooldown-Description", "Wie lange ein Gang warten muss bevor er wieder rufen kann nach Erreichen des Anruf-Limits");
+        this.Text("GibbonGR-InitialHeat-Name", "Anfängliche Hitze");
+        this.Text("GibbonGR-InitialHeat-Description", "Wie stark der erste Verstärkungsanruf sein wird");
+        this.Text("GibbonGR-HeatEscalation-Name", "Hitze-Eskalation");
+        this.Text("GibbonGR-HeatEscalation-Description", "Um wie viel die Hitze pro Gang pro Anruf steigt");
+        this.Text("GibbonGR-CallsLimit-Name", "Anruf-Limit");
+        this.Text("GibbonGR-CallsLimit-Description", "Die Anzahl der Anrufe die ein Gang machen kann bevor er die Limit Abklingzeit warten muss");
+        this.Text("GibbonGR-StrongCallChance-Name", "Starker Anruf Chance");
+        this.Text("GibbonGR-StrongCallChance-Description", "Chance dass der nächste Verstärkungsanruf stärker als das aktuelle Hitze-Level sein wird");
+        this.Text("GibbonGR-StrongCallHeatBonus-Name", "Starker Anruf Hitze-Bonus");
+        this.Text("GibbonGR-StrongCallHeatBonus-Description", "Wie viel extra Hitze der starke Anruf haben wird");
+        this.Text("GibbonGR-TurfHeatBonus-Name", "Gebiet Hitze-Bonus");
+        this.Text("GibbonGR-TurfHeatBonus-Description", "Extra anfängliche Hitze wenn ein Gang auf seinem eigenen Gebiet ruft");
+        this.Text("GibbonGR-GracePeriod-Category", "Schonfrist");
+        this.Text("GibbonGR-Cooldowns-Category", "Abklingzeiten");
+        this.Text("GibbonGR-Heat-Category", "Hitze");
+	}
+}
