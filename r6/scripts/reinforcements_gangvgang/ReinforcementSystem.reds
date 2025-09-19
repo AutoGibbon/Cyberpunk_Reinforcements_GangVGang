@@ -43,18 +43,18 @@ public class GRReinforcementSystem extends ScriptableSystem {
 
 
         //debugging
-        this.tygerHandler.isDisabled = true;
-        this.scavHandler.isDisabled = true;
-        this.animalsHandler.isDisabled = true;
-        // this.maelstromHandler.isDisabled = false; // leave enabled
-        this.arasakaHandler.isDisabled = true;
-        this.voodooHandler.isDisabled = true;
-        this.sixthHandler.isDisabled = true;
-        this.militechHandler.isDisabled = true;
-        this.valentinosHandler.isDisabled = true;
-        this.barghestHandler.isDisabled = true;
-        this.wraithsHandler.isDisabled = true;
-        this.ncpdHandler.isDisabled = true;
+        // this.tygerHandler.isDisabled = true;
+        // this.scavHandler.isDisabled = true;
+        // this.animalsHandler.isDisabled = true;
+        // this.maelstromHandler.isDisabled = true;
+        // this.arasakaHandler.isDisabled = true;
+        // this.voodooHandler.isDisabled = true;
+        // this.sixthHandler.isDisabled = true;
+        // this.militechHandler.isDisabled = true;
+        // this.valentinosHandler.isDisabled = true;
+        // this.barghestHandler.isDisabled = true;
+        // this.wraithsHandler.isDisabled = true;
+        // this.ncpdHandler.isDisabled = true;
 
         // cause we're doing funky stuff with public and private bindings
         this.settings.ReconcileSettings();

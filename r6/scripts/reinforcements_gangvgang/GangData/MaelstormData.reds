@@ -131,7 +131,7 @@ public class GRMaelstormData extends GRGangData {
                         t"DynamicSpawnSystem.GRMaelStormRareNormalCar4"
                     ], 2);    
             case 10: // 2 elite
-                return [t"DynamicSpawnSystem.GRMaelStormEliteBike1", t"DynamicSpawnSystem.GRMaelStormEliteBike1"];
+                return [t"DynamicSpawnSystem.GRMaelStormRareNormalCar1", t"DynamicSpawnSystem.GRMaelStormRareRareNormalNormalCar1"];
             case 11: // 5 normals 3 rares, 1 elite
                 let rrnnSquad = GetRandomFrom(
                     [

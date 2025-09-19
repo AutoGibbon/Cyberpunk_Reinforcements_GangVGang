@@ -88,7 +88,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
             }
             i += 1;
         }
-        GRLog(s"\(gangHandler.affiliation), veh \(ArraySize(wheeledObjects)) ");
+        //GRLog(s"\(gangHandler.affiliation), veh \(ArraySize(wheeledObjects)) ");
         return;
     }
 

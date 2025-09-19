@@ -32,7 +32,7 @@ public class GRSettings extends ScriptableSystem {
     }
 
     public func ReconcileSettings() -> Void {
-        GRLog("Reconciling settings");
+        //GRLog("Reconciling settings");
         if (this.useAdvancedSettings) {
             this.gracePeriodMin = MinF(this._gracePeriodMin, this.gracePeriodMax);
             this.gracePeriodMax = MaxF(this._gracePeriodMin, this.gracePeriodMax);
@@ -86,22 +86,22 @@ public class GRSettings extends ScriptableSystem {
         }
 
         // Log all settings line by line for debugging
-        GRLog(s"GRSettings: gracePeriodMin = \(this.gracePeriodMin)");
-        GRLog(s"GRSettings: gracePeriodMax = \(this.gracePeriodMax)");
-        GRLog(s"GRSettings: callSuccessCooldownMin = \(this.callSuccessCooldownMin)");
-        GRLog(s"GRSettings: callSuccessCooldownMax = \(this.callSuccessCooldownMax)");
-        GRLog(s"GRSettings: heatResetCooldown = \(this.heatResetCooldown)");
-        GRLog(s"GRSettings: initialHeat = \(this.initialHeat)");
-        GRLog(s"GRSettings: heatEscalation = \(this.heatEscalation)");
-        GRLog(s"GRSettings: callsLimit = \(this.callsLimit)");
-        GRLog(s"GRSettings: strongCallChance = \(this.strongCallChance)");
-        GRLog(s"GRSettings: strongCallHeatBonus = \(this.strongCallHeatBonus)");
-        GRLog(s"GRSettings: turfHeatBonus = \(this.turfHeatBonus)");
-        GRLog(s"GRSettings: enabled = \(this.enabled)");
-        GRLog(s"GRSettings: enabledWhenPlayerInCombat = \(this.enabledWhenPlayerInCombat)");
-        GRLog(s"GRSettings: enabledWhenPlayerIsPassenger = \(this.enabledWhenPlayerIsPassenger)");
-        GRLog(s"GRSettings: simpleSetting = \(ToString(this.simpleSetting))");
-        GRLog(s"GRSettings: useAdvancedSettings = \(this.useAdvancedSettings)");
+        //GRLog(s"GRSettings: gracePeriodMin = \(this.gracePeriodMin)");
+        //GRLog(s"GRSettings: gracePeriodMax = \(this.gracePeriodMax)");
+        //GRLog(s"GRSettings: callSuccessCooldownMin = \(this.callSuccessCooldownMin)");
+        //GRLog(s"GRSettings: callSuccessCooldownMax = \(this.callSuccessCooldownMax)");
+        //GRLog(s"GRSettings: heatResetCooldown = \(this.heatResetCooldown)");
+        //GRLog(s"GRSettings: initialHeat = \(this.initialHeat)");
+        //GRLog(s"GRSettings: heatEscalation = \(this.heatEscalation)");
+        //GRLog(s"GRSettings: callsLimit = \(this.callsLimit)");
+        //GRLog(s"GRSettings: strongCallChance = \(this.strongCallChance)");
+        //GRLog(s"GRSettings: strongCallHeatBonus = \(this.strongCallHeatBonus)");
+        //GRLog(s"GRSettings: turfHeatBonus = \(this.turfHeatBonus)");
+        //GRLog(s"GRSettings: enabled = \(this.enabled)");
+        //GRLog(s"GRSettings: enabledWhenPlayerInCombat = \(this.enabledWhenPlayerInCombat)");
+        //GRLog(s"GRSettings: enabledWhenPlayerIsPassenger = \(this.enabledWhenPlayerIsPassenger)");
+        //GRLog(s"GRSettings: simpleSetting = \(ToString(this.simpleSetting))");
+        //GRLog(s"GRSettings: useAdvancedSettings = \(this.useAdvancedSettings)");
     }
 
     @runtimeProperty("ModSettings.mod",         "GibbonGR-Title")

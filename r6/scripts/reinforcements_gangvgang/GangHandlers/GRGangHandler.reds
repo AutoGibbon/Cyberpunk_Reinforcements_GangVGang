@@ -79,7 +79,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     }
 
     public func GetGraceTime() -> Float {
-        GRLog(s"\(this.affiliation), Grace min: \(this.settings.gracePeriodMin), max: \(this.settings.gracePeriodMax)");
+        //GRLog(s"\(this.affiliation), Grace min: \(this.settings.gracePeriodMin), max: \(this.settings.gracePeriodMax)");
         return RandRangeF(this.settings.gracePeriodMin, this.settings.gracePeriodMax);
     }
 
@@ -123,7 +123,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
         this.lastCallerPosition = puppet.GetWorldPosition();
         this.lastTarget = target;
 
-        GRLog(s"Reinforcement call: \(this.affiliation), \(reinforcementHeat)");
+        //GRLog(s"Reinforcement call: \(this.affiliation), \(reinforcementHeat)");
 
         this.SpawnVehicles(this.reinforcementData.GetReinforcementsClamped(Min(reinforcementHeat,20), 3), isTurf);
 
