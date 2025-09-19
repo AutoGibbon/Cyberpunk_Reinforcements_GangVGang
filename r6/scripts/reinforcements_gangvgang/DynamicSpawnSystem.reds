@@ -53,32 +53,14 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         return;
     }
 
-    // only inject car chase commands if there are pending chase requests and the gang had its last normal call answered
-    let isCarChase = reinSystem.numberOfCarChaseRequests > 0 && gangHandler.lastCallAnswered;
-
     target = gangHandler.GetLastTarget();
     targetPosition = gangHandler.GetLastCallerPosition();
     i = 0;
     while i < ArraySize(wheeledObjects) {
         wheeledObject = wheeledObjects[i];
 
-        if isCarChase {
-            reinSystem.numberOfCarChaseRequests -= 1;
-            GRLog(s"isCarChase=\(isCarChase) reinSystem.numberOfCarChaseRequests=\(reinSystem.numberOfCarChaseRequests)");
-            let playerPosition = GetPlayer(GetGameInstance()).GetWorldPosition();
-            aiVehicleMovecommand = new AIVehicleDriveToPointAutonomousCommand();
-            aiVehicleMovecommand.driveDownTheRoadIndefinitely = true;
-            aiVehicleMovecommand.clearTrafficOnPath = false;
-            aiVehicleMovecommand.forcedStartSpeed = 10.0;
-            aiVehicleMovecommand.minSpeed = 30.0;
-            aiVehicleMovecommand.minimumDistanceToTarget = 30.0;
-            aiVehicleMovecommand.targetPosition = Vector4.Vector4To3(playerPosition);
-            aiCommandEvent = new AICommandEvent();
-            aiCommandEvent.command = aiVehicleMovecommand;
-            wheeledObject.SetPoliceStrategyDestination(playerPosition);
-            wheeledObject.QueueEvent(aiCommandEvent);
-            wheeledObject.GetAIComponent().SetInitCmd(aiVehicleMovecommand);
-        } else if IsDefined(target) {
+        if IsDefined(target) {
+    		gangHandler.lastCallAnswered = true;
             aiVehicleChaseCommand = new AIVehicleChaseCommand();
             aiVehicleChaseCommand.target = target;
             aiVehicleChaseCommand.distanceMin = TweakDBInterface.GetFloat(t"DynamicSpawnSystem.dynamic_vehicles_chase_setup.distanceMin", 3.0);
@@ -92,6 +74,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
             wheeledObject.QueueEvent(aiCommandEvent);
             wheeledObject.GetAIComponent().SetInitCmd(aiVehicleChaseCommand);
         } else if !Vector4.IsZero(targetPosition) {
+    		gangHandler.lastCallAnswered = true;
             aiVehicleMovecommand = new AIVehicleDriveToPointAutonomousCommand();
             aiVehicleMovecommand.driveDownTheRoadIndefinitely = false;
             aiVehicleMovecommand.clearTrafficOnPath = false;
@@ -112,7 +95,6 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         i += 1;
     }
     //GRLog(s"\(gangHandler.affiliation), veh \(ArraySize(wheeledObjects)) ");
-    gangHandler.lastCallAnswered = true;
     return;
 }
 
