@@ -1,9 +1,36 @@
 module Gibbon.GR.GangData
 
 public abstract class GRGangData {
-    public func GetReinforcements(heat: Int32) -> array<TweakDBID> 
+    protected func GetReinforcements(heat: Int32) -> array<TweakDBID> 
+    
+    public func GetReinforcementsClamped(heat: Int32, maxCount: Int32) -> array<TweakDBID> {
+        let reinforcements = this.GetReinforcements(heat);
+        let count = ArraySize(reinforcements);
+        if count <= maxCount {
+            return reinforcements;
+        } else {
+            return GetRandomFrom(reinforcements, maxCount);
+        }
+    }
 }
 
+func GetRandomFrom(from: array<TweakDBID>, count: Int32) -> array<TweakDBID> {
+    let arraySize = ArraySize(from);
+    let output: array<TweakDBID> = [];
+    let randomNumber: Int32;
+    let i: Int32 = 0;
+    while i < count {
+        randomNumber = RandRange(0, arraySize - 1);
+
+        ArrayPush(output, from[randomNumber]);
+
+        i += 1;
+    }
+
+    return output;
+}
+
+/*
 func GetRandomFrom(from: array<TweakDBID>, count: Int32) -> array<TweakDBID> {
     let arraySize = ArraySize(from);
     let output: array<TweakDBID> = [];
@@ -19,6 +46,7 @@ func GetRandomFrom(from: array<TweakDBID>, count: Int32) -> array<TweakDBID> {
 
     return output;
 }
+*/
 
 func ArrayMerge(first: array<TweakDBID>, second: array<TweakDBID>) -> array<TweakDBID> {
     let arraySize = ArraySize(second);
@@ -33,3 +61,4 @@ func ArrayMerge(first: array<TweakDBID>, second: array<TweakDBID>) -> array<Twea
     return first;
 }
 
+// abbreviations: W = weak, N = normal, R = rare, E = elite

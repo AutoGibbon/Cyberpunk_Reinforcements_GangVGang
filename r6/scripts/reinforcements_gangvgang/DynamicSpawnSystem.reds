@@ -2,9 +2,10 @@ module Gibbon.GR
 
 import Gibbon.GR.ReinforcementSystem.*
 import Gibbon.GR.GangHandlers.*
+import Gibbon.GR.Logging.*
 
 @wrapMethod(DynamicSpawnSystem)
- protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) -> Void {
+protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) -> Void {
     let i: Int32;
     let spawnedObject: ref<GameObject>;
     let puppet: ref<ScriptedPuppet>;
@@ -18,9 +19,11 @@ import Gibbon.GR.GangHandlers.*
     let aiVehicleChaseCommand: ref<AIVehicleChaseCommand>;
     let aiVehicleMovecommand: ref<AIVehicleDriveToPointAutonomousCommand>;
     let aiCommandEvent: ref<AICommandEvent>;
+
     if !requestResult.success {
       return;
     };
+    
     i = 0;
     while i < ArraySize(requestResult.spawnedObjects) {
       spawnedObject = requestResult.spawnedObjects[i];
@@ -50,7 +53,6 @@ import Gibbon.GR.GangHandlers.*
         i = 0;
         while i < ArraySize(wheeledObjects) {
             wheeledObject = wheeledObjects[i];
-
             if (IsDefined(target)) {
                 aiVehicleChaseCommand = new AIVehicleChaseCommand();
                 aiVehicleChaseCommand.target = target;
@@ -80,13 +82,13 @@ import Gibbon.GR.GangHandlers.*
                     wheeledObject.GetAIComponent().SetInitCmd(aiVehicleMovecommand);
                 }
             }
-
+            
             if(Equals(gangHandler.affiliation, gamedataAffiliation.NCPD)) {
-                wheeledObject.ToggleSiren(true);
+                wheeledObject.GetVehicleComponent().ToggleSiren(true,true);
             }
             i += 1;
         }
-
+        GRLog(s"\(gangHandler.affiliation), veh \(ArraySize(wheeledObjects)) ");
         return;
     }
 

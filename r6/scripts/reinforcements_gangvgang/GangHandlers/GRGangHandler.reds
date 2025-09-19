@@ -2,12 +2,14 @@ module Gibbon.GR.GangHandlers
 
 import Gibbon.GR.GangData.*
 import Gibbon.GR.Settings.*
+import Gibbon.GR.Logging.*
 
 
 public abstract class GRGangHandler extends ScriptableSystem {
     protected let preventionSystem: ref<PreventionSystem>;
     protected let delaySystem: ref<DelaySystem>;
     protected let settings: ref<GRSettings>;
+    public let isDisabled: Bool = false;
 
     protected let lastCaller: ref<NPCPuppet>;
     protected let lastTarget: ref<NPCPuppet>;
@@ -77,6 +79,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     }
 
     public func GetGraceTime() -> Float {
+        GRLog(s"\(this.affiliation), Grace min: \(this.settings.gracePeriodMin), max: \(this.settings.gracePeriodMax)");
         return RandRangeF(this.settings.gracePeriodMin, this.settings.gracePeriodMax);
     }
 
@@ -104,10 +107,9 @@ public abstract class GRGangHandler extends ScriptableSystem {
             this.heatLevel = this.settings.initialHeat;
         } else {
             this.heatLevel += this.settings.heatEscalation;
-        }
-
-        if (isTurf) {
-            this.heatLevel += this.settings.turfHeatBonus;
+            if (isTurf) {
+                this.heatLevel += this.settings.turfHeatBonus;
+            }
         }
 
         this.callSuccessCooldownActive = true;
@@ -120,7 +122,10 @@ public abstract class GRGangHandler extends ScriptableSystem {
         this.lastCaller = puppet;
         this.lastCallerPosition = puppet.GetWorldPosition();
         this.lastTarget = target;
-        this.SpawnVehicles(this.reinforcementData.GetReinforcements(Min(reinforcementHeat,20)), isTurf);
+
+        GRLog(s"Reinforcement call: \(this.affiliation), \(reinforcementHeat)");
+
+        this.SpawnVehicles(this.reinforcementData.GetReinforcementsClamped(Min(reinforcementHeat,20), 3), isTurf);
 
         if(this.callsPerformed > this.settings.callsLimit) {
             this.heatResetCooldownActive = true;
@@ -129,12 +134,15 @@ public abstract class GRGangHandler extends ScriptableSystem {
     }
 
     public func TryCallingReinforcements(puppet: ref<ScriptedPuppet>) -> Bool {
+        if (this.isDisabled) {
+            return false;
+        }
+
         if (!this.gracePeriodEnded) { 
             if (this.gracePeriodStarted) {
                 return false;
             } else {
                 this.gracePeriodStarted = true;
-                
                 this.OnGraceStart(); 
                 return false;
             }
@@ -152,9 +160,9 @@ public abstract class GRGangHandler extends ScriptableSystem {
 		let nodeType = new questDynamicVehicleSpawn_NodeType();
 
         if (isTurf) {
-            nodeType.distanceRange = new Vector2(100, 300);
+            nodeType.distanceRange = new Vector2(50, 50);
         } else {
-		    nodeType.distanceRange = new Vector2(500, 1000);
+		    nodeType.distanceRange = new Vector2(100, 100);
         }
 
         if (RandF() >= 0.5) {
@@ -170,8 +178,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
 		this.waveCounter += 1;
 		node.id = Cast<Uint16>(this.waveCounterUniqueId + this.waveCounter);
 		node.type = nodeType;
-
-        //todo add the wavecounter somewhere?
 
 		GameInstance.GetQuestsSystem(GetGameInstance()).ExecuteNode(node);
 	}

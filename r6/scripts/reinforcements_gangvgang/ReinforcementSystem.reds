@@ -40,6 +40,39 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.barghestHandler = GRBarghestHandler.GetInstance(theGame);
         this.wraithsHandler = GRWraithsHandler.GetInstance(theGame);
         this.ncpdHandler = GRNCPDHandler.GetInstance(theGame);
+
+
+        //debugging
+        this.tygerHandler.isDisabled = true;
+        this.scavHandler.isDisabled = true;
+        this.animalsHandler.isDisabled = true;
+        // this.maelstromHandler.isDisabled = false; // leave enabled
+        this.arasakaHandler.isDisabled = true;
+        this.voodooHandler.isDisabled = true;
+        this.sixthHandler.isDisabled = true;
+        this.militechHandler.isDisabled = true;
+        this.valentinosHandler.isDisabled = true;
+        this.barghestHandler.isDisabled = true;
+        this.wraithsHandler.isDisabled = true;
+        this.ncpdHandler.isDisabled = true;
+
+        // cause we're doing funky stuff with public and private bindings
+        this.settings.ReconcileSettings();
+    }
+
+    public func ResetAllGangs() -> Void {
+        this.tygerHandler.OnHeatResetCooldownEnd();
+        this.scavHandler.OnHeatResetCooldownEnd();
+        this.animalsHandler.OnHeatResetCooldownEnd();
+        this.maelStormHandler.OnHeatResetCooldownEnd();
+        this.arasakaHandler.OnHeatResetCooldownEnd();
+        this.voodooHandler.OnHeatResetCooldownEnd();
+        this.sixthHandler.OnHeatResetCooldownEnd();
+        this.militechHandler.OnHeatResetCooldownEnd();
+        this.valentinosHandler.OnHeatResetCooldownEnd();
+        this.barghestHandler.OnHeatResetCooldownEnd();
+        this.wraithsHandler.OnHeatResetCooldownEnd();
+        this.ncpdHandler.OnHeatResetCooldownEnd();
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRReinforcementSystem> {
