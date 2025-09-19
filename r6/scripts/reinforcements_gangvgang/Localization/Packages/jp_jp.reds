@@ -33,5 +33,17 @@ public class GR_jp_jp extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "猶予時間");
         this.Text("GibbonGR-Cooldowns-Category", "クールダウン");
         this.Text("GibbonGR-Heat-Category", "手配度");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "プリセットモード");
+        this.Text("GibbonGR-PresetMode-Description", "異なるゲームプレイ体験のためのプリセットモードから選択");
+        this.Text("GibbonGR-PresetMode-Limited", "限定");
+        this.Text("GibbonGR-PresetMode-Balanced", "バランス");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "まれに大規模");
+        this.Text("GibbonGR-PresetMode-Chaos", "カオス");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "詳細設定を表示");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "個別パラメータを細かく調整するための詳細設定を表示。プリセットモードを上書きします。");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "増援要請 - 最大車両数");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "単一の増援要請でスポーンできる最大車両数");
     }
 }

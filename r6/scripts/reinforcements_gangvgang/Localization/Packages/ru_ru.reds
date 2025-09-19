@@ -33,5 +33,17 @@ public class GR_ru_ru extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "Льготный период");
         this.Text("GibbonGR-Cooldowns-Category", "Кулдауны");
         this.Text("GibbonGR-Heat-Category", "Жара");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "Режим настроек");
+        this.Text("GibbonGR-PresetMode-Description", "Выберите из режимов настроек для разного игрового опыта");
+        this.Text("GibbonGR-PresetMode-Limited", "Ограниченный");
+        this.Text("GibbonGR-PresetMode-Balanced", "Сбалансированный");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "Редкие Крупные Бои");
+        this.Text("GibbonGR-PresetMode-Chaos", "Хаос");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "Показать расширенные настройки");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "Показать расширенные настройки для точной настройки отдельных параметров. Переопределяет режим настроек.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Максимум транспорта на вызов");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Максимальное количество транспорта которое может появиться в одном вызове подкрепления");
 	}
 }

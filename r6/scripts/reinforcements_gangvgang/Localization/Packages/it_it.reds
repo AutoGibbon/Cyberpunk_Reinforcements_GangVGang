@@ -33,5 +33,17 @@ public class GR_it_it extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "Periodo di grazia");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldown");
         this.Text("GibbonGR-Heat-Category", "Calore");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "Modalità Preset");
+        this.Text("GibbonGR-PresetMode-Description", "Scegli tra modalità predefinite per esperienze di gioco diverse");
+        this.Text("GibbonGR-PresetMode-Limited", "Leggera");
+        this.Text("GibbonGR-PresetMode-Balanced", "Bilanciata");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "Rara e Drammatica");
+        this.Text("GibbonGR-PresetMode-Chaos", "Caos");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "Mostra Impostazioni Avanzate");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "Mostra impostazioni avanzate per regolare i singoli parametri. Sostituisce la modalità preset.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Veicoli Massimi Per Chiamata");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Numero massimo di veicoli che possono apparire in una singola chiamata di rinforzi");
 	}
 }

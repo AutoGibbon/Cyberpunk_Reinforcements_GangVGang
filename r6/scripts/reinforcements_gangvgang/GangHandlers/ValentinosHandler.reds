@@ -21,15 +21,15 @@ public class GRValentinosHandler extends GRGangHandler {
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(ValentinosHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRValentinosHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(ValentinosCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRValentinosCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(ValentinosGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRValentinosGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -39,10 +39,10 @@ public class GRValentinosHandler extends GRGangHandler {
     }
 }
 
-public class ValentinosGraceEndCallback extends DelayCallback {
+public class GRValentinosGraceEndCallback extends DelayCallback {
     let handler: wref<GRValentinosHandler>;
-    public static func Create(handler: ref<GRValentinosHandler>) -> ref<ValentinosGraceEndCallback> {
-        let self: ref<ValentinosGraceEndCallback> = new ValentinosGraceEndCallback();
+    public static func Create(handler: ref<GRValentinosHandler>) -> ref<GRValentinosGraceEndCallback> {
+        let self: ref<GRValentinosGraceEndCallback> = new GRValentinosGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -52,10 +52,10 @@ public class ValentinosGraceEndCallback extends DelayCallback {
   }
 }
 
-public class ValentinosHeatResetCooldownEndCallback extends DelayCallback {
+public class GRValentinosHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRValentinosHandler>;
-    public static func Create(handler: ref<GRValentinosHandler>) -> ref<ValentinosHeatResetCooldownEndCallback> {
-        let self: ref<ValentinosHeatResetCooldownEndCallback> = new ValentinosHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRValentinosHandler>) -> ref<GRValentinosHeatResetCooldownEndCallback> {
+        let self: ref<GRValentinosHeatResetCooldownEndCallback> = new GRValentinosHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -65,10 +65,10 @@ public class ValentinosHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class ValentinosCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRValentinosCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRValentinosHandler>;
-    public static func Create(handler: ref<GRValentinosHandler>) -> ref<ValentinosCallSuccessCooldownEndCallback> {
-        let self: ref<ValentinosCallSuccessCooldownEndCallback> = new ValentinosCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRValentinosHandler>) -> ref<GRValentinosCallSuccessCooldownEndCallback> {
+        let self: ref<GRValentinosCallSuccessCooldownEndCallback> = new GRValentinosCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

@@ -25,22 +25,22 @@ public class GRMaelStromHandler extends GRGangHandler {
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(MaelstromGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRMaelstromGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(MaelstromHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRMaelstromHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(MaelstromCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRMaelstromCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 }
 
-public class MaelstromGraceEndCallback extends DelayCallback {
+public class GRMaelstromGraceEndCallback extends DelayCallback {
     let handler: wref<GRMaelStromHandler>;
-    public static func Create(handler: ref<GRMaelStromHandler>) -> ref<MaelstromGraceEndCallback> {
-        let self: ref<MaelstromGraceEndCallback> = new MaelstromGraceEndCallback();
+    public static func Create(handler: ref<GRMaelStromHandler>) -> ref<GRMaelstromGraceEndCallback> {
+        let self: ref<GRMaelstromGraceEndCallback> = new GRMaelstromGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -50,10 +50,10 @@ public class MaelstromGraceEndCallback extends DelayCallback {
   }
 }
 
-public class MaelstromHeatResetCooldownEndCallback extends DelayCallback {
+public class GRMaelstromHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRMaelStromHandler>;
-    public static func Create(handler: ref<GRMaelStromHandler>) -> ref<MaelstromHeatResetCooldownEndCallback> {
-        let self: ref<MaelstromHeatResetCooldownEndCallback> = new MaelstromHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRMaelStromHandler>) -> ref<GRMaelstromHeatResetCooldownEndCallback> {
+        let self: ref<GRMaelstromHeatResetCooldownEndCallback> = new GRMaelstromHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -63,10 +63,10 @@ public class MaelstromHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class MaelstromCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRMaelstromCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRMaelStromHandler>;
-    public static func Create(handler: ref<GRMaelStromHandler>) -> ref<MaelstromCallSuccessCooldownEndCallback> {
-        let self: ref<MaelstromCallSuccessCooldownEndCallback> = new MaelstromCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRMaelStromHandler>) -> ref<GRMaelstromCallSuccessCooldownEndCallback> {
+        let self: ref<GRMaelstromCallSuccessCooldownEndCallback> = new GRMaelstromCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

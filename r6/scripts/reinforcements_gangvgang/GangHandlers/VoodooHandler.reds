@@ -21,15 +21,15 @@ public class GRVoodooHandler extends GRGangHandler {
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(VoodooHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRVoodooHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(VoodooCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRVoodooCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(VoodooGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRVoodooGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -40,10 +40,10 @@ public class GRVoodooHandler extends GRGangHandler {
     }
 }
 
-public class VoodooGraceEndCallback extends DelayCallback {
+public class GRVoodooGraceEndCallback extends DelayCallback {
     let handler: wref<GRVoodooHandler>;
-    public static func Create(handler: ref<GRVoodooHandler>) -> ref<VoodooGraceEndCallback> {
-        let self: ref<VoodooGraceEndCallback> = new VoodooGraceEndCallback();
+    public static func Create(handler: ref<GRVoodooHandler>) -> ref<GRVoodooGraceEndCallback> {
+        let self: ref<GRVoodooGraceEndCallback> = new GRVoodooGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -53,10 +53,10 @@ public class VoodooGraceEndCallback extends DelayCallback {
   }
 }
 
-public class VoodooHeatResetCooldownEndCallback extends DelayCallback {
+public class GRVoodooHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRVoodooHandler>;
-    public static func Create(handler: ref<GRVoodooHandler>) -> ref<VoodooHeatResetCooldownEndCallback> {
-        let self: ref<VoodooHeatResetCooldownEndCallback> = new VoodooHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRVoodooHandler>) -> ref<GRVoodooHeatResetCooldownEndCallback> {
+        let self: ref<GRVoodooHeatResetCooldownEndCallback> = new GRVoodooHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -66,10 +66,10 @@ public class VoodooHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class VoodooCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRVoodooCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRVoodooHandler>;
-    public static func Create(handler: ref<GRVoodooHandler>) -> ref<VoodooCallSuccessCooldownEndCallback> {
-        let self: ref<VoodooCallSuccessCooldownEndCallback> = new VoodooCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRVoodooHandler>) -> ref<GRVoodooCallSuccessCooldownEndCallback> {
+        let self: ref<GRVoodooCallSuccessCooldownEndCallback> = new GRVoodooCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

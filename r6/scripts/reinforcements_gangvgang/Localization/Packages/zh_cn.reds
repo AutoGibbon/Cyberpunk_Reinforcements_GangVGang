@@ -33,5 +33,17 @@ public class GR_zh_cn extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "宽限时间");
         this.Text("GibbonGR-Cooldowns-Category", "冷却时间");
         this.Text("GibbonGR-Heat-Category", "热度");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "预设模式");
+        this.Text("GibbonGR-PresetMode-Description", "为不同的游戏体验选择预设模式");
+        this.Text("GibbonGR-PresetMode-Limited", "有限");
+        this.Text("GibbonGR-PresetMode-Balanced", "平衡");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "偶尔大型战斗");
+        this.Text("GibbonGR-PresetMode-Chaos", "混乱");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "显示高级设置");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "显示高级设置以微调各个参数。覆盖预设模式。");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "每次呼叫最大载具数");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "单次支援呼叫中可生成的最大载具数量");
 	}
 }

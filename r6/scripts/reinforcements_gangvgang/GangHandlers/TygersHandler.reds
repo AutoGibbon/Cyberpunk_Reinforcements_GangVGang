@@ -26,22 +26,22 @@ public class GRTygersHandler extends GRGangHandler {
     }
     
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(TygerEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRTygerEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(TygerHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRTygerHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(TygerCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRTygerCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 }
 
-public class TygerEndCallback extends DelayCallback {
+public class GRTygerEndCallback extends DelayCallback {
     let handler: wref<GRTygersHandler>;
-    public static func Create(handler: ref<GRTygersHandler>) -> ref<TygerEndCallback> {
-        let self: ref<TygerEndCallback> = new TygerEndCallback();
+    public static func Create(handler: ref<GRTygersHandler>) -> ref<GRTygerEndCallback> {
+        let self: ref<GRTygerEndCallback> = new GRTygerEndCallback();
         
         self.handler = handler;
         return self;
@@ -52,10 +52,10 @@ public class TygerEndCallback extends DelayCallback {
   }
 }
 
-public class TygerHeatResetCooldownEndCallback extends DelayCallback {
+public class GRTygerHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRTygersHandler>;
-    public static func Create(handler: ref<GRTygersHandler>) -> ref<TygerHeatResetCooldownEndCallback> {
-        let self: ref<TygerHeatResetCooldownEndCallback> = new TygerHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRTygersHandler>) -> ref<GRTygerHeatResetCooldownEndCallback> {
+        let self: ref<GRTygerHeatResetCooldownEndCallback> = new GRTygerHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -65,10 +65,10 @@ public class TygerHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class TygerCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRTygerCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRTygersHandler>;
-    public static func Create(handler: ref<GRTygersHandler>) -> ref<TygerCallSuccessCooldownEndCallback> {
-        let self: ref<TygerCallSuccessCooldownEndCallback> = new TygerCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRTygersHandler>) -> ref<GRTygerCallSuccessCooldownEndCallback> {
+        let self: ref<GRTygerCallSuccessCooldownEndCallback> = new GRTygerCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

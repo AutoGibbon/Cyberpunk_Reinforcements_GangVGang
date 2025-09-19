@@ -33,5 +33,17 @@ public class GR_th_th extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "ช่วงเวลาประนีประนอม");
         this.Text("GibbonGR-Cooldowns-Category", "คูลดาวน์");
         this.Text("GibbonGR-Heat-Category", "ความร้อน");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "โหมดที่ตั้งไว้");
+        this.Text("GibbonGR-PresetMode-Description", "เลือกจากโหมดที่ตั้งไว้สำหรับประสบการณ์การเล่นที่แตกต่างกัน");
+        this.Text("GibbonGR-PresetMode-Limited", "จำกัด");
+        this.Text("GibbonGR-PresetMode-Balanced", "สมดุล");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "การต่อสู้ใหญ่ที่หายาก");
+        this.Text("GibbonGR-PresetMode-Chaos", "ความวุ่นวาย");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "แสดงการตั้งค่าขั้นสูง");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "แสดงการตั้งค่าขั้นสูงเพื่อปรับแต่งพารามิเตอร์แต่ละตัวอย่างละเอียด ใช้แทนโหมดที่ตั้งไว้");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "ยานพาหนะสูงสุดต่อการเรียก");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "จำนวนยานพาหนะสูงสุดที่สามารถปรากฏในการเรียกกำลังเสริมครั้งเดียว");
 	}
 }

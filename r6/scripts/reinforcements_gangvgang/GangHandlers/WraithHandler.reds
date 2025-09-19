@@ -21,15 +21,15 @@ public class GRWraithsHandler extends GRGangHandler {
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(WraithsHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRWraithsHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(WraithsCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRWraithsCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(WraithsGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRWraithsGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -39,10 +39,10 @@ public class GRWraithsHandler extends GRGangHandler {
     }
 }
 
-public class WraithsGraceEndCallback extends DelayCallback {
+public class GRWraithsGraceEndCallback extends DelayCallback {
     let handler: wref<GRWraithsHandler>;
-    public static func Create(handler: ref<GRWraithsHandler>) -> ref<WraithsGraceEndCallback> {
-        let self: ref<WraithsGraceEndCallback> = new WraithsGraceEndCallback();
+    public static func Create(handler: ref<GRWraithsHandler>) -> ref<GRWraithsGraceEndCallback> {
+        let self: ref<GRWraithsGraceEndCallback> = new GRWraithsGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -52,10 +52,10 @@ public class WraithsGraceEndCallback extends DelayCallback {
   }
 }
 
-public class WraithsHeatResetCooldownEndCallback extends DelayCallback {
+public class GRWraithsHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRWraithsHandler>;
-    public static func Create(handler: ref<GRWraithsHandler>) -> ref<WraithsHeatResetCooldownEndCallback> {
-        let self: ref<WraithsHeatResetCooldownEndCallback> = new WraithsHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRWraithsHandler>) -> ref<GRWraithsHeatResetCooldownEndCallback> {
+        let self: ref<GRWraithsHeatResetCooldownEndCallback> = new GRWraithsHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -65,10 +65,10 @@ public class WraithsHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class WraithsCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRWraithsCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRWraithsHandler>;
-    public static func Create(handler: ref<GRWraithsHandler>) -> ref<WraithsCallSuccessCooldownEndCallback> {
-        let self: ref<WraithsCallSuccessCooldownEndCallback> = new WraithsCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRWraithsHandler>) -> ref<GRWraithsCallSuccessCooldownEndCallback> {
+        let self: ref<GRWraithsCallSuccessCooldownEndCallback> = new GRWraithsCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

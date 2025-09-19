@@ -33,5 +33,17 @@ public class GR_ar_ar extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "فترة السماح");
         this.Text("GibbonGR-Cooldowns-Category", "أوقات الانتظار");
         this.Text("GibbonGR-Heat-Category", "الحرارة");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "وضع الإعدادات المحددة مسبقاً");
+        this.Text("GibbonGR-PresetMode-Description", "اختر من الأوضاع المحددة مسبقاً لتجارب لعب مختلفة");
+        this.Text("GibbonGR-PresetMode-Limited", "خفيف");
+        this.Text("GibbonGR-PresetMode-Balanced", "متوازن");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "نادر ومثير");
+        this.Text("GibbonGR-PresetMode-Chaos", "فوضى");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "إظهار الإعدادات المتقدمة");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "إظهار الإعدادات المتقدمة لضبط المعاملات الفردية بدقة. يتجاوز وضع الإعدادات المحددة مسبقاً.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "الحد الأقصى للمركبات لكل استدعاء");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "الحد الأقصى لعدد المركبات التي يمكن أن تظهر في استدعاء دعم واحد");
 	}
 }

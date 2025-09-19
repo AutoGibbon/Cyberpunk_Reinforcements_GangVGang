@@ -21,15 +21,15 @@ public class GRBarghestHandler extends GRGangHandler {
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(BarghestHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRBarghestHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(BarghestCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRBarghestCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(BarghestGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRBarghestGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -39,10 +39,10 @@ public class GRBarghestHandler extends GRGangHandler {
     }
 }
 
-public class BarghestGraceEndCallback extends DelayCallback {
+public class GRBarghestGraceEndCallback extends DelayCallback {
     let handler: wref<GRBarghestHandler>;
-    public static func Create(handler: ref<GRBarghestHandler>) -> ref<BarghestGraceEndCallback> {
-        let self: ref<BarghestGraceEndCallback> = new BarghestGraceEndCallback();
+    public static func Create(handler: ref<GRBarghestHandler>) -> ref<GRBarghestGraceEndCallback> {
+        let self: ref<GRBarghestGraceEndCallback> = new GRBarghestGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -52,10 +52,10 @@ public class BarghestGraceEndCallback extends DelayCallback {
   }
 }
 
-public class BarghestHeatResetCooldownEndCallback extends DelayCallback {
+public class GRBarghestHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRBarghestHandler>;
-    public static func Create(handler: ref<GRBarghestHandler>) -> ref<BarghestHeatResetCooldownEndCallback> {
-        let self: ref<BarghestHeatResetCooldownEndCallback> = new BarghestHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRBarghestHandler>) -> ref<GRBarghestHeatResetCooldownEndCallback> {
+        let self: ref<GRBarghestHeatResetCooldownEndCallback> = new GRBarghestHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -65,10 +65,10 @@ public class BarghestHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class BarghestCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRBarghestCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRBarghestHandler>;
-    public static func Create(handler: ref<GRBarghestHandler>) -> ref<BarghestCallSuccessCooldownEndCallback> {
-        let self: ref<BarghestCallSuccessCooldownEndCallback> = new BarghestCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRBarghestHandler>) -> ref<GRBarghestCallSuccessCooldownEndCallback> {
+        let self: ref<GRBarghestCallSuccessCooldownEndCallback> = new GRBarghestCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

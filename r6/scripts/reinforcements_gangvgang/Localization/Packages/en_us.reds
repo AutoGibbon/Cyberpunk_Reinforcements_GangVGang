@@ -1,11 +1,11 @@
 module Gibbon.GR.Localization.Packages
+
 import Codeware.Localization.*
 
-public class GR_en_us extends ModLocalizationPackage{
-
-	protected func DefineTexts(){
-		this.Text("GibbonGR-Title","Reinforcements Gang Vs Gang");
-		this.Text("GibbonGR-Enabled-Name", "Enabled");
+public class GR_en_us extends ModLocalizationPackage {
+    protected func DefineTexts() {
+        this.Text("GibbonGR-Title", "Reinforcements Gang Vs Gang");
+        this.Text("GibbonGR-Enabled-Name", "Enabled");
         this.Text("GibbonGR-EnabledInCombat-Name", "Enabled When Player in Combat");
         this.Text("GibbonGR-EnabledWhenPlayerIsPassenger-Name", "Enabled When Player is Passenger");
         this.Text("GibbonGR-GracePeriodMin-Name", "Minimum Grace Period");
@@ -33,5 +33,18 @@ public class GR_en_us extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "Grace Period");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldowns");
         this.Text("GibbonGR-Heat-Category", "Heat");
-	}
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "Preset Mode");
+        this.Text("GibbonGR-PresetMode-Description", "Choose from preset modes for different gameplay experiences");
+        this.Text("GibbonGR-PresetMode-Limited", "Limited");
+        this.Text("GibbonGR-PresetMode-Balanced", "Balanced");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "Rare Big Battles");
+        this.Text("GibbonGR-PresetMode-Chaos", "Chaos");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "Show Advanced Settings");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "Show advanced settings to fine-tune individual parameters. Overrides the preset mode.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Maximum Vehicles Per Call");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Maximum number of vehicles that can spawn in a single backup call");
+    }
 }
+

@@ -23,15 +23,15 @@ public class GRMilitechHandler extends GRGangHandler {
  
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(MilitechHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRMilitechHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(MilitechCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRMilitechCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(MilitechGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRMilitechGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -41,10 +41,10 @@ public class GRMilitechHandler extends GRGangHandler {
     }
 }
 
-public class MilitechGraceEndCallback extends DelayCallback {
+public class GRMilitechGraceEndCallback extends DelayCallback {
     let handler: wref<GRMilitechHandler>;
-    public static func Create(handler: ref<GRMilitechHandler>) -> ref<MilitechGraceEndCallback> {
-        let self: ref<MilitechGraceEndCallback> = new MilitechGraceEndCallback();
+    public static func Create(handler: ref<GRMilitechHandler>) -> ref<GRMilitechGraceEndCallback> {
+        let self: ref<GRMilitechGraceEndCallback> = new GRMilitechGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -54,10 +54,10 @@ public class MilitechGraceEndCallback extends DelayCallback {
   }
 }
 
-public class MilitechHeatResetCooldownEndCallback extends DelayCallback {
+public class GRMilitechHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRMilitechHandler>;
-    public static func Create(handler: ref<GRMilitechHandler>) -> ref<MilitechHeatResetCooldownEndCallback> {
-        let self: ref<MilitechHeatResetCooldownEndCallback> = new MilitechHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRMilitechHandler>) -> ref<GRMilitechHeatResetCooldownEndCallback> {
+        let self: ref<GRMilitechHeatResetCooldownEndCallback> = new GRMilitechHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -67,10 +67,10 @@ public class MilitechHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class MilitechCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRMilitechCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRMilitechHandler>;
-    public static func Create(handler: ref<GRMilitechHandler>) -> ref<MilitechCallSuccessCooldownEndCallback> {
-        let self: ref<MilitechCallSuccessCooldownEndCallback> = new MilitechCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRMilitechHandler>) -> ref<GRMilitechCallSuccessCooldownEndCallback> {
+        let self: ref<GRMilitechCallSuccessCooldownEndCallback> = new GRMilitechCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

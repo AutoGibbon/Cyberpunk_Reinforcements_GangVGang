@@ -23,15 +23,15 @@ public class GRAnimalsHandler extends GRGangHandler {
  
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(AnimalsHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRAnimalsHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(AnimalsCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRAnimalsCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(AnimalsGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRAnimalsGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -42,10 +42,10 @@ public class GRAnimalsHandler extends GRGangHandler {
     }
 }
 
-public class AnimalsGraceEndCallback extends DelayCallback {
+public class GRAnimalsGraceEndCallback extends DelayCallback {
     let handler: wref<GRAnimalsHandler>;
-    public static func Create(handler: ref<GRAnimalsHandler>) -> ref<AnimalsGraceEndCallback> {
-        let self: ref<AnimalsGraceEndCallback> = new AnimalsGraceEndCallback();
+    public static func Create(handler: ref<GRAnimalsHandler>) -> ref<GRAnimalsGraceEndCallback> {
+        let self: ref<GRAnimalsGraceEndCallback> = new GRAnimalsGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -55,10 +55,10 @@ public class AnimalsGraceEndCallback extends DelayCallback {
   }
 }
 
-public class AnimalsHeatResetCooldownEndCallback extends DelayCallback {
+public class GRAnimalsHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRAnimalsHandler>;
-    public static func Create(handler: ref<GRAnimalsHandler>) -> ref<AnimalsHeatResetCooldownEndCallback> {
-        let self: ref<AnimalsHeatResetCooldownEndCallback> = new AnimalsHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRAnimalsHandler>) -> ref<GRAnimalsHeatResetCooldownEndCallback> {
+        let self: ref<GRAnimalsHeatResetCooldownEndCallback> = new GRAnimalsHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -68,10 +68,10 @@ public class AnimalsHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class AnimalsCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRAnimalsCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRAnimalsHandler>;
-    public static func Create(handler: ref<GRAnimalsHandler>) -> ref<AnimalsCallSuccessCooldownEndCallback> {
-        let self: ref<AnimalsCallSuccessCooldownEndCallback> = new AnimalsCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRAnimalsHandler>) -> ref<GRAnimalsCallSuccessCooldownEndCallback> {
+        let self: ref<GRAnimalsCallSuccessCooldownEndCallback> = new GRAnimalsCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

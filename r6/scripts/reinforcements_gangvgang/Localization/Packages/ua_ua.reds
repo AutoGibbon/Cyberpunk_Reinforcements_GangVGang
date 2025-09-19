@@ -33,5 +33,17 @@ public class GR_ua_ua extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "Період затишшя");
         this.Text("GibbonGR-Cooldowns-Category", "Кулдауни");
         this.Text("GibbonGR-Heat-Category", "Напруга");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "Режим налаштувань");
+        this.Text("GibbonGR-PresetMode-Description", "Оберіть з режимів налаштувань для різного ігрового досвіду");
+        this.Text("GibbonGR-PresetMode-Limited", "Обмежений");
+        this.Text("GibbonGR-PresetMode-Balanced", "Збалансований");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "Рідкісні Великі Бої");
+        this.Text("GibbonGR-PresetMode-Chaos", "Хаос");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "Показати розширені налаштування");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "Показати розширені налаштування для точного налаштування окремих параметрів. Перевизначає режим налаштувань.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Максимум транспорту на виклик");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Максимальна кількість транспорту яка може з'явитися в одному виклику підкріплення");
 	}
 }

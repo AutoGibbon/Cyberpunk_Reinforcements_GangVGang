@@ -33,5 +33,17 @@ public class GR_hu_hu extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "Kegyelem időszak");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldown-ok");
         this.Text("GibbonGR-Heat-Category", "Hő");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "Előre beállított mód");
+        this.Text("GibbonGR-PresetMode-Description", "Válassz előre beállított módok közül különböző játékélményekért");
+        this.Text("GibbonGR-PresetMode-Limited", "Könnyű");
+        this.Text("GibbonGR-PresetMode-Balanced", "Kiegyensúlyozott");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "Ritka és drámai");
+        this.Text("GibbonGR-PresetMode-Chaos", "Káosz");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "Haladó beállítások megjelenítése");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "Haladó beállítások megjelenítése az egyedi paraméterek finomhangolásához. Felülírja az előre beállított módot.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Maximum jármű hívásonként");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Maximum járműszám ami megjelenhet egyetlen erősítés hívásban");
 	}
 }

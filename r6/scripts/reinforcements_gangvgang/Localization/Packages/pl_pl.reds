@@ -33,5 +33,17 @@ public class GR_pl_pl extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "Okres łaski");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldowny");
         this.Text("GibbonGR-Heat-Category", "Heat");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "Tryb ustawień");
+        this.Text("GibbonGR-PresetMode-Description", "Wybierz z trybów ustawień dla różnych doświadczeń rozgrywki");
+        this.Text("GibbonGR-PresetMode-Limited", "Ograniczony");
+        this.Text("GibbonGR-PresetMode-Balanced", "Zbalansowany");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "Rzadkie Duże Bitwy");
+        this.Text("GibbonGR-PresetMode-Chaos", "Chaos");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "Pokaż zaawansowane ustawienia");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "Pokaż zaawansowane ustawienia do precyzyjnego dostrojenia poszczególnych parametrów. Nadpisuje tryb ustawień.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Maksymalna liczba pojazdów na wezwanie");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Maksymalna liczba pojazdów które mogą się pojawić w jednym wezwaniu wsparcia");
 	}
 }

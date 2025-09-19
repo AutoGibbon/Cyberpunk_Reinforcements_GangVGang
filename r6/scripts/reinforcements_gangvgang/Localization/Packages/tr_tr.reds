@@ -33,5 +33,17 @@ public class GR_tr_tr extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "Lütuf süresi");
         this.Text("GibbonGR-Cooldowns-Category", "Bekleme süreleri");
         this.Text("GibbonGR-Heat-Category", "Sıcaklık");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "Önceden Ayarlanmış Mod");
+        this.Text("GibbonGR-PresetMode-Description", "Farklı oynanış deneyimleri için önceden ayarlanmış modlardan seçin");
+        this.Text("GibbonGR-PresetMode-Limited", "Sınırlı");
+        this.Text("GibbonGR-PresetMode-Balanced", "Dengeli");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "Nadiren Büyük Savaş");
+        this.Text("GibbonGR-PresetMode-Chaos", "Kaos");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "Gelişmiş Ayarları Göster");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "Bireysel parametreleri ince ayar yapmak için gelişmiş ayarları göster. Önceden ayarlanmış modu geçersiz kılar.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Çağrı Başına Maksimum Araç");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Tek bir takviye çağrısında ortaya çıkabilecek maksimum araç sayısı");
 	}
 }

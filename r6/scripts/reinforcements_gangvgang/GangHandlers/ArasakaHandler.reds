@@ -21,15 +21,15 @@ public class GRArasakaHandler extends GRGangHandler {
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(ArasakaHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRArasakaHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(ArasakaCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRArasakaCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(ArasakaGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRArasakaGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -37,10 +37,10 @@ public class GRArasakaHandler extends GRGangHandler {
     }
 }
 
-public class ArasakaGraceEndCallback extends DelayCallback {
+public class GRArasakaGraceEndCallback extends DelayCallback {
     let handler: wref<GRArasakaHandler>;
-    public static func Create(handler: ref<GRArasakaHandler>) -> ref<ArasakaGraceEndCallback> {
-        let self: ref<ArasakaGraceEndCallback> = new ArasakaGraceEndCallback();
+    public static func Create(handler: ref<GRArasakaHandler>) -> ref<GRArasakaGraceEndCallback> {
+        let self: ref<GRArasakaGraceEndCallback> = new GRArasakaGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -50,10 +50,10 @@ public class ArasakaGraceEndCallback extends DelayCallback {
   }
 }
 
-public class ArasakaHeatResetCooldownEndCallback extends DelayCallback {
+public class GRArasakaHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRArasakaHandler>;
-    public static func Create(handler: ref<GRArasakaHandler>) -> ref<ArasakaHeatResetCooldownEndCallback> {
-        let self: ref<ArasakaHeatResetCooldownEndCallback> = new ArasakaHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRArasakaHandler>) -> ref<GRArasakaHeatResetCooldownEndCallback> {
+        let self: ref<GRArasakaHeatResetCooldownEndCallback> = new GRArasakaHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -63,10 +63,10 @@ public class ArasakaHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class ArasakaCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRArasakaCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRArasakaHandler>;
-    public static func Create(handler: ref<GRArasakaHandler>) -> ref<ArasakaCallSuccessCooldownEndCallback> {
-        let self: ref<ArasakaCallSuccessCooldownEndCallback> = new ArasakaCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRArasakaHandler>) -> ref<GRArasakaCallSuccessCooldownEndCallback> {
+        let self: ref<GRArasakaCallSuccessCooldownEndCallback> = new GRArasakaCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

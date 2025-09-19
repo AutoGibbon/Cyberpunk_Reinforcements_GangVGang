@@ -33,5 +33,17 @@ public class GR_kr_kr extends ModLocalizationPackage{
         this.Text("GibbonGR-GracePeriod-Category", "유예 기간");
         this.Text("GibbonGR-Cooldowns-Category", "쿨다운");
         this.Text("GibbonGR-Heat-Category", "히트");
+
+        // ==================== NEW SETTINGS LOCALIZATION ==================== //
+        this.Text("GibbonGR-PresetMode-Name", "프리셋 모드");
+        this.Text("GibbonGR-PresetMode-Description", "다양한 게임플레이 경험을 위한 프리셋 모드 중에서 선택");
+        this.Text("GibbonGR-PresetMode-Limited", "제한된");
+        this.Text("GibbonGR-PresetMode-Balanced", "균형잡힌");
+        this.Text("GibbonGR-PresetMode-RareBigFight", "가끔 대형");
+        this.Text("GibbonGR-PresetMode-Chaos", "혼돈");
+        this.Text("GibbonGR-ShowAdvancedSettings-Name", "고급 설정 표시");
+        this.Text("GibbonGR-ShowAdvancedSettings-Description", "개별 매개변수를 세밀하게 조정할 수 있는 고급 설정을 표시합니다. 프리셋 모드를 무시합니다.");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Name", "호출당 최대 차량 수");
+        this.Text("GibbonGR-MaxVehiclesPerCall-Description", "단일 백업 호출에서 생성될 수 있는 최대 차량 수");
 	}
 }

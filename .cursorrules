@@ -1,0 +1,75 @@
+# Cyberpunk 2077 RedScript Mod - Reinforcements Gang vs Gang
+
+## Project Overview
+
+This is a Cyberpunk 2077 mod that implements a dynamic gang reinforcement system using RedScript.
+The mod allows different gangs to call for reinforcements when fighting eachother.
+This system does not directly involve the player; it enables a form of combat voyuerism for the player.
+
+It operates on a simple cyclic intensity system governed by cooldowns, where each gang starts at some initial heat, is allowed to make a few calls, and then resets to baseline.
+This enables a lightweight and unobtrusive system that does not rely on complex game engine state management, and affords some semblance of organic behaviours to the player.
+
+## File Structure
+
+-   `r6/scripts/` - RedScript source files
+-   `r6/tweaks/` - YAML configuration files for game tweaks - NEVER TOUCH THESE FILES EVER.
+-   `GangData/` - Gang-specific data definitions
+-   `GangHandlers/` - Gang-specific logic handlers
+-   `Localization/` - Multi-language support files
+
+## Code Style & Conventions
+
+### RedScript (.reds files)
+
+-   Use PascalCase for class names and public methods
+-   Use camelCase for variables and private methods
+-   Follow RedScript naming conventions for game API calls
+-   Use descriptive names for gang-related variables and methods
+-   Comment complex logic, especially game API interactions
+
+### YAML Configuration
+
+-   Use snake_case for file names
+-   Keep YAML structure consistent across gang files
+-   Use meaningful keys that match gang names
+-   Maintain consistent indentation (2 spaces)
+
+## Development Guidelines
+
+### Localization
+
+-   All user-facing strings must be localized
+-   Use the existing localization key format
+-   Add new keys to all language files when adding new strings
+-   Keep English (en_us) as the reference language
+-   Mod title must stay in english (this is commonly accepted practice in Cyberpunk modding community)
+-   Localisations must be internally consistent and leverage accepted gaming specific terminologies whenever appropriate.
+-   We are not providing professional grade formal translations, just whatever the community in a given language is likely to understand without thinking about it too hard.
+-   Avoid language that might refer to Police-Vs-Player specifics like "wanted level"; heat/intensity are preferred terms
+
+### Logging
+
+-   Logging always uses the GRLog function.
+-   Never prefix log call strings, this is already done by the wrapper function.
+-   Use string interpolation e.g GRLog(s"my random log message \\(someVar)")
+-   prefer concise log structures e.g "(affiliation), Vehicles: (count)"
+
+### Settings
+
+-   All configurable options should go through the Settings system
+-   Use descriptive setting names
+-   Provide sensible defaults
+
+## Notes
+
+-   This mod modifies game behavior at runtime
+-   Be careful with game API calls to avoid crashes
+-   Consider performance impact of dynamic spawning
+-   Maintain compatibility with other mods
+-   PERFORMANCE IS KING
+
+## Deployment target
+
+Z:\\GOG\\Cyberpunk 2077
+
+-   game root contains the r6 folder, where these files can be deposited without special steps.

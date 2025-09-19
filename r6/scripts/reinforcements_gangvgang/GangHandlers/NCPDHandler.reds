@@ -21,15 +21,15 @@ public class GRNCPDHandler extends GRGangHandler {
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(NCPDHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRNCPDHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(NCPDCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRNCPDCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(NCPDGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRNCPDGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -37,10 +37,10 @@ public class GRNCPDHandler extends GRGangHandler {
     }
 }
 
-public class NCPDGraceEndCallback extends DelayCallback {
+public class GRNCPDGraceEndCallback extends DelayCallback {
     let handler: wref<GRNCPDHandler>;
-    public static func Create(handler: ref<GRNCPDHandler>) -> ref<NCPDGraceEndCallback> {
-        let self: ref<NCPDGraceEndCallback> = new NCPDGraceEndCallback();
+    public static func Create(handler: ref<GRNCPDHandler>) -> ref<GRNCPDGraceEndCallback> {
+        let self: ref<GRNCPDGraceEndCallback> = new GRNCPDGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -50,10 +50,10 @@ public class NCPDGraceEndCallback extends DelayCallback {
   }
 }
 
-public class NCPDHeatResetCooldownEndCallback extends DelayCallback {
+public class GRNCPDHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRNCPDHandler>;
-    public static func Create(handler: ref<GRNCPDHandler>) -> ref<NCPDHeatResetCooldownEndCallback> {
-        let self: ref<NCPDHeatResetCooldownEndCallback> = new NCPDHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRNCPDHandler>) -> ref<GRNCPDHeatResetCooldownEndCallback> {
+        let self: ref<GRNCPDHeatResetCooldownEndCallback> = new GRNCPDHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -63,10 +63,10 @@ public class NCPDHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class NCPDCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRNCPDCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRNCPDHandler>;
-    public static func Create(handler: ref<GRNCPDHandler>) -> ref<NCPDCallSuccessCooldownEndCallback> {
-        let self: ref<NCPDCallSuccessCooldownEndCallback> = new NCPDCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRNCPDHandler>) -> ref<GRNCPDCallSuccessCooldownEndCallback> {
+        let self: ref<GRNCPDCallSuccessCooldownEndCallback> = new GRNCPDCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

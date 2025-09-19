@@ -25,22 +25,22 @@ public class GRScavsHandler extends GRGangHandler {
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(ScavGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRScavGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(ScavHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRScavHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(ScavCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRScavCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 }
 
-public class ScavGraceEndCallback extends DelayCallback {
+public class GRScavGraceEndCallback extends DelayCallback {
     let handler: wref<GRScavsHandler>;
-    public static func Create(handler: ref<GRScavsHandler>) -> ref<ScavGraceEndCallback> {
-        let self: ref<ScavGraceEndCallback> = new ScavGraceEndCallback();
+    public static func Create(handler: ref<GRScavsHandler>) -> ref<GRScavGraceEndCallback> {
+        let self: ref<GRScavGraceEndCallback> = new GRScavGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -50,10 +50,10 @@ public class ScavGraceEndCallback extends DelayCallback {
   }
 }
 
-public class ScavHeatResetCooldownEndCallback extends DelayCallback {
+public class GRScavHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRScavsHandler>;
-    public static func Create(handler: ref<GRScavsHandler>) -> ref<ScavHeatResetCooldownEndCallback> {
-        let self: ref<ScavHeatResetCooldownEndCallback> = new ScavHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRScavsHandler>) -> ref<GRScavHeatResetCooldownEndCallback> {
+        let self: ref<GRScavHeatResetCooldownEndCallback> = new GRScavHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -63,10 +63,10 @@ public class ScavHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class ScavCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRScavCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRScavsHandler>;
-    public static func Create(handler: ref<GRScavsHandler>) -> ref<ScavCallSuccessCooldownEndCallback> {
-        let self: ref<ScavCallSuccessCooldownEndCallback> = new ScavCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRScavsHandler>) -> ref<GRScavCallSuccessCooldownEndCallback> {
+        let self: ref<GRScavCallSuccessCooldownEndCallback> = new GRScavCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }

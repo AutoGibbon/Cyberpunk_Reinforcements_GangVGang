@@ -21,15 +21,15 @@ public class GRSixthStreetHandler extends GRGangHandler {
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(SixthHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.delaySystem.DelayCallback(GRSixthHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(SixthCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.delaySystem.DelayCallback(GRSixthCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(SixthGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.delaySystem.DelayCallback(GRSixthGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func GetTurfList() -> array<String> {
@@ -39,10 +39,10 @@ public class GRSixthStreetHandler extends GRGangHandler {
     }
 }
 
-public class SixthGraceEndCallback extends DelayCallback {
+public class GRSixthGraceEndCallback extends DelayCallback {
     let handler: wref<GRSixthStreetHandler>;
-    public static func Create(handler: ref<GRSixthStreetHandler>) -> ref<SixthGraceEndCallback> {
-        let self: ref<SixthGraceEndCallback> = new SixthGraceEndCallback();
+    public static func Create(handler: ref<GRSixthStreetHandler>) -> ref<GRSixthGraceEndCallback> {
+        let self: ref<GRSixthGraceEndCallback> = new GRSixthGraceEndCallback();
         self.handler = handler;
         return self;
     }
@@ -52,10 +52,10 @@ public class SixthGraceEndCallback extends DelayCallback {
   }
 }
 
-public class SixthHeatResetCooldownEndCallback extends DelayCallback {
+public class GRSixthHeatResetCooldownEndCallback extends DelayCallback {
     let handler: wref<GRSixthStreetHandler>;
-    public static func Create(handler: ref<GRSixthStreetHandler>) -> ref<SixthHeatResetCooldownEndCallback> {
-        let self: ref<SixthHeatResetCooldownEndCallback> = new SixthHeatResetCooldownEndCallback();
+    public static func Create(handler: ref<GRSixthStreetHandler>) -> ref<GRSixthHeatResetCooldownEndCallback> {
+        let self: ref<GRSixthHeatResetCooldownEndCallback> = new GRSixthHeatResetCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -65,10 +65,10 @@ public class SixthHeatResetCooldownEndCallback extends DelayCallback {
   }
 }
 
-public class SixthCallSuccessCooldownEndCallback extends DelayCallback {
+public class GRSixthCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRSixthStreetHandler>;
-    public static func Create(handler: ref<GRSixthStreetHandler>) -> ref<SixthCallSuccessCooldownEndCallback> {
-        let self: ref<SixthCallSuccessCooldownEndCallback> = new SixthCallSuccessCooldownEndCallback();
+    public static func Create(handler: ref<GRSixthStreetHandler>) -> ref<GRSixthCallSuccessCooldownEndCallback> {
+        let self: ref<GRSixthCallSuccessCooldownEndCallback> = new GRSixthCallSuccessCooldownEndCallback();
         self.handler = handler;
         return self;
     }
@@ -77,3 +77,6 @@ public class SixthCallSuccessCooldownEndCallback extends DelayCallback {
     this.handler.OnCallSuccessCooldownEnd();
   }
 }
+
+
+
