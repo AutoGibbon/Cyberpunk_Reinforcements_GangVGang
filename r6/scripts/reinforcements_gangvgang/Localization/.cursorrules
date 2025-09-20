@@ -1,0 +1,44 @@
+### Localization
+
+-   Keep English (en_us) as the reference language
+-   Mod title must stay in english (this is commonly accepted practice in Cyberpunk modding community)
+-   Localisations must be internally consistent.
+- 	Before translating, review existing translations in the target language to match their established style, tone, and terminology patterns.
+
+## Language-Specific Translation Guidelines
+
+**ar-ar**: Use formal, respectful Arabic with clear technical terminology. Translate gaming concepts to Arabic where established terms exist, keep universally recognized abbreviations (FPS, UI, AI) in Latin script.
+
+**cz-cz**: Casual gaming Czech mixing natural English gaming terms. Direct explanations using established Czech gaming vocabulary, keep international terms like "mod", "patch", "FPS" where commonly used.
+
+**de-de**: Technical precision with German compound efficiency. Use German gaming terms where established (Einstellungen, Grafik), keep widely-adopted English terms (Mods, FPS, Gameplay). Leverage German's compound word flexibility for new concepts.
+
+**es-es**: Balanced formal-casual Spanish preferring Spanish equivalents. Translate to established Spanish gaming terms (configuración, gráficos), use English terms only when Spanish equivalent sounds unnatural to Spanish gamers.
+
+**es-mx**: Colloquial Mexican gaming Spanish with natural English mixing. More accepting of English gaming terms than Spain Spanish. Keep terms like "settings", "mods", "gameplay" where commonly used in Mexican gaming community.
+
+**fr-fr**: Proper French with technical clarity, incorporating accepted gaming Anglicisms. Use French equivalents (paramètres, graphiques) but keep established English terms like "mods", "FPS", "gameplay" that French gamers commonly use.
+
+**hu-hu**: Casual Hungarian gaming community style mixing English terms naturally. Direct and informal, keep international gaming vocabulary (mod, patch, FPS) while translating basic interface terms to Hungarian.
+
+**it-it**: Moderately casual Italian with natural gaming English integration. Context-appropriate formality, translate standard terms (impostazioni, grafica) but keep English terms commonly used in Italian gaming (mod, FPS, gameplay).
+
+**jp-jp**: Formal technical Japanese using appropriate script hierarchy. Use kanji for authority and established gaming katakana for foreign concepts (モッド, セッティング). Maintain polite register while incorporating standard gaming terminology.
+
+**kr-kr**: Respectful casual Korean gaming language with natural Konglish integration. Keep established English gaming terms in Korean gaming (레벨, 스킬, 세팅, 모드). Balance Korean politeness levels with gaming community informality.
+
+**pl-pl**: Translate normal English words, keep universal gaming slang. Casual gamer language mixing Polish/English naturally. Informal and community-oriented.
+
+**pt-br**: Brazilian gaming Portuguese with natural English gaming term integration. Energetic and conversational, translate basic interface terms but keep established gaming vocabulary (mod, FPS, gameplay, patch) commonly used in Brazilian gaming.
+
+**ru-ru**: Casual gaming Russian incorporating standard international gaming terms. Clear and unambiguous, keep widely-adopted gaming vocabulary (геймплей, мод, патч) while translating standard interface elements to Russian.
+
+**th-th**: Polite Thai register with clear technical explanations and gaming term adaptation. Use Thai for standard interface terms, incorporate English gaming terms using Thai script adaptation where appropriate (เซ็ตติ้ง, มอด).
+
+**tr-tr**: Casual Turkish gaming tone respecting Turkish gaming community conventions. Maintain respectful language while using established gaming vocabulary mix of Turkish translations and commonly-used English terms (mod, FPS, patch).
+
+**ua-ua**: Clear casual Ukrainian gaming language with practical English gaming term integration. Straightforward explanations using Ukrainian where natural, keeping international gaming terms (мод, патч) where established in Ukrainian gaming community.
+
+**zh-cn**: Formal technical Simplified Chinese with practical gaming terminology approach. Precise and authoritative, use Chinese equivalents for standard terms (设置, 图形) but keep universally recognized gaming terms (mod, FPS) where commonly adopted in Chinese gaming.
+
+**zh-tw**: Traditional Chinese with elevated politeness and gaming term sensitivity. More formal than Simplified Chinese, use traditional Chinese equivalents while being selective about English gaming terms based on Traditional Chinese gaming community preferences.

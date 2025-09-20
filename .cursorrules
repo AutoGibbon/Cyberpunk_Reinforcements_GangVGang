@@ -36,17 +36,6 @@ This enables a lightweight and unobtrusive system that does not rely on complex 
 
 ## Development Guidelines
 
-### Localization
-
--   All user-facing strings must be localized
--   Use the existing localization key format
--   Add new keys to all language files when adding new strings
--   Keep English (en_us) as the reference language
--   Mod title must stay in english (this is commonly accepted practice in Cyberpunk modding community)
--   Localisations must be internally consistent and leverage accepted gaming specific terminologies whenever appropriate.
--   We are not providing professional grade formal translations, just whatever the community in a given language is likely to understand without thinking about it too hard.
--   Avoid language that might refer to Police-Vs-Player specifics like "wanted level"; heat/intensity are preferred terms
-
 ### Logging
 
 -   Logging always uses the GRLog function.
@@ -64,8 +53,6 @@ This enables a lightweight and unobtrusive system that does not rely on complex 
 
 -   This mod modifies game behavior at runtime
 -   Be careful with game API calls to avoid crashes
--   Consider performance impact of dynamic spawning
--   Maintain compatibility with other mods
 -   PERFORMANCE IS KING
 
 ## Deployment target
