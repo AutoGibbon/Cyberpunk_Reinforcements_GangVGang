@@ -95,4 +95,3 @@ public class GRSixthCallSuccessDelayArrivalCallback extends DelayCallback {
 	this.handler.CompleteReinforcementCall();
   }
 }
-

@@ -13,6 +13,7 @@ public class GRWraithsHandler extends GRGangHandler {
         this.settings = GRSettings.GetInstance(game);
         this.affiliation = gamedataAffiliation.Wraiths;
         this.waveCounterUniqueId = 12000;
+        
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRWraithsHandler> {

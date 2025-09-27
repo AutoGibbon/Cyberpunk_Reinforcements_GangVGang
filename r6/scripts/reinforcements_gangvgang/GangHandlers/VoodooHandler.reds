@@ -13,6 +13,7 @@ public class GRVoodooHandler extends GRGangHandler {
         this.settings = GRSettings.GetInstance(game);
         this.affiliation = gamedataAffiliation.VoodooBoys;
         this.waveCounterUniqueId = 11000;
+        
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRVoodooHandler> {

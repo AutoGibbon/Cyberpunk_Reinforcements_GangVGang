@@ -391,3 +391,42 @@ DynamicSpawnSystem.GRScavCarNormalRareSquad4:
         - $type: WeightedCharacter
           character: Character.GR_scavenger_netrunner2_netrunner2_nova_wa_rare
           weight: 1.0
+# Vehicles:
+# Bikes:
+# Vehicle.GR_v_sportbike3_brennan_apollo_sport
+# 2ppl:
+# Vehicle.GR_v_standard2_archer_hella_scavengers
+# Vehicle.GR_v_standard2_thorton_galena
+# Vehicle.GR_v_standard2_mizutani_hozuki
+# 4ppl:
+# Vehicle.GR_v_standard25_villefort_columbus_scavengers
+# Vehicle.GR_v_standard2_chevalier_thrax_scavengers
+
+# weak:
+# Character.GR_scavenger_grunt2_ranged2_copperhead_ma - Grunt
+# Character.GR_scavenger_grunt2_ranged2_copperhead_wa - Grunt
+# Character.GR_scavenger_grunt2_ranged2_pulsar_ma - Grunt
+# Character.GR_scavenger_grunt2_ranged2_pulsar_wa - Grunt
+# Character.GR_scavenger_grunt2_melee2_knife_ma - Grunt
+# Character.GR_scavenger_grunt2_melee2_knife_wa - Grunt
+
+# normal:
+# Character.GR_scavenger_grunt1_melee1_fists_ma - Scavenger
+# Character.GR_scavenger_grunt1_melee1_pipewrench_ma - Scavenger
+# Character.GR_scavenger_grunt1_melee1_tireiron_ma - Scavenger
+# Character.GR_scavenger_grunt1_ranged1_nova_ma - Scavenger
+# Character.GR_scavenger_grunt1_ranged1_nova_wa - Scavenger
+# Character.GR_scavenger_grunt1_ranged1_pulsar_ma - Scavenger
+# Character.GR_scavenger_grunt1_ranged1_pulsar_wa - Scavenger
+# Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma - Scavenger
+# Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa - Scavenger
+# Character.GR_scavenger_elite2_shotgun_igla_ma - Elite
+# Character.GR_scavenger_elite2_shotgun_tactician_ma - Elite
+# Character.GR_scavenger_elite3_sniper2_grad_ma - Elite Sniper
+
+# rare:
+# Character.GR_scavenger_fast2_fmelee2rare_knife_ma_rare - Fast Assassin
+# Character.GR_scavenger_netrunner2_netrunner2_nova_wa_rare - Netrunner
+# Character.GR_scavenger_butcher3_hmelee2_machete_mb_rare - Butcher
+# Character.GR_scavenger_strong3_gunner2_defender_mb_rare - Heavy Gunner
+# Character.GR_scavenger_fast3_fmelee3_machete_wa_elite - Elite Assassin

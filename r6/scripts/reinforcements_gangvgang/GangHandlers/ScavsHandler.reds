@@ -13,6 +13,7 @@ public class GRScavsHandler extends GRGangHandler {
         this.settings = GRSettings.GetInstance(game);
         this.affiliation = gamedataAffiliation.Scavengers;
         this.waveCounterUniqueId = 8000;
+        
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRScavsHandler> {
@@ -40,6 +41,10 @@ public class GRScavsHandler extends GRGangHandler {
         let backupDelay = this.GetBackupDelay(isTurf);
         this.delaySystem.DelayCallback(GRScavCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
     }
+
+	public func OnTrafficSpawnStart() -> Bool {
+		return false;
+	}
 }
 
 public class GRScavGraceEndCallback extends DelayCallback {

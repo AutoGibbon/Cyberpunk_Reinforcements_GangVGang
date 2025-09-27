@@ -4,7 +4,11 @@ public class GRMoxData extends GRGangData {
     public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {
             case 1: // 1 weak - (biker)
-                return [t"DynamicSpawnSystem.GRMoxWeakBike1"];
+                return GetRandomFrom([
+                    t"DynamicSpawnSystem.GRMoxWeakBike1",
+                    t"DynamicSpawnSystem.GRMoxWeakBike2",
+                    t"DynamicSpawnSystem.GRMoxWeakBike3"
+                ], 1);
             case 2:  // 1 weak, 1 normal (patrol car 1w/1n)
                 let patrolCar = GetRandomFrom(
                     [
@@ -20,7 +24,11 @@ public class GRMoxData extends GRGangData {
                         t"DynamicSpawnSystem.GRMoxPatrol2",
                         t"DynamicSpawnSystem.GRMoxPatrol3"
                     ], 1);
-                let biker = [t"DynamicSpawnSystem.GRMoxWeakBike1"];
+                let biker = GetRandomFrom([
+                    t"DynamicSpawnSystem.GRMoxWeakBike1",
+                    t"DynamicSpawnSystem.GRMoxWeakBike2",
+                    t"DynamicSpawnSystem.GRMoxWeakBike3"
+                ], 1);
 
                 return ArrayMerge(patrolCar, biker);
             case 4: // 2 weak, 2 normal (2 patrols)
@@ -48,7 +56,11 @@ public class GRMoxData extends GRGangData {
                         t"DynamicSpawnSystem.GRMoxStandardSquad3",
                         t"DynamicSpawnSystem.GRMoxStandardSquad4"
                     ], 1);    
-                let biker = [t"DynamicSpawnSystem.GRMoxWeakBike1"];  
+                let biker = GetRandomFrom([
+                    t"DynamicSpawnSystem.GRMoxWeakBike1",
+                    t"DynamicSpawnSystem.GRMoxWeakBike2",
+                    t"DynamicSpawnSystem.GRMoxWeakBike3"
+                ], 1);  
 
                 return ArrayMerge(biker, standardSquad);
             case 7:  // 1 weak, 4 normal, 1 rare (standard squad + patrol car)
@@ -80,7 +92,14 @@ public class GRMoxData extends GRGangData {
                         t"DynamicSpawnSystem.GRMoxPatrol2",
                         t"DynamicSpawnSystem.GRMoxPatrol3"
                     ], 1); 
-                let biker = [t"DynamicSpawnSystem.GRMoxWeakBike1"];
+                let biker = GetRandomFrom([
+                    t"DynamicSpawnSystem.GRMoxWeakBike1",
+                    t"DynamicSpawnSystem.GRMoxWeakBike2",
+                    t"DynamicSpawnSystem.GRMoxWeakBike3",
+                    t"DynamicSpawnSystem.GRMoxRareBike1",
+                    t"DynamicSpawnSystem.GRMoxRareBike2",
+                    t"DynamicSpawnSystem.GRMoxRareBike3"
+                ], 1);
 
                 return ArrayMerge(ArrayMerge(patrolCar, rrnn), biker);
             case 9:  //  2 weak, 4 normals, 2 rare     (rrnn, 2x patrol car)    
@@ -141,7 +160,11 @@ public class GRMoxData extends GRGangData {
                         t"DynamicSpawnSystem.GRMoxStandardSquad3",
                         t"DynamicSpawnSystem.GRMoxStandardSquad4"
                     ], 1);               
-                let bike = [t"DynamicSpawnSystem.GRMoxWeakBike1"];
+                let bike = GetRandomFrom([
+                    t"DynamicSpawnSystem.GRMoxRareBike1",
+                    t"DynamicSpawnSystem.GRMoxRareBike2",
+                    t"DynamicSpawnSystem.GRMoxRareBike3"
+                ], 1);
 
                 return ArrayMerge(ArrayMerge(rare, standardSquad), bike);                 
             case 13: // 6 normals, 4 rares (rare + 2 standard squads)
@@ -173,7 +196,11 @@ public class GRMoxData extends GRGangData {
                         t"DynamicSpawnSystem.GRMoxStandardSquad3",
                         t"DynamicSpawnSystem.GRMoxStandardSquad4"
                     ], 2);               
-                let bike = [t"DynamicSpawnSystem.GRMoxWeakBike1", t"DynamicSpawnSystem.GRMoxWeakBike1"];
+                let bike = GetRandomFrom([
+                    t"DynamicSpawnSystem.GRMoxRareBike1",
+                    t"DynamicSpawnSystem.GRMoxRareBike2",
+                    t"DynamicSpawnSystem.GRMoxRareBike3"
+                ], 2);
 
                 return ArrayMerge(ArrayMerge(rare, standardSquad), bike);   
             case 15: // 6 normals, 4 rares, 2 elite (2 elite + standard squad) - ELITES START HERE
@@ -206,7 +233,11 @@ public class GRMoxData extends GRGangData {
                         t"DynamicSpawnSystem.GRMoxStandardSquad3",
                         t"DynamicSpawnSystem.GRMoxStandardSquad4"
                     ], 1);               
-                let bike = [t"DynamicSpawnSystem.GRMoxWeakBike1"];
+                let bike = GetRandomFrom([
+                    t"DynamicSpawnSystem.GRMoxRareBike1",
+                    t"DynamicSpawnSystem.GRMoxRareBike2",
+                    t"DynamicSpawnSystem.GRMoxRareBike3"
+                ], 1);
 
                 return ArrayMerge(ArrayMerge(elite, standardSquad), bike);   
             case 17: // 2 normals, 6 rares, 2 elite (2 elite + standard squad + patrol)
@@ -259,7 +290,12 @@ public class GRMoxData extends GRGangData {
                         t"DynamicSpawnSystem.GRMoxRareSquad2",
                         t"DynamicSpawnSystem.GRMoxRareSquad3"
                     ], 2);               
-                let bike = [t"DynamicSpawnSystem.GRMoxWeakBike1"];
+                let bike = GetRandomFrom([
+                    t"DynamicSpawnSystem.GRMoxRareBike1",
+                    t"DynamicSpawnSystem.GRMoxRareBike2",
+                    t"DynamicSpawnSystem.GRMoxRareBike3",
+                    t"DynamicSpawnSystem.GRMoxEliteBike1"
+                ], 2);
 
                 return ArrayMerge(ArrayMerge(elite, rare), bike);   
             case 20: // 3 normals 7 rares, 3 elite (3 elite + standard)
@@ -274,8 +310,9 @@ public class GRMoxData extends GRGangData {
                        t"DynamicSpawnSystem.GRMoxRareSquad1",
                         t"DynamicSpawnSystem.GRMoxRareSquad2",
                         t"DynamicSpawnSystem.GRMoxRareSquad3"
-                    ], 1);               
-                return ArrayMerge(elite, rare);   
+                    ], 1);     
+					let eliteBike = [t"DynamicSpawnSystem.GRMoxEliteBike1"];          
+                return ArrayMerge(ArrayMerge(elite, rare), eliteBike);   
             default: 
                 return [];
         }

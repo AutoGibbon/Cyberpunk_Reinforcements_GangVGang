@@ -3,13 +3,14 @@ module Gibbon.GR.GangHandlers
 import Gibbon.GR.GangData.*
 import Gibbon.GR.Settings.*
 import Gibbon.GR.Logging.*
+import Gibbon.GR.ReinforcementSystem.*
 
 public abstract class GRGangHandler extends ScriptableSystem {
   protected let preventionSystem: ref<PreventionSystem>;
   protected let delaySystem: ref<DelaySystem>;
   protected let settings: ref<GRSettings>;
-  protected let lastCaller: ref<NPCPuppet>;
-  protected let lastTarget: ref<NPCPuppet>;
+  protected let lastCaller: wref<NPCPuppet>;
+  protected let lastTarget: wref<NPCPuppet>;
   protected let lastCallerPosition: Vector4;
   protected let reinforcementData: ref<GRGangData>;
   protected let heatLevel: Int32 = 0;
@@ -20,6 +21,8 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let callSuccessCooldownActive: Bool = false;
   protected let gracePeriodStarted: Bool = false;
   protected let gracePeriodEnded: Bool = false;
+  protected let trafficSpawnDelayID: DelayID;
+
   public let isDisabled: Bool = false;
   public let affiliation: gamedataAffiliation;
   public let lastCallAnswered: Bool = true;
@@ -44,7 +47,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
   public func GetTurfList() -> array<String>;
 
   // TO IMPLEMENT 
-  public func GetLastCaller() -> ref<NPCPuppet> {
+  public func GetLastCaller() -> wref<NPCPuppet> {
     return this.lastCaller;
   }
 
@@ -52,7 +55,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     return this.lastCallerPosition;
   }
 
-  public func GetLastTarget() -> ref<NPCPuppet> {
+  public func GetLastTarget() -> wref<NPCPuppet> {
     return this.lastTarget;
   }
 
@@ -66,6 +69,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.callSuccessCooldownActive = false;
     this.lastCaller = null;
     this.lastTarget = null;
+	this.lastCallAnswered = true;
     Vector4.Zero(this.lastCallerPosition);
   }
 
@@ -126,6 +130,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     if this.lastCallAnswered {
       this.callsPerformed += 1;
+	  GRLog(s"Backup call started: \(this.affiliation), \(this.heatLevel)");
       this.OnCallSuccessDelayArrival(isTurf);
     }
   }
@@ -134,7 +139,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     let randomNumber = RandRange(0, 101);
     let reinforcementHeat = randomNumber <= this.settings.strongCallChance ? this.heatLevel + this.settings.strongCallHeatBonus : this.heatLevel;
 
-    //GRLog(s"Reinforcement call: \(this.affiliation), \(reinforcementHeat), Target: \(TDBID.ToStringDEBUG(GameObject.GetTDBID(this.lastTarget)))");
+    GRLog(s"Reinforcements arrive: \(this.affiliation), \(reinforcementHeat), Target: \(TDBID.ToStringDEBUG(GameObject.GetTDBID(this.lastTarget)))");
     this
       .SpawnVehicles(
         this
@@ -192,6 +197,17 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     GameInstance.GetQuestsSystem(GetGameInstance()).ExecuteNode(node);
     this.lastCallAnswered = false;
+  }
+
+  public func SpawnTrafficVehicles() -> Void {
+	// only ask for traffic if the primary reinforcement logic is not currently "active" for the given gang
+	if(this.IsConsideredTurf(this.preventionSystem.GetCurrentDistrict())
+	&& this.lastCallAnswered
+	&& !this.callSuccessCooldownActive
+	&& !this.gracePeriodStarted
+	) {
+		GRReinforcementSystem.GetInstance(GetGameInstance()).RequestSpawnTraffic(this.reinforcementData.GetTrafficSpawns());
+	}
   }
 }
 

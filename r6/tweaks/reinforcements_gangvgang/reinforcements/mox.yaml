@@ -26,6 +26,40 @@ DynamicSpawnSystem.GRMoxWeakBike3:
           character: Character.GR_the_mox_ranged1_pulsar_wa
           weight: 1.0
 
+# Elite bike unit (1 person)
+DynamicSpawnSystem.GRMoxEliteBike1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_mox
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_elite3_fmelee3_mantis_wa_elite
+          weight: 1.0
+
+# Rare bike units (1 person)
+DynamicSpawnSystem.GRMoxRareBike1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_mox
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_elite2_fmelee2_knife_wa_rare
+          weight: 1.0
+
+DynamicSpawnSystem.GRMoxRareBike2:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_mox
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_elite2_fmelee2_machete_wa_rare
+          weight: 1.0
+
+DynamicSpawnSystem.GRMoxRareBike3:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_mox
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee2_baseball_bat_rare
+          weight: 1.0
+
 # Patrol units (2 person - Quartz)
 DynamicSpawnSystem.GRMoxPatrol1:
     $type: DynamicVehicleData
@@ -261,3 +295,65 @@ DynamicSpawnSystem.GRMoxEliteSquad3:
 # Character.GR_the_mox_shotgun2_pozhar_fastshotgunner_wa - pozhar shotgunner
 # elite:
 # Character.GR_the_mox_elite3_fmelee3_mantis_wa_elite - mantis elite
+
+# Traffic Spawns (5 entries for traffic spawns)
+DynamicSpawnSystem.GRMoxTraffic1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_mox
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee2_baseball_wa
+          weight: 1.0
+
+DynamicSpawnSystem.GRMoxTraffic2:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_mox
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee1_baton_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_ranged1_chao_wa
+          weight: 1.0
+
+DynamicSpawnSystem.GRMoxTraffic3:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee2_baton_kappa_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee2_baseball_bat_rare
+          weight: 1.0
+
+DynamicSpawnSystem.GRMoxTraffic4:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_mox
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee1_baton_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee2_baton_kappa_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_ranged1_kappa_wa
+          weight: 1.0
+
+DynamicSpawnSystem.GRMoxTraffic5:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_standard25_mahir_mox
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee1_baton_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_melee2_baton_kappa_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_ranged1_chao_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_the_mox_shotgun2_palica_shotgunner_wa
+          weight: 1.0

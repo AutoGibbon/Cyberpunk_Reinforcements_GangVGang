@@ -13,6 +13,7 @@ public class GRMoxHandler extends GRGangHandler {
         this.settings = GRSettings.GetInstance(game);
         this.affiliation = gamedataAffiliation.TheMox;
         this.waveCounterUniqueId = 13000;
+        
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRMoxHandler> {

@@ -319,8 +319,10 @@ public class GRSettings extends ScriptableSystem {
     public let maxVehiclesPerCall: Int32 = 2;
 
 	// These are constant for "realism"
-    public let backupDelayMin: Float = 25;
-    public let backupDelayMax: Float = 45;
-    public let turfDelayReduction: Float = 10;
+    public let backupDelayMin: Float = 35;
+    public let backupDelayMax: Float = 55;
+    public let turfDelayReduction: Float = 15;
+	public let trafficSpawnDelayMin: Float = 240;
+	public let trafficSpawnDelayMax: Float = 480;
 }
 

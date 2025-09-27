@@ -264,3 +264,44 @@ DynamicSpawnSystem.GRNCPDEliteSquad4:
         - $type: WeightedCharacter
           character: Character.GR_maxtac_av_mantis_wa
           weight: 1.0
+# Vehicles:
+# Bikes:
+# Vehicle.GR_ncpd_brennan_apollo_bike
+# 2ppl:
+# Vehicle.GR_ncpd_villefort_cortes_heat_1
+# 4ppl:
+# Vehicle.GR_ncpd_archer_hella_heat_3
+# Vehicle.GR_ncpd_suv_chevalier_emperor_heat_4
+# Vehicle.GR_ncpd_hellhound_heat_5
+
+# weak:
+# Character.GR_ncpd_biker_ranged2_omaha_ma - Biker
+# Character.GR_ncpd_police_melee2_baton_ma - Officer
+# Character.GR_ncpd_police_melee2_baton_wa - Officer
+# Character.GR_ncpd_police_ranged2_lexington_wa - Officer
+# Character.GR_ncpd_police_ranged2_saratoga_ma - Officer
+# Character.GR_ncpd_police_ranged2_saratoga_wa - Officer
+
+# normal:
+# Character.GR_ncpd_inspector_ranged1_lexington_ma - Inspector
+# Character.GR_ncpd_constable_ranged1_lexington_ma - Constable
+# Character.GR_ncpd_police_ranged2_copperhead_ma - Officer
+# Character.GR_ncpd_police_ranged2_copperhead_wa - Officer
+# Character.GR_ncpd_investigator_officer_omaha_ma - Investigator
+# Character.GR_ncpd_investigator_officer_omaha_wa - Investigator
+# Character.GR_ncpd_android_android2_lexington_ma - Android
+# Character.GR_ncpd_android_android2_ajax_ma - Android
+
+# rare:
+# Character.GR_ncpd_enforcer_shotgun2_tactician_ma_rare - Enforcer
+# Character.GR_ncpd_police_shotgun3_crusher_mb_elite - Elite Officer
+# Character.GR_ncpd_hwp_gunner2_defender_mb_rare - Heavy Weapons
+
+# elite:
+# Character.GR_maxtac_rifle_ma_elite - MAXTAC Rifle
+# Character.GR_maxtac_rifle_wa_elite - MAXTAC Rifle
+# Character.GR_maxtac_av_LMG_mb - MAXTAC LMG
+# Character.GR_maxtac_av_mantis_wa - MAXTAC Mantis
+# Character.GR_maxtac_melee_ma_elite - MAXTAC Melee
+# Character.GR_maxtac_shotgun_ma_elite - MAXTAC Shotgun
+# Character.GR_maxtac_sniper_wa_elite - MAXTAC Sniper

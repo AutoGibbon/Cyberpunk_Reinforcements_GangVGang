@@ -13,6 +13,7 @@ public class GRArasakaHandler extends GRGangHandler {
         this.settings = GRSettings.GetInstance(game);
         this.affiliation = gamedataAffiliation.Arasaka;
         this.waveCounterUniqueId = 3000;
+        
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRArasakaHandler> {
@@ -40,6 +41,10 @@ public class GRArasakaHandler extends GRGangHandler {
     public func GetTurfList() -> array<String> {
         return [];
     }
+
+	public func IsConsideredTurf(district: ref<District>) -> Bool {
+		return true;
+	}
 }
 
 public class GRArasakaGraceEndCallback extends DelayCallback {

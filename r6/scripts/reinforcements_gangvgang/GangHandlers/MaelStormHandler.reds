@@ -13,6 +13,7 @@ public class GRMaelStromHandler extends GRGangHandler {
         this.settings = GRSettings.GetInstance(game);
         this.affiliation = gamedataAffiliation.Maelstrom;
         this.waveCounterUniqueId = 5000;
+        
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRMaelStromHandler> {

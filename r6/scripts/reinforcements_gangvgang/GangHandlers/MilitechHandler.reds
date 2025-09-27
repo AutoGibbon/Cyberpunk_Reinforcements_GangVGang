@@ -13,6 +13,7 @@ public class GRMilitechHandler extends GRGangHandler {
         this.settings = GRSettings.GetInstance(game);
         this.affiliation = gamedataAffiliation.Militech;
         this.waveCounterUniqueId = 6000;
+        
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRMilitechHandler> {

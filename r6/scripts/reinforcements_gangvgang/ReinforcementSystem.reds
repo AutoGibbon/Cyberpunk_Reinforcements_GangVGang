@@ -19,11 +19,18 @@ public class GRReinforcementSystem extends ScriptableSystem {
     private let wraithsHandler: ref<GRWraithsHandler>;
     private let ncpdHandler: ref<GRNCPDHandler>;
     private let moxHandler: ref<GRMoxHandler>;
+	private let gameAttachHandled: Bool = false;
 
     private let preventionSystem: ref<PreventionSystem>;
     private let QuestsSystem: ref<QuestsSystem>;
+	private let delaySystem: ref<DelaySystem>;
+
     public let settings: ref<GRSettings>;
-    public let numberOfCarChaseRequests: Int32 = 0;
+    public let numberOfTrafficSpawnRequests: Int32 = 0;
+
+	private func OnAttach() -> Void {
+		this.gameAttachHandled = false;
+	}
 
     private final func OnPlayerAttach(request: ref<PlayerAttachRequest>) -> Void {
         let theGame = GetGameInstance();
@@ -31,6 +38,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
 
         this.preventionSystem = GameInstance.GetScriptableSystemsContainer(theGame).Get(n"PreventionSystem") as PreventionSystem;
         this.QuestsSystem = GameInstance.GetQuestsSystem(theGame);
+		this.delaySystem = GameInstance.GetDelaySystem(game);
 
         this.settings = GRSettings.GetInstance(theGame);
         this.tygerHandler = GRTygersHandler.GetInstance(theGame);
@@ -62,7 +70,33 @@ public class GRReinforcementSystem extends ScriptableSystem {
 
         // cause we're doing funky stuff with public and private bindings
         this.settings.ReconcileSettings();
+
+		if !this.gameAttachHandled {
+			this.HandleGameAttach();
+		}
     }
+
+	private func OnRestored(saveVersion: Int32, gameVersion: Int32) {
+    	if !this.gameAttachHandled {
+			this.HandleGameAttach();
+		}
+    }
+  
+	public func HandleGameAttach() -> Void { 
+		if GameInstance.GetSystemRequestsHandler().IsPreGame() {
+			//GRLog("We're in main menu");
+			return;
+		}
+
+		this.gameAttachHandled = true;
+		this.ResetAllGangs();
+		this.StartTrafficSpawns();
+	}
+
+	public func StartTrafficSpawns() -> Void {
+		this.SpawnTrafficVehiclesCallback();
+		this.KeepAliveCallback();
+	}
 
     public func ResetAllGangs() -> Void {
         this.tygerHandler.OnHeatResetCooldownEnd();
@@ -300,29 +334,77 @@ public class GRReinforcementSystem extends ScriptableSystem {
 		}
     }
 
-//not working yet :()
-    public func TestCarChase() -> Void {
+
+    public func RequestSpawnTraffic(vehicles: array<TweakDBID>) -> Void {
         let game = GetGameInstance();
         let questSystem = GameInstance.GetQuestsSystem(game);
 
-        // one ncpd car and one maelstrom car
-        let allVehicles: array<TweakDBID> = [t"DynamicSpawnSystem.GRMoxPatrol1", t"DynamicSpawnSystem.GRMoxPatrol2"];
-
-        let arraySize = ArraySize(allVehicles);
-        this.numberOfCarChaseRequests = this.numberOfCarChaseRequests + arraySize;
+        let arraySize = ArraySize(vehicles);
+        this.numberOfTrafficSpawnRequests = this.numberOfTrafficSpawnRequests + arraySize;
         let node = new questDynamicSpawnSystemNodeDefinition();
         let nodeType = new questDynamicVehicleSpawn_NodeType();
 
         nodeType.distanceRange = new Vector2(200, 400);
         nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;
         let nodeid = RandRange(20000, 30000);
-        nodeType.waveTag = StringToName(s"GR_TEST_CAR_CHASE_\(nodeid)");
-        nodeType.VehicleData = allVehicles;
+        nodeType.waveTag = StringToName(s"GR_TEST_TRAFFIC_\(nodeid)");
+        nodeType.VehicleData = vehicles;
 
         node.id = Cast<Uint16>(nodeid);
         node.type = nodeType;
 
         questSystem.ExecuteNode(node);
+    }
+
+	// basically abusing the delay system to keep other long-lived callbacks alive
+    public func KeepAliveCallback() -> Void {
+		this.delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 9.8, true);
+    }
+
+	public func SpawnTrafficVehiclesCallback() -> Void {
+		// Call SpawnTrafficVehicles for each gang handler, except NCPD, Arasaka, Scavs
+		this.tygerHandler.SpawnTrafficVehicles();
+		this.animalsHandler.SpawnTrafficVehicles();
+		this.maelStormHandler.SpawnTrafficVehicles();
+		this.voodooHandler.SpawnTrafficVehicles();
+		this.sixthHandler.SpawnTrafficVehicles();
+		this.militechHandler.SpawnTrafficVehicles();
+		this.valentinosHandler.SpawnTrafficVehicles();
+		this.barghestHandler.SpawnTrafficVehicles();
+		this.wraithsHandler.SpawnTrafficVehicles();
+		this.moxHandler.SpawnTrafficVehicles();
+		
+		// Schedule next traffic spawn callback
+		let delay = RandRangeF(this.settings.trafficSpawnDelayMin, this.settings.trafficSpawnDelayMax);
+		this.delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, true);
+	}
+}
+
+public class GRKeepAliveCallback extends DelayCallback {
+    let handler: wref<GRReinforcementSystem>;
+    
+    public static func Create(handler: ref<GRReinforcementSystem>) -> ref<GRKeepAliveCallback> {
+        let self: ref<GRKeepAliveCallback> = new GRKeepAliveCallback();
+        self.handler = handler;
+        return self;
+    }
+
+    public func Call() -> Void {
+        this.handler.KeepAliveCallback();
+    }
+}
+
+public class GRSpawnTrafficCallback extends DelayCallback {
+    let handler: wref<GRReinforcementSystem>;
+
+    public static func Create(handler: ref<GRReinforcementSystem>) -> ref<GRSpawnTrafficCallback> {
+        let self: ref<GRSpawnTrafficCallback> = new GRSpawnTrafficCallback();
+        self.handler = handler;
+        return self;
+    }
+
+    public func Call() -> Void {
+        this.handler.SpawnTrafficVehiclesCallback();
     }
 }
 

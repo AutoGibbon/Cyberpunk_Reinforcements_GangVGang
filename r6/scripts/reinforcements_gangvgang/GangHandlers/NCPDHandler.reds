@@ -13,6 +13,7 @@ public class GRNCPDHandler extends GRGangHandler {
         this.settings = GRSettings.GetInstance(game);
         this.affiliation = gamedataAffiliation.NCPD;
         this.waveCounterUniqueId = 7000;
+        
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRNCPDHandler> {
@@ -36,6 +37,10 @@ public class GRNCPDHandler extends GRGangHandler {
         let backupDelay = this.GetBackupDelay(isTurf);
         this.delaySystem.DelayCallback(GRNCPDCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
     }
+
+	public func OnTrafficSpawnStart() -> Bool {
+		return false;
+	}
 
     public func GetTurfList() -> array<String> {
         return [];
