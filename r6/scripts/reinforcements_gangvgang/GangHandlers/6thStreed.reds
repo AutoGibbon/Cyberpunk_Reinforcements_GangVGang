@@ -32,6 +32,11 @@ public class GRSixthStreetHandler extends GRGangHandler {
         this.delaySystem.DelayCallback(GRSixthGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
+	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
+        let backupDelay = this.GetBackupDelay(isTurf);
+        this.delaySystem.DelayCallback(GRSixthCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
+    }
+
     public func GetTurfList() -> array<String> {
         return [
             "SantoDomingo"
@@ -78,5 +83,16 @@ public class GRSixthCallSuccessCooldownEndCallback extends DelayCallback {
   }
 }
 
+public class GRSixthCallSuccessDelayArrivalCallback extends DelayCallback {
+    let handler: wref<GRSixthStreetHandler>;
+    public static func Create(handler: ref<GRSixthStreetHandler>) -> ref<GRSixthCallSuccessDelayArrivalCallback> {
+        let self: ref<GRSixthCallSuccessDelayArrivalCallback> = new GRSixthCallSuccessDelayArrivalCallback();
+        self.handler = handler;
+        return self;
+    }
 
+  public func Call() -> Void {
+	this.handler.CompleteReinforcementCall();
+  }
+}
 

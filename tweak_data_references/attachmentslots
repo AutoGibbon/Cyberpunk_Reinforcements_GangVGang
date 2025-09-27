@@ -1,0 +1,20 @@
+equip slots
+- AttachmentSlots.WeaponRight
+- AttachmentSlots.WeaponLeft
+- AttachmentSlots.GrenadeRight
+- AttachmentSlots.GrenadeLeft
+
+body slots
+- AttachmentSlots.ItemSlotSniperRifle
+- AttachmentSlots.ItemSlotSMG
+- AttachmentSlots.ItemSlotTechRifle
+- AttachmentSlots.ItemSlotHandgunLeftJackie
+- AttachmentSlots.ItemSlotHandgunRightJackie
+- AttachmentSlots.ItemSlotKatana
+- AttachmentSlots.ItemSlotGenericMelee
+- AttachmentSlots.ItemSlotHammer
+- AttachmentSlots.ItemSlotKnifeRight
+- AttachmentSlots.ItemSlotKnifeLeft
+- AttachmentSlots.ItemSlotGenericRanged
+- AttachmentSlots.ItemSlotHandgunRight
+- AttachmentSlots.ItemSlotHandgunLeft

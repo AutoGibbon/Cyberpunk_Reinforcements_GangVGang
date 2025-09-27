@@ -3,6 +3,7 @@ module Gibbon.GR.ReinforcementSystem
 import Gibbon.GR.GangHandlers.*
 import Gibbon.GR.GangData.*
 import Gibbon.GR.Settings.*
+import Gibbon.GR.Logging.*
 
 public class GRReinforcementSystem extends ScriptableSystem {
     private let tygerHandler: ref<GRTygersHandler>;
@@ -17,6 +18,8 @@ public class GRReinforcementSystem extends ScriptableSystem {
     private let barghestHandler: ref<GRBarghestHandler>;
     private let wraithsHandler: ref<GRWraithsHandler>;
     private let ncpdHandler: ref<GRNCPDHandler>;
+    private let moxHandler: ref<GRMoxHandler>;
+
     private let preventionSystem: ref<PreventionSystem>;
     private let QuestsSystem: ref<QuestsSystem>;
     public let settings: ref<GRSettings>;
@@ -42,7 +45,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.barghestHandler = GRBarghestHandler.GetInstance(theGame);
         this.wraithsHandler = GRWraithsHandler.GetInstance(theGame);
         this.ncpdHandler = GRNCPDHandler.GetInstance(theGame);
-
+        this.moxHandler = GRMoxHandler.GetInstance(theGame);
         //debugging
         // this.tygerHandler.isDisabled = true;
         // this.scavHandler.isDisabled = true;
@@ -74,6 +77,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.barghestHandler.OnHeatResetCooldownEnd();
         this.wraithsHandler.OnHeatResetCooldownEnd();
         this.ncpdHandler.OnHeatResetCooldownEnd();
+        this.moxHandler.OnHeatResetCooldownEnd();
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRReinforcementSystem> {
@@ -271,6 +275,8 @@ public class GRReinforcementSystem extends ScriptableSystem {
                 return this.wraithsHandler;
             case gamedataAffiliation.NCPD:
                 return this.ncpdHandler;
+            case gamedataAffiliation.TheMox:
+                return this.moxHandler;
             default:
                 break;
         }
@@ -289,7 +295,9 @@ public class GRReinforcementSystem extends ScriptableSystem {
             if this.GetFactionHandler(puppet).TryCallingReinforcements(puppet) {
                 this.ReinforcementsCalled(puppet, target);
             }
-        }
+        } else {
+			//GRLog(s"\(TDBID.ToStringDEBUG(puppet.GetRecordID())) not allowed to call reinforcements: in combat with player");
+		}
     }
 
 //not working yet :()
@@ -298,7 +306,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         let questSystem = GameInstance.GetQuestsSystem(game);
 
         // one ncpd car and one maelstrom car
-        let allVehicles: array<TweakDBID> = [t"DynamicSpawnSystem.GRNCPDPatrol1", t"DynamicSpawnSystem.GRMaelstromWeakNormalCar1"];
+        let allVehicles: array<TweakDBID> = [t"DynamicSpawnSystem.GRMoxPatrol1", t"DynamicSpawnSystem.GRMoxPatrol2"];
 
         let arraySize = ArraySize(allVehicles);
         this.numberOfCarChaseRequests = this.numberOfCarChaseRequests + arraySize;

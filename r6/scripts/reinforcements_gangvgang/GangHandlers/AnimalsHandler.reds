@@ -34,6 +34,11 @@ public class GRAnimalsHandler extends GRGangHandler {
         this.delaySystem.DelayCallback(GRAnimalsGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
+	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
+        let backupDelay = this.GetBackupDelay(isTurf);
+        this.delaySystem.DelayCallback(GRAnimalsCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
+    }
+
     public func GetTurfList() -> array<String> {
         return [
             "WestWindEstate",
@@ -78,5 +83,18 @@ public class GRAnimalsCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
+  }
+}
+
+public class GRAnimalsCallSuccessDelayArrivalCallback extends DelayCallback {
+    let handler: wref<GRAnimalsHandler>;
+    public static func Create(handler: ref<GRAnimalsHandler>) -> ref<GRAnimalsCallSuccessDelayArrivalCallback> {
+        let self: ref<GRAnimalsCallSuccessDelayArrivalCallback> = new GRAnimalsCallSuccessDelayArrivalCallback();
+        self.handler = handler;
+        return self;
+    }
+
+  public func Call() -> Void {
+	this.handler.CompleteReinforcementCall();
   }
 }

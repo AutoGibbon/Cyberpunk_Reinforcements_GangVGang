@@ -114,14 +114,14 @@ public class GRNCPDData extends GRGangData {
                     ], 2); 
 
                 return ArrayMerge(patrolCar, rrnn);  
-            case 10: // 1 weak, 2 normals, 2 rares, 1 elite (errn + patrol car)
-                let errn = GetRandomFrom(
+            case 10: // 1 weak, 2 normals, 2 rares, 1 elite (elite + patrol car)
+                let rare = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad1",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad2",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad3",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad4"
-                    ], 1);   
+                        t"DynamicSpawnSystem.GRNCPDRareSquad1",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad2",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad3",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad4"
+                    ], 2);   
                 let patrolCar = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDPatrol1",
@@ -130,15 +130,15 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDPatrol4",
                         t"DynamicSpawnSystem.GRNCPDPatrol5"
                     ], 1); 
-                return ArrayMerge(errn, patrolCar);
-            case 11: // 5 normals 3 rares, 1 elite (errn + standard squad)
-                let errn = GetRandomFrom(
+                return ArrayMerge(rare, patrolCar);
+            case 11: // 5 normals 3 rares, 1 elite (elite + standard squad)
+                let rare = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad1",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad2",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad3",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad4"
-                    ], 1);   
+                        t"DynamicSpawnSystem.GRNCPDRareSquad1",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad2",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad3",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad4"
+                    ], 2);   
                     let standardSquad = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
@@ -146,15 +146,15 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDStandardSquad3",
                         t"DynamicSpawnSystem.GRNCPDStandardSquad4"
                     ], 1);               
-                return ArrayMerge(errn, standardSquad);       
-            case 12: // 1 weak, 5 normals, 4 rares, 1 elite (errn + standard squad + bike)
-                let errn = GetRandomFrom(
+                return ArrayMerge(rare, standardSquad);       
+            case 12: // 1 weak, 5 normals, 4 rares, 1 elite (elite + standard squad + bike)
+                let rare = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad1",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad2",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad3",
-                        t"DynamicSpawnSystem.GRNCPDEliteSquad4"
-                    ], 1);   
+                        t"DynamicSpawnSystem.GRNCPDRareSquad1",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad2",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad3",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad4"
+                    ], 2);   
                     let standardSquad = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
@@ -164,9 +164,9 @@ public class GRNCPDData extends GRGangData {
                     ], 1);               
                 let bike = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
-                return ArrayMerge(ArrayMerge(errn, standardSquad), bike);                 
-            case 13: // 6 normals, 4 rares, 1 elite (errn + 2 standard squads)
-                let errn = GetRandomFrom(
+                return ArrayMerge(ArrayMerge(rare, standardSquad), bike);                 
+            case 13: // 6 normals, 4 rares, 1 elite (elite + 2 standard squads)
+                let elite = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDEliteSquad1",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
@@ -180,9 +180,9 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDStandardSquad3",
                         t"DynamicSpawnSystem.GRNCPDStandardSquad4"
                     ], 2);               
-                return ArrayMerge(errn, standardSquad);   
-            case 14: // 2weak, 6 normals, 4 rares, 1 elite (errn + 2 standard squads + bike)
-                let errn = GetRandomFrom(
+                return ArrayMerge(elite, standardSquad);   
+            case 14: // 2weak, 6 normals, 4 rares, 1 elite (elite + 2 standard squads + bike)
+                let elite = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDEliteSquad1",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
@@ -198,9 +198,9 @@ public class GRNCPDData extends GRGangData {
                     ], 2);               
                 let bike = [t"DynamicSpawnSystem.GRNCPDWeakBike1", t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
-                return ArrayMerge(ArrayMerge(errn, standardSquad), bike);   
-            case 15: // 6 normals, 4 rares, 2 elite (2 errn + standard quad)
-                   let errn = GetRandomFrom(
+                return ArrayMerge(ArrayMerge(elite, standardSquad), bike);   
+            case 15: // 6 normals, 4 rares, 2 elite (2 elite + standard quad)
+                   let elite = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDEliteSquad1",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
@@ -214,9 +214,9 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDStandardSquad3",
                         t"DynamicSpawnSystem.GRNCPDStandardSquad4"
                     ], 1);               
-                return ArrayMerge(errn, standardSquad);   
-            case 16: // 5 normals 5 rares, 2 elite (2 errn + standard quad + bike)
-                let errn = GetRandomFrom(
+                return ArrayMerge(elite, standardSquad);   
+            case 16: // 5 normals 5 rares, 2 elite (2 elite + standard quad + bike)
+                let elite = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDEliteSquad1",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
@@ -233,9 +233,9 @@ public class GRNCPDData extends GRGangData {
                     ], 1);               
                 let bike = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
-                return ArrayMerge(ArrayMerge(errn, standardSquad), bike);   
-            case 17: // 2 normals, 6 rares, 2 elite (2 errn + standard quad + patrol)
-                let errn = GetRandomFrom(
+                return ArrayMerge(ArrayMerge(elite, standardSquad), bike);   
+            case 17: // 2 normals, 6 rares, 2 elite (2 elite + standard quad + patrol)
+                let elite = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDEliteSquad1",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
@@ -258,25 +258,25 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDPatrol4",
                         t"DynamicSpawnSystem.GRNCPDPatrol5"
                     ], 1); 
-                return ArrayMerge(ArrayMerge(errn, standardSquad), patrolCar);   
-            case 18: // 6 normals, 6 rares, 2 elite (2 errn + 2standard quad )
-                   let errn = GetRandomFrom(
+                return ArrayMerge(ArrayMerge(elite, standardSquad), patrolCar);   
+            case 18: // 6 normals, 6 rares, 2 elite (2 elite + 2standard quad )
+                   let elite = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDEliteSquad1",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad3",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad4"
                     ], 2);   
-                    let standardSquad = GetRandomFrom(
+                    let rare = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDRareSquad1",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad2",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad3",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad4"
                     ], 2);               
-                return ArrayMerge(errn, standardSquad);   
-            case 19: // 8 rares, 2 elite + (2 errn + 2standard quad  + bike)
-                let errn = GetRandomFrom(
+                return ArrayMerge(elite, rare);   
+            case 19: // 8 rares, 2 elite + (2 elite + 2standard quad  + bike)
+                let elite = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDEliteSquad1",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
@@ -284,32 +284,32 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDEliteSquad4"
                     ], 2);   
 
-                    let standardSquad = GetRandomFrom(
+                    let rare = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDRareSquad1",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad2",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad3",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad4"
                     ], 2);               
                 let bike = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
-                return ArrayMerge(ArrayMerge(errn, standardSquad), bike);   
-            case 20: // 3 normals 7 rares, 3 elite (3 errn + standard)
-                   let errn = GetRandomFrom(
+                return ArrayMerge(ArrayMerge(elite, rare), bike);   
+            case 20: // 3 normals 7 rares, 3 elite (3 elite + standard)
+                   let elite = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDEliteSquad1",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad3",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad4"
                     ], 3);   
-                    let standardSquad = GetRandomFrom(
+                    let rare = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                       t"DynamicSpawnSystem.GRNCPDRareSquad1",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad2",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad3",
+                        t"DynamicSpawnSystem.GRNCPDRareSquad4"
                     ], 1);               
-                return ArrayMerge(errn, standardSquad);   
+                return ArrayMerge(elite, rare);   
             default: 
                 return [];
         }

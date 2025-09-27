@@ -22,7 +22,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let gracePeriodEnded: Bool = false;
   public let isDisabled: Bool = false;
   public let affiliation: gamedataAffiliation;
-  public let lastCallAnswered: Bool = false;
+  public let lastCallAnswered: Bool = true;
 
   public func GetCallSuccessCooldown() -> Float {
     return RandRangeF(this.settings.callSuccessCooldownMin, this.settings.callSuccessCooldownMax);
@@ -36,6 +36,8 @@ public abstract class GRGangHandler extends ScriptableSystem {
   public func OnHeatResetCooldownStart() -> Void;
 
   public func OnCallSuccessCooldownStart() -> Void;
+
+  public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void;
 
   public func OnGraceStart() -> Void;
 
@@ -81,6 +83,11 @@ public abstract class GRGangHandler extends ScriptableSystem {
     return RandRangeF(this.settings.gracePeriodMin, this.settings.gracePeriodMax);
   }
 
+  public func GetBackupDelay(isTurf: Bool) -> Float {
+    let baseDelay = RandRangeF(this.settings.backupDelayMin, this.settings.backupDelayMax);
+    return isTurf ? MaxF(1.0, baseDelay - this.settings.turfDelayReduction) : baseDelay;
+  }
+
   public func IsConsideredTurf(district: ref<District>) -> Bool {
     let record = district.GetDistrictRecord();
     let turfList = this.GetTurfList();
@@ -103,7 +110,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     if this.heatLevel == 0 {
       this.heatLevel = this.settings.initialHeat;
-    } else {
+    } else if this.lastCallAnswered {
       this.heatLevel += this.settings.heatEscalation;
       if isTurf {
         this.heatLevel += this.settings.turfHeatBonus;
@@ -113,24 +120,26 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.callSuccessCooldownActive = true;
     this.OnCallSuccessCooldownStart();
 
-    let randomNumber = RandRange(0, 101);
-    let reinforcementHeat = randomNumber <= this.settings.strongCallChance ? this.heatLevel + this.settings.strongCallHeatBonus : this.heatLevel;
-
-    if this.lastCallAnswered {
-      this.callsPerformed += 1;
-    }
     this.lastCaller = puppet;
     this.lastCallerPosition = puppet.GetWorldPosition();
     this.lastTarget = target;
 
-    //GRLog(s"Reinforcement call: \(this.affiliation), \(reinforcementHeat)");
+    if this.lastCallAnswered {
+      this.callsPerformed += 1;
+      this.OnCallSuccessDelayArrival(isTurf);
+    }
+  }
 
+  public func CompleteReinforcementCall() -> Void {
+    let randomNumber = RandRange(0, 101);
+    let reinforcementHeat = randomNumber <= this.settings.strongCallChance ? this.heatLevel + this.settings.strongCallHeatBonus : this.heatLevel;
+
+    //GRLog(s"Reinforcement call: \(this.affiliation), \(reinforcementHeat), Target: \(TDBID.ToStringDEBUG(GameObject.GetTDBID(this.lastTarget)))");
     this
       .SpawnVehicles(
         this
           .reinforcementData
-          .GetReinforcementsClamped(Min(reinforcementHeat, 20), this.settings.maxVehiclesPerCall),
-        isTurf
+          .GetReinforcementsClamped(Min(reinforcementHeat, 20), this.settings.maxVehiclesPerCall)
       );
 
     if this.callsPerformed > this.settings.callsLimit {
@@ -161,15 +170,11 @@ public abstract class GRGangHandler extends ScriptableSystem {
     return false;
   }
 
-  public func SpawnVehicles(arr: array<TweakDBID>, isTurf: Bool) -> Void {
+  public func SpawnVehicles(arr: array<TweakDBID>) -> Void {
     let node = new questDynamicSpawnSystemNodeDefinition();
     let nodeType = new questDynamicVehicleSpawn_NodeType();
 
-    if isTurf {
-      nodeType.distanceRange = new Vector2(50, 50);
-    } else {
-      nodeType.distanceRange = new Vector2(100, 100);
-    }
+    nodeType.distanceRange = new Vector2(100, 100);
 
     if RandF() >= 0.5 {
       nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;

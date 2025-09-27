@@ -32,6 +32,11 @@ public class GRVoodooHandler extends GRGangHandler {
         this.delaySystem.DelayCallback(GRVoodooGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
+	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
+        let backupDelay = this.GetBackupDelay(isTurf);
+        this.delaySystem.DelayCallback(GRVoodooCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
+    }
+
     public func GetTurfList() -> array<String> {
         return [
             "WestWindEstate",
@@ -76,5 +81,18 @@ public class GRVoodooCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
+  }
+}
+
+public class GRVoodooCallSuccessDelayArrivalCallback extends DelayCallback {
+    let handler: wref<GRVoodooHandler>;
+    public static func Create(handler: ref<GRVoodooHandler>) -> ref<GRVoodooCallSuccessDelayArrivalCallback> {
+        let self: ref<GRVoodooCallSuccessDelayArrivalCallback> = new GRVoodooCallSuccessDelayArrivalCallback();
+        self.handler = handler;
+        return self;
+    }
+
+  public func Call() -> Void {
+	this.handler.CompleteReinforcementCall();
   }
 }

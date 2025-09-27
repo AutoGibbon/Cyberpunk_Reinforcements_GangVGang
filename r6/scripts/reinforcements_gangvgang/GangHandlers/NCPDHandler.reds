@@ -32,6 +32,11 @@ public class GRNCPDHandler extends GRGangHandler {
         this.delaySystem.DelayCallback(GRNCPDGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
+	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
+        let backupDelay = this.GetBackupDelay(isTurf);
+        this.delaySystem.DelayCallback(GRNCPDCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
+    }
+
     public func GetTurfList() -> array<String> {
         return [];
     }
@@ -73,5 +78,18 @@ public class GRNCPDCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
+  }
+}
+
+public class GRNCPDCallSuccessDelayArrivalCallback extends DelayCallback {
+    let handler: wref<GRNCPDHandler>;
+    public static func Create(handler: ref<GRNCPDHandler>) -> ref<GRNCPDCallSuccessDelayArrivalCallback> {
+        let self: ref<GRNCPDCallSuccessDelayArrivalCallback> = new GRNCPDCallSuccessDelayArrivalCallback();
+        self.handler = handler;
+        return self;
+    }
+
+  public func Call() -> Void {
+	this.handler.CompleteReinforcementCall();
   }
 }

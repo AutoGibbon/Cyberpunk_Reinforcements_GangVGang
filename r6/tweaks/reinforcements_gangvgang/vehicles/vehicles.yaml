@@ -298,3 +298,29 @@ Vehicle.GR_v_standard3_thorton_mackinaw:
     $base: Vehicle.v_standard3_thorton_mackinaw
     tags:
         - !append-once GRModVehicle
+
+# Mox specific vehicles (include the mizutani hozuki)
+Vehicle.GR_v_standard25_mahir_mox:
+    $base: Vehicle.v_standard25_mahir_mox
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_v_standard2_archer_quartz:
+    $base: Vehicle.v_standard2_archer_quartz
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_v_standard2_archer_quartz_mox:
+    $base: Vehicle.v_standard2_archer_quartz_mox
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_v_sportbike1_yaiba_kusanagi_mox:
+    $base: Vehicle.v_sportbike1_yaiba_kusanagi_mox
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_v_sport2_villefort_alvarado_mox:
+    $base: Vehicle.v_sport2_villefort_alvarado_mox
+    tags:
+        - !append-once GRModVehicle

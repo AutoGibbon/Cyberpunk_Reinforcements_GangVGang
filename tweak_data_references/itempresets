@@ -1,0 +1,21 @@
+pistols
+Items.Preset_Chao_Neon
+Items.Preset_Kappa_Neon
+Items.Preset_Overture_Neon
+
+smg
+Items.Preset_Dian_Neon
+Items.Preset_Senkoh_Neon
+Items.Preset_Pulsar_Neon
+
+shotgun
+Items.Preset_Palica_Neon
+Items.Preset_Pozhar_Neon
+
+batons (secondary for smg/shotgunners)
+Items.Preset_Baton_Alpha
+Items.Preset_Baton_Beta
+Items.Preset_Baton_Gamma
+
+baseball bat
+Items.Preset_Baseball_Bat_Mox

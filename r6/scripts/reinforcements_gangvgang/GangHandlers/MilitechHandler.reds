@@ -34,6 +34,11 @@ public class GRMilitechHandler extends GRGangHandler {
         this.delaySystem.DelayCallback(GRMilitechGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
+	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
+        let backupDelay = this.GetBackupDelay(isTurf);
+        this.delaySystem.DelayCallback(GRMilitechCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
+    }
+
     public func GetTurfList() -> array<String> {
         return [
             "Badlands"
@@ -77,5 +82,18 @@ public class GRMilitechCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
+  }
+}
+
+public class GRMilitechCallSuccessDelayArrivalCallback extends DelayCallback {
+    let handler: wref<GRMilitechHandler>;
+    public static func Create(handler: ref<GRMilitechHandler>) -> ref<GRMilitechCallSuccessDelayArrivalCallback> {
+        let self: ref<GRMilitechCallSuccessDelayArrivalCallback> = new GRMilitechCallSuccessDelayArrivalCallback();
+        self.handler = handler;
+        return self;
+    }
+
+  public func Call() -> Void {
+	this.handler.CompleteReinforcementCall();
   }
 }

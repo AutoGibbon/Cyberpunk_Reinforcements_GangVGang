@@ -1,0 +1,69 @@
+# Weapons Currently Used by Gangs in Reinforcements Gang vs Gang
+
+## Ranged Weapons
+ajax        - Used by 6th Street, Arasaka, Maelstrom, Militech, NCPD, Valentinos, Voodoo Boys
+achilles    - Used by Kurtz, Militech, Wraiths
+ashura      - Used by Arasaka, Voodoo Boys
+burya       - Used by Animals
+copperhead  - Used by Maelstrom, NCPD, Tyger Claws, Voodoo Boys, Wraiths
+crusher     - Used by Militech, NCPD, Wraiths
+defender    - Used by Animals, Arasaka, Maelstrom, NCPD, Scavs, Voodoo Boys, Wraiths
+grad        - Used by 6th Street, Maelstrom, Scavs, Valentinos, Voodoo Boys, Wraiths
+handgun     - Used by Kurtz
+igla        - Used by 6th Street, Animals, Valentinos
+kenshin     - Used by Animals, Arasaka
+lexington   - Used by Kurtz, Maelstrom, NCPD, Voodoo Boys
+masamune    - Used by Arasaka
+nekomata    - Used by Arasaka
+nova        - Used by 6th Street, Animals, Scavs, Valentinos, Wraiths
+nue         - Used by Tyger Claws, Valentinos
+omaha       - Used by Animals, NCPD, Militech
+overture    - Used by Animals, Voodoo Boys
+palica      - Used by Voodoo Boys, Wraiths
+pulsar      - Used by Animals, Scavs, Voodoo Boys, Wraiths
+quasar      - Used by Voodoo Boys, Wraiths
+rifle       - Used by Kurtz
+saratoga    - Used by 6th Street, Kurtz, NCPD, Voodoo Boys
+shingen     - Used by Arasaka, Tyger Claws
+sidewinder  - Used by Tyger Claws, Voodoo Boys
+slaughtomatic - Used by Scavs, Voodoo Boys
+tactician   - Used by 6th Street, Arasaka, Militech, NCPD, Valentinos
+testera     - Used by Animals, Valentinos
+yukimura    - Used by Arasaka, Voodoo Boys
+zhuo        - Used by Arasaka, Voodoo Boys
+
+## Shotgun Weapons
+carnage     - Used by 6th Street, Animals, Scavs, Voodoo Boys
+igla        - Used by 6th Street, Animals, Valentinos
+satara      - Used by 6th Street, Wraiths
+shotgun     - Used by Kurtz
+tactician   - Used by 6th Street, Arasaka, Militech, NCPD, Valentinos
+testera     - Used by Animals, Valentinos
+zhuo        - Used by Arasaka, Voodoo Boys
+
+## Melee Weapons
+baseball    - Used by 6th Street, Valentinos, Voodoo Boys
+baton       - Used by 6th Street, NCPD
+fists       - Used by Animals, Arasaka, Kurtz, Scavs, Valentinos, Wraiths
+hammer      - Used by Animals, Maelstrom, Tyger Claws, Wraiths
+kanabo      - Used by Tyger Claws
+katana      - Used by Arasaka, Tyger Claws, Voodoo Boys
+knife       - Used by Maelstrom, Scavs, Tyger Claws, Valentinos, Voodoo Boys
+machete     - Used by Maelstrom, Scavs, Valentinos, Voodoo Boys
+mantis      - Used by Arasaka, Voodoo Boys, Wraiths
+pipewrench  - Used by Scavs
+tireiron    - Used by Scavs
+StrongArms  - Used by Tyger Claws
+
+## Heavy Weapons
+HMG         - Used by Animals, Arasaka, Kurtz, Militech, Voodoo Boys, Wraiths
+LMG         - Used by Kurtz
+hmg         - Used by Animals, Voodoo Boys, Wraiths
+
+## Current Mox Weapons
+baseball    - melee
+lexington   - ranged
+pulsar      - ranged
+knife       - melee
+machete     - melee
+mantis      - melee

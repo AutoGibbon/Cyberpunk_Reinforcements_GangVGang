@@ -52,10 +52,10 @@ public class GRSettings extends ScriptableSystem {
                 this.gracePeriodMax = 20;
                 this.callSuccessCooldownMin = 10;
                 this.callSuccessCooldownMax = 25;
-                this.heatResetCooldown = 150;
+                this.heatResetCooldown = 180;
                 this.initialHeat = 1;
-                this.heatEscalation = 2;
-                this.callsLimit = 2;
+                this.heatEscalation = 1;
+                this.callsLimit = 3;
                 this.strongCallChance = 50;
                 this.strongCallHeatBonus = 15;
                 this.turfHeatBonus = 1;
@@ -63,22 +63,22 @@ public class GRSettings extends ScriptableSystem {
             } else if Equals(this.presetMode, PresetMode.Balanced) {
                 this.gracePeriodMin = 5;
                 this.gracePeriodMax = 15;
-                this.callSuccessCooldownMin = 15;
+                this.callSuccessCooldownMin = 45;
                 this.callSuccessCooldownMax = 60;
-                this.heatResetCooldown = 300;
+                this.heatResetCooldown = 360;
                 this.initialHeat = 2;
-                this.heatEscalation = 3;
-                this.callsLimit = 3;
+                this.heatEscalation = 2;
+                this.callsLimit = 6;
                 this.strongCallChance = 15;
-                this.strongCallHeatBonus = 6;
-                this.turfHeatBonus = 4;
+                this.strongCallHeatBonus = 3;
+                this.turfHeatBonus = 2;
                 this.maxVehiclesPerCall = 2;
             } else if Equals(this.presetMode, PresetMode.RareBigFight) {
                 this.gracePeriodMin = 40;
                 this.gracePeriodMax = 60;
                 this.callSuccessCooldownMin = 55;
                 this.callSuccessCooldownMax = 60;
-                this.heatResetCooldown = 500;
+                this.heatResetCooldown = 600;
                 this.initialHeat = 10;
                 this.heatEscalation = 5;
                 this.callsLimit = 1;
@@ -101,26 +101,28 @@ public class GRSettings extends ScriptableSystem {
                 this.maxVehiclesPerCall = 4;
             }
         }
+
+		    // Log all settings line by line for debugging
+			////GRLog(s"gracePeriodMin: \(this.gracePeriodMin)");
+			////GRLog(s"gracePeriodMax: \(this.gracePeriodMax)");
+			////GRLog(s"callSuccessCooldownMin: \(this.callSuccessCooldownMin)");
+			////GRLog(s"callSuccessCooldownMax: \(this.callSuccessCooldownMax)");
+			////GRLog(s"heatResetCooldown: \(this.heatResetCooldown)");
+			////GRLog(s"initialHeat: \(this.initialHeat)");
+			////GRLog(s"heatEscalation: \(this.heatEscalation)");
+			////GRLog(s"callsLimit: \(this.callsLimit)");
+			////GRLog(s"strongCallChance: \(this.strongCallChance)");
+			////GRLog(s"strongCallHeatBonus: \(this.strongCallHeatBonus)");
+			////GRLog(s"turfHeatBonus: \(this.turfHeatBonus)");
+			////GRLog(s"enabled: \(this.enabled)");
+			////GRLog(s"enabledWhenPlayerInCombat: \(this.enabledWhenPlayerInCombat)");
+			////GRLog(s"enabledWhenPlayerIsPassenger: \(this.enabledWhenPlayerIsPassenger)");
+			////GRLog(s"presetMode: \(ToString(this.presetMode))");
+			////GRLog(s"useAdvancedSettings: \(this.useAdvancedSettings)");
+			////GRLog(s"maxVehiclesPerCall: \(this.maxVehiclesPerCall)");
     }
 
-    // Log all settings line by line for debugging
-    //GRLog(s"gracePeriodMin: \(this.gracePeriodMin)");
-    //GRLog(s"gracePeriodMax: \(this.gracePeriodMax)");
-    //GRLog(s"callSuccessCooldownMin: \(this.callSuccessCooldownMin)");
-    //GRLog(s"callSuccessCooldownMax: \(this.callSuccessCooldownMax)");
-    //GRLog(s"heatResetCooldown: \(this.heatResetCooldown)");
-    //GRLog(s"initialHeat: \(this.initialHeat)");
-    //GRLog(s"heatEscalation: \(this.heatEscalation)");
-    //GRLog(s"callsLimit: \(this.callsLimit)");
-    //GRLog(s"strongCallChance: \(this.strongCallChance)");
-    //GRLog(s"strongCallHeatBonus: \(this.strongCallHeatBonus)");
-    //GRLog(s"turfHeatBonus: \(this.turfHeatBonus)");
-    //GRLog(s"enabled: \(this.enabled)");
-    //GRLog(s"enabledWhenPlayerInCombat: \(this.enabledWhenPlayerInCombat)");
-    //GRLog(s"enabledWhenPlayerIsPassenger: \(this.enabledWhenPlayerIsPassenger)");
-    //GRLog(s"presetMode: \(ToString(this.presetMode))");
-    //GRLog(s"useAdvancedSettings: \(this.useAdvancedSettings)");
-    //GRLog(s"maxVehiclesPerCall: \(this.maxVehiclesPerCall)");
+
 	
     @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
     @runtimeProperty("ModSettings.displayName", "GibbonGR-Enabled-Name")
@@ -299,6 +301,9 @@ public class GRSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.dependency", "useAdvancedSettings")
     private let _maxVehiclesPerCall: Int32 = 2;
 
+    //---------------------------------------------------- BACKUP DELAYS ---------------------------------------------------- //
+
+
     // Public versions of private members
     public let gracePeriodMin: Float = 5;
     public let gracePeriodMax: Float = 15;
@@ -312,5 +317,10 @@ public class GRSettings extends ScriptableSystem {
     public let strongCallHeatBonus: Int32 = 8;
     public let turfHeatBonus: Int32 = 4;
     public let maxVehiclesPerCall: Int32 = 2;
+
+	// These are constant for "realism"
+    public let backupDelayMin: Float = 25;
+    public let backupDelayMax: Float = 45;
+    public let turfDelayReduction: Float = 10;
 }
 

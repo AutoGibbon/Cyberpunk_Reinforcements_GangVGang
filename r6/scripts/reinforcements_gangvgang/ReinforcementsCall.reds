@@ -1,6 +1,7 @@
 import Gibbon.GR.ReinforcementSystem.*
 import Gibbon.GR.Settings.*
 import Gibbon.GR.GangHandlers.*
+import Gibbon.GR.Logging.*
 
 @wrapMethod(ReactionManagerComponent)
 protected final func HandleStimEvent(stimData: ref<StimEventTaskData>) -> Void {
