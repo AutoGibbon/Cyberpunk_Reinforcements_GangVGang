@@ -41,6 +41,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
 				target = gangHandler.GetLastTarget();
 				targetPosition = gangHandler.GetLastCallerPosition();
 				if(!gangHandler.GetHasTrafficRequest() && IsDefined(target)) {
+					GRLog("injecting threat");
 					TargetTrackingExtension.InjectThreat(puppet, target);
 					NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
 				}
