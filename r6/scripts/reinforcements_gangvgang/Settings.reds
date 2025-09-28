@@ -77,7 +77,7 @@ public class GRSettings extends ScriptableSystem {
                 this.callSuccessCooldownMin = 55;
                 this.callSuccessCooldownMax = 60;
                 this.heatResetCooldown = 600;
-                this.initialHeat = 10;
+                this.initialHeat = 15;
                 this.heatEscalation = 5;
                 this.callsLimit = 1;
                 this.strongCallChance = 35;
