@@ -141,12 +141,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
     return RandRangeF(this.m_settings.GetGracePeriodMin(), this.m_settings.GetGracePeriodMax());
   }
 
-  public func GetBackupDelay(isTurf: Bool) -> Float {
-    let baseDelay = RandRangeF(this.m_settings.GetBackupDelayMin(), this.m_settings.GetBackupDelayMax());
-	GRLog(s"Backup delay: \(baseDelay), Turf: \(isTurf), reduction: \(this.m_settings.GetTurfDelayReduction())");
-    return isTurf ? MaxF(1.0, baseDelay - this.m_settings.GetTurfDelayReduction()) : baseDelay;
-  }
-
   public func IsConsideredTurf(district: ref<District>) -> Bool {
     let record = district.GetDistrictRecord();
     let turfList = this.GetTurfList();
