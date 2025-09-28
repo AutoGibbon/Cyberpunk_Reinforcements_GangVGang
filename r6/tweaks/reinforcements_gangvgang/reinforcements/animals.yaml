@@ -417,10 +417,13 @@ DynamicSpawnSystem.GRAnimalsTraffic1:
 
 DynamicSpawnSystem.GRAnimalsTraffic2:
   $type: DynamicVehicleData
-  vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_animal
+  vehicleRecord: Vehicle.GR_v_standard3_thorton_mackinaw_country
   unitRecordsPool:
     - $type: WeightedCharacter
       character: Character.GR_animals_grunt2_melee2_machete_mb
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_animals_bouncer2_melee2_fists_mb
       weight: 1.0
 
 DynamicSpawnSystem.GRAnimalsTraffic3:

@@ -342,13 +342,17 @@ DynamicSpawnSystem.GRMaelStormMaelStormEliteBike1:
         - $type: WeightedCharacter
           character: Character.GR_maelstrom_fast_fmelee3_mantis_wa_elite
           weight: 1.0
+
 #Traffic
 DynamicSpawnSystem.GRMaelStormTraffic1:
     $type: DynamicVehicleData
-    vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo
+    vehicleRecord: Vehicle.GR_v_standard2_thorton_galena_maelstrom
     unitRecordsPool:
         - $type: WeightedCharacter
           character: Character.GR_maelstrom_grunt2_melee2_hammer_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_maelstom_strong_shotgun2_carnage_ma_rare
           weight: 1.0
 
 DynamicSpawnSystem.GRMaelStormTraffic2:

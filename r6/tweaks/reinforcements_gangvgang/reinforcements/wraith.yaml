@@ -252,10 +252,13 @@ DynamicSpawnSystem.GRWraithRRRR1:
 
 DynamicSpawnSystem.GRWraithTraffic1:
     $type: DynamicVehicleData
-    vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_nomad
+    vehicleRecord: Vehicle.GR_v_standard2_thorton_galena_nomad
     unitRecordsPool:
         - $type: WeightedCharacter
           character: Character.GR_wraiths_grunt1_ranged1_nova_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_wraiths_grunt2_ranged2_copperhead_wa
           weight: 1.0
 
 DynamicSpawnSystem.GRWraithTraffic2:

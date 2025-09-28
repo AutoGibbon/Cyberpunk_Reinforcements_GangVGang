@@ -545,10 +545,13 @@ DynamicSpawnSystem.GRTygerCarRareRareRareNormal3:
 
 DynamicSpawnSystem.GRTygerTraffic1:
   $type: DynamicVehicleData
-  vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
+  vehicleRecord: Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
   unitRecordsPool:
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_biker2_melee2_baseball_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_biker1_ranged1_nue_ma
       weight: 1.0
 
 DynamicSpawnSystem.GRTygerTraffic2:

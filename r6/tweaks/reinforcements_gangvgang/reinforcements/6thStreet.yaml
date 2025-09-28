@@ -304,10 +304,13 @@ DynamicSpawnSystem.GRSixthEliteSquad4:
 # Traffic Spawns (5 entries for traffic spawns)
 DynamicSpawnSystem.GRSixthTraffic1:
     $type: DynamicVehicleData
-    vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
+    vehicleRecord: Vehicle.GR_v_standard2_archer_hella_sixth_street
     unitRecordsPool:
         - $type: WeightedCharacter
           character: Character.GR_sixthstreet_patrol2_ranged2_ajax_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_hooligan_ranged1_nova_ma
           weight: 1.0
 
 DynamicSpawnSystem.GRSixthTraffic2:
