@@ -68,18 +68,17 @@ public class GRSpawnTrafficCallback extends DelayCallback {
 
 ### Thread Safety
 
--   member access across classes is forbidden, and must be implmented via getter/setter
--   `let` declarations at class level are exempt from this rule, access to these members is still subject to the rule
--   public functions on classes should acquire a sensible lock to perform their logic, this can be down to member level, or simply at function scope. apply good reasoning to make a decision based on the context
--   compartmentalise locks by purpose i.e `private let m_SettingsLock: RWLock;` will be responsible for read/write to the settings class
--   avoid overlapping RWLock calls in different scopes that target the same lock variable, this will probably break things
--   exclusions to this rule:
-    -   private/public/protected member declarations
-    -   OnAttach, OnPlayerAttach, OnRestored, GetInstance : these are threadsafe by default
+-   member access between classes must be implmented via getter/setter
 
 #### RWLock
 
--   classes should define `private let m_lockPurpose: RWLock` members, and use them to get safe handles
+-   only create locking code when asked to do so. locking resources for thread safety is a last resort, better code organisation and execution flow is preferred
+-   classes should define `private let m_lockPurpose: RWLock` members, and use them to get safe handles, only when asked for
+-   compartmentalise locks by purpose i.e `private let m_SettingsLock: RWLock;` will be responsible for read/write to the settings class
+-   avoid overlapping RWLock calls in different scopes, this will probably break things
+-   exclusions to this rule:
+    -   private/public/protected member declarations
+    -   OnAttach, OnPlayerAttach, OnRestored, GetInstance : these are threadsafe by default
 -   to get/release a WRITE lock
     -   RWLock.Acquire(somelockvar)
     -   RWLock.Release(somelockvar)

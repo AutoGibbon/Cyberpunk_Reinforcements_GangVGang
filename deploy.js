@@ -3,6 +3,7 @@ const path = require("path");
 
 // Configuration
 const DEPLOYMENT_TARGET = "Z:\\GOG\\Cyberpunk 2077";
+//const DEPLOYMENT_TARGET = "Z:\\GOG\\test";
 const SOURCE_R6_FOLDER = "./r6";
 
 // Helper function to recursively delete directory

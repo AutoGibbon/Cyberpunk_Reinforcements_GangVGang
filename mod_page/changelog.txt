@@ -1,23 +1,37 @@
 Version 2.0.0
-- tbd
+> Introducing The Mox!
+	- Preferring smart weapons and stun batons, they will now patrol the Kabuki area.
+	- Added 8 new Moxies to support this feature
+	- (sometimes a Mox will spawn and use the appearance of Rita Wheeler. This is not on purpose, I might change it, I might not)
+> NCPD units rework
+	- Maxtac are no longer spawned, and have been replaced with custom NCPD elites bearing heavy weapons.
+	- This lets Maxtac remain the big bad who respond to the only cyberpsycho in town (you, apparently), and not ruin any illusions of their power in Night City
+	- Added 5 new Elite NCPD responders to support this rework.
+> Gang Turf Patrols!
+	- Each gang will now patrol their turf in their signature vehicles
+	- This is a temporary feature, as I know some smart people are working on an independent version of this wonderful idea.
+	- Arasaka, Barghest, Scavs, NCPD do not have turf patrols
+> Added small delays to reinforcement calls
+	- While entertaining, cars immediately appearing the moment a fight started was dumb (in my opinion)
+	- Adjusted some of the preset settings to account for this behaviour change
 
 Version 1.5.1
-- remove logging calls
+> remove logging calls
 
 Version 1.5.0
-- Add new preset modes for easy configuration
-- Balance pass on spawn rates overall
-- Fix a bug that caused far too many spawns
-- Police Sirens work when arriving (sometimes)
+> Add new preset modes for easy configuration
+> Balance pass on spawn rates overall
+> Fix a bug that caused far too many spawns
+> Police Sirens work when arriving (sometimes)
 
 Version 1.0.3
-- fix incorrect vehicle record in NCPD tweak data
+> fix incorrect vehicle record in NCPD tweak data
 
 Version 1.0.2
-- reviewed and updated all settings localisations
+> reviewed and updated all settings localisations
 
 Version 1.0.1
-- update jp-jp localisation, thanks to KeiSagano <3
+> update jp-jp localisation, thanks to KeiSagano <3
 
 Version 1.0.0
-- hiya
+> hiya
