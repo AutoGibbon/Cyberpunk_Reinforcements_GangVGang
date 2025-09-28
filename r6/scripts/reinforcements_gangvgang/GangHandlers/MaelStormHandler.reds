@@ -7,12 +7,12 @@ import Gibbon.GR.Settings.GRSettings
 public class GRMaelStromHandler extends GRGangHandler {
     private final func OnPlayerAttach(request: ref<PlayerAttachRequest>) -> Void { 
         let game = GetGameInstance();
-        this.reinforcementData = new GRMaelstormData();
-        this.preventionSystem = GameInstance.GetScriptableSystemsContainer(game).Get(n"PreventionSystem") as PreventionSystem;
-        this.delaySystem = GameInstance.GetDelaySystem(game);
-        this.settings = GRSettings.GetInstance(game);
-        this.affiliation = gamedataAffiliation.Maelstrom;
-        this.waveCounterUniqueId = 5000;
+        this.m_reinforcementData = new GRMaelstormData();
+        this.m_preventionSystem = GameInstance.GetScriptableSystemsContainer(game).Get(n"PreventionSystem") as PreventionSystem;
+        this.m_delaySystem = GameInstance.GetDelaySystem(game);
+        this.m_settings = GRSettings.GetInstance(game);
+        this.m_affiliation = gamedataAffiliation.Maelstrom;
+        this.m_waveCounterUniqueId = 5000;
         
     }
 
@@ -26,20 +26,20 @@ public class GRMaelStromHandler extends GRGangHandler {
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(GRMaelstromGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.m_delaySystem.DelayCallback(GRMaelstromGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(GRMaelstromHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.m_delaySystem.DelayCallback(GRMaelstromHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(GRMaelstromCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.m_delaySystem.DelayCallback(GRMaelstromCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
 	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
         let backupDelay = this.GetBackupDelay(isTurf);
-        this.delaySystem.DelayCallback(GRMaelstromCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
+        this.m_delaySystem.DelayCallback(GRMaelstromCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
     }
 }
 

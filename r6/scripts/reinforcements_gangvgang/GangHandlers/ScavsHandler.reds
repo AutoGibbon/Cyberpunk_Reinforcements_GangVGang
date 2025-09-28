@@ -7,12 +7,12 @@ import Gibbon.GR.Settings.GRSettings
 public class GRScavsHandler extends GRGangHandler {
     private final func OnPlayerAttach(request: ref<PlayerAttachRequest>) -> Void { 
         let game = GetGameInstance();
-        this.reinforcementData = new GRScavData();
-        this.preventionSystem = GameInstance.GetScriptableSystemsContainer(game).Get(n"PreventionSystem") as PreventionSystem;
-        this.delaySystem = GameInstance.GetDelaySystem(game);
-        this.settings = GRSettings.GetInstance(game);
-        this.affiliation = gamedataAffiliation.Scavengers;
-        this.waveCounterUniqueId = 8000;
+        this.m_reinforcementData = new GRScavData();
+        this.m_preventionSystem = GameInstance.GetScriptableSystemsContainer(game).Get(n"PreventionSystem") as PreventionSystem;
+        this.m_delaySystem = GameInstance.GetDelaySystem(game);
+        this.m_settings = GRSettings.GetInstance(game);
+        this.m_affiliation = gamedataAffiliation.Scavengers;
+        this.m_waveCounterUniqueId = 8000;
         
     }
 
@@ -26,20 +26,20 @@ public class GRScavsHandler extends GRGangHandler {
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(GRScavGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.m_delaySystem.DelayCallback(GRScavGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(GRScavHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.m_delaySystem.DelayCallback(GRScavHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(GRScavCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.m_delaySystem.DelayCallback(GRScavCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
 	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
         let backupDelay = this.GetBackupDelay(isTurf);
-        this.delaySystem.DelayCallback(GRScavCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
+        this.m_delaySystem.DelayCallback(GRScavCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
     }
 
 	public func OnTrafficSpawnStart() -> Bool {

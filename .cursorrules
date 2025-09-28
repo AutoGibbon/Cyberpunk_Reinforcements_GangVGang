@@ -23,6 +23,7 @@ This enables a lightweight and unobtrusive system that does not rely on complex 
 
 -   Use PascalCase for class names and public methods
 -   Use camelCase for variables and private methods
+-   Use m_varName for private/protected class fields
 -   Follow RedScript naming conventions for game API calls
 -   Use descriptive names for gang-related variables and methods
 -   Comment complex logic, especially game API interactions
@@ -36,18 +37,78 @@ This enables a lightweight and unobtrusive system that does not rely on complex 
 
 ## Development Guidelines
 
+### Delay system
+
+-   used when we want something to happen later, or to throttle requests for a certain activity to be performed
+-   managed using the DelaySystem native class, and 'callback handlers'
+-   example of a callback handler
+
+```
+public class GRSpawnTrafficCallback extends DelayCallback {
+    let handler: wref<GRReinforcementSystem>;
+
+    public static func Create(handler: ref<GRReinforcementSystem>) -> ref<GRSpawnTrafficCallback> {
+        let self: ref<GRSpawnTrafficCallback> = new GRSpawnTrafficCallback();
+        self.handler = handler;
+        return self;
+    }
+
+    public func Call() -> Void {
+        this.handler.SpawnTrafficVehiclesCallback();
+    }
+}
+```
+
+-   example of using the callback handler and delay system together, assuming the given class has this.m_delaySystem
+
+```
+	let delay: Float = 10.0 //seconds
+	this.m_delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, false);
+```
+
 ### Thread Safety
 
 -   member access across classes is forbidden, and must be implmented via getter/setter
--   getter/setter must use RWLock
+-   `let` declarations at class level are exempt from this rule, access to these members is still subject to the rule
+-   public functions on classes should acquire a sensible lock to perform their logic, this can be down to member level, or simply at function scope. apply good reasoning to make a decision based on the context
 -   compartmentalise locks by purpose i.e `private let m_SettingsLock: RWLock;` will be responsible for read/write to the settings class
+-   avoid overlapping RWLock calls in different scopes that target the same lock variable, this will probably break things
+-   exclusions to this rule:
+    -   private/public/protected member declarations
+    -   OnAttach, OnPlayerAttach, OnRestored, GetInstance : these are threadsafe by default
 
 #### RWLock
 
--   RWLock.Acquire(somelockvar) to get a safe write handle
--   RWLock.Release(somelockvar) to release a safe write handle
--   RWLock.AcquireShared(somelockvar) to get a safe read handle
--   RWLock.Release(somelockvar) to release safe read handle
+-   classes should define `private let m_lockPurpose: RWLock` members, and use them to get safe handles
+-   to get/release a WRITE lock
+    -   RWLock.Acquire(somelockvar)
+    -   RWLock.Release(somelockvar)
+-   to get/release a READ lock
+
+    -   RWLock.AcquireShared(somelockvar)
+    -   RWLock.ReleaseShared(somelockvar)
+
+-   example of a threadsafe getter:
+
+```
+public func GetLastCallAnswered() -> Bool {
+    let result: Bool;
+    RWLock.AcquireShared(this.m_reinforcementLock);
+    result = this.lastCallAnswered;
+	RWLock.ReleaseShared(this.m_reinforcementLock);
+    return result;
+}
+```
+
+-   example of threadsafe setter
+
+```
+public func SetHasTrafficRequest(hasTrafficRequest: Bool) -> Void {
+    RWLock.Acquire(this.m_reinforcementLock);
+    this.hasTrafficRequest = hasTrafficRequest;
+	RWLock.Release(this.m_reinforcementLock);
+}
+```
 
 ### Logging
 

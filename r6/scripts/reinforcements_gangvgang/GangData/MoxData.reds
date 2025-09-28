@@ -1,5 +1,6 @@
 module Gibbon.GR.GangData
 
+
 public class GRMoxData extends GRGangData {
 	public func GetTrafficSpawns() -> array<TweakDBID> {
 		return GetRandomFrom(

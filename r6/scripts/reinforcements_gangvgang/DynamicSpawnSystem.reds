@@ -59,33 +59,10 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
     while i < ArraySize(wheeledObjects) {
         wheeledObject = wheeledObjects[i];
 
-        if gangHandler.hasTrafficRequest {
-			//if(RandF() >= 0.5 ) {
-				//GRLog(s"JoinTrafficVehicleEvent");
-				let evt = new JoinTrafficVehicleEvent();
-				wheeledObject.QueueEvent(evt);
-				gangHandler.hasTrafficRequest = false;
-			/**
-				} else {
-					//GRLog(s"No JoinTrafficVehicleEvent");
-					reinSystem.numberOfTrafficSpawnRequests -= 1;
-					            ////GRLog(s"isCarChase=\(isCarChase) reinSystem.numberOfCarChaseRequests=\(reinSystem.numberOfCarChaseRequests)");
-					            let playerPosition = GetPlayer(GetGameInstance()).GetWorldPosition();
-					            aiVehicleMovecommand = new AIVehicleDriveToPointAutonomousCommand();
-					            aiVehicleMovecommand.driveDownTheRoadIndefinitely = true;
-					            aiVehicleMovecommand.clearTrafficOnPath = false;
-					            aiVehicleMovecommand.forcedStartSpeed = 5.0;
-					            aiVehicleMovecommand.minSpeed = 10.0;
-								aiVehicleMovecommand.maxSpeed = 20.0;
-					            aiVehicleMovecommand.minimumDistanceToTarget = 5.0;
-					            aiVehicleMovecommand.targetPosition = Vector4.Vector4To3(playerPosition);
-					            aiCommandEvent = new AICommandEvent();
-					            aiCommandEvent.command = aiVehicleMovecommand;
-					            wheeledObject.SetPoliceStrategyDestination(playerPosition);
-					            wheeledObject.QueueEvent(aiCommandEvent);
-					            wheeledObject.GetAIComponent().SetInitCmd(aiVehicleMovecommand);
-				}
-			*/
+        if gangHandler.GetHasTrafficRequest() {
+			let evt = new JoinTrafficVehicleEvent();
+			wheeledObject.QueueEvent(evt);
+			gangHandler.SetHasTrafficRequest(false);
         } else if IsDefined(target) {
             aiVehicleChaseCommand = new AIVehicleChaseCommand();
             aiVehicleChaseCommand.target = target;
@@ -114,7 +91,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
             wheeledObject.GetAIComponent().SetInitCmd(aiVehicleMovecommand);
         }
 
-        if Equals(gangHandler.affiliation, gamedataAffiliation.NCPD) {
+        if Equals(gangHandler.GetAffiliation(), gamedataAffiliation.NCPD) {
             wheeledObject.GetVehicleComponent().ToggleSiren(true, true);
         }
         i += 1;
@@ -123,10 +100,10 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
 	//support allowing gangs to call reinforcements from another gang, e.g NCPD, or whoever owns the turf?
 	let lastCaller = gangHandler.GetLastCaller();
 	if IsDefined(lastCaller) {
-		reinSystem.GetFactionHandler(lastCaller).lastCallAnswered = true;
+		reinSystem.GetFactionHandler(lastCaller).SetLastCallAnswered(true);
 	}
-    gangHandler.lastCallAnswered = true;
-    GRLog(s"\(gangHandler.affiliation), veh \(ArraySize(wheeledObjects)) ");
+    gangHandler.SetLastCallAnswered(true);
+    GRLog(s"\(gangHandler.GetAffiliation()), veh \(ArraySize(wheeledObjects)) ");
     return;
 }
 
@@ -160,3 +137,74 @@ protected final func SpawnCallback(spawnedObject: ref<GameObject>) -> Void {
     wrappedMethod(spawnedObject);
 }
 
+/*
+snippet to make vehicles drive to the player
+    let playerPosition = GetPlayer(GetGameInstance()).GetWorldPosition();
+	aiVehicleMovecommand = new AIVehicleDriveToPointAutonomousCommand();
+	aiVehicleMovecommand.driveDownTheRoadIndefinitely = true;
+	aiVehicleMovecommand.clearTrafficOnPath = false;
+	aiVehicleMovecommand.forcedStartSpeed = 5.0;
+	aiVehicleMovecommand.minSpeed = 10.0;
+	aiVehicleMovecommand.maxSpeed = 20.0;
+	aiVehicleMovecommand.minimumDistanceToTarget = 5.0;
+	aiVehicleMovecommand.targetPosition = Vector4.Vector4To3(playerPosition);
+	aiCommandEvent = new AICommandEvent();
+	aiCommandEvent.command = aiVehicleMovecommand;
+	wheeledObject.SetPoliceStrategyDestination(playerPosition);
+	wheeledObject.QueueEvent(aiCommandEvent);
+	wheeledObject.GetAIComponent().SetInitCmd(aiVehicleMovecommand);
+*/
+
+/*
+public class GRVehicleSpawnPositionsCollector extends ScriptableSystem {
+	private let m_lock: RWLock;
+	
+    private let m_entitySystem: ref<DynamicEntitySystem>;
+    private let m_callbackSystem: wref<CallbackSystem>;
+	private let m_vehiclePositions: array<Vector4>;
+
+	public func OnAttach() {
+		this.m_vehiclePositions = [];
+        this.m_entitySystem = GameInstance.GetDynamicEntitySystem();
+        this.m_callbackSystem = GameInstance.GetCallbackSystem();
+        this.m_callbackSystem.RegisterCallback(n"Entity/Attached", this, n"OnEntityAttached").AddTarget(EntityTarget.Type(n"vehicleCarBaseObject"));
+    }
+
+	//function to get a random vehicle position that is within a range of 50-100 units from the player, and pop it from the array
+	public func GetRandomVehiclePosition() -> Vector4 {
+		let player = GetPlayer(GetGameInstance());
+		let playerPosition = player.GetWorldPosition();
+		let outputPosition: Vector4;
+		let randomNumber: Int32;
+		let distance: Float;
+    	while Vector4.IsZero(outputPosition) {
+        	randomNumber = RandRange(0, ArraySize(this.m_vehiclePositions) - 1);
+			distance = Vector4.Distance(playerPosition, this.m_vehiclePositions[randomNumber]);
+			if distance > 50.0 && distance < 100.0 {
+				outputPosition = this.m_vehiclePositions[randomNumber];
+			} else {
+				ArrayPop(this.m_vehiclePositions);
+			}
+		}
+		return outputPosition;
+	}
+
+	private cb func OnEntityAttached(evt: ref<EntityLifecycleEvent>) {
+		// todo store the position of the vehicle in a rotating stack of positions
+		let player = GetPlayer(GetGameInstance());
+		let playerPosition = player.GetWorldPosition();
+		let entity = evt.GetEntity() as Entity;
+		let vehiclePosition = entity.GetWorldPosition();
+		let distance = Vector4.Distance(playerPosition, vehiclePosition);
+		if distance > 50.0 && distance < 100.0 {
+			RWLock.Acquire(this.m_lock);
+			// add this one
+			ArrayPush(this.m_vehiclePositions, vehiclePosition);
+			//phill said 11 is better than 10
+			if ArraySize(this.m_vehiclePositions) > 11 {
+				ArrayPop(this.m_vehiclePositions);
+			}
+			RWLock.Release(this.m_lock);
+		}
+	}
+}*/

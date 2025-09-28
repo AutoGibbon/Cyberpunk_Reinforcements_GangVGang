@@ -8,7 +8,7 @@ protected final func HandleStimEvent(stimData: ref<StimEventTaskData>) -> Void {
 	wrappedMethod(stimData);
     
 	let reinSystem: wref<GRReinforcementSystem> = GRReinforcementSystem.GetInstance(GetGameInstance());
-	if (reinSystem.settings.enabled) {
+	if (reinSystem.m_settings.enabled) {
     	let ownerPuppet: ref<ScriptedPuppet>;
 
 		ownerPuppet = this.GetOwnerPuppet();

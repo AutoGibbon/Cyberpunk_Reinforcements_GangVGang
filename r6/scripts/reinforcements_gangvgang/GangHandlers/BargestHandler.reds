@@ -7,12 +7,12 @@ import Gibbon.GR.Settings.GRSettings
 public class GRBarghestHandler extends GRGangHandler {
     private final func OnPlayerAttach(request: ref<PlayerAttachRequest>) -> Void { 
         let game = GetGameInstance();
-        this.reinforcementData = new GRBarghestData();
-        this.preventionSystem = GameInstance.GetScriptableSystemsContainer(game).Get(n"PreventionSystem") as PreventionSystem;
-        this.delaySystem = GameInstance.GetDelaySystem(game);
-        this.settings = GRSettings.GetInstance(game);
-        this.affiliation = gamedataAffiliation.Barghest;
-        this.waveCounterUniqueId = 4000;
+        this.m_reinforcementData = new GRBarghestData();
+        this.m_preventionSystem = GameInstance.GetScriptableSystemsContainer(game).Get(n"PreventionSystem") as PreventionSystem;
+        this.m_delaySystem = GameInstance.GetDelaySystem(game);
+        this.m_settings = GRSettings.GetInstance(game);
+        this.m_affiliation = gamedataAffiliation.Barghest;
+        this.m_waveCounterUniqueId = 4000;
         
     }
 
@@ -22,20 +22,20 @@ public class GRBarghestHandler extends GRGangHandler {
     }
 
     public func OnHeatResetCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(GRBarghestHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
+        this.m_delaySystem.DelayCallback(GRBarghestHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
     }
 
     public func OnCallSuccessCooldownStart() -> Void {
-        this.delaySystem.DelayCallback(GRBarghestCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+        this.m_delaySystem.DelayCallback(GRBarghestCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 
     public func OnGraceStart() -> Void {
-        this.delaySystem.DelayCallback(GRBarghestGraceEndCallback.Create(this), this.GetGraceTime(), true);
+        this.m_delaySystem.DelayCallback(GRBarghestGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
 	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
         let backupDelay = this.GetBackupDelay(isTurf);
-        this.delaySystem.DelayCallback(GRBarghestCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
+        this.m_delaySystem.DelayCallback(GRBarghestCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
     }
 
     public func GetTurfList() -> array<String> {

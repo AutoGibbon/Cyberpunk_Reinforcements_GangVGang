@@ -1,7 +1,6 @@
 module Gibbon.GR.GangData
 
 
-
 public class GRNCPDData extends GRGangData {
 	public func GetTrafficSpawns() -> array<TweakDBID> { return [];}
 	

@@ -6,30 +6,30 @@ import Gibbon.GR.Settings.*
 import Gibbon.GR.Logging.*
 
 public class GRReinforcementSystem extends ScriptableSystem {
-    private let tygerHandler: ref<GRTygersHandler>;
-    private let scavHandler: ref<GRScavsHandler>;
-    private let animalsHandler: ref<GRAnimalsHandler>;
-    private let maelStormHandler: ref<GRMaelStromHandler>;
-    private let arasakaHandler: ref<GRArasakaHandler>;
-    private let voodooHandler: ref<GRVoodooHandler>;
-    private let sixthHandler: ref<GRSixthStreetHandler>;
-    private let militechHandler: ref<GRMilitechHandler>;
-    private let valentinosHandler: ref<GRValentinosHandler>;
-    private let barghestHandler: ref<GRBarghestHandler>;
-    private let wraithsHandler: ref<GRWraithsHandler>;
-    private let ncpdHandler: ref<GRNCPDHandler>;
-    private let moxHandler: ref<GRMoxHandler>;
-	private let gameAttachHandled: Bool = false;
+    private let m_tygerHandler: ref<GRTygersHandler>;
+    private let m_scavHandler: ref<GRScavsHandler>;
+    private let m_animalsHandler: ref<GRAnimalsHandler>;
+    private let m_maelStormHandler: ref<GRMaelStromHandler>;
+    private let m_arasakaHandler: ref<GRArasakaHandler>;
+    private let m_voodooHandler: ref<GRVoodooHandler>;
+    private let m_sixthHandler: ref<GRSixthStreetHandler>;
+    private let m_militechHandler: ref<GRMilitechHandler>;
+    private let m_valentinosHandler: ref<GRValentinosHandler>;
+    private let m_barghestHandler: ref<GRBarghestHandler>;
+    private let m_wraithsHandler: ref<GRWraithsHandler>;
+    private let m_ncpdHandler: ref<GRNCPDHandler>;
+    private let m_moxHandler: ref<GRMoxHandler>;
+	private let m_gameAttachHandled: Bool = false;
 
-    private let preventionSystem: ref<PreventionSystem>;
-    private let QuestsSystem: ref<QuestsSystem>;
-	private let delaySystem: ref<DelaySystem>;
+    private let m_preventionSystem: ref<PreventionSystem>;
+    private let m_questsSystem: ref<QuestsSystem>;
+	private let m_delaySystem: ref<DelaySystem>;
 
-    public let settings: ref<GRSettings>;
+    public let m_settings: ref<GRSettings>;
 
 	public func OnAttach() -> Void {
 		GRLog("ReinforcementSystem OnAttach");
-		this.gameAttachHandled = false;
+		this.m_gameAttachHandled = false;
 	}
 
     public final func OnPlayerAttach(request: ref<PlayerAttachRequest>) -> Void {
@@ -37,49 +37,49 @@ public class GRReinforcementSystem extends ScriptableSystem {
         let theGame = GetGameInstance();
         // I just lost it
 
-        this.preventionSystem = GameInstance.GetScriptableSystemsContainer(theGame).Get(n"PreventionSystem") as PreventionSystem;
-        this.QuestsSystem = GameInstance.GetQuestsSystem(theGame);
-		this.delaySystem = GameInstance.GetDelaySystem(theGame);
+        this.m_preventionSystem = GameInstance.GetScriptableSystemsContainer(theGame).Get(n"PreventionSystem") as PreventionSystem;
+        this.m_questsSystem = GameInstance.GetQuestsSystem(theGame);
+		this.m_delaySystem = GameInstance.GetDelaySystem(theGame);
 
-        this.settings = GRSettings.GetInstance(theGame);
-        this.tygerHandler = GRTygersHandler.GetInstance(theGame);
-        this.scavHandler = GRScavsHandler.GetInstance(theGame);
-        this.animalsHandler = GRAnimalsHandler.GetInstance(theGame);
-        this.maelStormHandler = GRMaelStromHandler.GetInstance(theGame);
-        this.arasakaHandler = GRArasakaHandler.GetInstance(theGame);
-        this.voodooHandler = GRVoodooHandler.GetInstance(theGame);
-        this.sixthHandler = GRSixthStreetHandler.GetInstance(theGame);
-        this.militechHandler = GRMilitechHandler.GetInstance(theGame);
-        this.valentinosHandler = GRValentinosHandler.GetInstance(theGame);
-        this.barghestHandler = GRBarghestHandler.GetInstance(theGame);
-        this.wraithsHandler = GRWraithsHandler.GetInstance(theGame);
-        this.ncpdHandler = GRNCPDHandler.GetInstance(theGame);
-        this.moxHandler = GRMoxHandler.GetInstance(theGame);
+        this.m_settings = GRSettings.GetInstance(theGame);
+        this.m_tygerHandler = GRTygersHandler.GetInstance(theGame);
+        this.m_scavHandler = GRScavsHandler.GetInstance(theGame);
+        this.m_animalsHandler = GRAnimalsHandler.GetInstance(theGame);
+        this.m_maelStormHandler = GRMaelStromHandler.GetInstance(theGame);
+        this.m_arasakaHandler = GRArasakaHandler.GetInstance(theGame);
+        this.m_voodooHandler = GRVoodooHandler.GetInstance(theGame);
+        this.m_sixthHandler = GRSixthStreetHandler.GetInstance(theGame);
+        this.m_militechHandler = GRMilitechHandler.GetInstance(theGame);
+        this.m_valentinosHandler = GRValentinosHandler.GetInstance(theGame);
+        this.m_barghestHandler = GRBarghestHandler.GetInstance(theGame);
+        this.m_wraithsHandler = GRWraithsHandler.GetInstance(theGame);
+        this.m_ncpdHandler = GRNCPDHandler.GetInstance(theGame);
+        this.m_moxHandler = GRMoxHandler.GetInstance(theGame);
         //debugging
-        // this.tygerHandler.isDisabled = true;
-        // this.scavHandler.isDisabled = true;
-        // this.animalsHandler.isDisabled = true;
-        // this.maelstromHandler.isDisabled = true;
-        // this.arasakaHandler.isDisabled = true;
-        // this.voodooHandler.isDisabled = true;
-        // this.sixthHandler.isDisabled = true;
-        // this.militechHandler.isDisabled = true;
-        // this.valentinosHandler.isDisabled = true;
-        // this.barghestHandler.isDisabled = true;
-        // this.wraithsHandler.isDisabled = true;
-        // this.ncpdHandler.isDisabled = true;
+        // this.tygerHandler.SetIsDisabled(true);
+        // this.scavHandler.SetIsDisabled(true);
+        // this.animalsHandler.SetIsDisabled(true);
+        // this.maelstromHandler.SetIsDisabled(true);
+        // this.arasakaHandler.SetIsDisabled(true);
+        // this.voodooHandler.SetIsDisabled(true);
+        // this.sixthHandler.SetIsDisabled(true);
+        // this.militechHandler.SetIsDisabled(true);
+        // this.valentinosHandler.SetIsDisabled(true);
+        // this.barghestHandler.SetIsDisabled(true);
+        // this.wraithsHandler.SetIsDisabled(true);
+        // this.ncpdHandler.SetIsDisabled(true);
 
         // cause we're doing funky stuff with public and private bindings
-        this.settings.ReconcileSettings();
+        this.m_settings.ReconcileSettings();
 
-		if !this.gameAttachHandled {
+		if !this.m_gameAttachHandled {
 			GRLog("ReinforcementSystem OnPlayerAttach->HandleGameAttach");
 			this.HandleGameAttach();
 		}
     }
 
 	public func OnRestored(saveVersion: Int32, gameVersion: Int32) {
-    	if !this.gameAttachHandled {
+		if !this.m_gameAttachHandled {
 			GRLog("ReinforcementSystem OnRestored->HandleGameAttach");
 			this.HandleGameAttach();
 		}
@@ -93,7 +93,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
 		}
 		GRLog("ReinforcementSystem HandleGameAttach->DoLogic");
 
-		this.gameAttachHandled = true;
+		this.m_gameAttachHandled = true;
 		this.ResetAllGangs();
 		this.StartTrafficSpawns();
 	}
@@ -104,19 +104,19 @@ public class GRReinforcementSystem extends ScriptableSystem {
 	}
 
     public func ResetAllGangs() -> Void {
-        this.tygerHandler.OnHeatResetCooldownEnd();
-        this.scavHandler.OnHeatResetCooldownEnd();
-        this.animalsHandler.OnHeatResetCooldownEnd();
-        this.maelStormHandler.OnHeatResetCooldownEnd();
-        this.arasakaHandler.OnHeatResetCooldownEnd();
-        this.voodooHandler.OnHeatResetCooldownEnd();
-        this.sixthHandler.OnHeatResetCooldownEnd();
-        this.militechHandler.OnHeatResetCooldownEnd();
-        this.valentinosHandler.OnHeatResetCooldownEnd();
-        this.barghestHandler.OnHeatResetCooldownEnd();
-        this.wraithsHandler.OnHeatResetCooldownEnd();
-        this.ncpdHandler.OnHeatResetCooldownEnd();
-        this.moxHandler.OnHeatResetCooldownEnd();
+        this.m_tygerHandler.OnHeatResetCooldownEnd();
+        this.m_scavHandler.OnHeatResetCooldownEnd();
+        this.m_animalsHandler.OnHeatResetCooldownEnd();
+        this.m_maelStormHandler.OnHeatResetCooldownEnd();
+        this.m_arasakaHandler.OnHeatResetCooldownEnd();
+        this.m_voodooHandler.OnHeatResetCooldownEnd();
+        this.m_sixthHandler.OnHeatResetCooldownEnd();
+        this.m_militechHandler.OnHeatResetCooldownEnd();
+        this.m_valentinosHandler.OnHeatResetCooldownEnd();
+        this.m_barghestHandler.OnHeatResetCooldownEnd();
+        this.m_wraithsHandler.OnHeatResetCooldownEnd();
+        this.m_ncpdHandler.OnHeatResetCooldownEnd();
+        this.m_moxHandler.OnHeatResetCooldownEnd();
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRReinforcementSystem> {
@@ -186,7 +186,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        if !this.settings.enabledWhenPlayerInCombat && GetPlayer(puppet.GetGame()).IsInCombat() {
+        if !this.m_settings.GetEnabledWhenPlayerInCombat() && GetPlayer(puppet.GetGame()).IsInCombat() {
             return false;
         }
 
@@ -199,7 +199,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        let record = this.preventionSystem.GetCurrentDistrict().GetDistrictRecord();
+        let record = this.m_preventionSystem.GetCurrentDistrict().GetDistrictRecord();
         let nonoZones = [
             "LittleChina_Afterlife",
             "Dogtown_Akebono",
@@ -249,7 +249,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        if this.QuestsSystem.GetFact(n"q001_01_go_to_sleep_done") == 0 && this.QuestsSystem.GetFact(n"q005_johnny_chip_acquired") == 0 || this.QuestsSystem.GetFact(n"q115_point_of_no_return") == 1 {
+        if this.m_questsSystem.GetFact(n"q001_01_go_to_sleep_done") == 0 && this.m_questsSystem.GetFact(n"q005_johnny_chip_acquired") == 0 || this.m_questsSystem.GetFact(n"q115_point_of_no_return") == 1 {
             return false;
         }
 
@@ -257,7 +257,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        if !this.settings.enabledWhenPlayerIsPassenger && VehicleComponent.IsMountedToVehicle(player.GetGame(), player) {
+        if !this.m_settings.GetEnabledWhenPlayerIsPassenger() && VehicleComponent.IsMountedToVehicle(player.GetGame(), player) {
             let vehicle = player.GetMountedVehicle();
             if vehicle.IsPlayerMounted() && !vehicle.IsPlayerDriver() {
                 return false;
@@ -276,7 +276,6 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        // todo change this after we figure out who the npc is fighting
         let distanceToTarget = Vector4.Distance(puppet.GetWorldPosition(), target.GetWorldPosition());
         if distanceToTarget > 30.0 {
             return false;
@@ -291,31 +290,31 @@ public class GRReinforcementSystem extends ScriptableSystem {
             .Type();
         switch affiliation {
             case gamedataAffiliation.TygerClaws:
-                return this.tygerHandler;
+                return this.m_tygerHandler;
             case gamedataAffiliation.Scavengers:
-                return this.scavHandler;
+                return this.m_scavHandler;
             case gamedataAffiliation.Animals:
-                return this.animalsHandler;
+                return this.m_animalsHandler;
             case gamedataAffiliation.Maelstrom:
-                return this.maelStormHandler;
+                return this.m_maelStormHandler;
             case gamedataAffiliation.Arasaka:
-                return this.arasakaHandler;
+                return this.m_arasakaHandler;
             case gamedataAffiliation.VoodooBoys:
-                return this.voodooHandler;
+                return this.m_voodooHandler;
             case gamedataAffiliation.SixthStreet:
-                return this.sixthHandler;
+                return this.m_sixthHandler;
             case gamedataAffiliation.Militech:
-                return this.militechHandler;
+                return this.m_militechHandler;
             case gamedataAffiliation.Valentinos:
-                return this.valentinosHandler;
+                return this.m_valentinosHandler;
             case gamedataAffiliation.Barghest:
-                return this.barghestHandler;
+                return this.m_barghestHandler;
             case gamedataAffiliation.Wraiths:
-                return this.wraithsHandler;
+                return this.m_wraithsHandler;
             case gamedataAffiliation.NCPD:
-                return this.ncpdHandler;
+                return this.m_ncpdHandler;
             case gamedataAffiliation.TheMox:
-                return this.moxHandler;
+                return this.m_moxHandler;
             default:
                 break;
         }
@@ -334,11 +333,8 @@ public class GRReinforcementSystem extends ScriptableSystem {
             if this.GetFactionHandler(puppet).TryCallingReinforcements(puppet) {
                 this.ReinforcementsCalled(puppet, target);
             }
-        } else {
-			//GRLog(s"\(TDBID.ToStringDEBUG(puppet.GetRecordID())) not allowed to call reinforcements: in combat with player");
-		}
+        }
     }
-
 
     public func RequestSpawnTraffic(vehicles: array<TweakDBID>) -> Void {
         let game = GetGameInstance();
@@ -367,24 +363,24 @@ public class GRReinforcementSystem extends ScriptableSystem {
 	// basically abusing the delay system to keep other long-lived callbacks alive
 	// 
     public func KeepAliveCallback() -> Void {
-		this.delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 11, false);
+		this.m_delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 11, false);
     }
 
 	public func SpawnTrafficVehiclesCallback() -> Void {
 		// Call SpawnTrafficVehicles for each gang handler, except NCPD, Arasaka, Scavs
-		this.tygerHandler.SpawnTrafficVehicles();
-		this.animalsHandler.SpawnTrafficVehicles();
-		this.maelStormHandler.SpawnTrafficVehicles();
-		this.voodooHandler.SpawnTrafficVehicles();
-		this.sixthHandler.SpawnTrafficVehicles();
-		this.militechHandler.SpawnTrafficVehicles();
-		this.valentinosHandler.SpawnTrafficVehicles();
-		this.wraithsHandler.SpawnTrafficVehicles();
-		this.moxHandler.SpawnTrafficVehicles();
+		this.m_tygerHandler.SpawnTrafficVehicles();
+		this.m_animalsHandler.SpawnTrafficVehicles();
+		this.m_maelStormHandler.SpawnTrafficVehicles();
+		this.m_voodooHandler.SpawnTrafficVehicles();
+		this.m_sixthHandler.SpawnTrafficVehicles();
+		this.m_militechHandler.SpawnTrafficVehicles();
+		this.m_valentinosHandler.SpawnTrafficVehicles();
+		this.m_wraithsHandler.SpawnTrafficVehicles();
+		this.m_moxHandler.SpawnTrafficVehicles();
 		
 		// Schedule next traffic spawn callback
-		let delay = RandRangeF(this.settings.trafficSpawnDelayMin, this.settings.trafficSpawnDelayMax);
-		this.delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, false);
+		let delay = RandRangeF(this.m_settings.GetTrafficSpawnDelayMin(), this.m_settings.GetTrafficSpawnDelayMax());
+		this.m_delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, false);
 	}
 }
 
@@ -415,4 +411,3 @@ public class GRSpawnTrafficCallback extends DelayCallback {
         this.handler.SpawnTrafficVehiclesCallback();
     }
 }
-

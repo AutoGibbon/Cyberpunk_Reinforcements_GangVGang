@@ -10,6 +10,9 @@ enum PresetMode {
 }
 
 public class GRSettings extends ScriptableSystem {
+    //locks
+    private let m_settingsLock: RWLock;
+
     private let showPublics: Bool = false;
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRSettings> {
@@ -32,6 +35,7 @@ public class GRSettings extends ScriptableSystem {
     }
 
     public func ReconcileSettings() -> Void {
+		RWLock.Acquire(this.m_settingsLock);
         //GRLog("Reconciling settings");
         if this.useAdvancedSettings {
             this.gracePeriodMin = MinF(this._gracePeriodMin, this.gracePeriodMax);
@@ -101,25 +105,7 @@ public class GRSettings extends ScriptableSystem {
                 this.maxVehiclesPerCall = 4;
             }
         }
-
-		    // Log all settings line by line for debugging
-			////GRLog(s"gracePeriodMin: \(this.gracePeriodMin)");
-			////GRLog(s"gracePeriodMax: \(this.gracePeriodMax)");
-			////GRLog(s"callSuccessCooldownMin: \(this.callSuccessCooldownMin)");
-			////GRLog(s"callSuccessCooldownMax: \(this.callSuccessCooldownMax)");
-			////GRLog(s"heatResetCooldown: \(this.heatResetCooldown)");
-			////GRLog(s"initialHeat: \(this.initialHeat)");
-			////GRLog(s"heatEscalation: \(this.heatEscalation)");
-			////GRLog(s"callsLimit: \(this.callsLimit)");
-			////GRLog(s"strongCallChance: \(this.strongCallChance)");
-			////GRLog(s"strongCallHeatBonus: \(this.strongCallHeatBonus)");
-			////GRLog(s"turfHeatBonus: \(this.turfHeatBonus)");
-			////GRLog(s"enabled: \(this.enabled)");
-			////GRLog(s"enabledWhenPlayerInCombat: \(this.enabledWhenPlayerInCombat)");
-			////GRLog(s"enabledWhenPlayerIsPassenger: \(this.enabledWhenPlayerIsPassenger)");
-			////GRLog(s"presetMode: \(ToString(this.presetMode))");
-			////GRLog(s"useAdvancedSettings: \(this.useAdvancedSettings)");
-			////GRLog(s"maxVehiclesPerCall: \(this.maxVehiclesPerCall)");
+        RWLock.Release(this.m_settingsLock);
     }
 
 
@@ -303,26 +289,334 @@ public class GRSettings extends ScriptableSystem {
 
     //---------------------------------------------------- BACKUP DELAYS ---------------------------------------------------- //
 
-
     // Public versions of private members
-    public let gracePeriodMin: Float = 5;
-    public let gracePeriodMax: Float = 15;
-    public let callSuccessCooldownMin: Float = 15;
-    public let callSuccessCooldownMax: Float = 60;
-    public let heatResetCooldown: Float = 300;
-    public let initialHeat: Int32 = 2;
-    public let heatEscalation: Int32 = 3;
-    public let callsLimit: Int32 = 3;
-    public let strongCallChance: Int32 = 20;
-    public let strongCallHeatBonus: Int32 = 8;
-    public let turfHeatBonus: Int32 = 4;
-    public let maxVehiclesPerCall: Int32 = 2;
+    private let gracePeriodMin: Float = 5;
+    private let gracePeriodMax: Float = 15;
+    private let callSuccessCooldownMin: Float = 15;
+    private let callSuccessCooldownMax: Float = 60;
+    private let heatResetCooldown: Float = 300;
+    private let initialHeat: Int32 = 2;
+    private let heatEscalation: Int32 = 3;
+    private let callsLimit: Int32 = 3;
+    private let strongCallChance: Int32 = 20;
+    private let strongCallHeatBonus: Int32 = 8;
+    private let turfHeatBonus: Int32 = 4;
+    private let maxVehiclesPerCall: Int32 = 2;
 
 	// These are constant for "realism"
-    public let backupDelayMin: Float = 35;
-    public let backupDelayMax: Float = 55;
-    public let turfDelayReduction: Float = 15;
-	public let trafficSpawnDelayMin: Float = 60; //240
-	public let trafficSpawnDelayMax: Float = 120; //480
+	private let backupDelayMin: Float = 35;
+    private let backupDelayMax: Float = 55;
+    private let turfDelayReduction: Float = 15;
+	private let trafficSpawnDelayMin: Float = 240; //4 minutes
+	private let trafficSpawnDelayMax: Float = 480; //8 minutes
+
+    // Threadsafe getters and setters for public fields
+    public func GetEnabled() -> Bool {
+        let result: Bool;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.enabled;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetEnabled(enabled: Bool) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.enabled = enabled;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetEnabledWhenPlayerInCombat() -> Bool {
+        let result: Bool;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.enabledWhenPlayerInCombat;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetEnabledWhenPlayerInCombat(enabledWhenPlayerInCombat: Bool) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.enabledWhenPlayerInCombat = enabledWhenPlayerInCombat;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetEnabledWhenPlayerIsPassenger() -> Bool {
+        let result: Bool;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.enabledWhenPlayerIsPassenger;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetEnabledWhenPlayerIsPassenger(enabledWhenPlayerIsPassenger: Bool) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.enabledWhenPlayerIsPassenger = enabledWhenPlayerIsPassenger;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetPresetMode() -> PresetMode {
+        let result: PresetMode;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.presetMode;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetPresetMode(presetMode: PresetMode) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.presetMode = presetMode;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetUseAdvancedSettings() -> Bool {
+        let result: Bool;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.useAdvancedSettings;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetUseAdvancedSettings(useAdvancedSettings: Bool) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.useAdvancedSettings = useAdvancedSettings;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetGracePeriodMin() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.gracePeriodMin;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetGracePeriodMin(gracePeriodMin: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.gracePeriodMin = gracePeriodMin;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetGracePeriodMax() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.gracePeriodMax;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetGracePeriodMax(gracePeriodMax: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.gracePeriodMax = gracePeriodMax;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetCallSuccessCooldownMin() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.callSuccessCooldownMin;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetCallSuccessCooldownMin(callSuccessCooldownMin: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.callSuccessCooldownMin = callSuccessCooldownMin;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetCallSuccessCooldownMax() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.callSuccessCooldownMax;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetCallSuccessCooldownMax(callSuccessCooldownMax: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.callSuccessCooldownMax = callSuccessCooldownMax;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetHeatResetCooldown() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.heatResetCooldown;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetHeatResetCooldown(heatResetCooldown: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.heatResetCooldown = heatResetCooldown;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetInitialHeat() -> Int32 {
+        let result: Int32;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.initialHeat;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetInitialHeat(initialHeat: Int32) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.initialHeat = initialHeat;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetHeatEscalation() -> Int32 {
+        let result: Int32;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.heatEscalation;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetHeatEscalation(heatEscalation: Int32) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.heatEscalation = heatEscalation;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetCallsLimit() -> Int32 {
+        let result: Int32;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.callsLimit;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetCallsLimit(callsLimit: Int32) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.callsLimit = callsLimit;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetStrongCallChance() -> Int32 {
+        let result: Int32;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.strongCallChance;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetStrongCallChance(strongCallChance: Int32) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.strongCallChance = strongCallChance;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetStrongCallHeatBonus() -> Int32 {
+        let result: Int32;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.strongCallHeatBonus;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetStrongCallHeatBonus(strongCallHeatBonus: Int32) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.strongCallHeatBonus = strongCallHeatBonus;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetTurfHeatBonus() -> Int32 {
+        let result: Int32;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.turfHeatBonus;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetTurfHeatBonus(turfHeatBonus: Int32) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.turfHeatBonus = turfHeatBonus;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetMaxVehiclesPerCall() -> Int32 {
+        let result: Int32;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.maxVehiclesPerCall;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetMaxVehiclesPerCall(maxVehiclesPerCall: Int32) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.maxVehiclesPerCall = maxVehiclesPerCall;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetBackupDelayMin() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.backupDelayMin;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetBackupDelayMin(backupDelayMin: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.backupDelayMin = backupDelayMin;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetBackupDelayMax() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.backupDelayMax;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetBackupDelayMax(backupDelayMax: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.backupDelayMax = backupDelayMax;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetTurfDelayReduction() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.turfDelayReduction;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetTurfDelayReduction(turfDelayReduction: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.turfDelayReduction = turfDelayReduction;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetTrafficSpawnDelayMin() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.trafficSpawnDelayMin;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetTrafficSpawnDelayMin(trafficSpawnDelayMin: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.trafficSpawnDelayMin = trafficSpawnDelayMin;
+        RWLock.Release(this.m_settingsLock);
+    }
+
+    public func GetTrafficSpawnDelayMax() -> Float {
+        let result: Float;
+        RWLock.AcquireShared(this.m_settingsLock);
+        result = this.trafficSpawnDelayMax;
+        RWLock.ReleaseShared(this.m_settingsLock);
+        return result;
+    }
+
+    public func SetTrafficSpawnDelayMax(trafficSpawnDelayMax: Float) -> Void {
+        RWLock.Acquire(this.m_settingsLock);
+        this.trafficSpawnDelayMax = trafficSpawnDelayMax;
+        RWLock.Release(this.m_settingsLock);
+    }
 }
 
