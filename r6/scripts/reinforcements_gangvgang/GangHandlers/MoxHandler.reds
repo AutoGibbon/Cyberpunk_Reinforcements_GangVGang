@@ -37,11 +37,6 @@ public class GRMoxHandler extends GRGangHandler {
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRMoxCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
-
-	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
-        let backupDelay = this.GetBackupDelay(isTurf);
-        this.m_delaySystem.DelayCallback(GRMoxCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
-    }
 }
 
 public class GRMoxEndCallback extends DelayCallback {
@@ -81,18 +76,5 @@ public class GRMoxCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
-  }
-}
-
-public class GRMoxCallSuccessDelayArrivalCallback extends DelayCallback {
-    let handler: wref<GRMoxHandler>;
-    public static func Create(handler: ref<GRMoxHandler>) -> ref<GRMoxCallSuccessDelayArrivalCallback> {
-        let self: ref<GRMoxCallSuccessDelayArrivalCallback> = new GRMoxCallSuccessDelayArrivalCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-	this.handler.CompleteReinforcementCall();
   }
 }

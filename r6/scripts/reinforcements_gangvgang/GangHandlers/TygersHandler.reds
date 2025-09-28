@@ -37,11 +37,6 @@ public class GRTygersHandler extends GRGangHandler {
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRTygerCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
-
-	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
-        let backupDelay = this.GetBackupDelay(isTurf);
-        this.m_delaySystem.DelayCallback(GRTygerCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
-    }
 }
 
 public class GRTygerEndCallback extends DelayCallback {
@@ -81,18 +76,5 @@ public class GRTygerCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
-  }
-}
-
-public class GRTygerCallSuccessDelayArrivalCallback extends DelayCallback {
-    let handler: wref<GRTygersHandler>;
-    public static func Create(handler: ref<GRTygersHandler>) -> ref<GRTygerCallSuccessDelayArrivalCallback> {
-        let self: ref<GRTygerCallSuccessDelayArrivalCallback> = new GRTygerCallSuccessDelayArrivalCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-	this.handler.CompleteReinforcementCall();
   }
 }

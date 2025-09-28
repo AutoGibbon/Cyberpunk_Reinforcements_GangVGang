@@ -368,8 +368,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
 	// 
     public func KeepAliveCallback() -> Void {
 		this.m_delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 11, true);
-		let remainingTime = this.m_delaySystem.GetRemainingDelayTime(this.m_trafficSpawnDelayID);
-		//GRLog(s"Traffic delay: \(remainingTime) seconds");
+		this.m_delaySystem.GetRemainingDelayTime(this.m_trafficSpawnDelayID);
     }
 
 	public func SpawnTrafficVehiclesCallback() -> Void {
@@ -387,7 +386,6 @@ public class GRReinforcementSystem extends ScriptableSystem {
 		
 		// Schedule next traffic spawn callback
 		let delay = RandRangeF(this.m_settings.GetTrafficSpawnDelayMin(), this.m_settings.GetTrafficSpawnDelayMax());
-		//GRLog(s"Scheduling next traffic spawn callback in \(delay) seconds");
 		this.m_trafficSpawnDelayID = this.m_delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, true);
 	}
 }

@@ -28,7 +28,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let m_callSuccessCooldownActive: Bool = false;
   protected let m_gracePeriodStarted: Bool = false;
   protected let m_gracePeriodEnded: Bool = false;
-  protected let m_backupDelayActive: Bool = false;
 
   protected let m_isDisabled: Bool = false;
   protected let m_affiliation: gamedataAffiliation;
@@ -46,8 +45,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
   public func OnHeatResetCooldownStart() -> Void;
 
   public func OnCallSuccessCooldownStart() -> Void;
-
-  public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void;
 
   public func OnGraceStart() -> Void;
 
@@ -172,7 +169,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     if this.m_heatLevel == 0 {
       this.m_heatLevel = this.m_settings.GetInitialHeat();
-    } else if this.GetLastCallAnswered() && !this.m_backupDelayActive{
+    } else if this.GetLastCallAnswered() {
       this.m_heatLevel += this.m_settings.GetHeatEscalation();
       if isTurf {
         this.m_heatLevel += this.m_settings.GetTurfHeatBonus();
@@ -182,27 +179,18 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_callSuccessCooldownActive = true;
     this.OnCallSuccessCooldownStart();
 
-    RWLock.Acquire(this.m_lastCallDataLock);
     this.m_lastCaller = puppet;
     this.m_lastCallerPosition = puppet.GetWorldPosition();
     this.m_lastTarget = target;
-    RWLock.Release(this.m_lastCallDataLock);
 
     if this.GetLastCallAnswered() {
       this.m_callsPerformed += 1;
 	}
-	if !this.m_backupDelayActive {
-		this.m_backupDelayActive = true;
-		GRLog(s"Backup call started: \(this.m_affiliation), \(this.m_heatLevel)");
-		this.OnCallSuccessDelayArrival(isTurf);
-	}
-  }
 
-  public func CompleteReinforcementCall() -> Void {
-    let randomNumber = RandRange(0, 101);
+	let randomNumber = RandRange(0, 101);
     let reinforcementHeat = randomNumber <= this.m_settings.GetStrongCallChance() ? this.m_heatLevel + this.m_settings.GetStrongCallHeatBonus() : this.m_heatLevel;
 
-    GRLog(s"Reinforcements arrive: \(this.m_affiliation), \(reinforcementHeat), Target: \(TDBID.ToStringDEBUG(GameObject.GetTDBID(this.m_lastTarget)))");
+    GRLog(s"Reinforcements arrive: \(this.m_affiliation), \(reinforcementHeat)");
     this
       .SpawnVehicles(
         this
@@ -214,7 +202,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
       this.m_heatResetCooldownActive = true;
       this.OnHeatResetCooldownStart();
     }
-	this.m_backupDelayActive = false;
   }
 
   public func TryCallingReinforcements(puppet: ref<ScriptedPuppet>) -> Bool {
@@ -269,14 +256,11 @@ public abstract class GRGangHandler extends ScriptableSystem {
   public func SpawnTrafficVehicles() -> Void {
 	// only ask for traffic if the primary reinforcement logic is not currently "active" for the given gang
 	// cause dynamic spawn system is a little bitch "no too many spawns waa waa waa"
-	//GRLog(s"SpawnTrafficVehicles: \(this.m_affiliation), last call answered: \(this.m_lastCallAnswered), is turf: \(this.m_preventionSystem.GetCurrentDistrict().GetDistrictRecord().EnumName())");
 	if(this.IsConsideredTurf(this.m_preventionSystem.GetCurrentDistrict())
 	&& this.GetLastCallAnswered()
-	&& !this.m_backupDelayActive
 	&& !this.m_heatResetCooldownActive
 	&& !this.m_callSuccessCooldownActive
 	) {
-		//GRLog(s"Requesting traffic spawns: \(this.m_affiliation)");
 		RWLock.Acquire(this.m_trafficRequestLock);
 		this.m_hasTrafficRequest = true;
 		RWLock.Release(this.m_trafficRequestLock);

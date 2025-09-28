@@ -33,11 +33,6 @@ public class GRBarghestHandler extends GRGangHandler {
         this.m_delaySystem.DelayCallback(GRBarghestGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
-	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
-        let backupDelay = this.GetBackupDelay(isTurf);
-        this.m_delaySystem.DelayCallback(GRBarghestCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
-    }
-
     public func GetTurfList() -> array<String> {
         return [
             "Dogtown"
@@ -81,18 +76,5 @@ public class GRBarghestCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
-  }
-}
-
-public class GRBarghestCallSuccessDelayArrivalCallback extends DelayCallback {
-    let handler: wref<GRBarghestHandler>;
-    public static func Create(handler: ref<GRBarghestHandler>) -> ref<GRBarghestCallSuccessDelayArrivalCallback> {
-        let self: ref<GRBarghestCallSuccessDelayArrivalCallback> = new GRBarghestCallSuccessDelayArrivalCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-	this.handler.CompleteReinforcementCall();
   }
 }

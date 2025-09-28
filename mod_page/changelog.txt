@@ -11,9 +11,6 @@ Version 2.0.0
 	- Each gang will now patrol their turf in their signature vehicles
 	- This is a temporary feature, as I know some smart people are working on an independent version of this wonderful idea.
 	- Arasaka, Barghest, Scavs, NCPD do not have turf patrols
-> Added small delays to reinforcement calls
-	- While entertaining, cars immediately appearing the moment a fight started was dumb (in my opinion)
-	- Adjusted some of the preset settings to account for this behaviour change
 
 Version 1.5.1
 > remove logging calls

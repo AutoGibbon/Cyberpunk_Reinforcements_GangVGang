@@ -36,11 +36,6 @@ public class GRMaelStromHandler extends GRGangHandler {
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRMaelstromCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
-
-	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
-        let backupDelay = this.GetBackupDelay(isTurf);
-        this.m_delaySystem.DelayCallback(GRMaelstromCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
-    }
 }
 
 public class GRMaelstromGraceEndCallback extends DelayCallback {
@@ -79,18 +74,5 @@ public class GRMaelstromCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
-  }
-}
-
-public class GRMaelstromCallSuccessDelayArrivalCallback extends DelayCallback {
-    let handler: wref<GRMaelStromHandler>;
-    public static func Create(handler: ref<GRMaelStromHandler>) -> ref<GRMaelstromCallSuccessDelayArrivalCallback> {
-        let self: ref<GRMaelstromCallSuccessDelayArrivalCallback> = new GRMaelstromCallSuccessDelayArrivalCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-	this.handler.CompleteReinforcementCall();
   }
 }

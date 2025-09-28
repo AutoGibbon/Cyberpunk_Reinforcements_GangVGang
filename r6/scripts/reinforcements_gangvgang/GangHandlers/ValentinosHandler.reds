@@ -33,11 +33,6 @@ public class GRValentinosHandler extends GRGangHandler {
         this.m_delaySystem.DelayCallback(GRValentinosGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
-	public func OnCallSuccessDelayArrival(isTurf: Bool) -> Void {
-        let backupDelay = this.GetBackupDelay(isTurf);
-        this.m_delaySystem.DelayCallback(GRValentinosCallSuccessDelayArrivalCallback.Create(this), backupDelay, true);
-    }
-
     public func GetTurfList() -> array<String> {
         return [
             "Heywood"
@@ -81,18 +76,5 @@ public class GRValentinosCallSuccessCooldownEndCallback extends DelayCallback {
 
   public func Call() -> Void {
     this.handler.OnCallSuccessCooldownEnd();
-  }
-}
-
-public class GRValentinosCallSuccessDelayArrivalCallback extends DelayCallback {
-    let handler: wref<GRValentinosHandler>;
-    public static func Create(handler: ref<GRValentinosHandler>) -> ref<GRValentinosCallSuccessDelayArrivalCallback> {
-        let self: ref<GRValentinosCallSuccessDelayArrivalCallback> = new GRValentinosCallSuccessDelayArrivalCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-	this.handler.CompleteReinforcementCall();
   }
 }
