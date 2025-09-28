@@ -8,7 +8,9 @@ import Gibbon.GR.ReinforcementSystem.*
 public abstract class GRGangHandler extends ScriptableSystem {
 
   //locks
-  protected let m_reinforcementLock: RWLock;
+  private let m_trafficRequestLock: RWLock;
+  private let m_lastCallAnsweredLock: RWLock;
+  private let m_lastCallDataLock: RWLock;
 
   protected let m_hasTrafficRequest: Bool = false;
   protected let m_preventionSystem: ref<PreventionSystem>;
@@ -52,73 +54,66 @@ public abstract class GRGangHandler extends ScriptableSystem {
   public func GetTurfList() -> array<String>;
 
   public func GetLastCaller() -> wref<NPCPuppet> {
-	let result: wref<NPCPuppet>;
-    RWLock.AcquireShared(this.m_reinforcementLock);
+    let result: wref<NPCPuppet>;
+    RWLock.AcquireShared(this.m_lastCallDataLock);
     result = this.m_lastCaller;
-	RWLock.ReleaseShared(this.m_reinforcementLock);
+    RWLock.ReleaseShared(this.m_lastCallDataLock);
     return result;
   }
 
   public func GetLastCallerPosition() -> Vector4 {
     let result: Vector4;
-    RWLock.AcquireShared(this.m_reinforcementLock);
+    RWLock.AcquireShared(this.m_lastCallDataLock);
     result = this.m_lastCallerPosition;
-	RWLock.ReleaseShared(this.m_reinforcementLock);
+    RWLock.ReleaseShared(this.m_lastCallDataLock);
     return result;
   }
 
   public func GetLastTarget() -> wref<NPCPuppet> {
     let result: wref<NPCPuppet>;
-    RWLock.AcquireShared(this.m_reinforcementLock);
+    RWLock.AcquireShared(this.m_lastCallDataLock);
     result = this.m_lastTarget;
-	RWLock.ReleaseShared(this.m_reinforcementLock);
+    RWLock.ReleaseShared(this.m_lastCallDataLock);
     return result;
   }
   
   public func GetHasTrafficRequest() -> Bool {
     let result: Bool;
-    RWLock.AcquireShared(this.m_reinforcementLock);
+    RWLock.AcquireShared(this.m_trafficRequestLock);
     result = this.m_hasTrafficRequest;
-	RWLock.ReleaseShared(this.m_reinforcementLock);
+    RWLock.ReleaseShared(this.m_trafficRequestLock);
     return result;
   }
 
   public func SetHasTrafficRequest(hasTrafficRequest: Bool) -> Void {
-    RWLock.Acquire(this.m_reinforcementLock);
+    RWLock.Acquire(this.m_trafficRequestLock);
     this.m_hasTrafficRequest = hasTrafficRequest;
-	RWLock.Release(this.m_reinforcementLock);
+    RWLock.Release(this.m_trafficRequestLock);
   }
 
   public func GetLastCallAnswered() -> Bool {
     let result: Bool;
-    RWLock.AcquireShared(this.m_reinforcementLock);
+    RWLock.AcquireShared(this.m_lastCallAnsweredLock);
     result = this.m_lastCallAnswered;
-	RWLock.ReleaseShared(this.m_reinforcementLock);
+    RWLock.ReleaseShared(this.m_lastCallAnsweredLock);
     return result;
   }
 
   public func SetLastCallAnswered(lastCallAnswered: Bool) -> Void {
-    RWLock.Acquire(this.m_reinforcementLock);
+    RWLock.Acquire(this.m_lastCallAnsweredLock);
     this.m_lastCallAnswered = lastCallAnswered;
-	RWLock.Release(this.m_reinforcementLock);
+    RWLock.Release(this.m_lastCallAnsweredLock);
   }
 
   public func GetAffiliation() -> gamedataAffiliation {
-    let result: gamedataAffiliation;
-    RWLock.AcquireShared(this.m_reinforcementLock);
-    result = this.m_affiliation;
-	RWLock.ReleaseShared(this.m_reinforcementLock);
-    return result;
+    return this.m_affiliation;
   }
 
   public func SetIsDisabled(isDisabled: Bool) -> Void {
-    RWLock.Acquire(this.m_reinforcementLock);
     this.m_isDisabled = isDisabled;
-    RWLock.Release(this.m_reinforcementLock);
   }
 
   public func OnHeatResetCooldownEnd() -> Void {
-    RWLock.Acquire(this.m_reinforcementLock);
     this.m_heatResetCooldownActive = false;
     this.m_heatLevel = 0;
     this.m_callsPerformed = 0;
@@ -126,24 +121,23 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_gracePeriodEnded = false;
     this.m_gracePeriodStarted = false;
     this.m_callSuccessCooldownActive = false;
+    RWLock.Acquire(this.m_lastCallDataLock);
     this.m_lastCaller = null;
     this.m_lastTarget = null;
+    RWLock.Release(this.m_lastCallDataLock);
+	RWLock.Acquire(this.m_lastCallAnsweredLock);
 	this.m_lastCallAnswered = true;
+	RWLock.Release(this.m_lastCallAnsweredLock);
     Vector4.Zero(this.m_lastCallerPosition);
-	RWLock.Release(this.m_reinforcementLock);
   }
 
   public func OnCallSuccessCooldownEnd() -> Void {
-    RWLock.Acquire(this.m_reinforcementLock);
     this.m_callSuccessCooldownActive = false;
-	RWLock.Release(this.m_reinforcementLock);
   }
 
   public func OnGraceEnd() -> Void {
-    RWLock.Acquire(this.m_reinforcementLock);
     this.m_gracePeriodEnded = true;
     this.m_gracePeriodStarted = false;
-	RWLock.Release(this.m_reinforcementLock);
   }
 
   public func GetGraceTime() -> Float {
@@ -152,6 +146,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
   public func GetBackupDelay(isTurf: Bool) -> Float {
     let baseDelay = RandRangeF(this.m_settings.GetBackupDelayMin(), this.m_settings.GetBackupDelayMax());
+	GRLog(s"Backup delay: \(baseDelay), Turf: \(isTurf), reduction: \(this.m_settings.GetTurfDelayReduction())");
     return isTurf ? MaxF(1.0, baseDelay - this.m_settings.GetTurfDelayReduction()) : baseDelay;
   }
 
@@ -170,7 +165,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
   }
 
   public func HandleReinforcementCall(puppet: ref<NPCPuppet>, target: ref<NPCPuppet>) {
-    RWLock.Acquire(this.m_reinforcementLock);
     if this.m_callSuccessCooldownActive {
       return;
     }
@@ -178,7 +172,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     if this.m_heatLevel == 0 {
       this.m_heatLevel = this.m_settings.GetInitialHeat();
-    } else if this.m_lastCallAnswered {
+    } else if this.GetLastCallAnswered() && !this.m_backupDelayActive{
       this.m_heatLevel += this.m_settings.GetHeatEscalation();
       if isTurf {
         this.m_heatLevel += this.m_settings.GetTurfHeatBonus();
@@ -188,11 +182,13 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_callSuccessCooldownActive = true;
     this.OnCallSuccessCooldownStart();
 
+    RWLock.Acquire(this.m_lastCallDataLock);
     this.m_lastCaller = puppet;
     this.m_lastCallerPosition = puppet.GetWorldPosition();
     this.m_lastTarget = target;
+    RWLock.Release(this.m_lastCallDataLock);
 
-    if this.m_lastCallAnswered {
+    if this.GetLastCallAnswered() {
       this.m_callsPerformed += 1;
 	}
 	if !this.m_backupDelayActive {
@@ -200,11 +196,9 @@ public abstract class GRGangHandler extends ScriptableSystem {
 		GRLog(s"Backup call started: \(this.m_affiliation), \(this.m_heatLevel)");
 		this.OnCallSuccessDelayArrival(isTurf);
 	}
-	RWLock.Release(this.m_reinforcementLock);
   }
 
   public func CompleteReinforcementCall() -> Void {
-    RWLock.Acquire(this.m_reinforcementLock);
     let randomNumber = RandRange(0, 101);
     let reinforcementHeat = randomNumber <= this.m_settings.GetStrongCallChance() ? this.m_heatLevel + this.m_settings.GetStrongCallHeatBonus() : this.m_heatLevel;
 
@@ -221,11 +215,9 @@ public abstract class GRGangHandler extends ScriptableSystem {
       this.OnHeatResetCooldownStart();
     }
 	this.m_backupDelayActive = false;
-	RWLock.Release(this.m_reinforcementLock);
   }
 
   public func TryCallingReinforcements(puppet: ref<ScriptedPuppet>) -> Bool {
-    RWLock.AcquireShared(this.m_reinforcementLock);
     if this.m_isDisabled {
       return false;
     }
@@ -245,7 +237,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
     }
 
     return false;
-	RWLock.ReleaseShared(this.m_reinforcementLock);
   }
 
   public func SpawnVehicles(arr: array<TweakDBID>) -> Void {
@@ -270,19 +261,25 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     GameInstance.GetQuestsSystem(GetGameInstance()).ExecuteNode(node);
 	
+    RWLock.Acquire(this.m_lastCallAnsweredLock);
     this.m_lastCallAnswered = false;
+    RWLock.Release(this.m_lastCallAnsweredLock);
   }
 
   public func SpawnTrafficVehicles() -> Void {
 	// only ask for traffic if the primary reinforcement logic is not currently "active" for the given gang
 	// cause dynamic spawn system is a little bitch "no too many spawns waa waa waa"
+	//GRLog(s"SpawnTrafficVehicles: \(this.m_affiliation), last call answered: \(this.m_lastCallAnswered), is turf: \(this.m_preventionSystem.GetCurrentDistrict().GetDistrictRecord().EnumName())");
 	if(this.IsConsideredTurf(this.m_preventionSystem.GetCurrentDistrict())
-	&& this.m_lastCallAnswered
+	&& this.GetLastCallAnswered()
+	&& !this.m_backupDelayActive
+	&& !this.m_heatResetCooldownActive
 	&& !this.m_callSuccessCooldownActive
-	&& !this.m_gracePeriodStarted
 	) {
-		GRLog(s"Requesting traffic spawns: \(this.m_affiliation)");
+		//GRLog(s"Requesting traffic spawns: \(this.m_affiliation)");
+		RWLock.Acquire(this.m_trafficRequestLock);
 		this.m_hasTrafficRequest = true;
+		RWLock.Release(this.m_trafficRequestLock);
 		GRReinforcementSystem.GetInstance(GetGameInstance()).RequestSpawnTraffic(this.m_reinforcementData.GetTrafficSpawns());
 	}
   }

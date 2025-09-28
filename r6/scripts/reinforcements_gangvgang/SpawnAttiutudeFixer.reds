@@ -19,8 +19,8 @@ protected cb func OnPostInitialize(evt: ref<entPostInitializeEvent>) -> Bool {
 }
 
 @addMethod(NPCPuppet)
-protected final func GRAttitudeFix(caller: wref<GameObject>, target: wref<GameObject>) -> Bool {
-    let currentSquadMate: wref<GameObject>;
+protected final func GRAttitudeFix(caller: wref<NPCPuppet>, target: wref<NPCPuppet>) -> Bool {
+    let currentSquadMate: wref<ScriptedPuppet>;
     let i: Int32;
     let ownerAttitudeAgent: ref<AttitudeAgent>;
     let callerAttitudeAgent: ref<AttitudeAgent>;
@@ -35,10 +35,10 @@ protected final func GRAttitudeFix(caller: wref<GameObject>, target: wref<GameOb
     if !IsDefined(ownerAttitudeAgent) || !IsDefined(callerAttitudeAgent) {
         return false;
     };
-    if AISquadHelper.GetSquadmates(caller as ScriptedPuppet, callerSquadMembers) {
+    if AISquadHelper.GetSquadmates(caller, callerSquadMembers) {
         i = 0;
         while i < ArraySize(callerSquadMembers) {
-        currentSquadMate = callerSquadMembers[i] as GameObject;
+        currentSquadMate = callerSquadMembers[i] as ScriptedPuppet;
         if !IsDefined(currentSquadMate) || currentSquadMate == this {
         } else {
             //GRLog(s"Attitude Fix: \(TDBID.ToStringDEBUG(GameObject.GetTDBID(this))) -> Friendly with \(TDBID.ToStringDEBUG(GameObject.GetTDBID(currentSquadMate)))");

@@ -24,19 +24,17 @@ public class GRReinforcementSystem extends ScriptableSystem {
     private let m_preventionSystem: ref<PreventionSystem>;
     private let m_questsSystem: ref<QuestsSystem>;
 	private let m_delaySystem: ref<DelaySystem>;
+	private let m_trafficSpawnDelayID: DelayID;
+	private let m_trafficSpawnsStarted: Bool = false;
 
     public let m_settings: ref<GRSettings>;
 
 	public func OnAttach() -> Void {
-		GRLog("ReinforcementSystem OnAttach");
 		this.m_gameAttachHandled = false;
 	}
 
     public final func OnPlayerAttach(request: ref<PlayerAttachRequest>) -> Void {
-		GRLog("ReinforcementSystem OnPlayerAttach");
         let theGame = GetGameInstance();
-        // I just lost it
-
         this.m_preventionSystem = GameInstance.GetScriptableSystemsContainer(theGame).Get(n"PreventionSystem") as PreventionSystem;
         this.m_questsSystem = GameInstance.GetQuestsSystem(theGame);
 		this.m_delaySystem = GameInstance.GetDelaySystem(theGame);
@@ -73,34 +71,26 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.m_settings.ReconcileSettings();
 
 		if !this.m_gameAttachHandled {
-			GRLog("ReinforcementSystem OnPlayerAttach->HandleGameAttach");
 			this.HandleGameAttach();
+		} else {
+			this.ResetAllGangs();
+			this.StartTrafficSpawns();
 		}
     }
 
 	public func OnRestored(saveVersion: Int32, gameVersion: Int32) {
 		if !this.m_gameAttachHandled {
-			GRLog("ReinforcementSystem OnRestored->HandleGameAttach");
 			this.HandleGameAttach();
 		}
     }
   
+	// player attached is the last thing to happen so don't do any work in here
+	//just set the flag so we know game logic can be run in OnPlayerAttach
 	public func HandleGameAttach() -> Void { 
-		GRLog("ReinforcementSystem HandleGameAttach");
 		if GameInstance.GetSystemRequestsHandler().IsPreGame() {
-			GRLog("ReinforcementSystem HandleGameAttach->IsPreGame");
 			return;
 		}
-		GRLog("ReinforcementSystem HandleGameAttach->DoLogic");
-
 		this.m_gameAttachHandled = true;
-		this.ResetAllGangs();
-		this.StartTrafficSpawns();
-	}
-
-	public func StartTrafficSpawns() -> Void {
-		this.SpawnTrafficVehiclesCallback();
-		this.KeepAliveCallback();
 	}
 
     public func ResetAllGangs() -> Void {
@@ -344,7 +334,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         let node = new questDynamicSpawnSystemNodeDefinition();
         let nodeType = new questDynamicVehicleSpawn_NodeType();
 
-        nodeType.distanceRange = Vector2(200, 400);
+        nodeType.distanceRange = Vector2(50, 100);
 		if RandF() >= 0.5 {
 			nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;
 		} else {
@@ -360,13 +350,30 @@ public class GRReinforcementSystem extends ScriptableSystem {
         questSystem.ExecuteNode(node);
     }
 
+	public func OnDistrictAreaEntered() -> Void {
+		if this.m_trafficSpawnsStarted && RandF() <= 0.2 {
+			this.SpawnTrafficVehiclesCallback();
+		}
+	}
+
+	public func StartTrafficSpawns() -> Void {
+		if !this.m_trafficSpawnsStarted {
+			this.m_trafficSpawnsStarted = true;
+			this.SpawnTrafficVehiclesCallback();
+			this.KeepAliveCallback();
+		}
+	}
+
 	// basically abusing the delay system to keep other long-lived callbacks alive
 	// 
     public func KeepAliveCallback() -> Void {
-		this.m_delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 11, false);
+		this.m_delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 11, true);
+		let remainingTime = this.m_delaySystem.GetRemainingDelayTime(this.m_trafficSpawnDelayID);
+		//GRLog(s"Traffic delay: \(remainingTime) seconds");
     }
 
 	public func SpawnTrafficVehiclesCallback() -> Void {
+		//GRLog("SpawnTrafficVehiclesCallback");
 		// Call SpawnTrafficVehicles for each gang handler, except NCPD, Arasaka, Scavs
 		this.m_tygerHandler.SpawnTrafficVehicles();
 		this.m_animalsHandler.SpawnTrafficVehicles();
@@ -380,7 +387,8 @@ public class GRReinforcementSystem extends ScriptableSystem {
 		
 		// Schedule next traffic spawn callback
 		let delay = RandRangeF(this.m_settings.GetTrafficSpawnDelayMin(), this.m_settings.GetTrafficSpawnDelayMax());
-		this.m_delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, false);
+		//GRLog(s"Scheduling next traffic spawn callback in \(delay) seconds");
+		this.m_trafficSpawnDelayID = this.m_delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, true);
 	}
 }
 

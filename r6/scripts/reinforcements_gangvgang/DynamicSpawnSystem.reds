@@ -34,17 +34,18 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
                 puppet = spawnedObject as ScriptedPuppet;
                 if NPCManager.HasTag(puppet.GetRecordID(), n"GRModPuppet") {
                     gotModTag = true;
-                    gangHandler = reinSystem.GetFactionHandler(puppet);
+					gangHandler = reinSystem.GetFactionHandler(puppet);
                 }
             }
+			if(IsDefined(gangHandler)) {
+				target = gangHandler.GetLastTarget();
+				targetPosition = gangHandler.GetLastCallerPosition();
+				if(!gangHandler.GetHasTrafficRequest() && IsDefined(target)) {
+					TargetTrackingExtension.InjectThreat(puppet, target);
+					NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
+				}
+			}
         }
-        //todo maybe inject threats, actually you can't because of how EntityReference works. Just have to hope the spawned cars get to the correct location and start fighting.
-        // target = gangHandler.GetLastTarget();
-        // aiInjectCombatThreatCommand = new AIInjectCombatThreatCommand();
-        // aiInjectCombatThreatCommand.targetPuppetRef = CreateEntityReference("#player", nullArrayOfNames);
-        // aiInjectCombatThreatCommand.duration = 120.00;
-        // AIComponent.SendCommand(puppet, aiInjectCombatThreatCommand);
-
         i += 1;
     }
 
@@ -52,9 +53,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         wrappedMethod(requestResult);
         return;
     }
-
-    target = gangHandler.GetLastTarget();
-    targetPosition = gangHandler.GetLastCallerPosition();
+   
     i = 0;
     while i < ArraySize(wheeledObjects) {
         wheeledObject = wheeledObjects[i];
@@ -197,14 +196,14 @@ public class GRVehicleSpawnPositionsCollector extends ScriptableSystem {
 		let vehiclePosition = entity.GetWorldPosition();
 		let distance = Vector4.Distance(playerPosition, vehiclePosition);
 		if distance > 50.0 && distance < 100.0 {
-			RWLock.Acquire(this.m_lock);
+			//RWLock.Acquire(this.m_lock);
 			// add this one
 			ArrayPush(this.m_vehiclePositions, vehiclePosition);
 			//phill said 11 is better than 10
 			if ArraySize(this.m_vehiclePositions) > 11 {
 				ArrayPop(this.m_vehiclePositions);
 			}
-			RWLock.Release(this.m_lock);
+			//RWLock.Release(this.m_lock);
 		}
 	}
 }*/
