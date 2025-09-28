@@ -322,7 +322,7 @@ public class GRSettings extends ScriptableSystem {
     public let backupDelayMin: Float = 35;
     public let backupDelayMax: Float = 55;
     public let turfDelayReduction: Float = 15;
-	public let trafficSpawnDelayMin: Float = 240;
-	public let trafficSpawnDelayMax: Float = 480;
+	public let trafficSpawnDelayMin: Float = 60; //240
+	public let trafficSpawnDelayMax: Float = 120; //480
 }
 

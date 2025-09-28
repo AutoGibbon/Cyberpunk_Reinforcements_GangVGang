@@ -4,6 +4,17 @@ module Gibbon.GR.GangData
 
 
 public class GRMilitechData extends GRGangData {
+	public func GetTrafficSpawns() -> array<TweakDBID> {
+		return GetRandomFrom(
+			[
+				t"DynamicSpawnSystem.GRMilitechTraffic1",
+				t"DynamicSpawnSystem.GRMilitechTraffic2",
+				t"DynamicSpawnSystem.GRMilitechTraffic3",
+				t"DynamicSpawnSystem.GRMilitechTraffic4",
+				t"DynamicSpawnSystem.GRMilitechTraffic5"
+			], 1);
+	}
+	
     public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {
             case 1: // 2 weak (1 ww car)

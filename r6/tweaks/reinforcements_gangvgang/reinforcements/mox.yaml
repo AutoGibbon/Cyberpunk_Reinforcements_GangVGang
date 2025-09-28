@@ -1,3 +1,33 @@
+# Vehicles:
+# 1 person:
+# Vehicle.GR_v_sportbike1_yaiba_kusanagi_mox
+# 2 person:
+# Vehicle.GR_v_standard2_archer_quartz_mox
+# 4 person:
+# Vehicle.GR_v_standard25_mahir_mox
+# Vehicle.GR_v_sport2_villefort_alvarado_mox
+# Vehicle.GR_v_standard2_mizutani_hozuki
+
+# Characters:
+# weak:
+# Character.GR_the_mox_melee2_baseball_wa - basic melee
+# Character.GR_the_mox_ranged1_lexington_wa - basic ranged
+# Character.GR_the_mox_ranged1_pulsar_wa - basic ranged
+# normal:
+# Character.GR_the_mox_melee1_baton_wa - baton fighter
+# Character.GR_the_mox_melee2_baton_kappa_wa - baton fighter
+# Character.GR_the_mox_ranged1_chao_wa - chao fighter
+# Character.GR_the_mox_ranged1_kappa_wa - kappa fighter
+# Character.GR_the_mox_ranged2_dian_wa - dian fighter
+# rare:
+# Character.GR_the_mox_elite2_fmelee2_knife_wa_rare - knife fighter
+# Character.GR_the_mox_elite2_fmelee2_machete_wa_rare - machete fighter
+# Character.GR_the_mox_melee2_baseball_bat_rare - baseball bat fighter with a revolver
+# Character.GR_the_mox_shotgun2_palica_shotgunner_wa - palica shotgunner
+# Character.GR_the_mox_shotgun2_pozhar_fastshotgunner_wa - pozhar shotgunner
+# elite:
+# Character.GR_the_mox_elite3_fmelee3_mantis_wa_elite - mantis elite
+
 # Mox Gang Reinforcements
 # Following established conventions from other gang reinforcement files
 
@@ -266,35 +296,6 @@ DynamicSpawnSystem.GRMoxEliteSquad3:
         - $type: WeightedCharacter
           character: Character.GR_the_mox_shotgun2_palica_shotgunner_wa
           weight: 1.0
-# Vehicles:
-# 1 person:
-# Vehicle.GR_v_sportbike1_yaiba_kusanagi_mox
-# 2 person:
-# Vehicle.GR_v_standard2_archer_quartz_mox
-# 4 person:
-# Vehicle.GR_v_standard25_mahir_mox
-# Vehicle.GR_v_sport2_villefort_alvarado_mox
-# Vehicle.GR_v_standard2_mizutani_hozuki
-
-# Characters:
-# weak:
-# Character.GR_the_mox_melee2_baseball_wa - basic melee
-# Character.GR_the_mox_ranged1_lexington_wa - basic ranged
-# Character.GR_the_mox_ranged1_pulsar_wa - basic ranged
-# normal:
-# Character.GR_the_mox_melee1_baton_wa - baton fighter
-# Character.GR_the_mox_melee2_baton_kappa_wa - baton fighter
-# Character.GR_the_mox_ranged1_chao_wa - chao fighter
-# Character.GR_the_mox_ranged1_kappa_wa - kappa fighter
-# Character.GR_the_mox_ranged2_dian_wa - dian fighter
-# rare:
-# Character.GR_the_mox_elite2_fmelee2_knife_wa_rare - knife fighter
-# Character.GR_the_mox_elite2_fmelee2_machete_wa_rare - machete fighter
-# Character.GR_the_mox_melee2_baseball_bat_rare - baseball bat fighter with a revolver
-# Character.GR_the_mox_shotgun2_palica_shotgunner_wa - palica shotgunner
-# Character.GR_the_mox_shotgun2_pozhar_fastshotgunner_wa - pozhar shotgunner
-# elite:
-# Character.GR_the_mox_elite3_fmelee3_mantis_wa_elite - mantis elite
 
 # Traffic Spawns (5 entries for traffic spawns)
 DynamicSpawnSystem.GRMoxTraffic1:

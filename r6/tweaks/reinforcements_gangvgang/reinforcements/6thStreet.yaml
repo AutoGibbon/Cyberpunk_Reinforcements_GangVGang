@@ -1,8 +1,39 @@
-# Character.sixthstreet_patrol2_ranged2_ajax_wa
-#
+# Vehicles:
+# bikes:
+# Vehicle.GR_v_sportbike3_brennan_apollo_sport
+# 2ppl:
+# Vehicle.GR_v_standard3_makigai_tanishi
+# 4ppl:
+# Vehicle.GR_v_standard2_chevalier_thrax_sixth_street
+# Vehicle.GR_v_standard3_thorton_mackinaw_sixth_street
+# Vehicle.GR_v_standard2_archer_hella_sixth_street
+# Vehicle.GR_v_standard3_chevalier_emperor
+# Vehicle.GR_v_standard25_thorton_merrimac
 
-# Spawns
+# weak:
+# Character.sixthstreet_patrol2_melee2_baseball_wa - Soldier
+# Character.sixthstreet_patrol2_melee2_baton_wa - Soldier
+# Character.sixthstreet_patrol2_ranged2_ajax_wa - Soldier
+# normal:
+# Character.sixthstreet_hooligan_ranged1_nova_ma - Recruit
+# Character.sixthstreet_hooligan_ranged1_nova_wa - Recruit
+# Character.sixthstreet_hooligan_ranged1_saratoga_ma - Recruit
+# Character.sixthstreet_hooligan_ranged1_saratoga_wa - Recruit
 
+# Character.sixthstreet_menace1_shotgun2_igla_ma - Sarge
+# Character.sixthstreet_menace1_shotgun2_tactician_ma - Sarge
+# Character.sixthstreet_veteran3_ranged2_ajax_ma - Sarge
+
+# rare:
+# Character.sixthstreet_menace1_fmelee2_baton_wa_rare - soldier
+# Character.sixthstreet_menace1_fshotgun2_tactician_wa_rare - sarge
+# Character.sixthstreet_prepers3_grenadier2_nova_ma_rare - Corporal
+# Character.sixthstreet_prepers3_shotgun3_carnage_ma_rare - Lieutenant
+# Character.sixthstreet_sniper2_sniper2_grad_ma_rare - Sniper
+# elite:
+# Character.sixthstreet_patrol2_shotgun3_satara_ma_elite - Lieutenant
+
+#Reinforcements
 DynamicSpawnSystem.GRSixthWeakBike1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
@@ -269,38 +300,68 @@ DynamicSpawnSystem.GRSixthEliteSquad4:
         - $type: WeightedCharacter
           character: Character.GR_sixthstreet_veteran3_ranged2_ajax_ma
           weight: 1.0
-# Vehicles:
-# bikes:
-# Vehicle.GR_v_sportbike3_brennan_apollo_sport
-# 2ppl:
-# Vehicle.GR_v_standard3_makigai_tanishi
-# 4ppl:
-# Vehicle.GR_v_standard2_chevalier_thrax_sixth_street
-# Vehicle.GR_v_standard3_thorton_mackinaw_sixth_street
-# Vehicle.GR_v_standard2_archer_hella_sixth_street
-# Vehicle.GR_v_standard3_chevalier_emperor
-# Vehicle.GR_v_standard25_thorton_merrimac
 
-# weak:
-# Character.sixthstreet_patrol2_melee2_baseball_wa - Soldier
-# Character.sixthstreet_patrol2_melee2_baton_wa - Soldier
-# Character.sixthstreet_patrol2_ranged2_ajax_wa - Soldier
-# normal:
-# Character.sixthstreet_hooligan_ranged1_nova_ma - Recruit
-# Character.sixthstreet_hooligan_ranged1_nova_wa - Recruit
-# Character.sixthstreet_hooligan_ranged1_saratoga_ma - Recruit
-# Character.sixthstreet_hooligan_ranged1_saratoga_wa - Recruit
+# Traffic Spawns (5 entries for traffic spawns)
+DynamicSpawnSystem.GRSixthTraffic1:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_patrol2_ranged2_ajax_wa
+          weight: 1.0
 
-# Character.sixthstreet_menace1_shotgun2_igla_ma - Sarge
-# Character.sixthstreet_menace1_shotgun2_tactician_ma - Sarge
-# Character.sixthstreet_veteran3_ranged2_ajax_ma - Sarge
+DynamicSpawnSystem.GRSixthTraffic2:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_standard2_archer_hella_sixth_street
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_patrol2_melee2_baseball_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_patrol2_melee2_baton_wa
+          weight: 1.0
 
-# rare:
-# Character.sixthstreet_menace1_fmelee2_baton_wa_rare - soldier
-# Character.sixthstreet_menace1_fshotgun2_tactician_wa_rare - sarge
-# Character.sixthstreet_prepers3_grenadier2_nova_ma_rare - Corporal
-# Character.sixthstreet_prepers3_shotgun3_carnage_ma_rare - Lieutenant
-# Character.sixthstreet_sniper2_sniper2_grad_ma_rare - Sniper
-# elite:
-# Character.sixthstreet_patrol2_shotgun3_satara_ma_elite - Lieutenant
+DynamicSpawnSystem.GRSixthTraffic3:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_standard3_thorton_mackinaw_sixth_street
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_patrol2_melee2_baton_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_patrol2_melee2_baseball_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_hooligan_ranged1_nova_ma
+          weight: 1.0
 
+DynamicSpawnSystem.GRSixthTraffic4:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_sixth_street
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_patrol2_melee2_baseball_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_patrol2_melee2_baton_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_hooligan_ranged1_saratoga_wa
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_sniper2_sniper2_grad_ma_rare
+          weight: 1.0
+
+DynamicSpawnSystem.GRSixthTraffic5:
+    $type: DynamicVehicleData
+    vehicleRecord: Vehicle.GR_v_standard2_archer_hella_sixth_street
+    unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_hooligan_ranged1_nova_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_hooligan_ranged1_saratoga_ma
+          weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_sixthstreet_menace1_fmelee2_baton_wa_rare
+          weight: 1.0

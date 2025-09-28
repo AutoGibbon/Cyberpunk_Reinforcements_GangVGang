@@ -58,6 +58,11 @@ Vehicle.GR_v_standard3_thorton_mackinaw:
     tags:
         - !append-once GRModVehicle
 
+Vehicle.GR_v_standard3_thorton_mackinaw_country:
+    $base: Vehicle.v_standard3_thorton_mackinaw_country
+    tags:
+        - !append-once GRModVehicle
+
 Vehicle.GR_v_standard3_thorton_mackinaw_sixth_street:
     $base: Vehicle.v_standard3_thorton_mackinaw_sixth_street
     tags:
@@ -98,13 +103,13 @@ Vehicle.GR_ncpd_brennan_apollo_bike:
     tags:
         - !append-once GRModVehicle
 
-Vehicle.GR_ncpd_hellhound_heat_5:
-    $base: Vehicle.ncpd_hellhound_heat_5
+Vehicle.GR_ncpd_suv_chevalier_emperor_heat_4:
+    $base: Vehicle.ncpd_suv_chevalier_emperor_heat_4
     tags:
         - !append-once GRModVehicle
 
-Vehicle.GR_ncpd_suv_chevalier_emperor_heat_4:
-    $base: Vehicle.ncpd_suv_chevalier_emperor_heat_4
+Vehicle.GR_ncpd_thorton_merrimac_police_heat_4:
+    $base: Vehicle.ncpd_thorton_merrimac_police_heat_4
     tags:
         - !append-once GRModVehicle
 

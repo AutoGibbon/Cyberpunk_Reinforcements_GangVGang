@@ -1,3 +1,51 @@
+# Vehicles:
+# Vehicle.GR_v_sportbike1_yaiba_kusanagi
+# 2 people:
+# Vehicle.GR_mws_cct_dtn_02_arasaka_car
+# 4 people:
+# Vehicle.GR_v_standard2_villefort_cortes_arasaka
+# Vehicle.GR_v_standard3_chevalier_emperor_arasaka_courier
+# Weak:
+
+# Normal:
+
+# Character.arasaka_ranger1_melee2_knife_ma - ranger
+# Character.arasaka_ranger1_ranged2_masamune_ma - ranger
+# Character.arasaka_ranger1_ranged2_shingen_ma - ranger
+# Character.arasaka_ranger1_ranged2_shingen_wa - ranger
+
+# Character.arasaka_netrunner_netrunner2_yukimura_ma_rare - netrunner
+# Character.arasaka_netrunner_netrunner2_yukimura_wa_rare - netrunner
+
+# rare:
+# Character.arasaka_agent_fmelee2rare_katana_ma_rare - agent
+# Character.arasaka_agent_fmelee2rare_katana_wa_rare - agent
+# Character.arasaka_agent_fmelee2rare_knife_ma_rare - agent
+# Character.arasaka_agent_fmelee2rare_knife_wa_rare - agent
+# Character.arasaka_agent_franged2_yukimura_wa_rare - agent
+# Character.arasaka_agent_fshotgun2_tactician_ma_rare - specialist
+# Character.arasaka_agent_fshotgun2_tactician_wa_rare - specialist
+# Character.arasaka_bodyguard_hmelee2_fists_mb_rare - body guard
+# Character.arasaka_bodyguard_ranged3_kenshin_mb_rare - soldier
+# Character.arasaka_bodyguard_ranged3_masamune_mb_rare - soldier
+# Character.arasaka_sniper_sniper3_ashura_ma_elite - sniper
+# Character.arasaka_sniper_sniper3_nekomata_ma_elite - sniper
+# Character.arasaka_soldier1_ranged3_masamune_mah_rare - soldier
+# Character.arasaka_soldier2_shotgun2_tactician_mah_rare - assault specialist
+# Character.arasaka_tank2_gunner2_defender_mb_rare - Armored Enforcer
+# Elite:
+# Character.arasaka_cyborg_franged3_shingen_ma_elite - executioner
+# Character.arasaka_cyborg_franged3_shingen_wa_elite - executioner
+# Character.arasaka_cyborg_fshotgun3_zhuo_ma_elite - agent
+# Character.arasaka_ninja_fmelee3_katana_ma_elite - special agent
+# Character.arasaka_ninja_fmelee3_katana_wa_elite - Assassin
+# Character.arasaka_ninja_fmelee3_mantis_ma_elite - Special Agent
+# Character.arasaka_ninja_fmelee3_mantis_wa_elite - Assassin
+# Character.arasaka_rare2_gunner3_hmg_mm_elite - juggernaut
+# Character.arasaka_rare2_hmelee3_fists_mm_elite - juggernaut
+# Character.arasaka_terminator_shotgun3_zhuo_mah_elite - Ellite Assault specialist
+
+#reinforcements
 # normal:
 DynamicSpawnSystem.GRArasakaRangerA:
     $type: DynamicVehicleData
@@ -393,50 +441,3 @@ DynamicSpawnSystem.GRHeavyAssault4:
         - $type: WeightedCharacter
           character: Character.GR_arasaka_terminator_shotgun3_zhuo_mah_elite
           weight: 1.0
-# Vehicles:
-# Vehicle.GR_v_sportbike1_yaiba_kusanagi
-# 2 people:
-# Vehicle.GR_mws_cct_dtn_02_arasaka_car
-# 4 people:
-# Vehicle.GR_v_standard2_villefort_cortes_arasaka
-# Vehicle.GR_v_standard3_chevalier_emperor_arasaka_courier
-# Weak:
-
-# Normal:
-
-# Character.arasaka_ranger1_melee2_knife_ma - ranger
-# Character.arasaka_ranger1_ranged2_masamune_ma - ranger
-# Character.arasaka_ranger1_ranged2_shingen_ma - ranger
-# Character.arasaka_ranger1_ranged2_shingen_wa - ranger
-
-# Character.arasaka_netrunner_netrunner2_yukimura_ma_rare - netrunner
-# Character.arasaka_netrunner_netrunner2_yukimura_wa_rare - netrunner
-
-# rare:
-# Character.arasaka_agent_fmelee2rare_katana_ma_rare - agent
-# Character.arasaka_agent_fmelee2rare_katana_wa_rare - agent
-# Character.arasaka_agent_fmelee2rare_knife_ma_rare - agent
-# Character.arasaka_agent_fmelee2rare_knife_wa_rare - agent
-# Character.arasaka_agent_franged2_yukimura_wa_rare - agent
-# Character.arasaka_agent_fshotgun2_tactician_ma_rare - specialist
-# Character.arasaka_agent_fshotgun2_tactician_wa_rare - specialist
-# Character.arasaka_bodyguard_hmelee2_fists_mb_rare - body guard
-# Character.arasaka_bodyguard_ranged3_kenshin_mb_rare - soldier
-# Character.arasaka_bodyguard_ranged3_masamune_mb_rare - soldier
-# Character.arasaka_sniper_sniper3_ashura_ma_elite - sniper
-# Character.arasaka_sniper_sniper3_nekomata_ma_elite - sniper
-# Character.arasaka_soldier1_ranged3_masamune_mah_rare - soldier
-# Character.arasaka_soldier2_shotgun2_tactician_mah_rare - assault specialist
-# Character.arasaka_tank2_gunner2_defender_mb_rare - Armored Enforcer
-# Elite:
-# Character.arasaka_cyborg_franged3_shingen_ma_elite - executioner
-# Character.arasaka_cyborg_franged3_shingen_wa_elite - executioner
-# Character.arasaka_cyborg_fshotgun3_zhuo_ma_elite - agent
-# Character.arasaka_ninja_fmelee3_katana_ma_elite - special agent
-# Character.arasaka_ninja_fmelee3_katana_wa_elite - Assassin
-# Character.arasaka_ninja_fmelee3_mantis_ma_elite - Special Agent
-# Character.arasaka_ninja_fmelee3_mantis_wa_elite - Assassin
-# Character.arasaka_rare2_gunner3_hmg_mm_elite - juggernaut
-# Character.arasaka_rare2_hmelee3_fists_mm_elite - juggernaut
-# Character.arasaka_terminator_shotgun3_zhuo_mah_elite - Ellite Assault specialist
-

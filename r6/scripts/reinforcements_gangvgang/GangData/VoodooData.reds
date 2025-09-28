@@ -4,6 +4,17 @@ module Gibbon.GR.GangData
 
 
 public class GRVoodooData extends GRGangData {
+	public func GetTrafficSpawns() -> array<TweakDBID> {
+		return GetRandomFrom(
+			[
+				t"DynamicSpawnSystem.GRVoodooTraffic1",
+				t"DynamicSpawnSystem.GRVoodooTraffic2",
+				t"DynamicSpawnSystem.GRVoodooTraffic3",
+				t"DynamicSpawnSystem.GRVoodooTraffic4",
+				t"DynamicSpawnSystem.GRVoodooTraffic5"
+			], 1);
+	}
+	
     public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {
             case 1: // 1 weak merc

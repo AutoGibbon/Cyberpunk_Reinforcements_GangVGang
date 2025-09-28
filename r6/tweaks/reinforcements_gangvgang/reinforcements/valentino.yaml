@@ -1,3 +1,49 @@
+# Vehicles:
+# bike:
+# Vehicle.GR_v_sportbike3_brennan_apollo_sport
+# 2 car:
+# Vehicle.GR_v_standard2_thorton_colby_valentinos
+# Vehicle.GR_v_sport2_villefort_deleon
+# Vehicle.GR_v_sport2_villefort_alvarado_hearse
+# 4 car:
+# Vehicle.GR_v_sport2_villefort_alvarado_valentinos
+# Vehicle.GR_v_standard2_chevalier_thrax_valentino
+# Vehicle.GR_v_standard3_thorton_mackinaw_valentinos
+
+# weak:
+# Character.valentinos_grunt2_melee2_knife_ma - seasoned thug
+# Character.valentinos_grunt2_melee2_knife_wa - seasoned thug
+# Character.valentinos_grunt2_melee2_machete_ma - seasoned thug
+# Character.valentinos_grunt2_melee2_machete_wa - seasoned thug
+# Character.valentinos_grunt2_ranged2_ajax_ma - sanguinario
+# Character.valentinos_grunt2_ranged2_ajax_wa - sanguinario
+# Character.valentinos_grunt2_ranged2_nue_ma - sanguinario
+# Character.valentinos_grunt2_ranged2_nue_wa - sanguinario
+# Character.valentinos_grunt2_ranged2_overture_ma - sanguinario
+# Character.valentinos_grunt2_ranged2_overture_wa - sanguinario
+
+# normal:
+# Character.valentinos_grunt1_melee1_baseball_ma - thug
+# Character.valentinos_grunt1_melee1_knife_ma - thug
+# Character.valentinos_grunt1_melee1_knife_wa - thug
+# Character.valentinos_grunt1_ranged1_nova_ma - gangoon
+# Character.valentinos_grunt1_ranged1_nova_wa - gangoon
+# Character.valentinos_grunt1_ranged1_nue_ma - gangoon
+# Character.valentinos_grunt1_ranged1_nue_wa - gangoon
+
+# rare:
+# Character.valentinos_grunt3_fmelee2_knife_ma_rare - Guerro
+# Character.valentinos_grunt3_fmelee2_machete_ma_rare - guerro
+# Character.valentinos_grunt4_hmelee2_fists_mb_rare - Maton
+# Character.valentinos_grunt4_hmelee2_knife_mb_rare - Maton
+# Character.valentinos_strong2_shotgun2_igla_ma_rare - macho
+
+# elite:
+# Character.valentinos_machete_hmelee3_machete_mb_elite - Toro
+# Character.valentinos_shotgun3_shotgun3_testera_ma_elite - Sicario
+# Character.valentinos_sniper_sniper3_grad_wa_elite - franco
+
+#reinforcements
 DynamicSpawnSystem.GRValentinoWeakBike1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
@@ -350,48 +396,71 @@ DynamicSpawnSystem.GRValentinoWWWW4:
       character: Character.GR_valentinos_grunt2_ranged2_nue_wa
       weight: 1.0
 
-# Vehicles:
-# bike:
-# Vehicle.GR_v_sportbike3_brennan_apollo_sport
-# 2 car:
-# Vehicle.GR_v_standard2_thorton_colby_valentinos
-# Vehicle.GR_v_sport2_villefort_deleon
-# Vehicle.GR_v_sport2_villefort_alvarado_hearse
-# 4 car:
-# Vehicle.GR_v_sport2_villefort_alvarado_valentinos
-# Vehicle.GR_v_standard2_chevalier_thrax_valentino
-# Vehicle.GR_v_standard3_thorton_mackinaw_valentinos
 
-# weak:
-# Character.valentinos_grunt2_melee2_knife_ma - seasoned thug
-# Character.valentinos_grunt2_melee2_knife_wa - seasoned thug
-# Character.valentinos_grunt2_melee2_machete_ma - seasoned thug
-# Character.valentinos_grunt2_melee2_machete_wa - seasoned thug
-# Character.valentinos_grunt2_ranged2_ajax_ma - sanguinario
-# Character.valentinos_grunt2_ranged2_ajax_wa - sanguinario
-# Character.valentinos_grunt2_ranged2_nue_ma - sanguinario
-# Character.valentinos_grunt2_ranged2_nue_wa - sanguinario
-# Character.valentinos_grunt2_ranged2_overture_ma - sanguinario
-# Character.valentinos_grunt2_ranged2_overture_wa - sanguinario
+#Traffic
+DynamicSpawnSystem.GRValentinoTraffic1:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_standard2_thorton_colby_valentinos
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_melee1_baseball_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_melee2_knife_ma
+      weight: 1.0
 
-# normal:
-# Character.valentinos_grunt1_melee1_baseball_ma - thug
-# Character.valentinos_grunt1_melee1_baseball_wa- thug
-# Character.valentinos_grunt1_melee1_knife_ma - thug
-# Character.valentinos_grunt1_melee1_knife_wa - thug
-# Character.valentinos_grunt1_ranged1_nova_ma - gangoon
-# Character.valentinos_grunt1_ranged1_nova_wa - gangoon
-# Character.valentinos_grunt1_ranged1_nue_ma - gangoon
-# Character.valentinos_grunt1_ranged1_nue_wa - gangoon
+DynamicSpawnSystem.GRValentinoTraffic2:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_valentinos
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_melee1_knife_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_ranged1_nova_ma
+      weight: 1.0
 
-# rare:
-# Character.valentinos_grunt3_fmelee2_knife_ma_rare - Guerro
-# Character.valentinos_grunt3_fmelee2_machete_ma_rare - guerro
-# Character.valentinos_grunt4_hmelee2_fists_mb_rare - Maton
-# Character.valentinos_grunt4_hmelee2_knife_mb_rare - Maton
-# Character.valentinos_strong2_shotgun2_igla_ma_rare - macho
+DynamicSpawnSystem.GRValentinoTraffic3:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_valentino
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_melee2_machete_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_melee1_baseball_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt3_fmelee2_knife_ma_rare
+      weight: 1.0
 
-# elite:
-# Character.valentinos_machete_hmelee3_machete_mb_elite - Toro
-# Character.valentinos_shotgun3_shotgun3_testera_ma_elite - Sicario
-# Character.valentinos_sniper_sniper3_grad_wa_elite - franco
+DynamicSpawnSystem.GRValentinoTraffic4:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_standard3_thorton_mackinaw_valentinos
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_melee2_machete_wa
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_melee1_knife_wa
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt4_hmelee2_fists_mb_rare
+      weight: 1.0
+
+DynamicSpawnSystem.GRValentinoTraffic5:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_valentinos
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_melee2_knife_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_melee2_machete_wa
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_melee1_knife_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_strong2_shotgun2_igla_ma_rare
+      weight: 1.0

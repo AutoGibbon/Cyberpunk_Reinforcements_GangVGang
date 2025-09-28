@@ -21,7 +21,8 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let callSuccessCooldownActive: Bool = false;
   protected let gracePeriodStarted: Bool = false;
   protected let gracePeriodEnded: Bool = false;
-  protected let trafficSpawnDelayID: DelayID;
+  protected let backupDelayActive: Bool = false;
+  protected let hasTrafficRequest: Bool = false;
 
   public let isDisabled: Bool = false;
   public let affiliation: gamedataAffiliation;
@@ -130,9 +131,12 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     if this.lastCallAnswered {
       this.callsPerformed += 1;
-	  GRLog(s"Backup call started: \(this.affiliation), \(this.heatLevel)");
-      this.OnCallSuccessDelayArrival(isTurf);
-    }
+	}
+	if !this.backupDelayActive {
+		this.backupDelayActive = true;
+		GRLog(s"Backup call started: \(this.affiliation), \(this.heatLevel)");
+		this.OnCallSuccessDelayArrival(isTurf);
+	}
   }
 
   public func CompleteReinforcementCall() -> Void {
@@ -151,6 +155,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
       this.heatResetCooldownActive = true;
       this.OnHeatResetCooldownStart();
     }
+	this.backupDelayActive = false;
   }
 
   public func TryCallingReinforcements(puppet: ref<ScriptedPuppet>) -> Bool {
@@ -179,7 +184,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     let node = new questDynamicSpawnSystemNodeDefinition();
     let nodeType = new questDynamicVehicleSpawn_NodeType();
 
-    nodeType.distanceRange = new Vector2(100, 100);
+    nodeType.distanceRange = Vector2(100, 100);
 
     if RandF() >= 0.5 {
       nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;
@@ -201,11 +206,14 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
   public func SpawnTrafficVehicles() -> Void {
 	// only ask for traffic if the primary reinforcement logic is not currently "active" for the given gang
+	// cause dynamic spawn system is a little bitch "no too many spawns waa waa waa"
 	if(this.IsConsideredTurf(this.preventionSystem.GetCurrentDistrict())
 	&& this.lastCallAnswered
 	&& !this.callSuccessCooldownActive
 	&& !this.gracePeriodStarted
 	) {
+		GRLog(s"Requesting traffic spawns: \(this.affiliation)");
+		this.hasTrafficRequest = true;
 		GRReinforcementSystem.GetInstance(GetGameInstance()).RequestSpawnTraffic(this.reinforcementData.GetTrafficSpawns());
 	}
   }

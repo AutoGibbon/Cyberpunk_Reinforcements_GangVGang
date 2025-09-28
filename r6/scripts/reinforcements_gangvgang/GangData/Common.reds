@@ -3,9 +3,7 @@ module Gibbon.GR.GangData
 public abstract class GRGangData {
     protected func GetReinforcements(heat: Int32) -> array<TweakDBID> 
 
-	public func GetTrafficSpawns() -> array<TweakDBID> {
-		return this.GetReinforcementsClamped(RandRange(1, 8), 1);
-	}
+	public func GetTrafficSpawns() -> array<TweakDBID>
     
     public func GetReinforcementsClamped(heat: Int32, maxCount: Int32) -> array<TweakDBID> {
         let reinforcements = this.GetReinforcements(heat);

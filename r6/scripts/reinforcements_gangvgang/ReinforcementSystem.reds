@@ -26,19 +26,20 @@ public class GRReinforcementSystem extends ScriptableSystem {
 	private let delaySystem: ref<DelaySystem>;
 
     public let settings: ref<GRSettings>;
-    public let numberOfTrafficSpawnRequests: Int32 = 0;
 
-	private func OnAttach() -> Void {
+	public func OnAttach() -> Void {
+		GRLog("ReinforcementSystem OnAttach");
 		this.gameAttachHandled = false;
 	}
 
-    private final func OnPlayerAttach(request: ref<PlayerAttachRequest>) -> Void {
+    public final func OnPlayerAttach(request: ref<PlayerAttachRequest>) -> Void {
+		GRLog("ReinforcementSystem OnPlayerAttach");
         let theGame = GetGameInstance();
         // I just lost it
 
         this.preventionSystem = GameInstance.GetScriptableSystemsContainer(theGame).Get(n"PreventionSystem") as PreventionSystem;
         this.QuestsSystem = GameInstance.GetQuestsSystem(theGame);
-		this.delaySystem = GameInstance.GetDelaySystem(game);
+		this.delaySystem = GameInstance.GetDelaySystem(theGame);
 
         this.settings = GRSettings.GetInstance(theGame);
         this.tygerHandler = GRTygersHandler.GetInstance(theGame);
@@ -72,21 +73,25 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.settings.ReconcileSettings();
 
 		if !this.gameAttachHandled {
+			GRLog("ReinforcementSystem OnPlayerAttach->HandleGameAttach");
 			this.HandleGameAttach();
 		}
     }
 
-	private func OnRestored(saveVersion: Int32, gameVersion: Int32) {
+	public func OnRestored(saveVersion: Int32, gameVersion: Int32) {
     	if !this.gameAttachHandled {
+			GRLog("ReinforcementSystem OnRestored->HandleGameAttach");
 			this.HandleGameAttach();
 		}
     }
   
 	public func HandleGameAttach() -> Void { 
+		GRLog("ReinforcementSystem HandleGameAttach");
 		if GameInstance.GetSystemRequestsHandler().IsPreGame() {
-			//GRLog("We're in main menu");
+			GRLog("ReinforcementSystem HandleGameAttach->IsPreGame");
 			return;
 		}
+		GRLog("ReinforcementSystem HandleGameAttach->DoLogic");
 
 		this.gameAttachHandled = true;
 		this.ResetAllGangs();
@@ -340,14 +345,17 @@ public class GRReinforcementSystem extends ScriptableSystem {
         let questSystem = GameInstance.GetQuestsSystem(game);
 
         let arraySize = ArraySize(vehicles);
-        this.numberOfTrafficSpawnRequests = this.numberOfTrafficSpawnRequests + arraySize;
         let node = new questDynamicSpawnSystemNodeDefinition();
         let nodeType = new questDynamicVehicleSpawn_NodeType();
 
-        nodeType.distanceRange = new Vector2(200, 400);
-        nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;
+        nodeType.distanceRange = Vector2(200, 400);
+		if RandF() >= 0.5 {
+			nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;
+		} else {
+			nodeType.spawnDirectionPreference = questSpawnDirectionPreference.Behind;
+		}
         let nodeid = RandRange(20000, 30000);
-        nodeType.waveTag = StringToName(s"GR_TEST_TRAFFIC_\(nodeid)");
+        nodeType.waveTag = StringToName(s"GR_TRAFFIC_\(nodeid)");
         nodeType.VehicleData = vehicles;
 
         node.id = Cast<Uint16>(nodeid);
@@ -357,8 +365,9 @@ public class GRReinforcementSystem extends ScriptableSystem {
     }
 
 	// basically abusing the delay system to keep other long-lived callbacks alive
+	// 
     public func KeepAliveCallback() -> Void {
-		this.delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 9.8, true);
+		this.delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 11, false);
     }
 
 	public func SpawnTrafficVehiclesCallback() -> Void {
@@ -370,13 +379,12 @@ public class GRReinforcementSystem extends ScriptableSystem {
 		this.sixthHandler.SpawnTrafficVehicles();
 		this.militechHandler.SpawnTrafficVehicles();
 		this.valentinosHandler.SpawnTrafficVehicles();
-		this.barghestHandler.SpawnTrafficVehicles();
 		this.wraithsHandler.SpawnTrafficVehicles();
 		this.moxHandler.SpawnTrafficVehicles();
 		
 		// Schedule next traffic spawn callback
 		let delay = RandRangeF(this.settings.trafficSpawnDelayMin, this.settings.trafficSpawnDelayMax);
-		this.delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, true);
+		this.delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, false);
 	}
 }
 

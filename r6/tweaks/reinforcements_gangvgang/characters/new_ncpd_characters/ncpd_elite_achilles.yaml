@@ -1,0 +1,24 @@
+Character.GR_ncpd_elite_achilles:
+    $base: Character.ncpd_police_shotgun3_crusher_mb_elite
+    primaryEquipment: Character.GR_ncpd_elite_achilles_primary_equipment
+    archetypeData: ArchetypeData.FastRangedT3
+    rarity: NPCRarity.Elite
+    abilities:
+        - !append-once Ability.CanSeeThroughSmoke
+    tags:
+        - !append-once GRModPuppet
+
+Character.GR_ncpd_elite_achilles_primary_equipment:
+    $type: gamedataNPCEquipmentGroup_Record
+    equipmentItems:
+        - Character.GR_ncpd_elite_achilles_primary_item
+
+Character.GR_ncpd_elite_achilles_primary_item:
+    $type: gamedataNPCEquipmentItem_Record
+    equipSlot: AttachmentSlots.WeaponRight
+    item: Items.Preset_Achilles_Default
+    onBodySlot: AttachmentSlots.ItemSlotGenericRanged
+    equipCondition:
+        - WeaponConditions.BaseRangedPrimaryWeaponEquipCondition
+    unequipCondition:
+        - WeaponConditions.BaseRangedPrimaryWeaponUnequipCondition

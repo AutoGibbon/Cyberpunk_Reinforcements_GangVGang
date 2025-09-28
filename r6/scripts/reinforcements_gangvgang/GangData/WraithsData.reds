@@ -4,6 +4,17 @@ module Gibbon.GR.GangData
 
 
 public class GRWraithsData extends GRGangData {
+    public func GetTrafficSpawns() -> array<TweakDBID> {
+		return GetRandomFrom(
+			[
+				t"DynamicSpawnSystem.GRWraithsTraffic1",
+				t"DynamicSpawnSystem.GRWraithsTraffic2",
+				t"DynamicSpawnSystem.GRWraithsTraffic3",
+				t"DynamicSpawnSystem.GRWraithsTraffic4",
+				t"DynamicSpawnSystem.GRWraithsTraffic5"
+			], 1);
+	}
+	
     public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {
             case 1: // 1 w bike

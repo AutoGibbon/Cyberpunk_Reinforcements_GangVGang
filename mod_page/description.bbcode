@@ -1,0 +1,205 @@
+[color=#f1c232][size=5][b]Gangs can now call for backup when fighting eachother!
+Designed to complement and extend the great original mod, [url=https://www.nexusmods.com/cyberpunk2077/mods/21532]Reinforcements System[/url]
+[/b][/size][/color]
+
+[quote][size=3]This is [/size][u]NOT[/u][size=3] a replacement for [/size][url=https://www.nexusmods.com/cyberpunk2077/mods/21532]Reinforcements System[/url][size=3]﻿. [/size]
+[size=3]It is a standalone system that works on gangs when they are fighting eachother.[/size]
+[size=3] You [/size][u][size=3]must[/size][/u][size=3] download the original mod if you want enemies to call for backup when they are fighting [/size][b][u][size=3]you.[/size]
+[/u][/b]
+[size=2][i]This mod is uploaded with permission from the author of Reinforcements System, because it is based heavily on their creation, adapted to work for gang to gang combat scenarios.[/i][/size][/quote]
+
+The settings for this system are greatly simplified compared to the player centric version. This keeps it lightweight, but still somewhat believable.
+
+
+
+[center][youtube]yeontv8li7o[/youtube][/center]
+
+[color=#f1c232][size=4][b]Features:[/b][/size][/color]
+
+[list]
+[*]Gangs have their own heat level, that rises each time they call for backup
+[*]Higher heat = more and tougher reinforcements.
+[*]They a chance to call for stronger reinforcements
+[*]Bonus starting heat if fighting on their own turf
+[*]Must wait some time between calls
+[*]Each time they call, the heat increases
+[*]When they reach a certain number of calls, their heat resets and they must wait for a time before calling again. This prevents fights from going on too long.
+[*]NCPD is considered a gang, so can call for backup. And if the heat gets high enough MaxTac will show up (not in an AV, but in the Hellhound).
+[*]Does not use any phonecall shenanigans. That works for the original where the player can interrupt calls etc for more interesting gameplay. Not here.
+[*]Includes localisation for the mod settings. If you know the language better and want to help me improve, I welcome your input!
+[/list]
+[color=#f1c232][size=4][b]Gangs and their turfs: [/b][/size][/color] [spoiler]
+[color=#f1c232]Animals:[/color]  Pacifica
+
+[color=#f1c232]Arasaka:[/color]  Night City
+
+[color=#f1c232]Maelstrom:[/color] Watson
+
+[color=#f1c232]6th Street:[/color] Santo Domingo
+
+[color=#f1c232]Voodoo Boys:[/color] Pacifica
+
+[color=#f1c232]Valentinos:[/color] Heywood
+
+[color=#f1c232]Scavs:[/color] None
+
+[color=#f1c232]Tyger Claw:[/color] Westbrook
+
+[color=#f1c232]Wraiths:[/color] Badlands
+
+[color=#f1c232]Barghest:[/color] Dogtown
+
+[color=#f1c232]Militech:[/color] Badlands
+
+[color=#f1c232]NCPD:[/color] None
+[/spoiler]
+
+
+[size=4][b][color=#f1c232]Notes:[/color][/b][/size]
+
+[list]
+[*]Phantom Liberty is marked as a requirement because Barghest participates in this system, just like the original mod.
+[*]Consider downloading [url=https://www.nexusmods.com/cyberpunk2077/mods/21532]Reinforcements System[/url], as without it I would not have been inspired to make this <3﻿﻿
+[*]Recommend [url=https://www.nexusmods.com/cyberpunk2077/mods/19351]Enemy Aggro Improvements[/url] to get the most out of this system.﻿ (apparently not great combined with ENC, HARDCORE22 so be careful if you use those)
+[*]Also [url=https://www.nexusmods.com/cyberpunk2077/mods/10395]NIGHT CITY ALIVE[/url]. This is so important to add that truly dynamic feeling to the city.﻿
+[/list]
+
+[size=4][b][color=#f1c232]Compatibility:[/color][/b][/size]
+
+[list]
+[*]Do you want my entire modlist?
+[*]Night City Alive - [color=#00ff00]✓[/color]
+[*]NCPD Prevention Police Enhancement - [color=#00ff00]✓[/color] (but maybe tyger claws spawned as police from this won't like eachother sometimes idk)
+[*]NCPD Duty Expansion - [color=#00ff00]✓[/color]
+[*]Law Enforcement Overhaul - [color=#00ff00]✓[/color]
+[*]Maxtac Spawn Tweak - [color=#00ff00]✓[/color]
+[*]Enemies of Night City - [color=#00ff00]✓[/color] in theory, since it is compatible with the original
+[*]They Will Remember - [color=#00ff00]✓[/color]
+[/list]
+
+[b][color=#f1c232][size=4]Settings:[/size][/color][/b]
+
+Tips on settings: [spoiler]
+
+Keep in mind the primitive, stupid, cyclic heat system the mod operates on, and you can achieve many things with the configuration.
+
+[color=#f1c232][size=4][b]Basic Settings[/b][/size][/color]
+[list]
+[*][b]Enabled[/b] - Toggle the mod on/off
+[*][b]Enabled When Player in Combat[/b] - Allow gang reinforcements when player is in combat
+[*][b]Enabled When Player is Passenger[/b] - Allow gang reinforcements when player is a passenger in a vehicle
+[/list]
+
+[color=#f1c232][size=4][b]Preset Modes[/b][/size][/color]
+[list]
+[*][b]Limited[/b] - Minimal reinforcements with moderate cooldowns (2 calls max, 150s reset)
+[*][b]Balanced (Default)[/b] - Moderate reinforcements with reasonable pacing (3 calls max, 300s reset)
+[*][b]Rare Big Battles[/b] - Infrequent but intense battles (1 call max, 500s reset)
+[*][b]Chaos[/b] - Constant reinforcements with short cooldowns (10 calls max, 60s reset)
+[/list]
+
+[i]Internal values used for the presets, if you want to use them in advance mode and tweak: [/i]
+[spoiler]
+[code]
+
+--------------------------------
+Limited
+--------------------------------
+Grace Period: 10-20
+Call Success Cooldown: 10-25
+Heat Reset Cooldown: 150
+Initial Heat: 1
+Heat Escalation: 2
+Calls Limit: 2
+Strong Call Chance: 50%
+Strong Call Heat Bonus: 15
+Turf Heat Bonus: 1
+Max Vehicles Per Call: 1
+--------------------------------
+
+
+--------------------------------
+Balanced Mode
+--------------------------------
+Grace Period: 5-15
+Call Success Cooldown: 15-60
+Heat Reset Cooldown: 300
+Initial Heat: 2
+Heat Escalation: 3
+Calls Limit: 3
+Strong Call Chance: 15%
+Strong Call Heat Bonus: 6
+Turf Heat Bonus: 4
+Max Vehicles Per Call: 2
+--------------------------------
+
+
+--------------------------------
+RareBigFight
+--------------------------------
+Grace Period: 40-60
+Call Success Cooldown: 55-60
+Heat Reset Cooldown: 500
+Initial Heat: 10
+Heat Escalation: 5
+Calls Limit: 1
+Strong Call Chance: 35%
+Strong Call Heat Bonus: 5
+Turf Heat Bonus: 5
+Max Vehicles Per Call: 3
+--------------------------------
+
+
+--------------------------------
+Chaos
+--------------------------------
+Grace Period: 1-5
+Call Success Cooldown: 15-30
+Heat Reset Cooldown: 60
+Initial Heat: 5
+Heat Escalation: 1
+Calls Limit: 10
+Strong Call Chance: 5%
+Strong Call Heat Bonus: 3
+Turf Heat Bonus: 3
+Max Vehicles Per Call: 4
+--------------------------------
+[/code]
+[/spoiler]
+
+
+[color=#f1c232][size=4][b]Advanced Settings[/b][/size][/color]
+[i]Enable "Show Advanced Settings" to access these individual parameters[/i]
+
+[color=#93c47d][size=3][b]Grace Period[/b][/size][/color]
+[list]
+[*][b]Minimum Grace Period[/b] (1-60s) - Minimum time before first backup call
+[*][b]Maximum Grace Period[/b] (1-60s) - Maximum time before first backup call
+[/list]
+
+[color=#93c47d][size=3][b]Cooldowns[/b][/size][/color]
+[list]
+[*][b]Minimum Call Cooldown[/b] (1-60s) - Minimum wait between backup calls
+[*][b]Maximum Call Cooldown[/b] (1-60s) - Maximum wait between backup calls
+[*][b]Limit Cooldown[/b] (30-600s) - Wait time after reaching calls limit
+[/list]
+
+[color=#e06666][size=3][b]Heat System[/b][/size][/color]
+[list]
+[*][b]Initial Heat[/b] (1-20) - Strength of first backup call
+[*][b]Heat Escalation[/b] (1-4) - Heat increase per call
+[*][b]Calls Limit[/b] (1-10) - Max calls before cooldown
+[*][b]Stronger Call Chance[/b] (0-100%) - Chance for stronger than normal call
+[*][b]Stronger Call Heat Bonus[/b] (1-10) - Extra heat for strong calls
+[*][b]Turf Heat Bonus[/b] (1-20) - Extra heat when calling on own turf
+[*][b]Maximum Vehicles Per Call[/b] (1-5) - Max vehicles per backup call (higher number means the first call that succeeds is heavily favoured by the game's spawn system)
+[/list]
+
+[size=2][i]Note: Advanced settings override preset mode values when enabled.[/i][/size]
+[/spoiler]
+
+[size=3]The default settings (Balanced) aims to provide good entertainment while not being too insane, and feel organic in presentation.
+[/size]
+[b][center][img]https://staticdelivery.nexusmods.com/mods/3333/images/24243/24243-1758308174-587486596.png[/img]﻿[/center]﻿
+
+[/b][color=#f1c232][size=1][i]Use secret code "bananas" in comments to receive heart emojis[/i][/size][/color]

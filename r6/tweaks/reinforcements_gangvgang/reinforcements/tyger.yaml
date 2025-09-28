@@ -1,3 +1,48 @@
+# tiger bikes:
+# Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
+  # Vehicle.GR_v_sportbike2_arch_tyger
+# tiger cars(2 SITS):
+# Vehicle.GR_v_standard2_archer_quartz_tyger
+# Vehicle.GR_v_sport2_mizutani_shion_tyger
+
+# Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
+# Vehicle.GR_mws_wbr_06_tyger_car_2
+# tiger caRS (4 SITS):
+# Vehicle.GR_v_standard2_mizutani_hozuki
+
+# Charas:
+# weak:
+
+# Character.tyger_claws_biker2_melee2_baseball_ma - hunter
+# Character.tyger_claws_biker2_ranged2_copperhead_ma - tiger / tigress
+# Character.tyger_claws_biker2_ranged2_shingen_ma - tiger / tigress 
+# Character.tyger_claws_gangster2_ranged2_sidewinder_ma - tiger / tigress
+
+# normal:
+# Character.tyger_claws_biker1_melee1_baseball_ma - Thug
+# Character.tyger_claws_gangster1_melee1_knife_ma - Thug
+# Character.tyger_claws_biker1_ranged1_nue_ma - Racketer?
+# Character.tyger_claws_biker3_shotgun2_tactician_wa - blitzer
+# Character.tyger_claws_biker1_ranged1_saratoga_ma - Racketeer?
+# Character.tyger_claws_gangster1_ranged1_nue_ma - Racketeer?
+# Character.tyger_claws_gangster1_ranged1_copperhead_wa - Racketeer?
+
+
+# Rare:
+# Character.tyger_claws_martial_fmelee2_katana_ma_rare - adept
+# Character.tyger_claws_martial_fmelee2_fists_ma_rare - adept
+# Character.tyger_claws_martial_hmelee2_hammer_mb - fang
+# Character.tyger_claws_martial_hmelee2_StrongArms_ma - claw
+# Character.tyger_claws_gangster3_ranged3_sidewinder_ma - dragoon
+# Character.tygerclaw_gangster3_netrunner_nue_wa_rare - jonin
+#  Elite:
+# Character.tyger_claws_ozeki_hmelee3_kanabo_mb - ozeki
+# Character.tyger_claws_ozeki_hmelee3_hammer_mb - ozeki
+# Character.tyger_claws_martial_hmelee3_StrongArms_mb - ozeki
+# Character.tyger_claws_kunoichi_fmelee3_katana_wa_elite - kunoichi
+# Character.tyger_claws_kunoichi_fmelee3_fists_ma_elite - kunoichi
+
+#reinforcements
 # weak
 DynamicSpawnSystem.GRTygerBikeMeleeWeak1:
   $type: DynamicVehicleData
@@ -495,46 +540,66 @@ DynamicSpawnSystem.GRTygerCarRareRareRareNormal3:
       character: Character.GR_tyger_claws_martial_hmelee2_hammer_mb
       weight: 1.0  
 
-# tiger bikes:
-# Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
-  # Vehicle.GR_v_sportbike2_arch_tyger
-# tiger cars(2 SITS):
-# Vehicle.GR_v_standard2_archer_quartz_tyger
-# Vehicle.GR_v_sport2_mizutani_shion_tyger
 
-# Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
-# Vehicle.GR_mws_wbr_06_tyger_car_2
-# tiger caRS (4 SITS):
-# Vehicle.GR_v_standard2_mizutani_hozuki
+#Traffic
 
-# Charas:
-# weak:
+DynamicSpawnSystem.GRTygerTraffic1:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_biker2_melee2_baseball_ma
+      weight: 1.0
 
-# Character.tyger_claws_biker2_melee2_baseball_ma - hunter
-# Character.tyger_claws_biker2_ranged2_copperhead_ma - tiger / tigress
-# Character.tyger_claws_biker2_ranged2_shingen_ma - tiger / tigress 
-# Character.tyger_claws_gangster2_ranged2_sidewinder_ma - tiger / tigress
+DynamicSpawnSystem.GRTygerTraffic2:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_tyger
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_biker2_melee2_baseball_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_biker1_ranged1_nue_ma
+      weight: 1.0
 
-# normal:
-# Character.tyger_claws_biker1_melee1_baseball_ma - Thug
-# Character.tyger_claws_gangster1_melee1_knife_ma - Thug
-# Character.tyger_claws_biker1_ranged1_nue_ma - Racketer?
-# Character.tyger_claws_biker3_shotgun2_tactician_wa - blitzer
-# Character.tyger_claws_biker1_ranged1_saratoga_ma - Racketeer?
-# Character.tyger_claws_gangster1_ranged1_nue_ma - Racketeer?
-# Character.tyger_claws_gangster1_ranged1_copperhead_wa - Racketeer?
+DynamicSpawnSystem.GRTygerTraffic3:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_tyger
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_gangster1_melee1_knife_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_biker2_ranged2_shingen_wa
+      weight: 1.0
 
+DynamicSpawnSystem.GRTygerTraffic4:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_gangster1_melee1_knife_wa
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_gangster1_melee1_knife_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_gangster2_ranged2_sidewinder_ma
+      weight: 1.0
 
-# Rare:
-# Character.tyger_claws_martial_fmelee2_katana_ma_rare - adept
-# Character.tyger_claws_martial_fmelee2_fists_ma_rare - adept
-# Character.tyger_claws_martial_hmelee2_hammer_mb - fang
-# Character.tyger_claws_martial_hmelee2_StrongArms_ma - claw
-# Character.tyger_claws_gangster3_ranged3_sidewinder_ma - dragoon
-# Character.tygerclaw_gangster3_netrunner_nue_wa_rare - jonin
-#  Elite:
-# Character.tyger_claws_ozeki_hmelee3_kanabo_mb - ozeki
-# Character.tyger_claws_ozeki_hmelee3_hammer_mb - ozeki
-# Character.tyger_claws_martial_hmelee3_StrongArms_mb - ozeki
-# Character.tyger_claws_kunoichi_fmelee3_katana_wa_elite - kunoichi
-# Character.tyger_claws_kunoichi_fmelee3_fists_ma_elite - kunoichi
+DynamicSpawnSystem.GRTygerTraffic5:
+  $type: DynamicVehicleData
+  vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
+  unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_gangster1_melee1_knife_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_gangster1_melee1_knife_wa
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_martial_fmelee2_katana_ma_rare
+      weight: 1.0

@@ -1,0 +1,23 @@
+Version 2.0.0
+- tbd
+
+Version 1.5.1
+- remove logging calls
+
+Version 1.5.0
+- Add new preset modes for easy configuration
+- Balance pass on spawn rates overall
+- Fix a bug that caused far too many spawns
+- Police Sirens work when arriving (sometimes)
+
+Version 1.0.3
+- fix incorrect vehicle record in NCPD tweak data
+
+Version 1.0.2
+- reviewed and updated all settings localisations
+
+Version 1.0.1
+- update jp-jp localisation, thanks to KeiSagano <3
+
+Version 1.0.0
+- hiya

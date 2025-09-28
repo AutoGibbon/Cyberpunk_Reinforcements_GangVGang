@@ -36,6 +36,19 @@ This enables a lightweight and unobtrusive system that does not rely on complex 
 
 ## Development Guidelines
 
+### Thread Safety
+
+-   member access across classes is forbidden, and must be implmented via getter/setter
+-   getter/setter must use RWLock
+-   compartmentalise locks by purpose i.e `private let m_SettingsLock: RWLock;` will be responsible for read/write to the settings class
+
+#### RWLock
+
+-   RWLock.Acquire(somelockvar) to get a safe write handle
+-   RWLock.Release(somelockvar) to release a safe write handle
+-   RWLock.AcquireShared(somelockvar) to get a safe read handle
+-   RWLock.Release(somelockvar) to release safe read handle
+
 ### Logging
 
 -   Logging always uses the GRLog function.

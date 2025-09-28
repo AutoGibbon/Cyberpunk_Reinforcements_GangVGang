@@ -1,21 +1,34 @@
-pistols
+#pistols
 Items.Preset_Chao_Neon
 Items.Preset_Kappa_Neon
 Items.Preset_Overture_Neon
 
-smg
+#smg
 Items.Preset_Dian_Neon
 Items.Preset_Senkoh_Neon
 Items.Preset_Pulsar_Neon
 
-shotgun
+#shotgun
 Items.Preset_Palica_Neon
 Items.Preset_Pozhar_Neon
+Items.Preset_Zhuo_Default
 
-batons (secondary for smg/shotgunners)
+#batons
 Items.Preset_Baton_Alpha
 Items.Preset_Baton_Beta
 Items.Preset_Baton_Gamma
 
-baseball bat
+#baseball bat
 Items.Preset_Baseball_Bat_Mox
+
+#HMG
+Items.Preset_HMG_Default
+
+#tech rifle
+Items.Preset_Achilles_Default
+
+#Heavy Precision Rifle
+Items.Preset_Kolac_Default
+
+#gorilla arms
+Items.NPC_Strong_Arms

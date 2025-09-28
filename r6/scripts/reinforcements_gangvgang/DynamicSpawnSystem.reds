@@ -53,20 +53,18 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         return;
     }
 
-	// only inject car chase commands if there are pending chase requests and the gang had its last normal call answered
-    let isTrafficSpawn = reinSystem.numberOfTrafficSpawnRequests > 0 && gangHandler.lastCallAnswered;
-
     target = gangHandler.GetLastTarget();
     targetPosition = gangHandler.GetLastCallerPosition();
     i = 0;
     while i < ArraySize(wheeledObjects) {
         wheeledObject = wheeledObjects[i];
 
-        if isTrafficSpawn {
+        if gangHandler.hasTrafficRequest {
 			//if(RandF() >= 0.5 ) {
 				//GRLog(s"JoinTrafficVehicleEvent");
 				let evt = new JoinTrafficVehicleEvent();
 				wheeledObject.QueueEvent(evt);
+				gangHandler.hasTrafficRequest = false;
 			/**
 				} else {
 					//GRLog(s"No JoinTrafficVehicleEvent");
@@ -89,7 +87,6 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
 				}
 			*/
         } else if IsDefined(target) {
-    		gangHandler.lastCallAnswered = true;
             aiVehicleChaseCommand = new AIVehicleChaseCommand();
             aiVehicleChaseCommand.target = target;
             aiVehicleChaseCommand.distanceMin = TweakDBInterface.GetFloat(t"DynamicSpawnSystem.dynamic_vehicles_chase_setup.distanceMin", 3.0);
@@ -103,7 +100,6 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
             wheeledObject.QueueEvent(aiCommandEvent);
             wheeledObject.GetAIComponent().SetInitCmd(aiVehicleChaseCommand);
         } else if !Vector4.IsZero(targetPosition) {
-    		gangHandler.lastCallAnswered = true;
             aiVehicleMovecommand = new AIVehicleDriveToPointAutonomousCommand();
             aiVehicleMovecommand.driveDownTheRoadIndefinitely = false;
             aiVehicleMovecommand.clearTrafficOnPath = false;
@@ -123,7 +119,14 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         }
         i += 1;
     }
-    //GRLog(s"\(gangHandler.affiliation), veh \(ArraySize(wheeledObjects)) ");
+	
+	//support allowing gangs to call reinforcements from another gang, e.g NCPD, or whoever owns the turf?
+	let lastCaller = gangHandler.GetLastCaller();
+	if IsDefined(lastCaller) {
+		reinSystem.GetFactionHandler(lastCaller).lastCallAnswered = true;
+	}
+    gangHandler.lastCallAnswered = true;
+    GRLog(s"\(gangHandler.affiliation), veh \(ArraySize(wheeledObjects)) ");
     return;
 }
 
