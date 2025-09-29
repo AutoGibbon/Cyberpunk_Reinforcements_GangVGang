@@ -1,6 +1,7 @@
 module Gibbon.GR.Settings
 
 import Gibbon.GR.Logging.*
+import Gibbon.GR.ReinforcementSystem.*
 
 enum PresetMode {
     Limited = 0,
@@ -110,9 +111,9 @@ public class GRSettings extends ScriptableSystem {
 				this.maxVehiclesPerCall = 3;
 			}
         }
+
+		GRReinforcementSystem.GetInstance(GetGameInstance()).OnSettingsChanged();
     }
-
-
 	
     @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
     @runtimeProperty("ModSettings.displayName", "GibbonGR-Enabled-Name")
@@ -127,6 +128,71 @@ public class GRSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.displayName", "GibbonGR-EnabledWhenPlayerIsPassenger-Name")
     @runtimeProperty("ModSettings.dependency", "enabled")
     public let enabledWhenPlayerIsPassenger: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "6th Street")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let sixthStreetEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Animals")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let animalsEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Arasaka")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let arasakaEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Barghest")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let barghestEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Maelstrom")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let maelstromEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Militech")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let militechEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Mox")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let moxEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "NCPD")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let ncpdEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Scavs")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let scavsEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Tyger Claws")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let tygerClawsEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Valentinos")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let valentinosEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Voodoo Boys")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let voodooBoysEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Wraiths")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let wraithsEnabled: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
     @runtimeProperty("ModSettings.displayName", "GibbonGR-PresetMode-Name")

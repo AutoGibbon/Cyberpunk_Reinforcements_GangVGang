@@ -40,32 +40,20 @@ public class GRReinforcementSystem extends ScriptableSystem {
 		this.m_delaySystem = GameInstance.GetDelaySystem(theGame);
 
         this.m_settings = GRSettings.GetInstance(theGame);
-        this.m_tygerHandler = GRTygersHandler.GetInstance(theGame);
-        this.m_scavHandler = GRScavsHandler.GetInstance(theGame);
-        this.m_animalsHandler = GRAnimalsHandler.GetInstance(theGame);
-        this.m_maelStormHandler = GRMaelStromHandler.GetInstance(theGame);
-        this.m_arasakaHandler = GRArasakaHandler.GetInstance(theGame);
-        this.m_voodooHandler = GRVoodooHandler.GetInstance(theGame);
+
         this.m_sixthHandler = GRSixthStreetHandler.GetInstance(theGame);
-        this.m_militechHandler = GRMilitechHandler.GetInstance(theGame);
-        this.m_valentinosHandler = GRValentinosHandler.GetInstance(theGame);
+        this.m_animalsHandler = GRAnimalsHandler.GetInstance(theGame);
+        this.m_arasakaHandler = GRArasakaHandler.GetInstance(theGame);
         this.m_barghestHandler = GRBarghestHandler.GetInstance(theGame);
-        this.m_wraithsHandler = GRWraithsHandler.GetInstance(theGame);
-        this.m_ncpdHandler = GRNCPDHandler.GetInstance(theGame);
+        this.m_maelStormHandler = GRMaelStromHandler.GetInstance(theGame);
         this.m_moxHandler = GRMoxHandler.GetInstance(theGame);
-        //debugging
-        //this.m_tygerHandler.SetIsDisabled(true);
-    	//this.m_scavHandler.SetIsDisabled(true);
-        //this.m_animalsHandler.SetIsDisabled(true);
-        //this.m_maelStormHandler.SetIsDisabled(true);
-        //this.m_arasakaHandler.SetIsDisabled(true);
-        //this.m_voodooHandler.SetIsDisabled(true);
-        //this.m_sixthHandler.SetIsDisabled(true);
-        //this.m_militechHandler.SetIsDisabled(true);
-        //this.m_valentinosHandler.SetIsDisabled(true);
-        //this.m_barghestHandler.SetIsDisabled(true);
-        //this.m_wraithsHandler.SetIsDisabled(true);
-        // this.ncpdHandler.SetIsDisabled(true);
+        this.m_militechHandler = GRMilitechHandler.GetInstance(theGame);
+        this.m_ncpdHandler = GRNCPDHandler.GetInstance(theGame);
+        this.m_scavHandler = GRScavsHandler.GetInstance(theGame);
+        this.m_tygerHandler = GRTygersHandler.GetInstance(theGame);
+        this.m_valentinosHandler = GRValentinosHandler.GetInstance(theGame);
+        this.m_voodooHandler = GRVoodooHandler.GetInstance(theGame);
+        this.m_wraithsHandler = GRWraithsHandler.GetInstance(theGame);
 
         // cause we're doing funky stuff with public and private bindings
         this.m_settings.ReconcileSettings();
@@ -96,19 +84,35 @@ public class GRReinforcementSystem extends ScriptableSystem {
 	}
 
     public func ResetAllGangs() -> Void {
-        this.m_tygerHandler.ResetGang();
-        this.m_scavHandler.ResetGang();
-        this.m_animalsHandler.ResetGang();
-        this.m_maelStormHandler.ResetGang();
-        this.m_arasakaHandler.ResetGang();
-        this.m_voodooHandler.ResetGang();
         this.m_sixthHandler.ResetGang();
-        this.m_militechHandler.ResetGang();
-        this.m_valentinosHandler.ResetGang();
+        this.m_animalsHandler.ResetGang();
+        this.m_arasakaHandler.ResetGang();
         this.m_barghestHandler.ResetGang();
-        this.m_wraithsHandler.ResetGang();
-        this.m_ncpdHandler.ResetGang();
+        this.m_maelStormHandler.ResetGang();
         this.m_moxHandler.ResetGang();
+        this.m_militechHandler.ResetGang();
+        this.m_ncpdHandler.ResetGang();
+        this.m_scavHandler.ResetGang();
+        this.m_tygerHandler.ResetGang();
+        this.m_valentinosHandler.ResetGang();
+        this.m_voodooHandler.ResetGang();
+        this.m_wraithsHandler.ResetGang();
+    }
+
+    public func OnSettingsChanged() -> Void {
+        this.m_sixthHandler.SetIsDisabled(!this.m_settings.sixthStreetEnabled);
+        this.m_animalsHandler.SetIsDisabled(!this.m_settings.animalsEnabled);
+        this.m_arasakaHandler.SetIsDisabled(!this.m_settings.arasakaEnabled);
+        this.m_barghestHandler.SetIsDisabled(!this.m_settings.barghestEnabled);
+        this.m_maelStormHandler.SetIsDisabled(!this.m_settings.maelstromEnabled);
+        this.m_moxHandler.SetIsDisabled(!this.m_settings.moxEnabled);
+        this.m_militechHandler.SetIsDisabled(!this.m_settings.militechEnabled);
+        this.m_ncpdHandler.SetIsDisabled(!this.m_settings.ncpdEnabled);
+        this.m_scavHandler.SetIsDisabled(!this.m_settings.scavsEnabled);
+        this.m_tygerHandler.SetIsDisabled(!this.m_settings.tygerClawsEnabled);
+        this.m_valentinosHandler.SetIsDisabled(!this.m_settings.valentinosEnabled);
+        this.m_voodooHandler.SetIsDisabled(!this.m_settings.voodooBoysEnabled);
+        this.m_wraithsHandler.SetIsDisabled(!this.m_settings.wraithsEnabled);
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRReinforcementSystem> {
@@ -303,14 +307,13 @@ public class GRReinforcementSystem extends ScriptableSystem {
     }
 
     public func TryCallingReinforcements(puppet: ref<ScriptedPuppet>, target: wref<GameObject>) -> Void {
+		// there are a lot of stim events so just randomly throttle our logic
+		if RandF() <= 0.2 {
+            return;
+        }
         if !this.ReinforcementsChecksCall(puppet, target) {
             return;
         }
-
-        if RandF() <= 0.2 {
-            return;
-        }
-
         if !NPCPuppet.IsInCombatWithTarget(puppet, GetPlayer(GetGameInstance())) {
             if this.GetFactionHandler(puppet).TryCallingReinforcements(puppet) {
                 this.ReinforcementsCalled(puppet, target);
@@ -322,7 +325,6 @@ public class GRReinforcementSystem extends ScriptableSystem {
         let game = GetGameInstance();
         let questSystem = GameInstance.GetQuestsSystem(game);
 
-        let arraySize = ArraySize(vehicles);
         let node = new questDynamicSpawnSystemNodeDefinition();
         let nodeType = new questDynamicVehicleSpawn_NodeType();
 
@@ -379,15 +381,19 @@ public class GRReinforcementSystem extends ScriptableSystem {
             }
         }
 		
-		this.m_tygerHandler.SpawnTrafficVehicles();
-		this.m_animalsHandler.SpawnTrafficVehicles();
-		this.m_maelStormHandler.SpawnTrafficVehicles();
-		this.m_voodooHandler.SpawnTrafficVehicles();
 		this.m_sixthHandler.SpawnTrafficVehicles();
-		this.m_militechHandler.SpawnTrafficVehicles();
-		this.m_valentinosHandler.SpawnTrafficVehicles();
-		this.m_wraithsHandler.SpawnTrafficVehicles();
+		this.m_animalsHandler.SpawnTrafficVehicles();
+		//this.m_arasakaHandler.SpawnTrafficVehicles(); no arasaka traffic or else they'd be everywhere
+		this.m_barghestHandler.SpawnTrafficVehicles();
+		this.m_maelStormHandler.SpawnTrafficVehicles();
 		this.m_moxHandler.SpawnTrafficVehicles();
+		this.m_militechHandler.SpawnTrafficVehicles();
+		this.m_ncpdHandler.SpawnTrafficVehicles();
+		//this.m_scavHandler.SpawnTrafficVehicles(); no scavs they have no turf
+		this.m_tygerHandler.SpawnTrafficVehicles();
+		this.m_valentinosHandler.SpawnTrafficVehicles();
+		this.m_voodooHandler.SpawnTrafficVehicles();
+		this.m_wraithsHandler.SpawnTrafficVehicles();
 		
 		// Schedule next traffic spawn callback
 		let delay = RandRangeF(this.m_settings.GetTrafficSpawnDelayMin(), this.m_settings.GetTrafficSpawnDelayMax());
