@@ -82,14 +82,14 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
             wheeledObject.GetAIComponent().SetInitCmd(aiVehicleMovecommand);
         }
 
-        if Equals(gangHandler.GetAffiliation(), gamedataAffiliation.NCPD) {
+        if Equals(gangHandler.m_affiliation, gamedataAffiliation.NCPD) {
             wheeledObject.GetVehicleComponent().ToggleSiren(true, true);
         }
         i += 1;
     }
 	
     gangHandler.SetLastCallAnswered(true);
-    GRLog(s"\(gangHandler.GetAffiliation()), veh \(ArraySize(wheeledObjects)) ");
+    GRLog(s"\(gangHandler.m_affiliation), veh \(ArraySize(wheeledObjects)) ");
     return;
 }
 

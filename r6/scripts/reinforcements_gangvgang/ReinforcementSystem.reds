@@ -302,11 +302,12 @@ public class GRReinforcementSystem extends ScriptableSystem {
     }
 
     public func TryCallingReinforcements(puppet: ref<ScriptedPuppet>, target: wref<GameObject>) -> Void {
-		// there are a lot of stim events so just randomly throttle our logic
-		if RandF() <= 0.25 {
+        if !this.ReinforcementsChecksCall(puppet, target) {
             return;
         }
-        if !this.ReinforcementsChecksCall(puppet, target) {
+
+		// there are a lot of stim events so just randomly throttle our logic
+		if RandF() <= 0.25 {
             return;
         }
         

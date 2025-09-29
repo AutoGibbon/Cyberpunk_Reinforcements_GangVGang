@@ -6,11 +6,6 @@ import Gibbon.GR.Logging.*
 import Gibbon.GR.ReinforcementSystem.*
 
 public abstract class GRGangHandler extends ScriptableSystem {
-
-  //locks
-  private let m_lastCallAnsweredLock: RWLock;
-  private let m_lastCallDataLock: RWLock;
-
   protected let m_preventionSystem: ref<PreventionSystem>;
   protected let m_delaySystem: ref<DelaySystem>;
   protected let m_settings: ref<GRSettings>;
@@ -27,16 +22,14 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let m_gracePeriodEnded: Bool = false;
 
   protected let m_isDisabled: Bool = false;
-  protected let m_affiliation: gamedataAffiliation;
-  protected let m_lastCallAnswered: Bool = true;
+  public let m_affiliation: gamedataAffiliation;
+  public let m_lastCallAnswered: Bool = true;
 
   public func GetCallSuccessCooldown() -> Float {
     return RandRangeF(this.m_settings.callSuccessCooldownMin, this.m_settings.callSuccessCooldownMax);
   }
 
-
   // ABSTRACT METHODS
-
   public func OnCallSuccessCooldownStart() -> Void;
 
   public func OnGraceStart() -> Void;
@@ -44,45 +37,19 @@ public abstract class GRGangHandler extends ScriptableSystem {
   public func GetTurfList() -> array<String>;
 
   public func GetLastCaller() -> ref<NPCPuppet> {
-    //let result: ref<NPCPuppet>;
-    //RWLock.AcquireShared(this.m_lastCallDataLock);
-    //result = this.m_lastCaller;
-    //RWLock.ReleaseShared(this.m_lastCallDataLock);
     return this.m_lastCaller;
   }
 
   public func GetLastCallerPosition() -> Vector4 {
-    //let result: Vector4;
-    //RWLock.AcquireShared(this.m_lastCallDataLock);
-    //result = this.m_lastCallerPosition;
-    //RWLock.ReleaseShared(this.m_lastCallDataLock);
     return this.m_lastCallerPosition;
   }
 
   public func GetLastTarget() -> ref<NPCPuppet> {
-    //let result: ref<NPCPuppet>;
-    //RWLock.AcquireShared(this.m_lastCallDataLock);
-    //result = this.m_lastTarget;
-    //RWLock.ReleaseShared(this.m_lastCallDataLock);
-    return this.m_lastTarget;
-  }
-
-  public func GetLastCallAnswered() -> Bool {
-    //let result: Bool;
-    //RWLock.AcquireShared(this.m_lastCallAnsweredLock);
-    //result = this.m_lastCallAnswered;
-    //RWLock.ReleaseShared(this.m_lastCallAnsweredLock);
-    return this.m_lastCallAnswered;
+    return  this.m_lastTarget;
   }
 
   public func SetLastCallAnswered(lastCallAnswered: Bool) -> Void {
-    //RWLock.Acquire(this.m_lastCallAnsweredLock);
     this.m_lastCallAnswered = lastCallAnswered;
-    //RWLock.Release(this.m_lastCallAnsweredLock);
-  }
-
-  public func GetAffiliation() -> gamedataAffiliation {
-    return this.m_affiliation;
   }
 
   public func SetIsDisabled(isDisabled: Bool) -> Void {
@@ -98,9 +65,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_callSuccessCooldownActive = false;
     this.m_gracePeriodEnded = false;
     this.m_gracePeriodStarted = false;
-	//RWLock.Acquire(this.m_lastCallAnsweredLock);
 	this.m_lastCallAnswered = true;
-	//RWLock.Release(this.m_lastCallAnsweredLock);
   }
 
   public func OnCallSuccessCooldownEnd() -> Void {
@@ -138,7 +103,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     if this.m_heatLevel == 0 {
       this.m_heatLevel = this.m_settings.initialHeat;
-    } else if this.GetLastCallAnswered() {
+    } else if this.m_lastCallAnswered {
       this.m_heatLevel += this.m_settings.heatEscalation;
       if isTurf {
         this.m_heatLevel += this.m_settings.turfHeatBonus;
@@ -152,7 +117,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_lastCallerPosition = puppet.GetWorldPosition();
     this.m_lastTarget = target;
 
-    if this.GetLastCallAnswered() {
+    if this.m_lastCallAnswered {
       this.m_callsPerformed += 1;
 	}
 
@@ -216,9 +181,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     GameInstance.GetQuestsSystem(GetGameInstance()).ExecuteNode(node);
 	
-   // RWLock.Acquire(this.m_lastCallAnsweredLock);
     this.m_lastCallAnswered = false;
-    //RWLock.Release(this.m_lastCallAnsweredLock);
   }
 }
 
