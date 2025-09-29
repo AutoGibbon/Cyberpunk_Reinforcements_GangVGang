@@ -1,12 +1,29 @@
 Version 2.0.0
 > Introducing The Mox!
-	- Preferring smart weapons and stun batons, they will now patrol the Kabuki area.
-	- Added 8 new Moxies to support this feature
+	- Preferring smart weapons and stun batons, they will now claim the Kabuki area as their turf.
+	- You probably won't see them often unless you have Night City Alive installed.
+	- Added 8 new Moxies units to support this feature.
 	- (sometimes a Mox will spawn and use the appearance of Rita Wheeler. This is not on purpose, I might change it, I might not)
-> NCPD units rework
-	- Maxtac are no longer spawned, and have been replaced with custom NCPD elites bearing heavy weapons.
-	- This lets Maxtac remain the big bad who respond to the only cyberpsycho in town (you, apparently), and not ruin any illusions of their power in Night City
+> NCPD turf changes
+	- Under political pressure and threats of further funding cuts from wealthy voters and coporations alike, NCPD have bolstered their presence in:
+	- City Center, Charter Hill
+> NCPD elite units rework
+	- Maxtac are no longer spawned by this mod, and have been replaced with custom NCPD elites bearing heavy weapons.
 	- Added 5 new Elite NCPD responders to support this rework.
+	- Units come equipped with Crusher, Ajax, Kolac, HMG, Gorilla Arms
+	- NCPD elite units now drive the NCPD Thorton Merrimac, instead of the Maxtac Hellhound.
+	- This lets Maxtac remain the big bad who respond to the only cyberpsycho in town (you, apparently), and not ruin any illusions of their power in Night City
+> Gangs can now be disabled in settings
+> Aggression Improvements
+	- Reinforcements are now more aggressive when they arrive
+	- Before, they would quietly arrive, get out of their cars, and then start fighting
+	- Now they are already in combat as they approach the scene. Way more fun!
+> Temporary feature, gang traffic
+	- Temporary because I know some smart people are working on a full mod just for this function
+	- Gangs will periodically patrol their turf in vehicles
+	- Will use their signature gang cars if available
+	- Sometimes as normal traffic, sometimes blitzing down the street for added drama
+	- This feature is disabled when riding the metro
 
 Version 1.5.1
 > remove logging calls
