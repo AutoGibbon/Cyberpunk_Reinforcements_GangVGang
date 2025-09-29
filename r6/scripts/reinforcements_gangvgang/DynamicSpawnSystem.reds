@@ -19,6 +19,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
     let aiVehicleChaseCommand: ref<AIVehicleChaseCommand>;
     let aiVehicleMovecommand: ref<AIVehicleDriveToPointAutonomousCommand>;
     let aiCommandEvent: ref<AICommandEvent>;
+	let randomAggressiveTraffic: Bool = false;
 
     if !requestResult.success {
         return;
@@ -41,9 +42,14 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
 				target = gangHandler.GetLastTarget();
 				targetPosition = gangHandler.GetLastCallerPosition();
 				if(!gangHandler.GetHasTrafficRequest() && IsDefined(target)) {
-					GRLog("injecting threat");
+					//GRLog("injecting threat");
 					TargetTrackingExtension.InjectThreat(puppet, target);
 					NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
+				} else {
+					randomAggressiveTraffic = gangHandler.GetHasTrafficRequest() && RandF() <= 0.2;
+					if(randomAggressiveTraffic) {
+						NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
+					}
 				}
 			}
         }
@@ -60,9 +66,26 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         wheeledObject = wheeledObjects[i];
 
         if gangHandler.GetHasTrafficRequest() {
-			let evt = new JoinTrafficVehicleEvent();
-			wheeledObject.QueueEvent(evt);
-			gangHandler.SetHasTrafficRequest(false);
+			if(randomAggressiveTraffic) {
+				let playerPosition = GetPlayer(GetGameInstance()).GetWorldPosition();
+				aiVehicleMovecommand = new AIVehicleDriveToPointAutonomousCommand();
+				aiVehicleMovecommand.driveDownTheRoadIndefinitely = true;
+				aiVehicleMovecommand.clearTrafficOnPath = false;
+				aiVehicleMovecommand.forcedStartSpeed = 15.0;
+				aiVehicleMovecommand.minSpeed = 30.0;
+				aiVehicleMovecommand.maxSpeed = 40.0;
+				aiVehicleMovecommand.minimumDistanceToTarget = 20.0;
+				aiVehicleMovecommand.targetPosition = Vector4.Vector4To3(playerPosition);
+				aiCommandEvent = new AICommandEvent();
+				aiCommandEvent.command = aiVehicleMovecommand;
+				wheeledObject.SetPoliceStrategyDestination(playerPosition);
+				wheeledObject.QueueEvent(aiCommandEvent);
+				wheeledObject.GetAIComponent().SetInitCmd(aiVehicleMovecommand);
+			} else {
+				let evt = new JoinTrafficVehicleEvent();
+				wheeledObject.QueueEvent(evt);
+				gangHandler.SetHasTrafficRequest(false);
+			}
         } else if IsDefined(target) {
             aiVehicleChaseCommand = new AIVehicleChaseCommand();
             aiVehicleChaseCommand.target = target;
