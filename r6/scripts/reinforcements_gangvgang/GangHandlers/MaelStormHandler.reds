@@ -29,9 +29,6 @@ public class GRMaelStromHandler extends GRGangHandler {
         this.m_delaySystem.DelayCallback(GRMaelstromGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRMaelstromHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRMaelstromCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -51,18 +48,6 @@ public class GRMaelstromGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRMaelstromHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRMaelStromHandler>;
-    public static func Create(handler: ref<GRMaelStromHandler>) -> ref<GRMaelstromHeatResetCooldownEndCallback> {
-        let self: ref<GRMaelstromHeatResetCooldownEndCallback> = new GRMaelstromHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRMaelstromCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRMaelStromHandler>;

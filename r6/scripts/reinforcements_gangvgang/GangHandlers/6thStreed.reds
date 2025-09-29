@@ -20,9 +20,6 @@ public class GRSixthStreetHandler extends GRGangHandler {
         return system;
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRSixthHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRSixthCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -52,18 +49,6 @@ public class GRSixthGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRSixthHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRSixthStreetHandler>;
-    public static func Create(handler: ref<GRSixthStreetHandler>) -> ref<GRSixthHeatResetCooldownEndCallback> {
-        let self: ref<GRSixthHeatResetCooldownEndCallback> = new GRSixthHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRSixthCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRSixthStreetHandler>;

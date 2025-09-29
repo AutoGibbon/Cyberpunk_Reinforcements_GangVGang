@@ -16,15 +16,14 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let m_preventionSystem: ref<PreventionSystem>;
   protected let m_delaySystem: ref<DelaySystem>;
   protected let m_settings: ref<GRSettings>;
-  protected let m_lastCaller: wref<NPCPuppet>;
-  protected let m_lastTarget: wref<NPCPuppet>;
+  protected let m_lastCaller: ref<NPCPuppet>;
+  protected let m_lastTarget: ref<NPCPuppet>;
   protected let m_lastCallerPosition: Vector4;
   protected let m_reinforcementData: ref<GRGangData>;
   protected let m_heatLevel: Int32 = 0;
   protected let m_callsPerformed: Int32 = 0;
   protected let m_waveCounter: Int32 = 0;
   protected let m_waveCounterUniqueId: Int32 = 0;
-  protected let m_heatResetCooldownActive: Bool = false;
   protected let m_callSuccessCooldownActive: Bool = false;
   protected let m_gracePeriodStarted: Bool = false;
   protected let m_gracePeriodEnded: Bool = false;
@@ -37,12 +36,8 @@ public abstract class GRGangHandler extends ScriptableSystem {
     return RandRangeF(this.m_settings.GetCallSuccessCooldownMin(), this.m_settings.GetCallSuccessCooldownMax());
   }
 
-  public func GetHeatResetCooldown() -> Float {
-    return this.m_settings.GetHeatResetCooldown();
-  }
 
   // ABSTRACT METHODS
-  public func OnHeatResetCooldownStart() -> Void;
 
   public func OnCallSuccessCooldownStart() -> Void;
 
@@ -50,56 +45,56 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
   public func GetTurfList() -> array<String>;
 
-  public func GetLastCaller() -> wref<NPCPuppet> {
-    let result: wref<NPCPuppet>;
-    RWLock.AcquireShared(this.m_lastCallDataLock);
-    result = this.m_lastCaller;
-    RWLock.ReleaseShared(this.m_lastCallDataLock);
-    return result;
+  public func GetLastCaller() -> ref<NPCPuppet> {
+    //let result: ref<NPCPuppet>;
+    //RWLock.AcquireShared(this.m_lastCallDataLock);
+    //result = this.m_lastCaller;
+    //RWLock.ReleaseShared(this.m_lastCallDataLock);
+    return this.m_lastCaller;
   }
 
   public func GetLastCallerPosition() -> Vector4 {
-    let result: Vector4;
-    RWLock.AcquireShared(this.m_lastCallDataLock);
-    result = this.m_lastCallerPosition;
-    RWLock.ReleaseShared(this.m_lastCallDataLock);
-    return result;
+    //let result: Vector4;
+    //RWLock.AcquireShared(this.m_lastCallDataLock);
+    //result = this.m_lastCallerPosition;
+    //RWLock.ReleaseShared(this.m_lastCallDataLock);
+    return this.m_lastCallerPosition;
   }
 
-  public func GetLastTarget() -> wref<NPCPuppet> {
-    let result: wref<NPCPuppet>;
-    RWLock.AcquireShared(this.m_lastCallDataLock);
-    result = this.m_lastTarget;
-    RWLock.ReleaseShared(this.m_lastCallDataLock);
-    return result;
+  public func GetLastTarget() -> ref<NPCPuppet> {
+    //let result: ref<NPCPuppet>;
+    //RWLock.AcquireShared(this.m_lastCallDataLock);
+    //result = this.m_lastTarget;
+    //RWLock.ReleaseShared(this.m_lastCallDataLock);
+    return this.m_lastTarget;
   }
   
   public func GetHasTrafficRequest() -> Bool {
-    let result: Bool;
-    RWLock.AcquireShared(this.m_trafficRequestLock);
-    result = this.m_hasTrafficRequest;
-    RWLock.ReleaseShared(this.m_trafficRequestLock);
-    return result;
+    //let result: Bool;
+    //RWLock.AcquireShared(this.m_trafficRequestLock);
+    //result = this.m_hasTrafficRequest;
+    //RWLock.ReleaseShared(this.m_trafficRequestLock);
+    return this.m_hasTrafficRequest;
   }
 
   public func SetHasTrafficRequest(hasTrafficRequest: Bool) -> Void {
-    RWLock.Acquire(this.m_trafficRequestLock);
+    //RWLock.Acquire(this.m_trafficRequestLock);
     this.m_hasTrafficRequest = hasTrafficRequest;
-    RWLock.Release(this.m_trafficRequestLock);
+    //RWLock.Release(this.m_trafficRequestLock);
   }
 
   public func GetLastCallAnswered() -> Bool {
-    let result: Bool;
-    RWLock.AcquireShared(this.m_lastCallAnsweredLock);
-    result = this.m_lastCallAnswered;
-    RWLock.ReleaseShared(this.m_lastCallAnsweredLock);
-    return result;
+    //let result: Bool;
+    //RWLock.AcquireShared(this.m_lastCallAnsweredLock);
+    //result = this.m_lastCallAnswered;
+    //RWLock.ReleaseShared(this.m_lastCallAnsweredLock);
+    return this.m_lastCallAnswered;
   }
 
   public func SetLastCallAnswered(lastCallAnswered: Bool) -> Void {
-    RWLock.Acquire(this.m_lastCallAnsweredLock);
+    //RWLock.Acquire(this.m_lastCallAnsweredLock);
     this.m_lastCallAnswered = lastCallAnswered;
-    RWLock.Release(this.m_lastCallAnsweredLock);
+    //RWLock.Release(this.m_lastCallAnsweredLock);
   }
 
   public func GetAffiliation() -> gamedataAffiliation {
@@ -110,22 +105,18 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_isDisabled = isDisabled;
   }
 
-  public func OnHeatResetCooldownEnd() -> Void {
-    this.m_heatResetCooldownActive = false;
+  public func ResetGang() -> Void {
     this.m_heatLevel = 0;
     this.m_callsPerformed = 0;
     this.m_waveCounter = 0;
     this.m_gracePeriodEnded = false;
     this.m_gracePeriodStarted = false;
     this.m_callSuccessCooldownActive = false;
-    RWLock.Acquire(this.m_lastCallDataLock);
-    this.m_lastCaller = null;
-    this.m_lastTarget = null;
-    RWLock.Release(this.m_lastCallDataLock);
-	RWLock.Acquire(this.m_lastCallAnsweredLock);
+    this.m_gracePeriodEnded = false;
+    this.m_gracePeriodStarted = false;
+	//RWLock.Acquire(this.m_lastCallAnsweredLock);
 	this.m_lastCallAnswered = true;
-	RWLock.Release(this.m_lastCallAnsweredLock);
-    Vector4.Zero(this.m_lastCallerPosition);
+	//RWLock.Release(this.m_lastCallAnsweredLock);
   }
 
   public func OnCallSuccessCooldownEnd() -> Void {
@@ -193,8 +184,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
       );
 
     if this.m_callsPerformed > this.m_settings.GetCallsLimit() {
-      this.m_heatResetCooldownActive = true;
-      this.OnHeatResetCooldownStart();
+      this.ResetGang();
     }
   }
 
@@ -213,7 +203,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
       }
     }
 
-    if !this.m_heatResetCooldownActive && !this.m_callSuccessCooldownActive {
+    if !this.m_callSuccessCooldownActive {
       return true;
     }
 
@@ -242,9 +232,9 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     GameInstance.GetQuestsSystem(GetGameInstance()).ExecuteNode(node);
 	
-    RWLock.Acquire(this.m_lastCallAnsweredLock);
+   // RWLock.Acquire(this.m_lastCallAnsweredLock);
     this.m_lastCallAnswered = false;
-    RWLock.Release(this.m_lastCallAnsweredLock);
+    //RWLock.Release(this.m_lastCallAnsweredLock);
   }
 
   public func SpawnTrafficVehicles() -> Void {
@@ -252,12 +242,11 @@ public abstract class GRGangHandler extends ScriptableSystem {
 	// cause dynamic spawn system is a little bitch "no too many spawns waa waa waa"
 	if(this.IsConsideredTurf(this.m_preventionSystem.GetCurrentDistrict())
 	&& this.GetLastCallAnswered()
-	&& !this.m_heatResetCooldownActive
 	&& !this.m_callSuccessCooldownActive
 	) {
-		RWLock.Acquire(this.m_trafficRequestLock);
+		//RWLock.Acquire(this.m_trafficRequestLock);
 		this.m_hasTrafficRequest = true;
-		RWLock.Release(this.m_trafficRequestLock);
+		//RWLock.Release(this.m_trafficRequestLock);
 		GRReinforcementSystem.GetInstance(GetGameInstance()).RequestSpawnTraffic(this.m_reinforcementData.GetTrafficSpawns());
 	}
   }

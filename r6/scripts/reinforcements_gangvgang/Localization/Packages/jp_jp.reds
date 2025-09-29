@@ -16,8 +16,6 @@ public class GR_jp_jp extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "ギャングが同じ戦闘で再度増援を呼ぶまでに待機する最小時間");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "増援要請 - 最大クールダウン");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "ギャングが同じ戦闘で再度増援を呼ぶまでに待機する最大時間");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "増援要請 - 制限クールダウン");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "ギャングが増援要請制限に達した後、再度呼ぶまでに待機する時間");
         this.Text("GibbonGR-InitialHeat-Name", "初期手配度");
         this.Text("GibbonGR-InitialHeat-Description", "最初の増援の強度");
         this.Text("GibbonGR-HeatEscalation-Name", "手配度上昇");

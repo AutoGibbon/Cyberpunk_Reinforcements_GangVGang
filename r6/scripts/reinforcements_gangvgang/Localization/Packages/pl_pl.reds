@@ -14,8 +14,6 @@ public class GR_pl_pl extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Minimalny czas jaki gang musi czekać przed ponownym wezwaniem wsparcia w tej samej walce");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Maksymalny cooldown wezwania");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Maksymalny czas jaki gang musi czekać przed ponownym wezwaniem wsparcia w tej samej walce");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Cooldown po limicie");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "Jak długo gang musi czekać przed ponownym wezwaniem po osiągnięciu limitu wezwań");
         this.Text("GibbonGR-InitialHeat-Name", "Początkowy heat");
         this.Text("GibbonGR-InitialHeat-Description", "Jak silne będzie pierwsze wezwanie wsparcia");
         this.Text("GibbonGR-HeatEscalation-Name", "Wzrost heat");

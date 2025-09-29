@@ -21,9 +21,6 @@ public class GRValentinosHandler extends GRGangHandler {
         return system;
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRValentinosHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRValentinosCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -53,18 +50,6 @@ public class GRValentinosGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRValentinosHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRValentinosHandler>;
-    public static func Create(handler: ref<GRValentinosHandler>) -> ref<GRValentinosHeatResetCooldownEndCallback> {
-        let self: ref<GRValentinosHeatResetCooldownEndCallback> = new GRValentinosHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRValentinosCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRValentinosHandler>;

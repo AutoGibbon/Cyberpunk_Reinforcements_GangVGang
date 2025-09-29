@@ -16,8 +16,6 @@ public class GR_de_de extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Minimale Zeit die ein Gang warten muss bevor er im selben Kampf wieder Verstärkung rufen kann");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Maximale Anruf-Abklingzeit");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Maximale Zeit die ein Gang warten muss bevor er im selben Kampf wieder Verstärkung rufen kann");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Limit Abklingzeit");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "Wie lange ein Gang warten muss bevor er wieder rufen kann nach Erreichen des Anruf-Limits");
         this.Text("GibbonGR-InitialHeat-Name", "Anfängliche Hitze");
         this.Text("GibbonGR-InitialHeat-Description", "Wie stark der erste Verstärkungsanruf sein wird");
         this.Text("GibbonGR-HeatEscalation-Name", "Hitze-Eskalation");

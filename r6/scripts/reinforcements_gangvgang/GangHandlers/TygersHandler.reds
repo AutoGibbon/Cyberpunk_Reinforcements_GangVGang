@@ -30,9 +30,6 @@ public class GRTygersHandler extends GRGangHandler {
         this.m_delaySystem.DelayCallback(GRTygerEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRTygerHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRTygerCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -53,18 +50,6 @@ public class GRTygerEndCallback extends DelayCallback {
   }
 }
 
-public class GRTygerHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRTygersHandler>;
-    public static func Create(handler: ref<GRTygersHandler>) -> ref<GRTygerHeatResetCooldownEndCallback> {
-        let self: ref<GRTygerHeatResetCooldownEndCallback> = new GRTygerHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRTygerCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRTygersHandler>;

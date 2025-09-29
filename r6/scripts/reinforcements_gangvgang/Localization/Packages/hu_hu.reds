@@ -16,8 +16,6 @@ public class GR_hu_hu extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Minimális idő amit egy csapat várnia kell mielőtt újra hívhat erősítést ugyanabban a harcban");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Maximális hívás cooldown");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Maximális idő amit egy csapat várnia kell mielőtt újra hívhat erősítést ugyanabban a harcban");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Limit cooldown");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "Mennyi ideig kell várnia egy csapatnak mielőtt újra hívhat a hívás limit elérése után");
         this.Text("GibbonGR-InitialHeat-Name", "Kezdeti hő");
         this.Text("GibbonGR-InitialHeat-Description", "Milyen erős lesz az első erősítés hívás");
         this.Text("GibbonGR-HeatEscalation-Name", "Hő eszkaláció");

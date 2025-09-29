@@ -21,9 +21,6 @@ public class GRVoodooHandler extends GRGangHandler {
         return system;
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRVoodooHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRVoodooCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -54,18 +51,6 @@ public class GRVoodooGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRVoodooHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRVoodooHandler>;
-    public static func Create(handler: ref<GRVoodooHandler>) -> ref<GRVoodooHeatResetCooldownEndCallback> {
-        let self: ref<GRVoodooHeatResetCooldownEndCallback> = new GRVoodooHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRVoodooCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRVoodooHandler>;

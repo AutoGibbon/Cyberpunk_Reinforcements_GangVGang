@@ -2,6 +2,7 @@ module Gibbon.GR.GangHandlers
 
 import Gibbon.GR.GangData.*
 import Gibbon.GR.Settings.GRSettings
+import Gibbon.GR.ReinforcementSystem.*
 
 
 public class GRNCPDHandler extends GRGangHandler {
@@ -21,9 +22,6 @@ public class GRNCPDHandler extends GRGangHandler {
         return system;
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRNCPDHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRNCPDCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -51,18 +49,6 @@ public class GRNCPDGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRNCPDHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRNCPDHandler>;
-    public static func Create(handler: ref<GRNCPDHandler>) -> ref<GRNCPDHeatResetCooldownEndCallback> {
-        let self: ref<GRNCPDHeatResetCooldownEndCallback> = new GRNCPDHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRNCPDCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRNCPDHandler>;

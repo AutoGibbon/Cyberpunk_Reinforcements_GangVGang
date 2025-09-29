@@ -21,9 +21,6 @@ public class GRBarghestHandler extends GRGangHandler {
         return system;
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRBarghestHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRBarghestCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -53,18 +50,6 @@ public class GRBarghestGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRBarghestHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRBarghestHandler>;
-    public static func Create(handler: ref<GRBarghestHandler>) -> ref<GRBarghestHeatResetCooldownEndCallback> {
-        let self: ref<GRBarghestHeatResetCooldownEndCallback> = new GRBarghestHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRBarghestCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRBarghestHandler>;

@@ -10,6 +10,8 @@ enum PresetMode {
 }
 
 public class GRSettings extends ScriptableSystem {
+	private let debug: Bool = false;
+
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRSettings> {
         let system: ref<GRSettings> = GameInstance.GetScriptableSystemsContainer(gameInstance).Get(n"Gibbon.GR.Settings.GRSettings") as GRSettings;
         return system;
@@ -36,7 +38,6 @@ public class GRSettings extends ScriptableSystem {
             this.gracePeriodMax = MaxF(this._gracePeriodMin, this.gracePeriodMax);
             this.callSuccessCooldownMin = MinF(this._callSuccessCooldownMin, this.callSuccessCooldownMax);
             this.callSuccessCooldownMax = MaxF(this._callSuccessCooldownMin, this.callSuccessCooldownMax);
-            this.heatResetCooldown = this._heatResetCooldown;
             this.initialHeat = this._initialHeat;
             this.heatEscalation = this._heatEscalation;
             this.callsLimit = this._callsLimit;
@@ -50,7 +51,6 @@ public class GRSettings extends ScriptableSystem {
                 this.gracePeriodMax = 20;
                 this.callSuccessCooldownMin = 10;
                 this.callSuccessCooldownMax = 25;
-                this.heatResetCooldown = 180;
                 this.initialHeat = 1;
                 this.heatEscalation = 1;
                 this.callsLimit = 3;
@@ -63,7 +63,6 @@ public class GRSettings extends ScriptableSystem {
                 this.gracePeriodMax = 15;
                 this.callSuccessCooldownMin = 45;
                 this.callSuccessCooldownMax = 60;
-                this.heatResetCooldown = 360;
                 this.initialHeat = 2;
                 this.heatEscalation = 2;
                 this.callsLimit = 6;
@@ -76,7 +75,6 @@ public class GRSettings extends ScriptableSystem {
                 this.gracePeriodMax = 60;
                 this.callSuccessCooldownMin = 55;
                 this.callSuccessCooldownMax = 60;
-                this.heatResetCooldown = 600;
                 this.initialHeat = 15;
                 this.heatEscalation = 5;
                 this.callsLimit = 1;
@@ -89,7 +87,6 @@ public class GRSettings extends ScriptableSystem {
                 this.gracePeriodMax = 5;
                 this.callSuccessCooldownMin = 15;
                 this.callSuccessCooldownMax = 30;
-                this.heatResetCooldown = 60;
                 this.initialHeat = 5;
                 this.heatEscalation = 1;
                 this.callsLimit = 10;
@@ -98,6 +95,20 @@ public class GRSettings extends ScriptableSystem {
                 this.turfHeatBonus = 3;
                 this.maxVehiclesPerCall = 4;
             }
+
+			if(this.debug){
+				this.gracePeriodMin = 5;
+				this.gracePeriodMax = 10;
+				this.callSuccessCooldownMin = 5;
+				this.callSuccessCooldownMax = 10;
+				this.initialHeat = 20;
+				this.heatEscalation = 1;
+				this.callsLimit = 1;
+				this.strongCallChance = 1;
+				this.strongCallHeatBonus = 1;
+				this.turfHeatBonus = 1;
+				this.maxVehiclesPerCall = 3;
+			}
         }
     }
 
@@ -183,17 +194,6 @@ public class GRSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.dependency", "useAdvancedSettings")
     private let _callSuccessCooldownMax: Float = 60;
 
-    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
-    @runtimeProperty("ModSettings.displayName", "GibbonGR-HeatResetCooldown-Name")
-    @runtimeProperty("ModSettings.description", "GibbonGR-HeatResetCooldown-Description")
-    @runtimeProperty("ModSettings.category", "GibbonGR-Cooldowns-Category")
-    @runtimeProperty("ModSettings.category.order", "2")
-    @runtimeProperty("ModSettings.step", "30")
-    @runtimeProperty("ModSettings.min", "30")
-    @runtimeProperty("ModSettings.max", "600")
-    @runtimeProperty("ModSettings.dependency", "enabled")
-    @runtimeProperty("ModSettings.dependency", "useAdvancedSettings")
-    private let _heatResetCooldown: Float = 300;
 
     //---------------------------------------------------- HEAT --------------------------------------------------------- //
     @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
@@ -287,7 +287,6 @@ public class GRSettings extends ScriptableSystem {
     private let gracePeriodMax: Float = 15;
     private let callSuccessCooldownMin: Float = 15;
     private let callSuccessCooldownMax: Float = 60;
-    private let heatResetCooldown: Float = 300;
     private let initialHeat: Int32 = 2;
     private let heatEscalation: Int32 = 3;
     private let callsLimit: Int32 = 3;
@@ -299,6 +298,7 @@ public class GRSettings extends ScriptableSystem {
 	// These are constant for "realism"
 	private let trafficSpawnDelayMin: Float = 240; //4 minutes - 240
 	private let trafficSpawnDelayMax: Float = 480; //8 minutes - 480
+	public let trafficSpawnsEnabled: Bool = true;
 
     // Simple getters for settings values
     public func GetEnabled() -> Bool { return this.enabled; }
@@ -310,7 +310,6 @@ public class GRSettings extends ScriptableSystem {
     public func GetGracePeriodMax() -> Float { return this.gracePeriodMax; }
     public func GetCallSuccessCooldownMin() -> Float { return this.callSuccessCooldownMin; }
     public func GetCallSuccessCooldownMax() -> Float { return this.callSuccessCooldownMax; }
-    public func GetHeatResetCooldown() -> Float { return this.heatResetCooldown; }
     public func GetInitialHeat() -> Int32 { return this.initialHeat; }
     public func GetHeatEscalation() -> Int32 { return this.heatEscalation; }
     public func GetCallsLimit() -> Int32 { return this.callsLimit; }

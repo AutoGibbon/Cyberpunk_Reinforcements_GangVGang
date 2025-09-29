@@ -16,8 +16,6 @@ public class GR_kr_kr extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "갱이 같은 전투에서 다시 백업을 호출하기 전에 기다려야 하는 최소 시간");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "최대 호출 쿨다운");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "갱이 같은 전투에서 다시 백업을 호출하기 전에 기다려야 하는 최대 시간");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "제한 쿨다운");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "갱이 호출 한계에 도달한 후 다시 호출하기 전에 기다려야 하는 시간");
         this.Text("GibbonGR-InitialHeat-Name", "초기 히트");
         this.Text("GibbonGR-InitialHeat-Description", "첫 번째 백업 호출의 강도");
         this.Text("GibbonGR-HeatEscalation-Name", "히트 에스컬레이션");

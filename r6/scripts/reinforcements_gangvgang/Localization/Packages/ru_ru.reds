@@ -16,8 +16,6 @@ public class GR_ru_ru extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Минимальное время которое банда должна ждать перед повторным вызовом подкрепления в том же бою");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Максимальный кулдаун вызова");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Максимальное время которое банда должна ждать перед повторным вызовом подкрепления в том же бою");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Лимит кулдаун");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "Сколько времени банда должна ждать перед повторным вызовом после достижения лимита вызовов");
         this.Text("GibbonGR-InitialHeat-Name", "Начальная жара");
         this.Text("GibbonGR-InitialHeat-Description", "Насколько сильным будет первый вызов подкрепления");
         this.Text("GibbonGR-HeatEscalation-Name", "Эскалация жары");

@@ -16,8 +16,6 @@ public class GR_ua_ua extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Мінімальний час який банда повинна чекати перед повторним викликом підкріплення в тому ж бою");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Максимальний кулдаун виклику");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Максимальний час який банда повинна чекати перед повторним викликом підкріплення в тому ж бою");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Ліміт кулдаун");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "Скільки часу банда повинна чекати перед повторним викликом після досягнення ліміту викликів");
         this.Text("GibbonGR-InitialHeat-Name", "Початкова напруга");
         this.Text("GibbonGR-InitialHeat-Description", "Наскільки сильним буде перший виклик підкріплення");
         this.Text("GibbonGR-HeatEscalation-Name", "Ескалація напруги");

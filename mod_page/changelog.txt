@@ -7,10 +7,6 @@ Version 2.0.0
 	- Maxtac are no longer spawned, and have been replaced with custom NCPD elites bearing heavy weapons.
 	- This lets Maxtac remain the big bad who respond to the only cyberpsycho in town (you, apparently), and not ruin any illusions of their power in Night City
 	- Added 5 new Elite NCPD responders to support this rework.
-> Gang Turf Patrols!
-	- Each gang will now patrol their turf in their signature vehicles
-	- This is a temporary feature, as I know some smart people are working on an independent version of this wonderful idea.
-	- Arasaka, Barghest, Scavs, NCPD do not have turf patrols
 
 Version 1.5.1
 > remove logging calls

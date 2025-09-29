@@ -202,13 +202,13 @@ DynamicSpawnSystem.GRNCPDEliteSquad1:
     vehicleRecord: Vehicle.GR_ncpd_thorton_merrimac_police_heat_4
     unitRecordsPool:
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_elite_achilles
+          character: Character.GR_ncpd_elite_ajax
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_elite_achilles
+          character: Character.GR_ncpd_elite_ajax
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_elite_kolac
+          character: Character.GR_ncpd_elite_crusher
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_ncpd_elite_kolac
@@ -236,10 +236,10 @@ DynamicSpawnSystem.GRNCPDEliteSquad3:
     vehicleRecord: Vehicle.GR_ncpd_thorton_merrimac_police_heat_4
     unitRecordsPool:
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_elite_zhuo
+          character: Character.GR_ncpd_elite_crusher
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_elite_zhuo
+          character: Character.GR_ncpd_elite_crusher
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_ncpd_elite_gorilla
@@ -259,10 +259,10 @@ DynamicSpawnSystem.GRNCPDEliteSquad4:
           character: Character.GR_ncpd_elite_gorilla
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_elite_achilles
+          character: Character.GR_ncpd_elite_crusher
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_elite_kolac
+          character: Character.GR_ncpd_elite_crusher
           weight: 1.0
 # Vehicles:
 # Bikes:
@@ -298,8 +298,8 @@ DynamicSpawnSystem.GRNCPDEliteSquad4:
 # Character.GR_ncpd_hwp_gunner2_defender_mb_rare - Heavy Weapons
 
 # elite:
-# Character.GR_ncpd_elite_achilles - Elite Rifle
+# Character.GR_ncpd_elite_ajax - Elite Rifle
 # Character.GR_ncpd_elite_hmg - Elite HMG
 # Character.GR_ncpd_elite_kolac - Elite Heavy Rifle
-# Character.GR_ncpd_elite_zhuo - Elite Shotgun
+# Character.GR_ncpd_elite_crusher - Elite Shotgun
 # Character.GR_ncpd_elite_gorilla - Elite Strong Arms

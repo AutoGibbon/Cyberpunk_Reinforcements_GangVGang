@@ -16,8 +16,6 @@ public class GR_zh_tw extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "幫派在同一戰鬥中再次呼叫支援前必須等待的最短時間");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "最大呼叫冷卻");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "幫派在同一戰鬥中再次呼叫支援前必須等待的最大時間");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "限制冷卻");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "幫派在達到呼叫限制後再次呼叫前必須等待的時間");
         this.Text("GibbonGR-InitialHeat-Name", "初始熱度");
         this.Text("GibbonGR-InitialHeat-Description", "第一次支援呼叫的強度");
         this.Text("GibbonGR-HeatEscalation-Name", "熱度升級");

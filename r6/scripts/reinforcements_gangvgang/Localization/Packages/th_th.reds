@@ -16,8 +16,6 @@ public class GR_th_th extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "เวลาขั้นต่ำที่แก๊งต้องรอก่อนเรียกกำลังเสริมอีกครั้งในการต่อสู้เดียวกัน");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "คูลดาวน์การเรียกสูงสุด");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "เวลาสูงสุดที่แก๊งต้องรอก่อนเรียกกำลังเสริมอีกครั้งในการต่อสู้เดียวกัน");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "คูลดาวน์จำกัด");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "เวลาที่แก๊งต้องรอก่อนเรียกอีกครั้งหลังจากถึงขีดจำกัดการเรียก");
         this.Text("GibbonGR-InitialHeat-Name", "ความร้อนเริ่มต้น");
         this.Text("GibbonGR-InitialHeat-Description", "การเรียกกำลังเสริมครั้งแรกจะแข็งแกร่งแค่ไหน");
         this.Text("GibbonGR-HeatEscalation-Name", "การเพิ่มขึ้นของความร้อน");

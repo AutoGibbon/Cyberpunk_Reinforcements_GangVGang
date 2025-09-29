@@ -16,8 +16,6 @@ public class GR_en_us extends ModLocalizationPackage {
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Minimum time a gang must wait before calling for backup again in the same fight");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Maximum Call Cooldown");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Maximum time a gang must wait before calling for backup again in the same fight");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Limit Cooldown");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "How long gang must wait before calling again after reaching the calls limit");
         this.Text("GibbonGR-InitialHeat-Name", "Initial Heat");
         this.Text("GibbonGR-InitialHeat-Description", "How strong the first backup call will be");
         this.Text("GibbonGR-HeatEscalation-Name", "Heat Escalation");

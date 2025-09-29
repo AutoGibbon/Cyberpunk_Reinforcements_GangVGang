@@ -16,8 +16,6 @@ public class GR_es_es extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Tiempo mínimo que una pandilla debe esperar antes de llamar refuerzos de nuevo en la misma pelea");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Cooldown de llamada máximo");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Tiempo máximo que una pandilla debe esperar antes de llamar refuerzos de nuevo en la misma pelea");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Cooldown límite");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "Cuánto tiempo debe esperar una pandilla antes de llamar de nuevo después de alcanzar el límite de llamadas");
         this.Text("GibbonGR-InitialHeat-Name", "Calor inicial");
         this.Text("GibbonGR-InitialHeat-Description", "Qué tan fuerte será la primera llamada de refuerzos");
         this.Text("GibbonGR-HeatEscalation-Name", "Escalada de calor");

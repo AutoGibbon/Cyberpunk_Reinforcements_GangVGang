@@ -1,5 +1,5 @@
 Character.GR_ncpd_elite_hmg:
-    $base: Character.ncpd_police_shotgun3_crusher_mb_elite
+    $base: Character.ncpd_hwp_gunner2_defender_mb_rare
     primaryEquipment: Character.GR_ncpd_elite_hmg_primary_equipment
     archetypeData: ArchetypeData.HeavyRangedT3
     rarity: NPCRarity.Elite

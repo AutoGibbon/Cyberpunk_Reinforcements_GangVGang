@@ -30,9 +30,6 @@ public class GRMoxHandler extends GRGangHandler {
         this.m_delaySystem.DelayCallback(GRMoxEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRMoxHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRMoxCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -53,18 +50,6 @@ public class GRMoxEndCallback extends DelayCallback {
   }
 }
 
-public class GRMoxHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRMoxHandler>;
-    public static func Create(handler: ref<GRMoxHandler>) -> ref<GRMoxHeatResetCooldownEndCallback> {
-        let self: ref<GRMoxHeatResetCooldownEndCallback> = new GRMoxHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRMoxCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRMoxHandler>;

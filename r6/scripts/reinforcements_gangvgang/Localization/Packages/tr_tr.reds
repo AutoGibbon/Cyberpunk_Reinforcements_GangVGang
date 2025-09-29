@@ -16,8 +16,6 @@ public class GR_tr_tr extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Bir çetenin aynı savaşta tekrar takviye çağırmadan önce beklemesi gereken minimum süre");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Maksimum çağrı bekleme süresi");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Bir çetenin aynı savaşta tekrar takviye çağırmadan önce beklemesi gereken maksimum süre");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Limit bekleme süresi");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "Bir çetenin çağrı limitine ulaştıktan sonra tekrar çağırmadan önce beklemesi gereken süre");
         this.Text("GibbonGR-InitialHeat-Name", "Başlangıç sıcaklığı");
         this.Text("GibbonGR-InitialHeat-Description", "İlk takviye çağrısının ne kadar güçlü olacağı");
         this.Text("GibbonGR-HeatEscalation-Name", "Sıcaklık artışı");

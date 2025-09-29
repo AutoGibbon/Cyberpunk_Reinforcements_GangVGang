@@ -29,9 +29,6 @@ public class GRScavsHandler extends GRGangHandler {
         this.m_delaySystem.DelayCallback(GRScavGraceEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRScavHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRScavCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -51,18 +48,6 @@ public class GRScavGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRScavHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRScavsHandler>;
-    public static func Create(handler: ref<GRScavsHandler>) -> ref<GRScavHeatResetCooldownEndCallback> {
-        let self: ref<GRScavHeatResetCooldownEndCallback> = new GRScavHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRScavCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRScavsHandler>;

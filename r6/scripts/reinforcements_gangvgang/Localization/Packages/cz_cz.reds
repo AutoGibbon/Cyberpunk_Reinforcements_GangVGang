@@ -16,8 +16,6 @@ public class GR_cz_cz extends ModLocalizationPackage{
         this.Text("GibbonGR-CallSuccessCooldownMin-Description", "Minimální čas, který musí gang počkat před dalším voláním posil ve stejném boji");
         this.Text("GibbonGR-CallSuccessCooldownMax-Name", "Maximální doba čekání volání");
         this.Text("GibbonGR-CallSuccessCooldownMax-Description", "Maximální čas, který musí gang počkat před dalším voláním posil ve stejném boji");
-        this.Text("GibbonGR-HeatResetCooldown-Name", "Doba čekání limitu");
-        this.Text("GibbonGR-HeatResetCooldown-Description", "Jak dlouho musí gang počkat před dalším voláním po dosažení limitu volání");
         this.Text("GibbonGR-InitialHeat-Name", "Počáteční heat");
         this.Text("GibbonGR-InitialHeat-Description", "Jak silné bude první volání posil");
         this.Text("GibbonGR-HeatEscalation-Name", "Eskalace heat");

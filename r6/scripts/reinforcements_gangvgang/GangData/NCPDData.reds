@@ -251,7 +251,7 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDStandardSquad3",
                         t"DynamicSpawnSystem.GRNCPDStandardSquad4"
                     ], 1);               
-                let patrolCar = GetRandomFrom(
+                	let patrolCar = GetRandomFrom(
                     [
                         t"DynamicSpawnSystem.GRNCPDPatrol1",
                         t"DynamicSpawnSystem.GRNCPDPatrol2",
@@ -302,15 +302,8 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDEliteSquad2",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad3",
                         t"DynamicSpawnSystem.GRNCPDEliteSquad4"
-                    ], 3);   
-                    let rare = GetRandomFrom(
-                    [
-                       t"DynamicSpawnSystem.GRNCPDRareSquad1",
-                        t"DynamicSpawnSystem.GRNCPDRareSquad2",
-                        t"DynamicSpawnSystem.GRNCPDRareSquad3",
-                        t"DynamicSpawnSystem.GRNCPDRareSquad4"
-                    ], 1);               
-                return ArrayMerge(elite, rare);   
+                    ], 3);             
+                return elite;   
             default: 
                 return [];
         }

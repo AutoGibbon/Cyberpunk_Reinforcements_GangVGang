@@ -23,9 +23,6 @@ public class GRMilitechHandler extends GRGangHandler {
 
  
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRMilitechHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRMilitechCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -55,18 +52,6 @@ public class GRMilitechGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRMilitechHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRMilitechHandler>;
-    public static func Create(handler: ref<GRMilitechHandler>) -> ref<GRMilitechHeatResetCooldownEndCallback> {
-        let self: ref<GRMilitechHeatResetCooldownEndCallback> = new GRMilitechHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRMilitechCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRMilitechHandler>;

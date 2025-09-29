@@ -54,17 +54,17 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.m_ncpdHandler = GRNCPDHandler.GetInstance(theGame);
         this.m_moxHandler = GRMoxHandler.GetInstance(theGame);
         //debugging
-        // this.tygerHandler.SetIsDisabled(true);
-        // this.scavHandler.SetIsDisabled(true);
-        // this.animalsHandler.SetIsDisabled(true);
-        // this.maelstromHandler.SetIsDisabled(true);
-        // this.arasakaHandler.SetIsDisabled(true);
-        // this.voodooHandler.SetIsDisabled(true);
-        // this.sixthHandler.SetIsDisabled(true);
-        // this.militechHandler.SetIsDisabled(true);
-        // this.valentinosHandler.SetIsDisabled(true);
-        // this.barghestHandler.SetIsDisabled(true);
-        // this.wraithsHandler.SetIsDisabled(true);
+        //this.m_tygerHandler.SetIsDisabled(true);
+    	//this.m_scavHandler.SetIsDisabled(true);
+        //this.m_animalsHandler.SetIsDisabled(true);
+        //this.m_maelStormHandler.SetIsDisabled(true);
+        //this.m_arasakaHandler.SetIsDisabled(true);
+        //this.m_voodooHandler.SetIsDisabled(true);
+        //this.m_sixthHandler.SetIsDisabled(true);
+        //this.m_militechHandler.SetIsDisabled(true);
+        //this.m_valentinosHandler.SetIsDisabled(true);
+        //this.m_barghestHandler.SetIsDisabled(true);
+        //this.m_wraithsHandler.SetIsDisabled(true);
         // this.ncpdHandler.SetIsDisabled(true);
 
         // cause we're doing funky stuff with public and private bindings
@@ -74,7 +74,9 @@ public class GRReinforcementSystem extends ScriptableSystem {
 			this.HandleGameAttach();
 		} else {
 			this.ResetAllGangs();
-			this.StartTrafficSpawns();
+			if this.m_settings.trafficSpawnsEnabled {
+				this.StartTrafficSpawns();
+			}
 		}
     }
 
@@ -94,19 +96,19 @@ public class GRReinforcementSystem extends ScriptableSystem {
 	}
 
     public func ResetAllGangs() -> Void {
-        this.m_tygerHandler.OnHeatResetCooldownEnd();
-        this.m_scavHandler.OnHeatResetCooldownEnd();
-        this.m_animalsHandler.OnHeatResetCooldownEnd();
-        this.m_maelStormHandler.OnHeatResetCooldownEnd();
-        this.m_arasakaHandler.OnHeatResetCooldownEnd();
-        this.m_voodooHandler.OnHeatResetCooldownEnd();
-        this.m_sixthHandler.OnHeatResetCooldownEnd();
-        this.m_militechHandler.OnHeatResetCooldownEnd();
-        this.m_valentinosHandler.OnHeatResetCooldownEnd();
-        this.m_barghestHandler.OnHeatResetCooldownEnd();
-        this.m_wraithsHandler.OnHeatResetCooldownEnd();
-        this.m_ncpdHandler.OnHeatResetCooldownEnd();
-        this.m_moxHandler.OnHeatResetCooldownEnd();
+        this.m_tygerHandler.ResetGang();
+        this.m_scavHandler.ResetGang();
+        this.m_animalsHandler.ResetGang();
+        this.m_maelStormHandler.ResetGang();
+        this.m_arasakaHandler.ResetGang();
+        this.m_voodooHandler.ResetGang();
+        this.m_sixthHandler.ResetGang();
+        this.m_militechHandler.ResetGang();
+        this.m_valentinosHandler.ResetGang();
+        this.m_barghestHandler.ResetGang();
+        this.m_wraithsHandler.ResetGang();
+        this.m_ncpdHandler.ResetGang();
+        this.m_moxHandler.ResetGang();
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRReinforcementSystem> {
@@ -247,23 +249,13 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        if !this.m_settings.GetEnabledWhenPlayerIsPassenger() && VehicleComponent.IsMountedToVehicle(player.GetGame(), player) {
+        if VehicleComponent.IsMountedToVehicle(player.GetGame(), player) {
             let vehicle = player.GetMountedVehicle();
             if vehicle.IsPlayerMounted() && !vehicle.IsPlayerDriver() {
-                return false;
+				if(!this.m_settings.GetEnabledWhenPlayerIsPassenger() || Equals(vehicle.GetRecordID(), t"Vehicle.ue_metro_train")) { 
+                	return false;
+				}
             }
-        }
-
-        //Check some cases
-        if StatusEffectSystem.ObjectHasStatusEffectOfType(puppet, gamedataStatusEffectType.Stunned)
-            || StatusEffectSystem.ObjectHasStatusEffectOfType(puppet, gamedataStatusEffectType.EMP)
-            || StatusEffectSystem.ObjectHasStatusEffectOfType(puppet, gamedataStatusEffectType.Grapple)
-            || StatusEffectSystem.ObjectHasStatusEffectOfType(puppet, gamedataStatusEffectType.Knockdown)
-            || StatusEffectSystem.ObjectHasStatusEffectOfType(puppet, gamedataStatusEffectType.SuicideHack)
-            || StatusEffectSystem.ObjectHasStatusEffectOfType(puppet, gamedataStatusEffectType.Madness)
-            || StatusEffectSystem.ObjectHasStatusEffectOfType(puppet, gamedataStatusEffectType.SystemCollapse)
-            || StatusEffectSystem.ObjectHasStatusEffectWithTag(puppet, n"CommsNoiseJam") {
-            return false;
         }
 
         let distanceToTarget = Vector4.Distance(puppet.GetWorldPosition(), target.GetWorldPosition());
@@ -351,13 +343,13 @@ public class GRReinforcementSystem extends ScriptableSystem {
     }
 
 	public func OnDistrictAreaEntered() -> Void {
-		if this.m_trafficSpawnsStarted && RandF() <= 0.2 {
+		if this.m_trafficSpawnsStarted && this.m_settings.trafficSpawnsEnabled && RandF() <= 0.2 {
 			this.SpawnTrafficVehiclesCallback();
 		}
 	}
 
 	public func StartTrafficSpawns() -> Void {
-		if !this.m_trafficSpawnsStarted {
+		if !this.m_trafficSpawnsStarted && this.m_settings.trafficSpawnsEnabled {
 			this.m_trafficSpawnsStarted = true;
 			this.SpawnTrafficVehiclesCallback();
 			this.KeepAliveCallback();
@@ -372,8 +364,21 @@ public class GRReinforcementSystem extends ScriptableSystem {
     }
 
 	public func SpawnTrafficVehiclesCallback() -> Void {
+		if !this.m_settings.trafficSpawnsEnabled {
+			return;
+		}
 		//GRLog("SpawnTrafficVehiclesCallback");
 		// Call SpawnTrafficVehicles for each gang handler, except NCPD, Arasaka, Scavs
+		let player = GetPlayer(GetGameInstance());
+		if VehicleComponent.IsMountedToVehicle(GetGameInstance(), player) {
+            let vehicle = player.GetMountedVehicle();
+            if vehicle.IsPlayerMounted() && !vehicle.IsPlayerDriver() {
+				if(!this.m_settings.GetEnabledWhenPlayerIsPassenger() || Equals(vehicle.GetRecordID(), t"Vehicle.ue_metro_train")) { 
+                	return;
+				}
+            }
+        }
+		
 		this.m_tygerHandler.SpawnTrafficVehicles();
 		this.m_animalsHandler.SpawnTrafficVehicles();
 		this.m_maelStormHandler.SpawnTrafficVehicles();

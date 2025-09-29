@@ -21,9 +21,6 @@ public class GRArasakaHandler extends GRGangHandler {
         return system;
     }
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRArasakaHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRArasakaCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -55,18 +52,6 @@ public class GRArasakaGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRArasakaHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRArasakaHandler>;
-    public static func Create(handler: ref<GRArasakaHandler>) -> ref<GRArasakaHeatResetCooldownEndCallback> {
-        let self: ref<GRArasakaHeatResetCooldownEndCallback> = new GRArasakaHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRArasakaCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRArasakaHandler>;

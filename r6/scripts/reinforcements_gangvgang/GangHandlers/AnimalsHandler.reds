@@ -23,9 +23,6 @@ public class GRAnimalsHandler extends GRGangHandler {
 
  
 
-    public func OnHeatResetCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRAnimalsHeatResetCooldownEndCallback.Create(this), this.GetHeatResetCooldown(), true);
-    }
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRAnimalsCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
@@ -56,18 +53,6 @@ public class GRAnimalsGraceEndCallback extends DelayCallback {
   }
 }
 
-public class GRAnimalsHeatResetCooldownEndCallback extends DelayCallback {
-    let handler: wref<GRAnimalsHandler>;
-    public static func Create(handler: ref<GRAnimalsHandler>) -> ref<GRAnimalsHeatResetCooldownEndCallback> {
-        let self: ref<GRAnimalsHeatResetCooldownEndCallback> = new GRAnimalsHeatResetCooldownEndCallback();
-        self.handler = handler;
-        return self;
-    }
-
-  public func Call() -> Void {
-    this.handler.OnHeatResetCooldownEnd();
-  }
-}
 
 public class GRAnimalsCallSuccessCooldownEndCallback extends DelayCallback {
     let handler: wref<GRAnimalsHandler>;
