@@ -11,7 +11,7 @@ enum PresetMode {
 }
 
 public class GRSettings extends ScriptableSystem {
-	private let debug: Bool = false;
+	private let debug: Bool = true;
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRSettings> {
         let system: ref<GRSettings> = GameInstance.GetScriptableSystemsContainer(gameInstance).Get(n"Gibbon.GR.Settings.GRSettings") as GRSettings;
@@ -109,6 +109,8 @@ public class GRSettings extends ScriptableSystem {
 				this.strongCallHeatBonus = 1;
 				this.turfHeatBonus = 1;
 				this.maxVehiclesPerCall = 3;
+				this.trafficSpawnDelayMin = 60;
+				this.trafficSpawnDelayMax = 120;
 			}
         }
 
@@ -362,8 +364,10 @@ public class GRSettings extends ScriptableSystem {
     private let maxVehiclesPerCall: Int32 = 2;
 
 	// These are constant for "realism"
+	
 	private let trafficSpawnDelayMin: Float = 240; //4 minutes - 240
 	private let trafficSpawnDelayMax: Float = 480; //8 minutes - 480
+	public let trafficSpawnDistance: Float = 25;
 	public let trafficSpawnsEnabled: Bool = true;
 
     // Simple getters for settings values

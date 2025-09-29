@@ -328,12 +328,9 @@ public class GRReinforcementSystem extends ScriptableSystem {
         let node = new questDynamicSpawnSystemNodeDefinition();
         let nodeType = new questDynamicVehicleSpawn_NodeType();
 
-        nodeType.distanceRange = Vector2(50, 100);
-		if RandF() >= 0.5 {
-			nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;
-		} else {
-			nodeType.spawnDirectionPreference = questSpawnDirectionPreference.Behind;
-		}
+        nodeType.distanceRange = Vector2(this.m_settings.trafficSpawnDistance, this.m_settings.trafficSpawnDistance);
+		//always in front so the player can see it, otherwise what's the point?
+		nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;
         let nodeid = RandRange(20000, 30000);
         nodeType.waveTag = StringToName(s"GR_TRAFFIC_\(nodeid)");
         nodeType.VehicleData = vehicles;
@@ -369,7 +366,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
 		if !this.m_settings.trafficSpawnsEnabled {
 			return;
 		}
-		//GRLog("SpawnTrafficVehiclesCallback");
+		GRLog("SpawnTrafficVehiclesCallback");
 		// Call SpawnTrafficVehicles for each gang handler, except NCPD, Arasaka, Scavs
 		let player = GetPlayer(GetGameInstance());
 		if VehicleComponent.IsMountedToVehicle(GetGameInstance(), player) {
@@ -380,7 +377,6 @@ public class GRReinforcementSystem extends ScriptableSystem {
 				}
             }
         }
-		
 		this.m_sixthHandler.SpawnTrafficVehicles();
 		this.m_animalsHandler.SpawnTrafficVehicles();
 		//this.m_arasakaHandler.SpawnTrafficVehicles(); no arasaka traffic or else they'd be everywhere
@@ -397,6 +393,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
 		
 		// Schedule next traffic spawn callback
 		let delay = RandRangeF(this.m_settings.GetTrafficSpawnDelayMin(), this.m_settings.GetTrafficSpawnDelayMax());
+		GRLog(s"SpawnTrafficVehiclesCallback delay: \(delay)");
 		this.m_trafficSpawnDelayID = this.m_delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, true);
 	}
 }

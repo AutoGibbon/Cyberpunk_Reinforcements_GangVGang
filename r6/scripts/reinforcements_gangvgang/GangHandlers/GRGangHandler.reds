@@ -247,6 +247,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 		//RWLock.Acquire(this.m_trafficRequestLock);
 		this.m_hasTrafficRequest = true;
 		//RWLock.Release(this.m_trafficRequestLock);
+		GRLog(s"SpawnTrafficVehicles: \(this.m_affiliation)");
 		GRReinforcementSystem.GetInstance(GetGameInstance()).RequestSpawnTraffic(this.m_reinforcementData.GetTrafficSpawns());
 	}
   }
