@@ -124,7 +124,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 	let randomNumber = RandRange(0, 101);
     let reinforcementHeat = randomNumber <= this.m_settings.strongCallChance ? this.m_heatLevel + this.m_settings.strongCallHeatBonus : this.m_heatLevel;
 
-    GRLog(s"Reinforcements arrive: \(this.m_affiliation), \(reinforcementHeat)");
+    //GRLog(s"Reinforcements arrive: \(this.m_affiliation), \(reinforcementHeat)");
     this
       .SpawnVehicles(
         this

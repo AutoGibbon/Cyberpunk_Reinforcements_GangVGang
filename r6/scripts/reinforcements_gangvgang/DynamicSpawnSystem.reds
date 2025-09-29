@@ -89,7 +89,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
     }
 	
     gangHandler.SetLastCallAnswered(true);
-    GRLog(s"\(gangHandler.m_affiliation), veh \(ArraySize(wheeledObjects)) ");
+    //GRLog(s"\(gangHandler.m_affiliation), veh \(ArraySize(wheeledObjects)) ");
     return;
 }
 

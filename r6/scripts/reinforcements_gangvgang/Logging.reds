@@ -4,7 +4,7 @@ module Gibbon.GR.Logging
 //native func Log(const text: script_ref<String>) -> Void
 
 public static func GRLog(const text: String) -> Void {
-  LogChannel(n"DEBUG", s"[GangVsGang] " + text);
+  //LogChannel(n"DEBUG", s"[GangVsGang] " + text);
    //Log(s"[GangVsGang] " + text);
 }
 
