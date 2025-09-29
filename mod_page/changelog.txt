@@ -18,12 +18,6 @@ Version 2.0.0
 	- Reinforcements are now more aggressive when they arrive
 	- Before, they would quietly arrive, get out of their cars, and then start fighting
 	- Now they are already in combat as they approach the scene. Way more fun!
-> Temporary feature, gang traffic
-	- Temporary because I know some smart people are working on a full mod just for this function
-	- Gangs will periodically patrol their turf in vehicles
-	- Will use their signature gang cars if available
-	- Sometimes as normal traffic, sometimes blitzing down the street for added drama
-	- This feature is disabled when riding the metro
 
 Version 1.5.1
 > remove logging calls

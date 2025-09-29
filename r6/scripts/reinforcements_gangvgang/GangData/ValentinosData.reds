@@ -1,19 +1,7 @@
 module Gibbon.GR.GangData
 
 
-public class GRValentinoData extends GRGangData {
-    public func GetTrafficSpawns() -> array<TweakDBID> {
-		return GetRandomFrom(
-			[
-				t"DynamicSpawnSystem.GRValentinoTraffic1",
-				t"DynamicSpawnSystem.GRValentinoTraffic2",
-				t"DynamicSpawnSystem.GRValentinoTraffic3",
-				t"DynamicSpawnSystem.GRValentinoTraffic4",
-				t"DynamicSpawnSystem.GRValentinoTraffic5"
-			], 1);
-	}
-	
-    public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
+public class GRValentinoData extends GRGangData {public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {
             case 1: // 1 weak (weak bike)
                 let weakBike = GetRandomFrom(

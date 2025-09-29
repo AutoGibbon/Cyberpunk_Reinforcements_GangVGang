@@ -2,7 +2,6 @@ module Gibbon.GR.GangData
 
 
 public class GRScavData extends GRGangData {
-	public func GetTrafficSpawns() -> array<TweakDBID> { return [];}
 	
     public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {

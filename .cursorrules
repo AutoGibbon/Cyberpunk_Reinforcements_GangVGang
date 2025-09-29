@@ -70,7 +70,7 @@ public class GRSpawnTrafficCallback extends DelayCallback {
 
 -   member access between classes must be implmented via getter/setter
 
-#### RWLock
+#### RWLock (ignore this section)
 
 -   only create locking code when asked to do so. locking resources for thread safety is a last resort, better code organisation and execution flow is preferred
 -   classes should define `private let m_lockPurpose: RWLock` members, and use them to get safe handles, only when asked for

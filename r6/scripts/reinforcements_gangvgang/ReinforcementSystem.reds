@@ -24,8 +24,6 @@ public class GRReinforcementSystem extends ScriptableSystem {
     private let m_preventionSystem: ref<PreventionSystem>;
     private let m_questsSystem: ref<QuestsSystem>;
 	private let m_delaySystem: ref<DelaySystem>;
-	private let m_trafficSpawnDelayID: DelayID;
-	private let m_trafficSpawnsStarted: Bool = false;
 
     public let m_settings: ref<GRSettings>;
 
@@ -62,9 +60,6 @@ public class GRReinforcementSystem extends ScriptableSystem {
 			this.HandleGameAttach();
 		} else {
 			this.ResetAllGangs();
-			if this.m_settings.trafficSpawnsEnabled {
-				this.StartTrafficSpawns();
-			}
 		}
     }
 
@@ -319,112 +314,5 @@ public class GRReinforcementSystem extends ScriptableSystem {
                 this.ReinforcementsCalled(puppet, target);
             }
         }
-    }
-
-    public func RequestSpawnTraffic(vehicles: array<TweakDBID>) -> Void {
-        let game = GetGameInstance();
-        let questSystem = GameInstance.GetQuestsSystem(game);
-
-        let node = new questDynamicSpawnSystemNodeDefinition();
-        let nodeType = new questDynamicVehicleSpawn_NodeType();
-
-        nodeType.distanceRange = Vector2(50, 100);
-		if RandF() >= 0.5 {
-			nodeType.spawnDirectionPreference = questSpawnDirectionPreference.InFront;
-		} else {
-			nodeType.spawnDirectionPreference = questSpawnDirectionPreference.Behind;
-		}
-        let nodeid = RandRange(20000, 30000);
-        nodeType.waveTag = StringToName(s"GR_TRAFFIC_\(nodeid)");
-        nodeType.VehicleData = vehicles;
-
-        node.id = Cast<Uint16>(nodeid);
-        node.type = nodeType;
-
-        questSystem.ExecuteNode(node);
-    }
-
-	public func OnDistrictAreaEntered() -> Void {
-		if this.m_trafficSpawnsStarted && this.m_settings.trafficSpawnsEnabled && RandF() <= 0.2 {
-			this.SpawnTrafficVehiclesCallback();
-		}
-	}
-
-	public func StartTrafficSpawns() -> Void {
-		if !this.m_trafficSpawnsStarted && this.m_settings.trafficSpawnsEnabled {
-			this.m_trafficSpawnsStarted = true;
-			this.SpawnTrafficVehiclesCallback();
-			this.KeepAliveCallback();
-		}
-	}
-
-	// basically abusing the delay system to keep other long-lived callbacks alive
-	// 
-    public func KeepAliveCallback() -> Void {
-		this.m_delaySystem.DelayCallback(GRKeepAliveCallback.Create(this), 11, true);
-		this.m_delaySystem.GetRemainingDelayTime(this.m_trafficSpawnDelayID);
-    }
-
-	public func SpawnTrafficVehiclesCallback() -> Void {
-		if !this.m_settings.trafficSpawnsEnabled {
-			return;
-		}
-		//GRLog("SpawnTrafficVehiclesCallback");
-		// Call SpawnTrafficVehicles for each gang handler, except NCPD, Arasaka, Scavs
-		let player = GetPlayer(GetGameInstance());
-		if VehicleComponent.IsMountedToVehicle(GetGameInstance(), player) {
-            let vehicle = player.GetMountedVehicle();
-            if vehicle.IsPlayerMounted() && !vehicle.IsPlayerDriver() {
-				if(!this.m_settings.GetEnabledWhenPlayerIsPassenger() || Equals(vehicle.GetRecordID(), t"Vehicle.ue_metro_train")) { 
-                	return;
-				}
-            }
-        }
-		
-		this.m_sixthHandler.SpawnTrafficVehicles();
-		this.m_animalsHandler.SpawnTrafficVehicles();
-		//this.m_arasakaHandler.SpawnTrafficVehicles(); no arasaka traffic or else they'd be everywhere
-		this.m_barghestHandler.SpawnTrafficVehicles();
-		this.m_maelStormHandler.SpawnTrafficVehicles();
-		this.m_moxHandler.SpawnTrafficVehicles();
-		this.m_militechHandler.SpawnTrafficVehicles();
-		this.m_ncpdHandler.SpawnTrafficVehicles();
-		//this.m_scavHandler.SpawnTrafficVehicles(); no scavs they have no turf
-		this.m_tygerHandler.SpawnTrafficVehicles();
-		this.m_valentinosHandler.SpawnTrafficVehicles();
-		this.m_voodooHandler.SpawnTrafficVehicles();
-		this.m_wraithsHandler.SpawnTrafficVehicles();
-		
-		// Schedule next traffic spawn callback
-		let delay = RandRangeF(this.m_settings.GetTrafficSpawnDelayMin(), this.m_settings.GetTrafficSpawnDelayMax());
-		this.m_trafficSpawnDelayID = this.m_delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, true);
-	}
-}
-
-public class GRKeepAliveCallback extends DelayCallback {
-    let handler: wref<GRReinforcementSystem>;
-    
-    public static func Create(handler: ref<GRReinforcementSystem>) -> ref<GRKeepAliveCallback> {
-        let self: ref<GRKeepAliveCallback> = new GRKeepAliveCallback();
-        self.handler = handler;
-        return self;
-    }
-
-    public func Call() -> Void {
-        this.handler.KeepAliveCallback();
-    }
-}
-
-public class GRSpawnTrafficCallback extends DelayCallback {
-    let handler: wref<GRReinforcementSystem>;
-
-    public static func Create(handler: ref<GRReinforcementSystem>) -> ref<GRSpawnTrafficCallback> {
-        let self: ref<GRSpawnTrafficCallback> = new GRSpawnTrafficCallback();
-        self.handler = handler;
-        return self;
-    }
-
-    public func Call() -> Void {
-        this.handler.SpawnTrafficVehiclesCallback();
     }
 }

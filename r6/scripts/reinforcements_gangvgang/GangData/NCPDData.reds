@@ -2,19 +2,6 @@ module Gibbon.GR.GangData
 
 
 public class GRNCPDData extends GRGangData {
-	public func GetTrafficSpawns() -> array<TweakDBID> {
-		return GetRandomFrom([
-			t"DynamicSpawnSystem.GRNCPDRareSquad1",
-			t"DynamicSpawnSystem.GRNCPDRareSquad2",
-			t"DynamicSpawnSystem.GRNCPDRareSquad3",
-			t"DynamicSpawnSystem.GRNCPDRareSquad4",
-			t"DynamicSpawnSystem.GRNCPDEliteSquad1",
-			t"DynamicSpawnSystem.GRNCPDEliteSquad2",
-			t"DynamicSpawnSystem.GRNCPDEliteSquad3",
-			t"DynamicSpawnSystem.GRNCPDEliteSquad4"
-		], 1);
-	}
-	
     public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {
             case 1: // 1 weak - (biker)

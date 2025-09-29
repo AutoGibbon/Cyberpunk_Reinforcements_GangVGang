@@ -8,11 +8,9 @@ import Gibbon.GR.ReinforcementSystem.*
 public abstract class GRGangHandler extends ScriptableSystem {
 
   //locks
-  private let m_trafficRequestLock: RWLock;
   private let m_lastCallAnsweredLock: RWLock;
   private let m_lastCallDataLock: RWLock;
 
-  protected let m_hasTrafficRequest: Bool = false;
   protected let m_preventionSystem: ref<PreventionSystem>;
   protected let m_delaySystem: ref<DelaySystem>;
   protected let m_settings: ref<GRSettings>;
@@ -67,20 +65,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
     //result = this.m_lastTarget;
     //RWLock.ReleaseShared(this.m_lastCallDataLock);
     return this.m_lastTarget;
-  }
-  
-  public func GetHasTrafficRequest() -> Bool {
-    //let result: Bool;
-    //RWLock.AcquireShared(this.m_trafficRequestLock);
-    //result = this.m_hasTrafficRequest;
-    //RWLock.ReleaseShared(this.m_trafficRequestLock);
-    return this.m_hasTrafficRequest;
-  }
-
-  public func SetHasTrafficRequest(hasTrafficRequest: Bool) -> Void {
-    //RWLock.Acquire(this.m_trafficRequestLock);
-    this.m_hasTrafficRequest = hasTrafficRequest;
-    //RWLock.Release(this.m_trafficRequestLock);
   }
 
   public func GetLastCallAnswered() -> Bool {
@@ -235,20 +219,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
    // RWLock.Acquire(this.m_lastCallAnsweredLock);
     this.m_lastCallAnswered = false;
     //RWLock.Release(this.m_lastCallAnsweredLock);
-  }
-
-  public func SpawnTrafficVehicles() -> Void {
-	// only ask for traffic if the primary reinforcement logic is not currently "active" for the given gang
-	// cause dynamic spawn system is a little bitch "no too many spawns waa waa waa"
-	if(this.IsConsideredTurf(this.m_preventionSystem.GetCurrentDistrict())
-	&& this.GetLastCallAnswered()
-	&& !this.m_callSuccessCooldownActive
-	) {
-		//RWLock.Acquire(this.m_trafficRequestLock);
-		this.m_hasTrafficRequest = true;
-		//RWLock.Release(this.m_trafficRequestLock);
-		GRReinforcementSystem.GetInstance(GetGameInstance()).RequestSpawnTraffic(this.m_reinforcementData.GetTrafficSpawns());
-	}
   }
 }
 

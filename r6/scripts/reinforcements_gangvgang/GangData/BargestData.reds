@@ -4,9 +4,7 @@ module Gibbon.GR.GangData
 
 
 public class GRBarghestData extends GRGangData {
-	public func GetTrafficSpawns() -> array<TweakDBID> { return [];}
-	
-    public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
+	public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {
             case 1: // 1 weak (weak bike)
                 let weakBike = GetRandomFrom(

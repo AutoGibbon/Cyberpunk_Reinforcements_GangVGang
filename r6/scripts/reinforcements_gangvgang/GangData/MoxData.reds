@@ -2,18 +2,7 @@ module Gibbon.GR.GangData
 
 
 public class GRMoxData extends GRGangData {
-	public func GetTrafficSpawns() -> array<TweakDBID> {
-		return GetRandomFrom(
-			[
-				t"DynamicSpawnSystem.GRMoxTraffic1",
-				t"DynamicSpawnSystem.GRMoxTraffic2",
-				t"DynamicSpawnSystem.GRMoxTraffic3",
-				t"DynamicSpawnSystem.GRMoxTraffic4",
-				t"DynamicSpawnSystem.GRMoxTraffic5"
-			], 1);
-	}
-	
-    public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
+	public func GetReinforcements(heat: Int32) -> array<TweakDBID> { 
         switch (heat) {
             case 1: // 1 weak - (biker)
                 return GetRandomFrom([

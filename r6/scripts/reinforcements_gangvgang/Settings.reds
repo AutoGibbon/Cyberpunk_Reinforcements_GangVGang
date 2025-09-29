@@ -361,11 +361,6 @@ public class GRSettings extends ScriptableSystem {
     private let turfHeatBonus: Int32 = 4;
     private let maxVehiclesPerCall: Int32 = 2;
 
-	// These are constant for "realism"
-	private let trafficSpawnDelayMin: Float = 240; //4 minutes - 240
-	private let trafficSpawnDelayMax: Float = 480; //8 minutes - 480
-	public let trafficSpawnsEnabled: Bool = true;
-
     // Simple getters for settings values
     public func GetEnabled() -> Bool { return this.enabled; }
     public func GetEnabledWhenPlayerInCombat() -> Bool { return this.enabledWhenPlayerInCombat; }
@@ -383,7 +378,5 @@ public class GRSettings extends ScriptableSystem {
     public func GetStrongCallHeatBonus() -> Int32 { return this.strongCallHeatBonus; }
     public func GetTurfHeatBonus() -> Int32 { return this.turfHeatBonus; }
     public func GetMaxVehiclesPerCall() -> Int32 { return this.maxVehiclesPerCall; }
-    public func GetTrafficSpawnDelayMin() -> Float { return this.trafficSpawnDelayMin; }
-    public func GetTrafficSpawnDelayMax() -> Float { return this.trafficSpawnDelayMax; }
 }
 
