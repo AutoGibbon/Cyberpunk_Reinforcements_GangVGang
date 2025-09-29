@@ -349,34 +349,16 @@ public class GRSettings extends ScriptableSystem {
     //---------------------------------------------------- BACKUP DELAYS ---------------------------------------------------- //
 
     // Public versions of private members
-    private let gracePeriodMin: Float = 5;
-    private let gracePeriodMax: Float = 15;
-    private let callSuccessCooldownMin: Float = 15;
-    private let callSuccessCooldownMax: Float = 60;
-    private let initialHeat: Int32 = 2;
-    private let heatEscalation: Int32 = 3;
-    private let callsLimit: Int32 = 3;
-    private let strongCallChance: Int32 = 20;
-    private let strongCallHeatBonus: Int32 = 8;
-    private let turfHeatBonus: Int32 = 4;
-    private let maxVehiclesPerCall: Int32 = 2;
-
-    // Simple getters for settings values
-    public func GetEnabled() -> Bool { return this.enabled; }
-    public func GetEnabledWhenPlayerInCombat() -> Bool { return this.enabledWhenPlayerInCombat; }
-    public func GetEnabledWhenPlayerIsPassenger() -> Bool { return this.enabledWhenPlayerIsPassenger; }
-    public func GetPresetMode() -> PresetMode { return this.presetMode; }
-    public func GetUseAdvancedSettings() -> Bool { return this.useAdvancedSettings; }
-    public func GetGracePeriodMin() -> Float { return this.gracePeriodMin; }
-    public func GetGracePeriodMax() -> Float { return this.gracePeriodMax; }
-    public func GetCallSuccessCooldownMin() -> Float { return this.callSuccessCooldownMin; }
-    public func GetCallSuccessCooldownMax() -> Float { return this.callSuccessCooldownMax; }
-    public func GetInitialHeat() -> Int32 { return this.initialHeat; }
-    public func GetHeatEscalation() -> Int32 { return this.heatEscalation; }
-    public func GetCallsLimit() -> Int32 { return this.callsLimit; }
-    public func GetStrongCallChance() -> Int32 { return this.strongCallChance; }
-    public func GetStrongCallHeatBonus() -> Int32 { return this.strongCallHeatBonus; }
-    public func GetTurfHeatBonus() -> Int32 { return this.turfHeatBonus; }
-    public func GetMaxVehiclesPerCall() -> Int32 { return this.maxVehiclesPerCall; }
+    public let gracePeriodMin: Float = 5;
+    public let gracePeriodMax: Float = 15;
+    public let callSuccessCooldownMin: Float = 15;
+    public let callSuccessCooldownMax: Float = 60;
+    public let initialHeat: Int32 = 2;
+    public let heatEscalation: Int32 = 3;
+    public let callsLimit: Int32 = 3;
+    public let strongCallChance: Int32 = 20;
+    public let strongCallHeatBonus: Int32 = 8;
+    public let turfHeatBonus: Int32 = 4;
+    public let maxVehiclesPerCall: Int32 = 2;
 }
 

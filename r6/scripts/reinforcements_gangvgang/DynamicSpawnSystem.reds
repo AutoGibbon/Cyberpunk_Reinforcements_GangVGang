@@ -37,15 +37,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
 					gangHandler = reinSystem.GetFactionHandler(puppet);
                 }
             }
-			if(IsDefined(gangHandler)) {
-				target = gangHandler.GetLastTarget();
-				targetPosition = gangHandler.GetLastCallerPosition();
-				if(IsDefined(target)) {
-					//GRLog("injecting threat");
-					TargetTrackingExtension.InjectThreat(puppet, target);
-					NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
-				}
-			}
+			NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
         }
         i += 1;
     }
@@ -54,12 +46,15 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         wrappedMethod(requestResult);
         return;
     }
+
+	target = gangHandler.GetLastTarget();
+	targetPosition = gangHandler.GetLastCallerPosition();
    
     i = 0;
     while i < ArraySize(wheeledObjects) {
         wheeledObject = wheeledObjects[i];
 
-		if IsDefined(target) {
+		if ScriptedPuppet.IsActive(target) {
             aiVehicleChaseCommand = new AIVehicleChaseCommand();
             aiVehicleChaseCommand.target = target;
             aiVehicleChaseCommand.distanceMin = TweakDBInterface.GetFloat(t"DynamicSpawnSystem.dynamic_vehicles_chase_setup.distanceMin", 3.0);
@@ -93,11 +88,6 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         i += 1;
     }
 	
-	//support allowing gangs to call reinforcements from another gang, e.g NCPD, or whoever owns the turf?
-	let lastCaller = gangHandler.GetLastCaller();
-	if IsDefined(lastCaller) {
-		reinSystem.GetFactionHandler(lastCaller).SetLastCallAnswered(true);
-	}
     gangHandler.SetLastCallAnswered(true);
     GRLog(s"\(gangHandler.GetAffiliation()), veh \(ArraySize(wheeledObjects)) ");
     return;

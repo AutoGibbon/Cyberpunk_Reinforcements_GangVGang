@@ -140,7 +140,7 @@ DynamicSpawnSystem.GRNCPDRareSquad1:
           character: Character.GR_ncpd_android_android2_ajax_ma
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_police_shotgun3_crusher_mb_elite
+          character: Character.GR_ncpd_elite_kolac
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_ncpd_enforcer_shotgun2_tactician_ma_rare
@@ -154,10 +154,10 @@ DynamicSpawnSystem.GRNCPDRareSquad2:
           character: Character.GR_ncpd_police_ranged2_copperhead_ma
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_police_shotgun3_crusher_mb_elite
+          character: Character.GR_ncpd_elite_crusher
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_ncpd_police_shotgun3_crusher_mb_elite
+          character: Character.GR_ncpd_elite_gorilla
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_ncpd_hwp_gunner2_defender_mb_rare

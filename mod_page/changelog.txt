@@ -18,6 +18,7 @@ Version 2.0.0
 	- Reinforcements are now more aggressive when they arrive
 	- Before, they would quietly arrive, get out of their cars, and then start fighting
 	- Now they are already in combat as they approach the scene. Way more fun!
+> Various combat decision improvements
 
 Version 1.5.1
 > remove logging calls

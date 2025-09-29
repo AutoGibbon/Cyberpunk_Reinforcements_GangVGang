@@ -31,7 +31,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let m_lastCallAnswered: Bool = true;
 
   public func GetCallSuccessCooldown() -> Float {
-    return RandRangeF(this.m_settings.GetCallSuccessCooldownMin(), this.m_settings.GetCallSuccessCooldownMax());
+    return RandRangeF(this.m_settings.callSuccessCooldownMin, this.m_settings.callSuccessCooldownMax);
   }
 
 
@@ -113,7 +113,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
   }
 
   public func GetGraceTime() -> Float {
-    return RandRangeF(this.m_settings.GetGracePeriodMin(), this.m_settings.GetGracePeriodMax());
+    return RandRangeF(this.m_settings.gracePeriodMin, this.m_settings.gracePeriodMax);
   }
 
   public func IsConsideredTurf(district: ref<District>) -> Bool {
@@ -137,11 +137,11 @@ public abstract class GRGangHandler extends ScriptableSystem {
     let isTurf = this.IsConsideredTurf(this.m_preventionSystem.GetCurrentDistrict());
 
     if this.m_heatLevel == 0 {
-      this.m_heatLevel = this.m_settings.GetInitialHeat();
+      this.m_heatLevel = this.m_settings.initialHeat;
     } else if this.GetLastCallAnswered() {
-      this.m_heatLevel += this.m_settings.GetHeatEscalation();
+      this.m_heatLevel += this.m_settings.heatEscalation;
       if isTurf {
-        this.m_heatLevel += this.m_settings.GetTurfHeatBonus();
+        this.m_heatLevel += this.m_settings.turfHeatBonus;
       }
     }
 
@@ -157,17 +157,17 @@ public abstract class GRGangHandler extends ScriptableSystem {
 	}
 
 	let randomNumber = RandRange(0, 101);
-    let reinforcementHeat = randomNumber <= this.m_settings.GetStrongCallChance() ? this.m_heatLevel + this.m_settings.GetStrongCallHeatBonus() : this.m_heatLevel;
+    let reinforcementHeat = randomNumber <= this.m_settings.strongCallChance ? this.m_heatLevel + this.m_settings.strongCallHeatBonus : this.m_heatLevel;
 
     GRLog(s"Reinforcements arrive: \(this.m_affiliation), \(reinforcementHeat)");
     this
       .SpawnVehicles(
         this
           .m_reinforcementData
-          .GetReinforcementsClamped(Min(reinforcementHeat, 20), this.m_settings.GetMaxVehiclesPerCall())
+          .GetReinforcementsClamped(Min(reinforcementHeat, 20), this.m_settings.maxVehiclesPerCall)
       );
 
-    if this.m_callsPerformed > this.m_settings.GetCallsLimit() {
+    if this.m_callsPerformed > this.m_settings.callsLimit {
       this.ResetGang();
     }
   }

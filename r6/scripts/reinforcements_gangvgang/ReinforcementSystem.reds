@@ -177,7 +177,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        if !this.m_settings.GetEnabledWhenPlayerInCombat() && GetPlayer(puppet.GetGame()).IsInCombat() {
+        if !this.m_settings.enabledWhenPlayerInCombat && GetPlayer(puppet.GetGame()).IsInCombat() {
             return false;
         }
 
@@ -251,7 +251,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         if VehicleComponent.IsMountedToVehicle(player.GetGame(), player) {
             let vehicle = player.GetMountedVehicle();
             if vehicle.IsPlayerMounted() && !vehicle.IsPlayerDriver() {
-				if(!this.m_settings.GetEnabledWhenPlayerIsPassenger() || Equals(vehicle.GetRecordID(), t"Vehicle.ue_metro_train")) { 
+				if(!this.m_settings.enabledWhenPlayerIsPassenger || Equals(vehicle.GetRecordID(), t"Vehicle.ue_metro_train")) { 
                 	return false;
 				}
             }
@@ -303,16 +303,15 @@ public class GRReinforcementSystem extends ScriptableSystem {
 
     public func TryCallingReinforcements(puppet: ref<ScriptedPuppet>, target: wref<GameObject>) -> Void {
 		// there are a lot of stim events so just randomly throttle our logic
-		if RandF() <= 0.2 {
+		if RandF() <= 0.25 {
             return;
         }
         if !this.ReinforcementsChecksCall(puppet, target) {
             return;
         }
-        if !NPCPuppet.IsInCombatWithTarget(puppet, GetPlayer(GetGameInstance())) {
-            if this.GetFactionHandler(puppet).TryCallingReinforcements(puppet) {
-                this.ReinforcementsCalled(puppet, target);
-            }
-        }
+        
+		if this.GetFactionHandler(puppet).TryCallingReinforcements(puppet) {
+			this.ReinforcementsCalled(puppet, target);
+		}
     }
 }
