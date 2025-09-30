@@ -113,9 +113,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
       }
     }
 
-    this.m_callSuccessCooldownActive = true;
-    this.OnCallSuccessCooldownStart();
-
     this.m_lastCaller = puppet;
     this.m_lastCallerPosition = puppet.GetWorldPosition();
     this.m_lastTarget = target;
@@ -123,6 +120,9 @@ public abstract class GRGangHandler extends ScriptableSystem {
     if this.m_lastCallAnswered {
       this.m_callsPerformed += 1;
 	}
+
+    this.m_callSuccessCooldownActive = true;
+    this.OnCallSuccessCooldownStart();
 
 	let randomNumber = RandRange(0, 101);
     let reinforcementHeat = randomNumber <= this.m_settings.strongCallChance ? this.m_heatLevel + this.m_settings.strongCallHeatBonus : this.m_heatLevel;
