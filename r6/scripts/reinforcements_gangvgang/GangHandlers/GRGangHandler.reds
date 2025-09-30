@@ -9,9 +9,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let m_preventionSystem: ref<PreventionSystem>;
   protected let m_delaySystem: ref<DelaySystem>;
   protected let m_settings: ref<GRSettings>;
-  protected let m_lastCaller: ref<NPCPuppet>;
-  protected let m_lastTarget: ref<NPCPuppet>;
-  protected let m_lastCallerPosition: Vector4;
   protected let m_reinforcementData: ref<GRGangData>;
   protected let m_heatLevel: Int32 = 0;
   protected let m_callsPerformed: Int32 = 0;
@@ -20,6 +17,10 @@ public abstract class GRGangHandler extends ScriptableSystem {
   protected let m_callSuccessCooldownActive: Bool = false;
   protected let m_gracePeriodStarted: Bool = false;
   protected let m_gracePeriodEnded: Bool = false;
+
+  protected let m_lastCaller: wref<NPCPuppet>;
+  protected let m_lastTarget: wref<NPCPuppet>;
+  protected let m_lastCallerPosition: Vector4;
 
   protected let m_isDisabled: Bool = false;
   public let m_affiliation: gamedataAffiliation;
@@ -39,6 +40,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
   public func GetTurfList() -> array<String>;
 
+  //promote wref to ref, caller must validate ref when retrieving
   public func GetLastCaller() -> ref<NPCPuppet> {
     return this.m_lastCaller;
   }
@@ -47,6 +49,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
     return this.m_lastCallerPosition;
   }
 
+  //promote wref to ref, caller must validate ref when retrieving
   public func GetLastTarget() -> ref<NPCPuppet> {
     return  this.m_lastTarget;
   }

@@ -15,19 +15,20 @@ protected cb func OnPostInitialize(evt: ref<entPostInitializeEvent>) -> Bool {
     }
     
     return outcome;
-}
+} 
 
 @addMethod(NPCPuppet)
-protected final func GRAttitudeFix(caller: wref<GameObject>, target: wref<GameObject>) -> Bool {
+protected final func GRAttitudeFix(caller: ref<GameObject>, target: ref<GameObject>) -> Bool {
+	if (!IsDefined(this) || !IsDefined(caller) || !IsDefined(target)) {
+        return false;
+    };
     let currentSquadMate: wref<GameObject>;
     let i: Int32;
     let ownerAttitudeAgent: ref<AttitudeAgent>;
     let callerAttitudeAgent: ref<AttitudeAgent>;
     let targetAttitudeAgent: ref<AttitudeAgent>;
     let callerSquadMembers: array<wref<Entity>>;
-    if (!IsDefined(this) || !IsDefined(caller) || !IsDefined(target)) {
-        return false;
-    };
+    
     ownerAttitudeAgent = this.GetAttitudeAgent();
     callerAttitudeAgent = caller.GetAttitudeAgent();
     targetAttitudeAgent = target.GetAttitudeAgent();
