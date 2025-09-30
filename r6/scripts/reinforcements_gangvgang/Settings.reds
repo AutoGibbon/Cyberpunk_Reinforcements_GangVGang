@@ -50,8 +50,8 @@ public class GRSettings extends ScriptableSystem {
             if Equals(this.presetMode, PresetMode.Limited) {
                 this.gracePeriodMin = 10;
                 this.gracePeriodMax = 20;
-                this.callSuccessCooldownMin = 10;
-                this.callSuccessCooldownMax = 25;
+                this.callSuccessCooldownMin = 45;
+                this.callSuccessCooldownMax = 60;
                 this.initialHeat = 1;
                 this.heatEscalation = 1;
                 this.callsLimit = 3;
@@ -74,7 +74,7 @@ public class GRSettings extends ScriptableSystem {
             } else if Equals(this.presetMode, PresetMode.RareBigFight) {
                 this.gracePeriodMin = 40;
                 this.gracePeriodMax = 60;
-                this.callSuccessCooldownMin = 55;
+                this.callSuccessCooldownMin = 45;
                 this.callSuccessCooldownMax = 60;
                 this.initialHeat = 15;
                 this.heatEscalation = 5;
@@ -86,8 +86,8 @@ public class GRSettings extends ScriptableSystem {
             } else if Equals(this.presetMode, PresetMode.Chaos) {
                 this.gracePeriodMin = 1;
                 this.gracePeriodMax = 5;
-                this.callSuccessCooldownMin = 15;
-                this.callSuccessCooldownMax = 30;
+                this.callSuccessCooldownMin = 45;
+                this.callSuccessCooldownMax = 60;
                 this.initialHeat = 5;
                 this.heatEscalation = 1;
                 this.callsLimit = 10;

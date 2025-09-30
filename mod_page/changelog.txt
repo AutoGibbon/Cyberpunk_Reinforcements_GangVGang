@@ -19,6 +19,8 @@ Version 2.0.0
 	- Before, they would quietly arrive, get out of their cars, and then start fighting
 	- Now they are already in combat as they approach the scene. Way more fun!
 > Various combat decision improvements
+	- Removed "Limit Cooldown" - now gangs will just cycle heats and rely on their other cooldowns.
+	- Some values for presets have been adjusted to account for this removal.
 
 Version 1.5.1
 > remove logging calls

@@ -37,7 +37,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
 					gangHandler = reinSystem.GetFactionHandler(puppet);
                 }
             }
-			NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
+			//NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
         }
         i += 1;
     }

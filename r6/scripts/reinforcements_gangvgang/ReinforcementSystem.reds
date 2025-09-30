@@ -248,12 +248,10 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        if VehicleComponent.IsMountedToVehicle(player.GetGame(), player) {
+        if !this.m_settings.enabledWhenPlayerIsPassenger && VehicleComponent.IsMountedToVehicle(player.GetGame(), player) {
             let vehicle = player.GetMountedVehicle();
             if vehicle.IsPlayerMounted() && !vehicle.IsPlayerDriver() {
-				if(!this.m_settings.enabledWhenPlayerIsPassenger || Equals(vehicle.GetRecordID(), t"Vehicle.ue_metro_train")) { 
-                	return false;
-				}
+                return false;
             }
         }
 
@@ -307,7 +305,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         }
 
 		// there are a lot of stim events so just randomly throttle our logic
-		if RandF() <= 0.25 {
+		if RandF() <= 0.2 {
             return;
         }
         
