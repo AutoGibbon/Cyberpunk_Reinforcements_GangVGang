@@ -26,6 +26,9 @@ public abstract class GRGangHandler extends ScriptableSystem {
   public let m_lastCallAnswered: Bool = true;
 
   public func GetCallSuccessCooldown() -> Float {
+	if (this.m_callsPerformed > this.m_settings.callsLimit) {
+		return this.m_settings.callSuccessCooldownMax * 2.0;
+	}
     return RandRangeF(this.m_settings.callSuccessCooldownMin, this.m_settings.callSuccessCooldownMax);
   }
 
@@ -133,7 +136,14 @@ public abstract class GRGangHandler extends ScriptableSystem {
       );
 
     if this.m_callsPerformed > this.m_settings.callsLimit {
-      this.ResetGang();
+		//soft reset, retaining the call success cooldown
+		this.m_heatLevel = 0;
+		this.m_callsPerformed = 0;
+		this.m_gracePeriodEnded = false;
+		this.m_gracePeriodStarted = false;
+		this.m_gracePeriodEnded = false;
+		this.m_gracePeriodStarted = false;
+		this.m_lastCallAnswered = true;
     }
   }
 
@@ -142,8 +152,14 @@ public abstract class GRGangHandler extends ScriptableSystem {
       return false;
     }
 
+    if this.m_callSuccessCooldownActive {
+      return false;
+    }
+
+    // If grace period hasn't ended yet, start it
     if !this.m_gracePeriodEnded {
       if this.m_gracePeriodStarted {
+		//grace period already started
         return false;
       } else {
         this.m_gracePeriodStarted = true;
@@ -152,11 +168,8 @@ public abstract class GRGangHandler extends ScriptableSystem {
       }
     }
 
-    if !this.m_callSuccessCooldownActive {
-      return true;
-    }
-
-    return false;
+    // no call cooldown or grace period
+    return true;
   }
 
   public func SpawnVehicles(arr: array<TweakDBID>) -> Void {

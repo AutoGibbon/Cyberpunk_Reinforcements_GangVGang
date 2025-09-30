@@ -23,8 +23,8 @@ The settings for this system are greatly simplified compared to the player centr
 [*]Bonus starting heat if fighting on their own turf
 [*]Must wait some time between calls
 [*]Each time they call, the heat increases
-[*]When they reach a certain number of calls, their heat resets and they must wait for a time before calling again. This prevents fights from going on too long.
-[*]NCPD is considered a gang, so can call for backup. And if the heat gets high enough MaxTac will show up (not in an AV, but in the Hellhound).
+[*]When they reach a certain number of calls, their heat resets automatically they must wait longer before calling again. This prevents fights from going on too long.
+[*]NCPD is considered a gang, so can call for backup. At high heat levels, custom elite NCPD units will respond with heavy weapons.
 [*]Does not use any phonecall shenanigans. That works for the original where the player can interrupt calls etc for more interesting gameplay. Not here.
 [*]Includes localisation for the mod settings. If you know the language better and want to help me improve, I welcome your input!
 [/list]
@@ -90,6 +90,7 @@ Keep in mind the primitive, stupid, cyclic heat system the mod operates on, and 
 [*][b]Enabled[/b] - Toggle the mod on/off
 [*][b]Enabled When Player in Combat[/b] - Allow gang reinforcements when player is in combat
 [*][b]Enabled When Player is Passenger[/b] - Allow gang reinforcements when player is a passenger in a vehicle
+[*][b]Enable Individual Gangs[/b] - Toggle specific gangs on/off individually
 [/list]
 
 [color=#f1c232][size=4][b]Preset Modes[/b][/size][/color]
@@ -183,7 +184,7 @@ Max Vehicles Per Call: 4
 [list]
 [*][b]Minimum Call Cooldown[/b] (1-60s) - Minimum wait between backup calls
 [*][b]Maximum Call Cooldown[/b] (1-60s) - Maximum wait between backup calls
-[*][b]Limit Cooldown[/b] (30-600s) - Wait time after reaching calls limit
+[*]Gangs will wait Maximum Call Cooldown X2 when calls limit reached.
 [/list]
 
 [color=#e06666][size=3][b]Heat System[/b][/size][/color]

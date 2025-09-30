@@ -8,9 +8,9 @@ protected final func HandleStimEvent(stimData: ref<StimEventTaskData>) -> Void {
 	wrappedMethod(stimData);
 
 	//potential edge case
-	if(Equals(stimData.cachedEvt.stimType, gamedataStimType.Dying)) {
-		return;
-	}
+	//if(Equals(stimData.cachedEvt.stimType, gamedataStimType.Dying)) {
+	//	return;
+	//}
 
 	let reinSystem: wref<GRReinforcementSystem> = GRReinforcementSystem.GetInstance(GetGameInstance());
 	if (reinSystem.m_settings.enabled) {
@@ -18,11 +18,8 @@ protected final func HandleStimEvent(stimData: ref<StimEventTaskData>) -> Void {
 
 		ownerPuppet = this.GetOwnerPuppet();
 
-		
         if( NPCPuppet.IsInCombatWithTarget(ownerPuppet, GetPlayer(GetGameInstance()))
-		|| !NPCPuppet.IsInCombatWithTarget(ownerPuppet, stimData.cachedEvt.sourceObject) 
-		|| !ScriptedPuppet.IsActive(ownerPuppet) 
-		|| !ScriptedPuppet.IsActive(stimData.cachedEvt.sourceObject)) {
+		|| !NPCPuppet.IsInCombatWithTarget(ownerPuppet, stimData.cachedEvt.sourceObject)) {
             return;
         }
 
