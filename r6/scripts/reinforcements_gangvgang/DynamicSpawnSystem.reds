@@ -54,7 +54,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
     while i < ArraySize(wheeledObjects) {
         wheeledObject = wheeledObjects[i];
 
-		if ScriptedPuppet.IsActive(target) {
+		if IsDefined(target) {
             aiVehicleChaseCommand = new AIVehicleChaseCommand();
             aiVehicleChaseCommand.target = target;
             aiVehicleChaseCommand.distanceMin = TweakDBInterface.GetFloat(t"DynamicSpawnSystem.dynamic_vehicles_chase_setup.distanceMin", 3.0);
