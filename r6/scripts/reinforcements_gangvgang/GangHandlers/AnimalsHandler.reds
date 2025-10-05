@@ -13,7 +13,7 @@ public class GRAnimalsHandler extends GRGangHandler {
         this.m_settings = GRSettings.GetInstance(game);
         this.m_affiliation = gamedataAffiliation.Animals;
         this.m_waveCounterUniqueId = 2000;
-        
+        this.m_attitudeGroup = n"animals_ow";
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRAnimalsHandler> {

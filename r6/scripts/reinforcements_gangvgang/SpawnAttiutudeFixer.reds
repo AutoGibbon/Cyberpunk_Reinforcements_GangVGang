@@ -1,5 +1,6 @@
 import Gibbon.GR.ReinforcementSystem.*
 import Gibbon.GR.GangHandlers.*
+import Gibbon.GR.Logging.*
 
 @wrapMethod(NPCPuppet)
 protected cb func OnPostInitialize(evt: ref<entPostInitializeEvent>) -> Bool {
@@ -10,46 +11,62 @@ protected cb func OnPostInitialize(evt: ref<entPostInitializeEvent>) -> Bool {
         let reinSystem: wref<GRReinforcementSystem> = GRReinforcementSystem.GetInstance(GetGameInstance());
         let factionHandler = reinSystem.GetFactionHandler(this);
 
-        // call the attitude fix from reinforcements mod
-        this.GRAttitudeFix(factionHandler.GetLastCaller(), factionHandler.GetLastTarget());
+        this.GRAttitudeFix(factionHandler.GetLastCaller(), factionHandler.GetLastTarget(), factionHandler.GetAttitudeGroup());
     }
     
     return outcome;
 } 
 
 @addMethod(NPCPuppet)
-protected final func GRAttitudeFix(caller: ref<GameObject>, target: ref<GameObject>) -> Bool {
-	if (!IsDefined(this) || !IsDefined(caller) || !IsDefined(target)) {
-        return false;
-    };
-    let currentSquadMate: wref<GameObject>;
+protected final func GRAttitudeFix(caller: ref<GameObject>, target: ref<GameObject>, fallbackAttitudeGroup: CName) -> Bool {
+    let squadMember: ref<GameObject>;
     let i: Int32;
-    let ownerAttitudeAgent: ref<AttitudeAgent>;
-    let callerAttitudeAgent: ref<AttitudeAgent>;
-    let targetAttitudeAgent: ref<AttitudeAgent>;
+    let attitudeOwner: ref<AttitudeAgent>;
+    let attitudeCaller: ref<AttitudeAgent>;
+    let attitudeTarget: ref<AttitudeAgent>;
     let callerSquadMembers: array<wref<Entity>>;
-    
-    ownerAttitudeAgent = this.GetAttitudeAgent();
-    callerAttitudeAgent = caller.GetAttitudeAgent();
-    targetAttitudeAgent = target.GetAttitudeAgent();
-    if !IsDefined(ownerAttitudeAgent) || !IsDefined(callerAttitudeAgent) {
+    if (IsDefined(this)) {
+        attitudeOwner = this.GetAttitudeAgent();
+    };
+    if !IsDefined(attitudeOwner) {
         return false;
     };
+
+	if (IsDefined(target)) {
+        attitudeTarget = target.GetAttitudeAgent();
+		if IsDefined(attitudeTarget) {
+			attitudeOwner.SetAttitudeTowards(attitudeTarget, EAIAttitude.AIA_Hostile);
+		};
+    };
+    
+    // If caller is not defined but owner attitude agent is available, set attitude group to the fallback from the gang handler
+    if (!IsDefined(caller)) {
+        attitudeOwner.SetAttitudeGroup(fallbackAttitudeGroup);
+        return true;
+    };
+
+    attitudeCaller = caller.GetAttitudeAgent();
+    if !IsDefined(attitudeCaller) {
+        return false;
+    };
+
+    attitudeOwner.SetAttitudeGroup(attitudeCaller.GetAttitudeGroup());
+    attitudeOwner.SetAttitudeTowards(attitudeCaller, EAIAttitude.AIA_Friendly);
+    attitudeCaller.SetAttitudeTowards(attitudeOwner, EAIAttitude.AIA_Friendly);
+    
     if AISquadHelper.GetSquadmates(caller as ScriptedPuppet, callerSquadMembers) {
         i = 0;
         while i < ArraySize(callerSquadMembers) {
-        currentSquadMate = callerSquadMembers[i] as GameObject;
-        if !IsDefined(currentSquadMate) || currentSquadMate == this {
-        } else {
-            ownerAttitudeAgent.SetAttitudeTowards(currentSquadMate.GetAttitudeAgent(), EAIAttitude.AIA_Friendly);
-            currentSquadMate.GetAttitudeAgent().SetAttitudeTowards(ownerAttitudeAgent, EAIAttitude.AIA_Friendly);
-            currentSquadMate.GetAttitudeAgent().SetAttitudeTowards(targetAttitudeAgent, EAIAttitude.AIA_Hostile);
-        };
-        i += 1;
+			squadMember = callerSquadMembers[i] as GameObject;
+			if IsDefined(squadMember) && squadMember != this {
+				let attitudeSquadMember = squadMember.GetAttitudeAgent();
+				if IsDefined(attitudeSquadMember) {
+					attitudeOwner.SetAttitudeTowards(attitudeSquadMember, EAIAttitude.AIA_Friendly);
+					attitudeSquadMember.SetAttitudeTowards(attitudeOwner, EAIAttitude.AIA_Friendly);
+				};
+			};
+			i += 1;
         };
     };
-    ownerAttitudeAgent.SetAttitudeGroup(callerAttitudeAgent.GetAttitudeGroup());
-    ownerAttitudeAgent.SetAttitudeTowards(callerAttitudeAgent, EAIAttitude.AIA_Friendly);
-    callerAttitudeAgent.SetAttitudeTowards(ownerAttitudeAgent, EAIAttitude.AIA_Friendly);
     return true;
 }

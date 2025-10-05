@@ -13,7 +13,7 @@ public class GRArasakaHandler extends GRGangHandler {
         this.m_settings = GRSettings.GetInstance(game);
         this.m_affiliation = gamedataAffiliation.Arasaka;
         this.m_waveCounterUniqueId = 3000;
-        
+        this.m_attitudeGroup = n"arasaka_ow";
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRArasakaHandler> {

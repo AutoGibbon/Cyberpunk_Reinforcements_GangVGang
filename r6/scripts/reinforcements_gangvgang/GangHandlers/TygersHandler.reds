@@ -13,7 +13,7 @@ public class GRTygersHandler extends GRGangHandler {
         this.m_settings = GRSettings.GetInstance(game);
         this.m_affiliation = gamedataAffiliation.TygerClaws;
         this.m_waveCounterUniqueId = 9000;
-        
+        this.m_attitudeGroup = n"tygerClaws_ow";
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRTygersHandler> {

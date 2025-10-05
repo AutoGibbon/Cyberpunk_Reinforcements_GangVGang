@@ -14,7 +14,7 @@ public class GRNCPDHandler extends GRGangHandler {
         this.m_settings = GRSettings.GetInstance(game);
         this.m_affiliation = gamedataAffiliation.NCPD;
         this.m_waveCounterUniqueId = 7000;
-        
+        this.m_attitudeGroup = n"police";
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRNCPDHandler> {

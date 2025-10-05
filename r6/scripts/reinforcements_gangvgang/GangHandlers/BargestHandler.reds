@@ -13,7 +13,7 @@ public class GRBarghestHandler extends GRGangHandler {
         this.m_settings = GRSettings.GetInstance(game);
         this.m_affiliation = gamedataAffiliation.Barghest;
         this.m_waveCounterUniqueId = 4000;
-        
+        this.m_attitudeGroup = n"kurtz_army_ow";
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRBarghestHandler> {

@@ -13,6 +13,7 @@ public class GRSixthStreetHandler extends GRGangHandler {
         this.m_settings = GRSettings.GetInstance(game);
         this.m_affiliation = gamedataAffiliation.SixthStreet;
         this.m_waveCounterUniqueId = 1000;
+		this.m_attitudeGroup = n"6thStreet_ow";
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRSixthStreetHandler> {

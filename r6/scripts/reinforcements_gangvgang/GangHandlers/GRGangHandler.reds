@@ -24,6 +24,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
   protected let m_isDisabled: Bool = false;
   public let m_affiliation: gamedataAffiliation;
+  public let m_attitudeGroup: CName;
   public let m_lastCallAnswered: Bool = true;
 
   public func GetCallSuccessCooldown() -> Float {
@@ -52,6 +53,10 @@ public abstract class GRGangHandler extends ScriptableSystem {
   //promote wref to ref, caller must validate ref when retrieving
   public func GetLastTarget() -> ref<NPCPuppet> {
     return  this.m_lastTarget;
+  }
+
+  public func GetAttitudeGroup() -> CName {
+    return this.m_attitudeGroup;
   }
 
   public func SetLastCallAnswered(lastCallAnswered: Bool) -> Void {
@@ -119,6 +124,8 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_lastCaller = puppet;
     this.m_lastCallerPosition = puppet.GetWorldPosition();
     this.m_lastTarget = target;
+
+	GRLog(s"Caller AttitudeGroup: \(puppet.GetAttitudeAgent().GetAttitudeGroup())");
 
     if this.m_lastCallAnswered {
       this.m_callsPerformed += 1;

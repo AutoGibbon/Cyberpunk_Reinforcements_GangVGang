@@ -13,7 +13,7 @@ public class GRValentinosHandler extends GRGangHandler {
         this.m_settings = GRSettings.GetInstance(game);
         this.m_affiliation = gamedataAffiliation.Valentinos;
         this.m_waveCounterUniqueId = 10000;
-        
+        this.m_attitudeGroup = n"valentinos_ow";
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRValentinosHandler> {

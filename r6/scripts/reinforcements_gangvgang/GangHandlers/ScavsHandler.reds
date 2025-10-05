@@ -13,7 +13,7 @@ public class GRScavsHandler extends GRGangHandler {
         this.m_settings = GRSettings.GetInstance(game);
         this.m_affiliation = gamedataAffiliation.Scavengers;
         this.m_waveCounterUniqueId = 8000;
-        
+        this.m_attitudeGroup = n"scavenger_ow";
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRScavsHandler> {
