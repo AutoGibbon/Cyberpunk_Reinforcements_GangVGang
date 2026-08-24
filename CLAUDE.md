@@ -1,0 +1,135 @@
+# Cyberpunk 2077 RedScript Mod - Reinforcements Gang vs Gang
+
+## Project Overview
+
+This is a Cyberpunk 2077 mod that implements a dynamic gang reinforcement system using RedScript.
+The mod allows different gangs to call for reinforcements when fighting each other.
+This system does not directly involve the player; it enables a form of combat voyeurism for the player.
+
+It operates on a simple cyclic intensity system governed by cooldowns, where each gang starts at some initial heat, is allowed to make a few calls, and then resets to baseline.
+This enables a lightweight and unobtrusive system that does not rely on complex game engine state management, and affords some semblance of organic behaviours to the player.
+
+## File Structure
+
+-   `r6/scripts/` - RedScript source files
+-   `r6/tweaks/` - YAML configuration files for game tweaks - NEVER TOUCH THESE FILES EVER.
+-   `GangData/` - Gang-specific data definitions
+-   `GangHandlers/` - Gang-specific logic handlers
+-   `Localization/` - Multi-language support files
+
+## Code Style & Conventions
+
+### RedScript (.reds files)
+
+-   Use PascalCase for class names and public methods
+-   Use camelCase for variables and private methods
+-   Use m_varName for private/protected class fields
+-   Follow RedScript naming conventions for game API calls
+-   Use descriptive names for gang-related variables and methods
+-   Comment complex logic, especially game API interactions
+
+### YAML Configuration
+
+-   Use snake_case for file names
+-   Keep YAML structure consistent across gang files
+-   Use meaningful keys that match gang names
+-   Maintain consistent indentation (2 spaces)
+
+## Development Guidelines
+
+### Delay system
+
+-   used when we want something to happen later, or to throttle requests for a certain activity to be performed
+-   managed using the DelaySystem native class, and 'callback handlers'
+-   example of a callback handler
+
+```
+public class GRSpawnTrafficCallback extends DelayCallback {
+    let handler: wref<GRReinforcementSystem>;
+
+    public static func Create(handler: ref<GRReinforcementSystem>) -> ref<GRSpawnTrafficCallback> {
+        let self: ref<GRSpawnTrafficCallback> = new GRSpawnTrafficCallback();
+        self.handler = handler;
+        return self;
+    }
+
+    public func Call() -> Void {
+        this.handler.SpawnTrafficVehiclesCallback();
+    }
+}
+```
+
+-   example of using the callback handler and delay system together, assuming the given class has this.m_delaySystem
+
+```
+	let delay: Float = 10.0 //seconds
+	this.m_delaySystem.DelayCallback(GRSpawnTrafficCallback.Create(this), delay, false);
+```
+
+### Thread Safety
+
+-   member access between classes must be implemented via getter/setter
+
+#### RWLock (ignore this section)
+
+-   only create locking code when asked to do so. locking resources for thread safety is a last resort, better code organisation and execution flow is preferred
+-   classes should define `private let m_lockPurpose: RWLock` members, and use them to get safe handles, only when asked for
+-   compartmentalise locks by purpose i.e `private let m_SettingsLock: RWLock;` will be responsible for read/write to the settings class
+-   avoid overlapping RWLock calls in different scopes, this will probably break things
+-   exclusions to this rule:
+    -   private/public/protected member declarations
+    -   OnAttach, OnPlayerAttach, OnRestored, GetInstance : these are threadsafe by default
+-   to get/release a WRITE lock
+    -   RWLock.Acquire(somelockvar)
+    -   RWLock.Release(somelockvar)
+-   to get/release a READ lock
+
+    -   RWLock.AcquireShared(somelockvar)
+    -   RWLock.ReleaseShared(somelockvar)
+
+-   example of a threadsafe getter:
+
+```
+public func GetLastCallAnswered() -> Bool {
+    let result: Bool;
+    RWLock.AcquireShared(this.m_reinforcementLock);
+    result = this.lastCallAnswered;
+	RWLock.ReleaseShared(this.m_reinforcementLock);
+    return result;
+}
+```
+
+-   example of threadsafe setter
+
+```
+public func SetHasTrafficRequest(hasTrafficRequest: Bool) -> Void {
+    RWLock.Acquire(this.m_reinforcementLock);
+    this.hasTrafficRequest = hasTrafficRequest;
+	RWLock.Release(this.m_reinforcementLock);
+}
+```
+
+### Logging
+
+-   Logging always uses the GRLog function.
+-   Never prefix log call strings, this is already done by the wrapper function.
+-   Use string interpolation e.g GRLog(s"my random log message \\(someVar)")
+-   prefer concise log structures e.g "(affiliation), Vehicles: (count)"
+
+### Settings
+
+-   All configurable options should go through the Settings system
+-   Use descriptive setting names
+-   Provide sensible defaults
+
+## Notes
+
+-   This mod modifies game behavior at runtime
+-   Be careful with game API calls to avoid crashes
+-   PERFORMANCE IS KING
+
+## Deployment target
+
+Z:\\GOG\\Cyberpunk 2077
+
+-   game root contains the r6 folder, where these files can be deposited without special steps.

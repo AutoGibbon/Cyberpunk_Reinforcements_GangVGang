@@ -14,6 +14,19 @@ public abstract class GRGangData {
     }
 }
 
+public func IsDistrictWithinZones(district: ref<District>, zones: array<String>) -> Bool {
+    let record = district.GetDistrictRecord();
+
+    while IsDefined(record.ParentDistrict()) {
+        if ArrayContains(zones, record.EnumName()) {
+            return true;
+        }
+        record = record.ParentDistrict();
+    }
+
+    return ArrayContains(zones, record.EnumName());
+}
+
 public func GetRandomFrom(from: array<TweakDBID>, count: Int32) -> array<TweakDBID> {
     let arraySize = ArraySize(from);
     let output: array<TweakDBID> = [];

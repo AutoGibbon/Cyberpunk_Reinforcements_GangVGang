@@ -313,4 +313,64 @@ public class GRReinforcementSystem extends ScriptableSystem {
 			this.ReinforcementsCalled(puppet, target);
 		}
     }
+
+    // called by a gang handler's HandleReinforcementCall when its call is strong enough that the law might
+    // show up instead of its own backup. Returns true if an authority faction took the call.
+    public func TryDispatchAuthority(district: ref<District>, caller: ref<NPCPuppet>, target: ref<NPCPuppet>, callHeat: Int32) -> Bool {
+        if !this.m_settings.authorityInterventionEnabled || !IsDefined(target) {
+            return false;
+        }
+
+        let targetHandler = this.GetFactionHandler(target);
+        if !IsDefined(targetHandler)
+            || Equals(targetHandler.m_affiliation, gamedataAffiliation.NCPD)
+            || Equals(targetHandler.m_affiliation, gamedataAffiliation.Militech)
+            || Equals(targetHandler.m_affiliation, gamedataAffiliation.Barghest) {
+            return false;
+        }
+
+        let clampedHeat = Min(callHeat, 20);
+        if clampedHeat < 3 {
+            return false;
+        }
+
+        let authorityHandler: ref<GRGangHandler>;
+        let authorityHeat: Int32;
+        let chanceMin: Int32;
+        let chanceMax: Int32;
+
+        if this.m_militechHandler.IsConsideredTurf(district) {
+            authorityHandler = this.m_militechHandler;
+            authorityHeat = clampedHeat * 2;
+            chanceMin = 15;
+            chanceMax = 50;
+        } else if this.m_barghestHandler.IsConsideredTurf(district) {
+            authorityHandler = this.m_barghestHandler;
+            authorityHeat = clampedHeat * 2;
+            chanceMin = 15;
+            chanceMax = 50;
+        } else if IsDistrictWithinZones(district, ["WestWindEstate", "Coastview"]) {
+            authorityHandler = this.m_ncpdHandler;
+            authorityHeat = clampedHeat / 2;
+            chanceMin = 7;
+            chanceMax = 25;
+        } else {
+            authorityHandler = this.m_ncpdHandler;
+            authorityHeat = clampedHeat * 2;
+            chanceMin = 15;
+            chanceMax = 50;
+        }
+
+        if !authorityHandler.IsAvailableForIntervention() {
+            return false;
+        }
+
+        let chance = chanceMin + (clampedHeat - 3) * (chanceMax - chanceMin) / 17;
+        if RandRange(0, 101) > chance {
+            return false;
+        }
+
+        authorityHandler.HandleAuthorityIntervention(caller, target, Min(authorityHeat, 20));
+        return true;
+    }
 }

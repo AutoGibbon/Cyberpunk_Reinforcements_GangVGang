@@ -1,0 +1,1 @@
+reference tweak_data_references for the various record types when constructing new character records

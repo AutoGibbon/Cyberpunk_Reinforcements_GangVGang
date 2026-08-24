@@ -41,6 +41,7 @@ protected final func GRAttitudeFix(caller: ref<GameObject>, target: ref<GameObje
     
     // If caller is not defined but owner attitude agent is available, set attitude group to the fallback from the gang handler
     if (!IsDefined(caller)) {
+		GRLog("Caller is not defined, setting attitude group to fallback");
         attitudeOwner.SetAttitudeGroup(fallbackAttitudeGroup);
         return true;
     };

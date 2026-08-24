@@ -93,17 +93,11 @@ public abstract class GRGangHandler extends ScriptableSystem {
   }
 
   public func IsConsideredTurf(district: ref<District>) -> Bool {
-    let record = district.GetDistrictRecord();
-    let turfList = this.GetTurfList();
+    return IsDistrictWithinZones(district, this.GetTurfList());
+  }
 
-    while IsDefined(record.ParentDistrict()) {
-      if ArrayContains(turfList, record.EnumName()) {
-        return true;
-      }
-      record = record.ParentDistrict();
-    }
-
-    return ArrayContains(turfList, record.EnumName());
+  public func IsAvailableForIntervention() -> Bool {
+    return !this.m_isDisabled && !this.m_callSuccessCooldownActive;
   }
 
   public func HandleReinforcementCall(puppet: ref<NPCPuppet>, target: ref<NPCPuppet>) {
@@ -137,13 +131,26 @@ public abstract class GRGangHandler extends ScriptableSystem {
 	let randomNumber = RandRange(0, 101);
     let reinforcementHeat = randomNumber <= this.m_settings.strongCallChance ? this.m_heatLevel + this.m_settings.strongCallHeatBonus : this.m_heatLevel;
 
+    let isAuthorityFaction = Equals(this.m_affiliation, gamedataAffiliation.NCPD)
+                           || Equals(this.m_affiliation, gamedataAffiliation.Militech)
+                           || Equals(this.m_affiliation, gamedataAffiliation.Barghest);
+
+    let authorityResponded = false;
+    if !isAuthorityFaction && reinforcementHeat >= 3 {
+      authorityResponded = GRReinforcementSystem
+        .GetInstance(GetGameInstance())
+        .TryDispatchAuthority(this.m_preventionSystem.GetCurrentDistrict(), puppet, target, reinforcementHeat);
+    }
+
     //GRLog(s"Reinforcements arrive: \(this.m_affiliation), \(reinforcementHeat)");
-    this
-      .SpawnVehicles(
-        this
-          .m_reinforcementData
-          .GetReinforcementsClamped(Min(reinforcementHeat, 20), this.m_settings.maxVehiclesPerCall)
-      );
+    if !authorityResponded {
+      this
+        .SpawnVehicles(
+          this
+            .m_reinforcementData
+            .GetReinforcementsClamped(Min(reinforcementHeat, 20), this.m_settings.maxVehiclesPerCall)
+        );
+    }
 
     if this.m_callsPerformed > this.m_settings.callsLimit {
 		//soft reset, retaining the call success cooldown
@@ -203,8 +210,24 @@ public abstract class GRGangHandler extends ScriptableSystem {
     node.type = nodeType;
 
     GameInstance.GetQuestsSystem(GetGameInstance()).ExecuteNode(node);
-	
+
     this.m_lastCallAnswered = false;
+  }
+
+  // called by GRReinforcementSystem when this faction is chosen to bust up a fight between two other gangs
+  public func HandleAuthorityIntervention(originalCaller: ref<NPCPuppet>, originalTarget: ref<NPCPuppet>, heat: Int32) -> Void {
+    if this.m_callSuccessCooldownActive {
+      return;
+    }
+
+    this.m_lastCaller = null;
+    this.m_lastTarget = originalCaller;
+    this.m_lastCallerPosition = originalCaller.GetWorldPosition();
+
+    this.m_callSuccessCooldownActive = true;
+    this.OnCallSuccessCooldownStart();
+
+    this.SpawnVehicles(this.m_reinforcementData.GetReinforcementsClamped(heat, this.m_settings.maxVehiclesPerCall));
   }
 }
 

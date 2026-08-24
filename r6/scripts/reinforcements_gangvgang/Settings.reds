@@ -130,6 +130,11 @@ public class GRSettings extends ScriptableSystem {
     public let enabledWhenPlayerIsPassenger: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Authority Intervention")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let authorityInterventionEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
     @runtimeProperty("ModSettings.displayName", "6th Street")
     @runtimeProperty("ModSettings.dependency", "enabled")
     public let sixthStreetEnabled: Bool = true;
