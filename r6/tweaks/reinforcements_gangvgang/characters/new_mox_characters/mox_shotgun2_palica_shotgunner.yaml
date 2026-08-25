@@ -9,6 +9,7 @@ Character.GR_the_mox_shotgun2_palica_shotgunner_wa:
         - !append-once Ability.DealsElectricDamage
     tags:
         - !append-once GRModPuppet
+        - !append-once pcf_GangerCanRetreat
 
 Character.GR_the_mox_shotgun2_palica_shotgunner_wa_primary_equipment:
     $type: gamedataNPCEquipmentGroup_Record

@@ -7,6 +7,7 @@ Character.GR_ncpd_elite_hmg:
         - !append-once Ability.CanSeeThroughSmoke
     tags:
         - !append-once GRModPuppet
+        - !append-once pcf_GangerCanRetreat
 
 Character.GR_ncpd_elite_hmg_primary_equipment:
     $type: gamedataNPCEquipmentGroup_Record

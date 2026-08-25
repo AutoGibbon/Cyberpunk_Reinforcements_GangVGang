@@ -5,6 +5,7 @@ Character.GR_kangtao_elite_sniper3_ashura:
     rarity: NPCRarity.Elite
     tags:
         - !append-once GRModPuppet
+        - !append-once pcf_GangerCanRetreat
 
 Character.GR_kangtao_elite_sniper3_ashura_primary_equipment:
     $type: gamedataNPCEquipmentGroup_Record

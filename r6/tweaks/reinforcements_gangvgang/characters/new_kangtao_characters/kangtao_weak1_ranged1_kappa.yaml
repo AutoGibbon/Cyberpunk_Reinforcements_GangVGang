@@ -5,6 +5,7 @@ Character.GR_kangtao_weak1_ranged1_kappa:
     rarity: NPCRarity.Weak
     tags:
         - !append-once GRModPuppet
+        - !append-once pcf_GangerCanRetreat
 
 Character.GR_kangtao_weak1_ranged1_kappa_primary_equipment:
     $type: gamedataNPCEquipmentGroup_Record
