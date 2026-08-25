@@ -152,15 +152,16 @@ public abstract class GRGangHandler extends ScriptableSystem {
         .TryDispatchAuthority(this.m_preventionSystem.GetCurrentDistrict(), puppet, target, reinforcementHeat);
     }
 
-    let turfCallAnswered = isTurf || RandRange(0, 101) <= this.m_settings.nonTurfCallChance;
+    let turfCallAnswered = isTurf ? RandRange(0, 101) <= 50 : RandRange(0, 101) <= 15;
 
     //GRLog(s"Reinforcements arrive: \(this.m_affiliation), \(reinforcementHeat)");
     if !authorityResponded && turfCallAnswered {
+      let vehicleCount = RandRange(this.m_settings.minVehiclesPerCall, this.m_settings.maxVehiclesPerCall + 1);
       this
         .SpawnVehicles(
           this
             .m_reinforcementData
-            .GetReinforcementsClamped(Min(reinforcementHeat, 20), this.m_settings.maxVehiclesPerCall)
+            .GetReinforcementsClamped(Min(reinforcementHeat, 20), vehicleCount)
         );
     }
 
@@ -242,7 +243,10 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_lastCallerPosition = originalCaller.GetWorldPosition();
     this.m_heatLevel = heat;
 
-    this.SpawnVehicles(this.m_reinforcementData.GetReinforcementsClamped(heat, this.m_settings.maxVehiclesPerCall));
+    this.m_callSuccessCooldownActive = true;
+    this.OnCallSuccessCooldownStart();
+
+    this.SpawnVehicles(this.m_reinforcementData.GetReinforcementsClamped(heat, 4));
     this.m_lastCallAnswered = true;
   }
 }

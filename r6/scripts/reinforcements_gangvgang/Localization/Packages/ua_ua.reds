@@ -26,8 +26,6 @@ public class GR_ua_ua extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Шанс що наступний виклик підкріплення буде сильнішим за поточний рівень напруги");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Бонус напруги за сильний виклик");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Скільки додаткової напруги буде у сильного виклику");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "Шанс виклику поза територією");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "Шанс що виклик поза територією все одно отримає відповідь");
         this.Text("GibbonGR-GracePeriod-Category", "Період затишшя");
         this.Text("GibbonGR-Cooldowns-Category", "Кулдауни");
         this.Text("GibbonGR-Heat-Category", "Напруга");
@@ -41,6 +39,8 @@ public class GR_ua_ua extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "Хаос");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "Показати розширені налаштування");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "Показати розширені налаштування для точного налаштування окремих параметрів. Перевизначає режим налаштувань.");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "Мінімум транспорту на виклик");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "Мінімальна кількість транспорту яка з'являється в одному виклику підкріплення");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Максимум транспорту на виклик");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Максимальна кількість транспорту яка може з'явитися в одному виклику підкріплення");
 	}

@@ -26,8 +26,6 @@ public class GR_cz_cz extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Šance, že další volání posil bude silnější než současná úroveň heat");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Heat bonus pro silné volání");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Kolik extra heat bude mít silné volání");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "Šance na volání mimo teritorium");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "Šance, že volání mimo teritorium bude přesto vyslyšeno");
         this.Text("GibbonGR-GracePeriod-Category", "Milostivé období");
         this.Text("GibbonGR-Cooldowns-Category", "Doby čekání");
         this.Text("GibbonGR-Heat-Category", "Heat");
@@ -41,6 +39,8 @@ public class GR_cz_cz extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "Chaos");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "Zobrazit pokročilá nastavení");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "Zobrazit pokročilá nastavení pro jemné doladění jednotlivých parametrů. Přepíše režim přednastavení.");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "Minimální vozidla na volání");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "Minimální počet vozidel, které se objeví při jediném volání posil");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Maximální vozidla na volání");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Maximální počet vozidel, které se mohou objevit při jediném volání posil");
 	}

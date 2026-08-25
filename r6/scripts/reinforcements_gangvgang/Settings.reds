@@ -44,32 +44,32 @@ public class GRSettings extends ScriptableSystem {
             this.callsLimit = this._callsLimit;
             this.strongCallChance = this._strongCallChance;
             this.strongCallHeatBonus = this._strongCallHeatBonus;
-            this.nonTurfCallChance = this._nonTurfCallChance;
-            this.maxVehiclesPerCall = this._maxVehiclesPerCall;
+            this.minVehiclesPerCall = Min(this._minVehiclesPerCall, this._maxVehiclesPerCall);
+            this.maxVehiclesPerCall = Max(this._minVehiclesPerCall, this._maxVehiclesPerCall);
         } else {
             if Equals(this.presetMode, PresetMode.Limited) {
-                this.gracePeriodMin = 10;
-                this.gracePeriodMax = 20;
+                this.gracePeriodMin = 20;
+                this.gracePeriodMax = 30;
                 this.callSuccessCooldownMin = 45;
                 this.callSuccessCooldownMax = 60;
                 this.initialHeat = 1;
                 this.heatEscalation = 1;
                 this.callsLimit = 3;
-                this.strongCallChance = 50;
-                this.strongCallHeatBonus = 15;
-                this.nonTurfCallChance = 5;
+                this.strongCallChance = 15;
+                this.strongCallHeatBonus = 3;
+                this.minVehiclesPerCall = 1;
                 this.maxVehiclesPerCall = 1;
             } else if Equals(this.presetMode, PresetMode.Balanced) {
-                this.gracePeriodMin = 5;
-                this.gracePeriodMax = 15;
+                this.gracePeriodMin = 20;
+                this.gracePeriodMax = 30;
                 this.callSuccessCooldownMin = 45;
                 this.callSuccessCooldownMax = 60;
                 this.initialHeat = 2;
                 this.heatEscalation = 2;
                 this.callsLimit = 6;
                 this.strongCallChance = 15;
-                this.strongCallHeatBonus = 3;
-                this.nonTurfCallChance = 10;
+                this.strongCallHeatBonus = 5;
+                this.minVehiclesPerCall = 1;
                 this.maxVehiclesPerCall = 2;
             } else if Equals(this.presetMode, PresetMode.RareBigFight) {
                 this.gracePeriodMin = 40;
@@ -81,7 +81,7 @@ public class GRSettings extends ScriptableSystem {
                 this.callsLimit = 1;
                 this.strongCallChance = 35;
                 this.strongCallHeatBonus = 5;
-                this.nonTurfCallChance = 75;
+                this.minVehiclesPerCall = 2;
                 this.maxVehiclesPerCall = 3;
             } else if Equals(this.presetMode, PresetMode.Chaos) {
                 this.gracePeriodMin = 1;
@@ -93,7 +93,7 @@ public class GRSettings extends ScriptableSystem {
                 this.callsLimit = 10;
                 this.strongCallChance = 5;
                 this.strongCallHeatBonus = 3;
-                this.nonTurfCallChance = 50;
+                this.minVehiclesPerCall = 2;
                 this.maxVehiclesPerCall = 4;
             }
 
@@ -107,7 +107,7 @@ public class GRSettings extends ScriptableSystem {
 				this.callsLimit = 1;
 				this.strongCallChance = 1;
 				this.strongCallHeatBonus = 1;
-				this.nonTurfCallChance = 5;
+				this.minVehiclesPerCall = 1;
 				this.maxVehiclesPerCall = 3;
 			}
         }
@@ -333,16 +333,16 @@ public class GRSettings extends ScriptableSystem {
     private let _strongCallHeatBonus: Int32 = 8;
 
     @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
-    @runtimeProperty("ModSettings.displayName", "GibbonGR-NonTurfCallChance-Name")
-    @runtimeProperty("ModSettings.description", "GibbonGR-NonTurfCallChance-Description")
+    @runtimeProperty("ModSettings.displayName", "GibbonGR-MinVehiclesPerCall-Name")
+    @runtimeProperty("ModSettings.description", "GibbonGR-MinVehiclesPerCall-Description")
     @runtimeProperty("ModSettings.category", "GibbonGR-Heat-Category")
     @runtimeProperty("ModSettings.category.order", "3")
-    @runtimeProperty("ModSettings.step", "5")
-    @runtimeProperty("ModSettings.min", "0")
-    @runtimeProperty("ModSettings.max", "100")
+    @runtimeProperty("ModSettings.step", "1")
+    @runtimeProperty("ModSettings.min", "1")
+    @runtimeProperty("ModSettings.max", "5")
     @runtimeProperty("ModSettings.dependency", "enabled")
     @runtimeProperty("ModSettings.dependency", "useAdvancedSettings")
-    private let _nonTurfCallChance: Int32 = 20;
+    private let _minVehiclesPerCall: Int32 = 1;
 
     @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
     @runtimeProperty("ModSettings.displayName", "GibbonGR-MaxVehiclesPerCall-Name")
@@ -368,7 +368,7 @@ public class GRSettings extends ScriptableSystem {
     public let callsLimit: Int32 = 3;
     public let strongCallChance: Int32 = 20;
     public let strongCallHeatBonus: Int32 = 8;
-    public let nonTurfCallChance: Int32 = 20;
+    public let minVehiclesPerCall: Int32 = 1;
     public let maxVehiclesPerCall: Int32 = 2;
 }
 

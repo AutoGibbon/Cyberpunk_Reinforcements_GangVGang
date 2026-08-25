@@ -45,7 +45,7 @@ async function pack() {
 
 		// Get all files to include
 		console.log("Scanning files...");
-		const files = getAllFiles(SOURCE_R6_FOLDER);
+		const files = getAllFiles(SOURCE_R6_FOLDER, "r6");
 		console.log(`Found ${files.length} files to pack`);
 
 		// Create zip using 7zip
@@ -53,7 +53,7 @@ async function pack() {
 		const filesList = files.map((f) => `"${f}"`).join(" ");
 		const command = `7z a "${path.resolve(OUTPUT_ZIP)}" ${filesList}`;
 
-		execSync(command, { cwd: SOURCE_R6_FOLDER, stdio: "inherit" });
+		execSync(command, { cwd: ".", stdio: "inherit" });
 
 		console.log("\n✅ Pack completed successfully!");
 		console.log(`Created: ${OUTPUT_ZIP}`);

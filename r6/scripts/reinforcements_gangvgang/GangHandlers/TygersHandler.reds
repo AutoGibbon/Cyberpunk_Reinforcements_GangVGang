@@ -23,7 +23,7 @@ public class GRTygersHandler extends GRGangHandler {
  
 
     public func GetTurfList() -> array<String> {
-        return ["Westbrook"];
+        return ["Westbrook", "Kabuki"];
     }
     
     public func OnGraceStart() -> Void {

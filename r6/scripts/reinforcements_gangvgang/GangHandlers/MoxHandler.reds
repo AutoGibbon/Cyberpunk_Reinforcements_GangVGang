@@ -23,7 +23,7 @@ public class GRMoxHandler extends GRGangHandler {
  
 
     public func GetTurfList() -> array<String> {
-        return ["Kabuki"];
+        return ["Kabuki", "CharterHill"];
     }
     
     public func OnGraceStart() -> Void {

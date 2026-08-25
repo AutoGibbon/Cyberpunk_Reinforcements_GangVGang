@@ -1,1 +1,0 @@
-Game.GetScriptableSystemsContainer():Get("Gibbon.GR.ReinforcementSystem.GRReinforcementSystem"):TestCarChase()

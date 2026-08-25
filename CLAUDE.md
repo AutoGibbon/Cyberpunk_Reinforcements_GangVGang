@@ -102,3 +102,26 @@ public class GRSpawnTrafficCallback extends DelayCallback {
 Z:\\GOG\\Cyberpunk 2077
 
 - game root contains the r6 folder, where these files can be deposited without special steps.
+
+## Command: "deploy and launch"
+
+When the user says "deploy and launch" (or equivalent), run this immediately, with no confirmation prompt and no re-derivation of what it does — this is standing pre-authorization:
+
+```
+node deploy.js && node launch.js
+```
+
+- `deploy.js` deletes `r6/scripts/reinforcements_gangvgang` and `r6/tweaks/reinforcements_gangvgang` under the deployment target, then copies the entire local `./r6` folder over the target's `r6` folder (this also overwrites any non-mod files under the target's `r6/`, not just this mod's subfolders).
+- `launch.js` starts Cyberpunk 2077 via its shortcut, fire-and-forget (no wait for the game to actually launch).
+- Pre-authorization covers only this exact two-step command as documented here. Any variation (different target, different scope, force-push-style destructive ops elsewhere) still needs explicit confirmation per the general safety rules above.
+
+## Command: "pack"
+
+When the user says "pack" (or equivalent), run this immediately, with no confirmation prompt and no re-derivation of what it does — this is standing pre-authorization:
+
+```
+node pack.js
+```
+
+- Deletes the local `./r6.zip` if it exists, then zips the entire local `./r6` folder (excluding any `.cursorrules` files) into `./r6.zip` via `7z`.
+- Only touches the local `r6.zip` build artifact — does not touch the deployment target or the game.

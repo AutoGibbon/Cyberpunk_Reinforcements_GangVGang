@@ -26,8 +26,6 @@ public class GR_fr_fr extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Chance que le prochain appel de renforts soit plus fort que le niveau de chaleur actuel");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Bonus de chaleur pour appel fort");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Combien de chaleur supplémentaire l'appel fort aura");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "Chance d'appel hors territoire");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "Chance qu'un appel hors territoire reçoive quand même une réponse");
         this.Text("GibbonGR-GracePeriod-Category", "Période de grâce");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldowns");
         this.Text("GibbonGR-Heat-Category", "Chaleur");
@@ -41,6 +39,8 @@ public class GR_fr_fr extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "Chaos");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "Afficher les Paramètres Avancés");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "Afficher les paramètres avancés pour ajuster finement les paramètres individuels. Remplace le mode prédéfini.");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "Véhicules Minimum par Appel");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "Nombre minimum de véhicules qui apparaissent dans un seul appel de renforts");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Véhicules Maximum par Appel");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Nombre maximum de véhicules qui peuvent apparaître dans un seul appel de renforts");
 	}

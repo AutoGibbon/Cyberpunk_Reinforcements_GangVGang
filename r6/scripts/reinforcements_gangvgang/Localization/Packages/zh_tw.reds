@@ -26,8 +26,6 @@ public class GR_zh_tw extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "下一次支援呼叫比當前熱度等級更強的機率");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "強力呼叫熱度獎勵");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "強力呼叫將獲得的額外熱度");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "非地盤呼叫機率");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "非地盤呼叫仍獲得回應的機率");
         this.Text("GibbonGR-GracePeriod-Category", "寬限時間");
         this.Text("GibbonGR-Cooldowns-Category", "冷卻時間");
         this.Text("GibbonGR-Heat-Category", "熱度");
@@ -41,6 +39,8 @@ public class GR_zh_tw extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "混亂");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "顯示進階設定");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "顯示進階設定以微調各個參數。覆蓋預設模式。");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "每次呼叫最小載具數");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "單次支援呼叫中生成的最小載具數量");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "每次呼叫最大載具數");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "單次支援呼叫中可生成的最大載具數量");
 	}

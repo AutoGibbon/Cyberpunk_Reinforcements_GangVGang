@@ -26,8 +26,6 @@ public class GR_ru_ru extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Шанс что следующий вызов подкрепления будет сильнее текущего уровня жары");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Бонус жары за сильный вызов");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Сколько дополнительной жары будет у сильного вызова");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "Шанс вызова вне территории");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "Шанс что вызов подкрепления вне своей территории всё равно получит ответ");
         this.Text("GibbonGR-GracePeriod-Category", "Льготный период");
         this.Text("GibbonGR-Cooldowns-Category", "Кулдауны");
         this.Text("GibbonGR-Heat-Category", "Жара");
@@ -41,6 +39,8 @@ public class GR_ru_ru extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "Хаос");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "Показать расширенные настройки");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "Показать расширенные настройки для точной настройки отдельных параметров. Переопределяет режим настроек.");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "Минимум транспорта на вызов");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "Минимальное количество транспорта которое появляется в одном вызове подкрепления");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Максимум транспорта на вызов");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Максимальное количество транспорта которое может появиться в одном вызове подкрепления");
 	}

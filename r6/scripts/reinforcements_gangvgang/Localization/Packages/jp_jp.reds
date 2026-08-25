@@ -26,8 +26,6 @@ public class GR_jp_jp extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "次の増援要請が現在の手配度より強くなる確率");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "強化増援要請 - 増加量");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "強化増援要請における追加手配度");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "縄張り外の増援要請 - 確率");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "縄張り外への増援要請が受理される確率");
         this.Text("GibbonGR-GracePeriod-Category", "猶予時間");
         this.Text("GibbonGR-Cooldowns-Category", "クールダウン");
         this.Text("GibbonGR-Heat-Category", "手配度");
@@ -41,6 +39,8 @@ public class GR_jp_jp extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "カオス");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "詳細設定を表示");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "個別パラメータを細かく調整するための詳細設定を表示。プリセットモードを上書きします");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "増援要請 - 最小車両数");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "単一の増援要請でスポーンする最小車両数");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "増援要請 - 最大車両数");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "単一の増援要請でスポーンできる最大車両数");
     }

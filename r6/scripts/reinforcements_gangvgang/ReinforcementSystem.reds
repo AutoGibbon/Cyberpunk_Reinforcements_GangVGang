@@ -325,7 +325,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         }
 
 		// there are a lot of stim events so just randomly throttle our logic
-		if RandF() <= 0.2 {
+		if RandF() <= 0.1 {
             return;
         }
         
@@ -359,7 +359,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         if this.m_barghestHandler.IsConsideredTurf(district) {
             authorityHandler = this.m_barghestHandler;
             authorityHeat = clampedHeat * 2;
-            chanceMin = 8;
+            chanceMin = 15;
             chanceMax = 50;
         } else if IsDistrictWithinZones(district, ["WestWindEstate", "Coastview"]) {
             authorityHandler = this.m_ncpdHandler;
@@ -390,7 +390,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
                 authorityHandler = candidates[RandRange(0, ArraySize(candidates) - 1)];
             }
             authorityHeat = clampedHeat * 2;
-            chanceMin = 8;
+            chanceMin = 15;
             chanceMax = 50;
         }
 
@@ -398,7 +398,8 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        let chance = chanceMin + (clampedHeat - 3) * (chanceMax - chanceMin) / 17;
+        let t: Float = Cast<Float>(clampedHeat - 3) / 17.0;
+        let chance: Int32 = chanceMin + Cast<Int32>(Cast<Float>(chanceMax - chanceMin) * t * t * t);
         if RandRange(0, 101) > chance {
             return false;
         }

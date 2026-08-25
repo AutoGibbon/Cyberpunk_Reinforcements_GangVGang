@@ -26,8 +26,6 @@ public class GR_ar_ar extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "احتمالية أن يكون استدعاء الدعم التالي أقوى من مستوى الحرارة الحالي");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "مكافأة الحرارة للاستدعاء القوي");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "كم من الحرارة الإضافية ستحصل عليها الاستدعاءات القوية");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "فرصة الاستدعاء خارج المنطقة");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "احتمالية أن يتم الرد على استدعاء الدعم حتى خارج نطاق العصابة");
         this.Text("GibbonGR-GracePeriod-Category", "فترة السماح");
         this.Text("GibbonGR-Cooldowns-Category", "أوقات الانتظار");
         this.Text("GibbonGR-Heat-Category", "الحرارة");
@@ -41,6 +39,8 @@ public class GR_ar_ar extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "فوضى");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "إظهار الإعدادات المتقدمة");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "إظهار الإعدادات المتقدمة لضبط المعاملات الفردية بدقة. يتجاوز وضع الإعدادات المحددة مسبقاً.");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "الحد الأدنى للمركبات لكل استدعاء");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "الحد الأدنى لعدد المركبات التي تظهر في استدعاء دعم واحد");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "الحد الأقصى للمركبات لكل استدعاء");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "الحد الأقصى لعدد المركبات التي يمكن أن تظهر في استدعاء دعم واحد");
 	}

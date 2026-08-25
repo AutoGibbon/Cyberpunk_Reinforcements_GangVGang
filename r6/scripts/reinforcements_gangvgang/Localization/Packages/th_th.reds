@@ -26,8 +26,6 @@ public class GR_th_th extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "โอกาสที่การเรียกกำลังเสริมครั้งต่อไปจะแข็งแกร่งกว่าระดับความร้อนปัจจุบัน");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "โบนัสความร้อนสำหรับการเรียกที่แข็งแกร่ง");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "การเรียกที่แข็งแกร่งจะมีความร้อนเพิ่มเติมเท่าไหร่");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "โอกาสการเรียกนอกพื้นที่");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "โอกาสที่การเรียกนอกพื้นที่จะยังคงได้รับการตอบรับ");
         this.Text("GibbonGR-GracePeriod-Category", "ช่วงเวลาประนีประนอม");
         this.Text("GibbonGR-Cooldowns-Category", "คูลดาวน์");
         this.Text("GibbonGR-Heat-Category", "ความร้อน");
@@ -41,6 +39,8 @@ public class GR_th_th extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "ความวุ่นวาย");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "แสดงการตั้งค่าขั้นสูง");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "แสดงการตั้งค่าขั้นสูงเพื่อปรับแต่งพารามิเตอร์แต่ละตัวอย่างละเอียด ใช้แทนโหมดที่ตั้งไว้");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "ยานพาหนะขั้นต่ำต่อการเรียก");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "จำนวนยานพาหนะขั้นต่ำที่ปรากฏในการเรียกกำลังเสริมครั้งเดียว");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "ยานพาหนะสูงสุดต่อการเรียก");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "จำนวนยานพาหนะสูงสุดที่สามารถปรากฏในการเรียกกำลังเสริมครั้งเดียว");
 	}

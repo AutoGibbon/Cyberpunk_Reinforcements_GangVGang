@@ -26,8 +26,6 @@ public class GR_hu_hu extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Esély hogy a következő erősítés hívás erősebb lesz mint a jelenlegi hő szint");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Erős hívás hő bónusz");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Mennyi extra hőt kap az erős hívás");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "Területen kívüli hívás esély");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "Esély hogy egy területen kívüli hívásra mégis érkezik válasz");
         this.Text("GibbonGR-GracePeriod-Category", "Kegyelem időszak");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldown-ok");
         this.Text("GibbonGR-Heat-Category", "Hő");
@@ -41,6 +39,8 @@ public class GR_hu_hu extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "Káosz");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "Haladó beállítások megjelenítése");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "Haladó beállítások megjelenítése az egyedi paraméterek finomhangolásához. Felülírja az előre beállított módot.");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "Minimum jármű hívásonként");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "Minimum járműszám ami megjelenik egyetlen erősítés hívásban");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Maximum jármű hívásonként");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Maximum járműszám ami megjelenhet egyetlen erősítés hívásban");
 	}

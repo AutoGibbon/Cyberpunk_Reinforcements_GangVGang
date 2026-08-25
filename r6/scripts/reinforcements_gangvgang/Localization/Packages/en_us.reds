@@ -26,8 +26,6 @@ public class GR_en_us extends ModLocalizationPackage {
         this.Text("GibbonGR-StrongCallChance-Description", "Chance the next backup call will be stronger than the current heat level");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Stronger Call Heat Bonus");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "How much extra heat the strong call will have");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "Non-Turf Call Chance");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "Chance an off-turf call still gets answered");
         this.Text("GibbonGR-GracePeriod-Category", "Grace Period");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldowns");
         this.Text("GibbonGR-Heat-Category", "Heat");
@@ -41,6 +39,8 @@ public class GR_en_us extends ModLocalizationPackage {
         this.Text("GibbonGR-PresetMode-Chaos", "Chaos");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "Show Advanced Settings");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "Show advanced settings to fine-tune individual parameters. Overrides the preset mode.");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "Minimum Vehicles Per Call");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "Minimum number of vehicles that spawn in a single backup call");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Maximum Vehicles Per Call");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Maximum number of vehicles that can spawn in a single backup call");
     }

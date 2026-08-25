@@ -26,8 +26,6 @@ public class GR_tr_tr extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Bir sonraki takviye çağrısının mevcut sıcaklık seviyesinden daha güçlü olma şansı");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Güçlü çağrı sıcaklık bonusu");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Güçlü çağrının ne kadar ekstra sıcaklığa sahip olacağı");
-        this.Text("GibbonGR-NonTurfCallChance-Name", "Bölge dışı çağrı şansı");
-        this.Text("GibbonGR-NonTurfCallChance-Description", "Bölge dışı bir çağrının yine de yanıtlanma şansı");
         this.Text("GibbonGR-GracePeriod-Category", "Lütuf süresi");
         this.Text("GibbonGR-Cooldowns-Category", "Bekleme süreleri");
         this.Text("GibbonGR-Heat-Category", "Sıcaklık");
@@ -41,6 +39,8 @@ public class GR_tr_tr extends ModLocalizationPackage{
         this.Text("GibbonGR-PresetMode-Chaos", "Kaos");
         this.Text("GibbonGR-ShowAdvancedSettings-Name", "Gelişmiş Ayarları Göster");
         this.Text("GibbonGR-ShowAdvancedSettings-Description", "Bireysel parametreleri ince ayar yapmak için gelişmiş ayarları göster. Önceden ayarlanmış modu geçersiz kılar.");
+        this.Text("GibbonGR-MinVehiclesPerCall-Name", "Çağrı Başına Minimum Araç");
+        this.Text("GibbonGR-MinVehiclesPerCall-Description", "Tek bir takviye çağrısında ortaya çıkan minimum araç sayısı");
         this.Text("GibbonGR-MaxVehiclesPerCall-Name", "Çağrı Başına Maksimum Araç");
         this.Text("GibbonGR-MaxVehiclesPerCall-Description", "Tek bir takviye çağrısında ortaya çıkabilecek maksimum araç sayısı");
 	}
