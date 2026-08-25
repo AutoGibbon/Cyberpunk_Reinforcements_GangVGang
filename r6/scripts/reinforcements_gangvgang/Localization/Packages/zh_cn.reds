@@ -26,8 +26,8 @@ public class GR_zh_cn extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "下一次支援呼叫比当前热度等级更强的几率");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "强力呼叫热度奖励");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "强力呼叫将获得的额外热度");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "地盘热度奖励");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "帮派在自己地盘呼叫时的额外初始热度");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "非地盘呼叫几率");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "非地盘呼叫仍被响应的几率");
         this.Text("GibbonGR-GracePeriod-Category", "宽限时间");
         this.Text("GibbonGR-Cooldowns-Category", "冷却时间");
         this.Text("GibbonGR-Heat-Category", "热度");

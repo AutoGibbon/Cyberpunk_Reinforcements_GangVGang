@@ -26,8 +26,8 @@ public class GR_ua_ua extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Шанс що наступний виклик підкріплення буде сильнішим за поточний рівень напруги");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Бонус напруги за сильний виклик");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Скільки додаткової напруги буде у сильного виклику");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Бонус напруги за територію");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Додаткова початкова напруга коли банда викликає на своїй території");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Шанс виклику поза територією");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Шанс що виклик поза територією все одно отримає відповідь");
         this.Text("GibbonGR-GracePeriod-Category", "Період затишшя");
         this.Text("GibbonGR-Cooldowns-Category", "Кулдауни");
         this.Text("GibbonGR-Heat-Category", "Напруга");

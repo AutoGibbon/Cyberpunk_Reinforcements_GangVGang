@@ -26,8 +26,8 @@ public class GR_en_us extends ModLocalizationPackage {
         this.Text("GibbonGR-StrongCallChance-Description", "Chance the next backup call will be stronger than the current heat level");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Stronger Call Heat Bonus");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "How much extra heat the strong call will have");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Turf Heat Bonus");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Extra initial heat when gang calls on their own turf");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Non-Turf Call Chance");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Chance an off-turf call still gets answered");
         this.Text("GibbonGR-GracePeriod-Category", "Grace Period");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldowns");
         this.Text("GibbonGR-Heat-Category", "Heat");

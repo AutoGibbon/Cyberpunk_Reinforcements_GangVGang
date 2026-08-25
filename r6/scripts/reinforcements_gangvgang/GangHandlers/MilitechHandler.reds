@@ -21,9 +21,6 @@ public class GRMilitechHandler extends GRGangHandler {
         return system;
     }
 
- 
-
-
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRMilitechCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
@@ -34,7 +31,7 @@ public class GRMilitechHandler extends GRGangHandler {
 
     public func GetTurfList() -> array<String> {
         return [
-            "Badlands"
+            "Badlands", "CityCenter", "NorthBadlands", "SouthBadlands"
         ];
     }
 }

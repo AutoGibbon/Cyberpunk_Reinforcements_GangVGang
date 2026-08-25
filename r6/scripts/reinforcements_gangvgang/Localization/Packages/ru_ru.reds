@@ -26,8 +26,8 @@ public class GR_ru_ru extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Шанс что следующий вызов подкрепления будет сильнее текущего уровня жары");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Бонус жары за сильный вызов");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Сколько дополнительной жары будет у сильного вызова");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Бонус жары за территорию");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Дополнительная начальная жара когда банда вызывает на своей территории");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Шанс вызова вне территории");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Шанс что вызов подкрепления вне своей территории всё равно получит ответ");
         this.Text("GibbonGR-GracePeriod-Category", "Льготный период");
         this.Text("GibbonGR-Cooldowns-Category", "Кулдауны");
         this.Text("GibbonGR-Heat-Category", "Жара");

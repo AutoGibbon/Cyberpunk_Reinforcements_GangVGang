@@ -16,6 +16,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
     private let m_militechHandler: ref<GRMilitechHandler>;
     private let m_valentinosHandler: ref<GRValentinosHandler>;
     private let m_barghestHandler: ref<GRBarghestHandler>;
+    private let m_kangTaoHandler: ref<GRKangTaoHandler>;
     private let m_wraithsHandler: ref<GRWraithsHandler>;
     private let m_ncpdHandler: ref<GRNCPDHandler>;
     private let m_moxHandler: ref<GRMoxHandler>;
@@ -24,6 +25,11 @@ public class GRReinforcementSystem extends ScriptableSystem {
     private let m_preventionSystem: ref<PreventionSystem>;
     private let m_questsSystem: ref<QuestsSystem>;
 	private let m_delaySystem: ref<DelaySystem>;
+
+	// shared cooldown applied to every non-authority gang when an authority intervention is dispatched,
+	// so the law getting involved actually quiets things down instead of every other gang piling on
+	private let m_authorityInterventionCooldownActive: Bool = false;
+	private let m_authorityInterventionCooldownDuration: Float = 120.0;
 
     public let m_settings: ref<GRSettings>;
 
@@ -52,6 +58,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.m_valentinosHandler = GRValentinosHandler.GetInstance(theGame);
         this.m_voodooHandler = GRVoodooHandler.GetInstance(theGame);
         this.m_wraithsHandler = GRWraithsHandler.GetInstance(theGame);
+        this.m_kangTaoHandler = GRKangTaoHandler.GetInstance(theGame);
 
         // cause we're doing funky stuff with public and private bindings
         this.m_settings.ReconcileSettings();
@@ -92,6 +99,8 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.m_valentinosHandler.ResetGang();
         this.m_voodooHandler.ResetGang();
         this.m_wraithsHandler.ResetGang();
+        this.m_kangTaoHandler.ResetGang();
+        this.m_authorityInterventionCooldownActive = false;
     }
 
     public func OnSettingsChanged() -> Void {
@@ -108,11 +117,20 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.m_valentinosHandler.SetIsDisabled(!this.m_settings.valentinosEnabled);
         this.m_voodooHandler.SetIsDisabled(!this.m_settings.voodooBoysEnabled);
         this.m_wraithsHandler.SetIsDisabled(!this.m_settings.wraithsEnabled);
+        this.m_kangTaoHandler.SetIsDisabled(!this.m_settings.kangTaoEnabled);
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRReinforcementSystem> {
         let system: ref<GRReinforcementSystem> = GameInstance.GetScriptableSystemsContainer(gameInstance).Get(n"Gibbon.GR.ReinforcementSystem.GRReinforcementSystem") as GRReinforcementSystem;
         return system;
+    }
+
+    public func IsAuthorityInterventionCooldownActive() -> Bool {
+        return this.m_authorityInterventionCooldownActive;
+    }
+
+    public func OnAuthorityInterventionCooldownEnd() -> Void {
+        this.m_authorityInterventionCooldownActive = false;
     }
 
     public func ReinforcementsCalled(puppet: ref<ScriptedPuppet>, target: wref<GameObject>) -> Void {
@@ -288,6 +306,8 @@ public class GRReinforcementSystem extends ScriptableSystem {
                 return this.m_valentinosHandler;
             case gamedataAffiliation.Barghest:
                 return this.m_barghestHandler;
+            case gamedataAffiliation.KangTao:
+                return this.m_kangTaoHandler;
             case gamedataAffiliation.Wraiths:
                 return this.m_wraithsHandler;
             case gamedataAffiliation.NCPD:
@@ -322,10 +342,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         }
 
         let targetHandler = this.GetFactionHandler(target);
-        if !IsDefined(targetHandler)
-            || Equals(targetHandler.m_affiliation, gamedataAffiliation.NCPD)
-            || Equals(targetHandler.m_affiliation, gamedataAffiliation.Militech)
-            || Equals(targetHandler.m_affiliation, gamedataAffiliation.Barghest) {
+        if !IsDefined(targetHandler) || targetHandler.IsAuthorityFaction() {
             return false;
         }
 
@@ -339,25 +356,41 @@ public class GRReinforcementSystem extends ScriptableSystem {
         let chanceMin: Int32;
         let chanceMax: Int32;
 
-        if this.m_militechHandler.IsConsideredTurf(district) {
-            authorityHandler = this.m_militechHandler;
-            authorityHeat = clampedHeat * 2;
-            chanceMin = 15;
-            chanceMax = 50;
-        } else if this.m_barghestHandler.IsConsideredTurf(district) {
+        if this.m_barghestHandler.IsConsideredTurf(district) {
             authorityHandler = this.m_barghestHandler;
             authorityHeat = clampedHeat * 2;
-            chanceMin = 15;
+            chanceMin = 8;
             chanceMax = 50;
         } else if IsDistrictWithinZones(district, ["WestWindEstate", "Coastview"]) {
             authorityHandler = this.m_ncpdHandler;
             authorityHeat = clampedHeat / 2;
-            chanceMin = 7;
-            chanceMax = 25;
+            chanceMin = 3;
+            chanceMax = 15;
         } else {
-            authorityHandler = this.m_ncpdHandler;
+            // ncpd, militech, kangtao, and arasaka all claim overlapping turf (CityCenter etc) -
+            // gather whoever actually considers this district theirs and pick one at random
+            let candidates: array<ref<GRGangHandler>> = [];
+            if this.m_ncpdHandler.IsConsideredTurf(district) {
+                ArrayPush(candidates, this.m_ncpdHandler);
+            }
+            if this.m_militechHandler.IsConsideredTurf(district) {
+                ArrayPush(candidates, this.m_militechHandler);
+            }
+            if this.m_kangTaoHandler.IsConsideredTurf(district) {
+                ArrayPush(candidates, this.m_kangTaoHandler);
+            }
+            if this.m_arasakaHandler.IsConsideredTurf(district) {
+                ArrayPush(candidates, this.m_arasakaHandler);
+            }
+
+            if ArraySize(candidates) == 0 {
+                // no claimed authority for this district - fall back to NCPD
+                authorityHandler = this.m_ncpdHandler;
+            } else {
+                authorityHandler = candidates[RandRange(0, ArraySize(candidates) - 1)];
+            }
             authorityHeat = clampedHeat * 2;
-            chanceMin = 15;
+            chanceMin = 8;
             chanceMax = 50;
         }
 
@@ -371,6 +404,24 @@ public class GRReinforcementSystem extends ScriptableSystem {
         }
 
         authorityHandler.HandleAuthorityIntervention(caller, target, Min(authorityHeat, 20));
+
+        this.m_authorityInterventionCooldownActive = true;
+        this.m_delaySystem.DelayCallback(GRAuthorityInterventionCooldownEndCallback.Create(this), this.m_authorityInterventionCooldownDuration, true);
+
         return true;
+    }
+}
+
+public class GRAuthorityInterventionCooldownEndCallback extends DelayCallback {
+    let handler: wref<GRReinforcementSystem>;
+
+    public static func Create(handler: ref<GRReinforcementSystem>) -> ref<GRAuthorityInterventionCooldownEndCallback> {
+        let self: ref<GRAuthorityInterventionCooldownEndCallback> = new GRAuthorityInterventionCooldownEndCallback();
+        self.handler = handler;
+        return self;
+    }
+
+    public func Call() -> Void {
+        this.handler.OnAuthorityInterventionCooldownEnd();
     }
 }

@@ -32,7 +32,7 @@ public class GRNCPDHandler extends GRGangHandler {
     }
 
     public func GetTurfList() -> array<String> {
-        return ["CityCenter","CharterHill"];
+        return ["CityCenter", "Watson", "Westbrook", "Heywood", "SantoDomingo"];
     }
 }
 

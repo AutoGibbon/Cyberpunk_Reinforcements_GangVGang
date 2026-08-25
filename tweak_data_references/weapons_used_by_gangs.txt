@@ -1,69 +1,89 @@
 # Weapons Currently Used by Gangs in Reinforcements Gang vs Gang
+#
+# Audited against actual $base character records (r6/tweaks/reinforcements_gangvgang/characters/0_*.yaml)
+# and the custom equipment defs in new_mox_characters/ and new_ncpd_characters/. Fixes vs the previous
+# version of this file: merged the HMG/hmg case-duplicate; igla/tactician/testera were each listed
+# verbatim under both Ranged and Shotgun (they're shotguns only, removed the Ranged copy); folded Mox
+# in properly instead of a disconnected "Current Mox Weapons" tail; dropped Arasaka from ajax (not
+# actually used); added gangs that were missing entirely (Mox: lexington/overture/pulsar; Militech,
+# Tyger Claws: saratoga; Scavengers: copperhead/igla/tactician; Maelstrom: carnage/igla/lexington/pulsar;
+# Valentinos: overture; Voodoo Boys had defender/grad removed - not actually found in its records).
+#
+# "Known preset" = a standalone Items.Preset_* record already proven to work as custom primaryEquipment
+# in this mod (i.e. NOT just inherited via $base off a vanilla character), or otherwise confirmed to
+# exist via Wolvenkit. Use these directly when building a new custom character. A blank means we've
+# only ever seen the weapon come along for the ride on a vanilla $base - the preset ID isn't confirmed,
+# so ask before assuming one exists (most weapons have Default/Military/Neon/Pimp/etc variants, but
+# which ones actually exist has to be checked in Wolvenkit, not guessed from the pattern).
+#
+# Naming convention for $base tokens: <gang>_<role><tier>_<weaponclass><tier#>_<weaponname>_<suffix>
+# Suffix: ma/wa = male/female normal build, mb/wb = male/female heavy build, _rare/_elite = rarity tier.
+# Watch out for "crusher": it's both a shotgun weapon (shotgun2/3_crusher) AND, unrelated, part of the
+# Militech android's model name (android2_crusher_ma) - don't infer weapon usage from that one.
+#
+# Melee-hybrid pattern (see new_mox_characters/mox_melee2_baton_kappa_wa.yaml): a melee primaryEquipment
+# can be paired with a pistol secondaryEquipment via ItemSlotHandgunRight + the
+# MeleeHybridPrimaryWeapon(Melee|Ranged)(Equip|Unequip)Condition pairs. Good template for new
+# melee-plus-sidearm characters.
+
+## Smart Weapons (still classed as ranged/shotgun, but IsAI-tagged as smart-targeting)
+ashura      - sniper/ranged - Arasaka, Voodoo Boys                 | Items.Preset_Ashura_Military
+chao        - pistol        - Mox, Voodoo Boys                    | Items.Preset_Chao_Neon, Items.Preset_Chao_Military
+dian        - smg           - Mox                                 | Items.Preset_Dian_Neon, Items.Preset_Dian_Military
+kappa       - pistol        - Mox                                 | Items.Preset_Kappa_Neon, Items.Preset_Kappa_Military
+palica      - shotgun       - Kang Tao, Mox, Voodoo Boys, Wraiths  | Items.Preset_Palica_Neon, Items.Preset_Palica_Military
+shingen     - ranged        - Arasaka, Tyger Claws                 | Items.Preset_Shingen_Military
+sidewinder  - assault rifle - Tyger Claws, Voodoo Boys             | Items.Preset_Sidewinder_Military
+yukimura    - ranged/netrunner - Arasaka, Voodoo Boys
+zhuo        - shotgun       - Arasaka, Voodoo Boys                 | Items.Preset_Zhuo_Default
 
 ## Ranged Weapons
-ajax        - Used by 6th Street, Arasaka, Maelstrom, Militech, NCPD, Valentinos, Voodoo Boys
-achilles    - Used by Kurtz, Militech, Wraiths
-ashura      - Used by Arasaka, Voodoo Boys
-burya       - Used by Animals
-copperhead  - Used by Maelstrom, NCPD, Tyger Claws, Voodoo Boys, Wraiths
-crusher     - Used by Militech, NCPD, Wraiths
-defender    - Used by Animals, Arasaka, Maelstrom, NCPD, Scavs, Voodoo Boys, Wraiths
-grad        - Used by 6th Street, Maelstrom, Scavs, Valentinos, Voodoo Boys, Wraiths
-handgun     - Used by Kurtz
-igla        - Used by 6th Street, Animals, Valentinos
-kenshin     - Used by Animals, Arasaka
-lexington   - Used by Kurtz, Maelstrom, NCPD, Voodoo Boys
-masamune    - Used by Arasaka
-nekomata    - Used by Arasaka
-nova        - Used by 6th Street, Animals, Scavs, Valentinos, Wraiths
-nue         - Used by Tyger Claws, Valentinos
-omaha       - Used by Animals, NCPD, Militech
-overture    - Used by Animals, Voodoo Boys
-palica      - Used by Voodoo Boys, Wraiths
-pulsar      - Used by Animals, Scavs, Voodoo Boys, Wraiths
-quasar      - Used by Voodoo Boys, Wraiths
-rifle       - Used by Kurtz
-saratoga    - Used by 6th Street, Kurtz, NCPD, Voodoo Boys
-shingen     - Used by Arasaka, Tyger Claws
-sidewinder  - Used by Tyger Claws, Voodoo Boys
-slaughtomatic - Used by Scavs, Voodoo Boys
-tactician   - Used by 6th Street, Arasaka, Militech, NCPD, Valentinos
-testera     - Used by Animals, Valentinos
-yukimura    - Used by Arasaka, Voodoo Boys
-zhuo        - Used by Arasaka, Voodoo Boys
+ajax        - 6th Street, Maelstrom, Militech, NCPD, Valentinos, Voodoo Boys   | Items.Preset_Ajax_Default
+achilles    - Bargest (Kurtz), Militech, Wraiths                              | Items.Preset_Achilles_Default (tech rifle)
+burya       - Animals
+copperhead  - Maelstrom, NCPD, Scavengers, Tyger Claws, Voodoo Boys, Wraiths
+defender    - Animals, Arasaka, Maelstrom, NCPD, Scavengers
+grad        - 6th Street, Maelstrom, Scavengers, Valentinos, Voodoo Boys
+handgun     - Bargest (Kurtz)
+kenshin     - Animals, Arasaka
+kolac       - NCPD (custom elite)                                             | Items.Preset_Kolac_Default (heavy precision rifle)
+lexington   - Bargest (Kurtz), Maelstrom, Mox, NCPD, Voodoo Boys
+masamune    - Arasaka
+nekomata    - Arasaka
+nova        - 6th Street, Animals, Scavengers, Valentinos, Wraiths
+nue         - Tyger Claws, Valentinos
+omaha       - Animals, Militech, NCPD
+overture    - Animals, Mox, Valentinos, Voodoo Boys                           | Items.Preset_Overture_Neon
+pulsar      - Animals, Maelstrom, Mox, Scavengers, Voodoo Boys, Wraiths       | Items.Preset_Pulsar_Neon
+quasar      - Voodoo Boys, Wraiths
+rifle       - Bargest (Kurtz)
+saratoga    - 6th Street, Bargest (Kurtz), Militech, NCPD, Tyger Claws, Voodoo Boys
+slaughtomatic - Scavengers, Voodoo Boys
 
 ## Shotgun Weapons
-carnage     - Used by 6th Street, Animals, Scavs, Voodoo Boys
-igla        - Used by 6th Street, Animals, Valentinos
-satara      - Used by 6th Street, Wraiths
-shotgun     - Used by Kurtz
-tactician   - Used by 6th Street, Arasaka, Militech, NCPD, Valentinos
-testera     - Used by Animals, Valentinos
-zhuo        - Used by Arasaka, Voodoo Boys
+carnage     - 6th Street, Animals, Maelstrom, Voodoo Boys
+crusher     - Militech, NCPD, Wraiths                                         | Items.Preset_Crusher_Default
+igla        - 6th Street, Animals, Maelstrom, Scavengers, Valentinos
+satara      - 6th Street, Wraiths
+shotgun (generic) - Bargest (Kurtz)
+tactician   - 6th Street, Arasaka, Militech, NCPD, Scavengers, Tyger Claws
+testera     - Animals, Valentinos
+# smart shotguns palica, zhuo are listed above under Smart Weapons, not repeated here
 
 ## Melee Weapons
-baseball    - Used by 6th Street, Valentinos, Voodoo Boys
-baton       - Used by 6th Street, NCPD
-fists       - Used by Animals, Arasaka, Kurtz, Scavs, Valentinos, Wraiths
-hammer      - Used by Animals, Maelstrom, Tyger Claws, Wraiths
-kanabo      - Used by Tyger Claws
-katana      - Used by Arasaka, Tyger Claws, Voodoo Boys
-knife       - Used by Maelstrom, Scavs, Tyger Claws, Valentinos, Voodoo Boys
-machete     - Used by Maelstrom, Scavs, Valentinos, Voodoo Boys
-mantis      - Used by Arasaka, Voodoo Boys, Wraiths
-pipewrench  - Used by Scavs
-tireiron    - Used by Scavs
-StrongArms  - Used by Tyger Claws
+baseball    - 6th Street, Mox, Valentinos, Voodoo Boys                        | Items.Preset_Baseball_Bat_Mox (Mox variant)
+baton       - 6th Street, Mox, NCPD                                           | Items.Preset_Baton_Alpha / _Beta / _Gamma
+fists       - Animals, Arasaka, Bargest (Kurtz), Scavengers, Valentinos, Voodoo Boys, Wraiths
+hammer      - Animals, Maelstrom, Tyger Claws, Wraiths
+kanabo      - Tyger Claws
+katana      - Arasaka, Tyger Claws, Voodoo Boys
+knife       - Maelstrom, Mox, Scavengers, Tyger Claws, Valentinos, Voodoo Boys
+machete     - Maelstrom, Mox, Scavengers, Valentinos, Voodoo Boys
+mantis      - Arasaka, Mox, Voodoo Boys, Wraiths
+pipewrench  - Scavengers
+tireiron    - Scavengers
+StrongArms (gorilla arms) - Tyger Claws                                       | Items.NPC_Strong_Arms
 
 ## Heavy Weapons
-HMG         - Used by Animals, Arasaka, Kurtz, Militech, Voodoo Boys, Wraiths
-LMG         - Used by Kurtz
-hmg         - Used by Animals, Voodoo Boys, Wraiths
-
-## Current Mox Weapons
-baseball    - melee
-lexington   - ranged
-pulsar      - ranged
-knife       - melee
-machete     - melee
-mantis      - melee
+HMG         - Animals, Arasaka, Bargest (Kurtz), Militech, NCPD (custom), Voodoo Boys, Wraiths | Items.Preset_HMG_Default
+LMG         - Bargest (Kurtz)

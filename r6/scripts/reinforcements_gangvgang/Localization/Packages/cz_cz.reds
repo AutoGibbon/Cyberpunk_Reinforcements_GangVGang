@@ -26,8 +26,8 @@ public class GR_cz_cz extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Šance, že další volání posil bude silnější než současná úroveň heat");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Heat bonus pro silné volání");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Kolik extra heat bude mít silné volání");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Heat bonus za teritorium");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Extra počáteční heat když gang volá na svém vlastním teritoriu");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Šance na volání mimo teritorium");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Šance, že volání mimo teritorium bude přesto vyslyšeno");
         this.Text("GibbonGR-GracePeriod-Category", "Milostivé období");
         this.Text("GibbonGR-Cooldowns-Category", "Doby čekání");
         this.Text("GibbonGR-Heat-Category", "Heat");

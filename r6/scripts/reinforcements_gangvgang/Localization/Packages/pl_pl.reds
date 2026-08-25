@@ -24,8 +24,8 @@ public class GR_pl_pl extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Szansa że następne wezwanie wsparcia będzie silniejsze niż obecny poziom heat");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Bonus heat za mocne wezwanie");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Ile dodatkowego heat będzie miało silne wezwanie");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Bonus heat za teren");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Dodatkowy początkowy heat gdy gang wzywa na swoim własnym terytorium");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Szansa na wezwanie spoza rewiru");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Szansa że wezwanie spoza rewiru i tak zostanie odebrane");
         this.Text("GibbonGR-GracePeriod-Category", "Okres łaski");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldowny");
         this.Text("GibbonGR-Heat-Category", "Heat");

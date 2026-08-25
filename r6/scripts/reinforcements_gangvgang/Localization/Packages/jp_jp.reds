@@ -26,8 +26,8 @@ public class GR_jp_jp extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "次の増援要請が現在の手配度より強くなる確率");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "強化増援要請 - 増加量");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "強化増援要請における追加手配度");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "初期手配度 - 支配圏ボーナス");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "ギャングが自分の支配圏で増援要請する際の追加初期手配度");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "縄張り外の増援要請 - 確率");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "縄張り外への増援要請が受理される確率");
         this.Text("GibbonGR-GracePeriod-Category", "猶予時間");
         this.Text("GibbonGR-Cooldowns-Category", "クールダウン");
         this.Text("GibbonGR-Heat-Category", "手配度");

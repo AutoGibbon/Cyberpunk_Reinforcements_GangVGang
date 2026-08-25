@@ -26,8 +26,8 @@ public class GR_hu_hu extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Esély hogy a következő erősítés hívás erősebb lesz mint a jelenlegi hő szint");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Erős hívás hő bónusz");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Mennyi extra hőt kap az erős hívás");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Terület hő bónusz");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Extra kezdeti hő amikor egy csapat a saját területén hív");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Területen kívüli hívás esély");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Esély hogy egy területen kívüli hívásra mégis érkezik válasz");
         this.Text("GibbonGR-GracePeriod-Category", "Kegyelem időszak");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldown-ok");
         this.Text("GibbonGR-Heat-Category", "Hő");

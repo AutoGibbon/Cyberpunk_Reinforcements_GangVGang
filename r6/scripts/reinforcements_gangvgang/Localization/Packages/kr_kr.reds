@@ -26,8 +26,8 @@ public class GR_kr_kr extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "다음 백업 호출이 현재 히트 레벨보다 강해질 확률");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "강력한 호출 히트 보너스");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "강력한 호출이 가질 추가 히트량");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "영역 히트 보너스");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "갱이 자신의 영역에서 호출할 때의 추가 초기 히트");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "구역 밖 호출 확률");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "구역 밖 호출이 그래도 응답받을 확률");
         this.Text("GibbonGR-GracePeriod-Category", "유예 기간");
         this.Text("GibbonGR-Cooldowns-Category", "쿨다운");
         this.Text("GibbonGR-Heat-Category", "히트");

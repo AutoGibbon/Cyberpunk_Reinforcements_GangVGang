@@ -22,7 +22,13 @@ public class GRScavsHandler extends GRGangHandler {
     }
 
     public func GetTurfList() -> array<String> {
-        return [];
+        return [
+            "JapanTown",
+            "Northside",
+            "Coastview",
+            "DogTown",
+            "WestWindEstate"
+        ];
     }
 
     public func OnGraceStart() -> Void {

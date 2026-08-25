@@ -26,8 +26,8 @@ public class GR_it_it extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Probabilità che la prossima chiamata di rinforzi sia più forte del livello di calore attuale");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Bonus calore chiamata forte");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Quanto calore extra avrà la chiamata forte");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Bonus calore territorio");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Calore iniziale extra quando una gang chiama nel proprio territorio");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Probabilità chiamata fuori territorio");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Probabilità che una chiamata fuori territorio riceva comunque risposta");
         this.Text("GibbonGR-GracePeriod-Category", "Periodo di grazia");
         this.Text("GibbonGR-Cooldowns-Category", "Cooldown");
         this.Text("GibbonGR-Heat-Category", "Calore");

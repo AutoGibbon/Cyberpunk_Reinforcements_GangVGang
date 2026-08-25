@@ -20,6 +20,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
   protected let m_lastCaller: wref<NPCPuppet>;
   protected let m_lastTarget: wref<NPCPuppet>;
+  protected let m_lastSecondaryTarget: wref<NPCPuppet>;
   protected let m_lastCallerPosition: Vector4;
 
   protected let m_isDisabled: Bool = false;
@@ -53,6 +54,11 @@ public abstract class GRGangHandler extends ScriptableSystem {
   //promote wref to ref, caller must validate ref when retrieving
   public func GetLastTarget() -> ref<NPCPuppet> {
     return  this.m_lastTarget;
+  }
+
+  //promote wref to ref, caller must validate ref when retrieving
+  public func GetLastSecondaryTarget() -> ref<NPCPuppet> {
+    return this.m_lastSecondaryTarget;
   }
 
   public func GetAttitudeGroup() -> CName {
@@ -100,6 +106,14 @@ public abstract class GRGangHandler extends ScriptableSystem {
     return !this.m_isDisabled && !this.m_callSuccessCooldownActive;
   }
 
+  public func IsAuthorityFaction() -> Bool {
+    return Equals(this.m_affiliation, gamedataAffiliation.NCPD)
+        || Equals(this.m_affiliation, gamedataAffiliation.Militech)
+        || Equals(this.m_affiliation, gamedataAffiliation.Barghest)
+        || Equals(this.m_affiliation, gamedataAffiliation.Arasaka)
+        || Equals(this.m_affiliation, gamedataAffiliation.KangTao);
+  }
+
   public func HandleReinforcementCall(puppet: ref<NPCPuppet>, target: ref<NPCPuppet>) {
     if this.m_callSuccessCooldownActive {
       return;
@@ -110,14 +124,12 @@ public abstract class GRGangHandler extends ScriptableSystem {
       this.m_heatLevel = this.m_settings.initialHeat;
     } else if this.m_lastCallAnswered {
       this.m_heatLevel += this.m_settings.heatEscalation;
-      if isTurf {
-        this.m_heatLevel += this.m_settings.turfHeatBonus;
-      }
     }
 
     this.m_lastCaller = puppet;
     this.m_lastCallerPosition = puppet.GetWorldPosition();
     this.m_lastTarget = target;
+    this.m_lastSecondaryTarget = null;
 
 	GRLog(s"Caller AttitudeGroup: \(puppet.GetAttitudeAgent().GetAttitudeGroup())");
 
@@ -131,9 +143,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 	let randomNumber = RandRange(0, 101);
     let reinforcementHeat = randomNumber <= this.m_settings.strongCallChance ? this.m_heatLevel + this.m_settings.strongCallHeatBonus : this.m_heatLevel;
 
-    let isAuthorityFaction = Equals(this.m_affiliation, gamedataAffiliation.NCPD)
-                           || Equals(this.m_affiliation, gamedataAffiliation.Militech)
-                           || Equals(this.m_affiliation, gamedataAffiliation.Barghest);
+    let isAuthorityFaction = this.IsAuthorityFaction();
 
     let authorityResponded = false;
     if !isAuthorityFaction && reinforcementHeat >= 3 {
@@ -142,8 +152,10 @@ public abstract class GRGangHandler extends ScriptableSystem {
         .TryDispatchAuthority(this.m_preventionSystem.GetCurrentDistrict(), puppet, target, reinforcementHeat);
     }
 
+    let turfCallAnswered = isTurf || RandRange(0, 101) <= this.m_settings.nonTurfCallChance;
+
     //GRLog(s"Reinforcements arrive: \(this.m_affiliation), \(reinforcementHeat)");
-    if !authorityResponded {
+    if !authorityResponded && turfCallAnswered {
       this
         .SpawnVehicles(
           this
@@ -170,6 +182,10 @@ public abstract class GRGangHandler extends ScriptableSystem {
     }
 
     if this.m_callSuccessCooldownActive {
+      return false;
+    }
+
+    if !this.IsAuthorityFaction() && GRReinforcementSystem.GetInstance(GetGameInstance()).IsAuthorityInterventionCooldownActive() {
       return false;
     }
 
@@ -222,6 +238,7 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
     this.m_lastCaller = null;
     this.m_lastTarget = originalCaller;
+    this.m_lastSecondaryTarget = originalTarget;
     this.m_lastCallerPosition = originalCaller.GetWorldPosition();
 
     this.m_callSuccessCooldownActive = true;

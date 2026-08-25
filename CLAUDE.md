@@ -11,37 +11,45 @@ This enables a lightweight and unobtrusive system that does not rely on complex 
 
 ## File Structure
 
--   `r6/scripts/` - RedScript source files
--   `r6/tweaks/` - YAML configuration files for game tweaks - NEVER TOUCH THESE FILES EVER.
--   `GangData/` - Gang-specific data definitions
--   `GangHandlers/` - Gang-specific logic handlers
--   `Localization/` - Multi-language support files
+- `r6/scripts/` - RedScript source files
+- `r6/tweaks/` - YAML configuration files for game tweaks - NEVER TOUCH THESE FILES EVER.
+- `GangData/` - Gang-specific data definitions
+- `GangHandlers/` - Gang-specific logic handlers
+- `Localization/` - Multi-language support files
+
+## Scoped Instructions
+
+`pack.js`/`deploy.js` copy everything under `r6/` verbatim (only `.cursorrules` files are excluded), so directory-specific `CLAUDE.md` files live outside `r6/` under `docs/claude/`, mirroring the path they apply to. Check these when working in the corresponding directory:
+
+- `docs/claude/r6/scripts/reinforcements_gangvgang/Localization/CLAUDE.md` - localization/translation guidelines, applies to `r6/scripts/reinforcements_gangvgang/Localization/`
+- `docs/claude/r6/tweaks/reinforcements_gangvgang/characters/CLAUDE.md` - character tweak record guidance, applies to `r6/tweaks/reinforcements_gangvgang/characters/`
 
 ## Code Style & Conventions
 
 ### RedScript (.reds files)
 
--   Use PascalCase for class names and public methods
--   Use camelCase for variables and private methods
--   Use m_varName for private/protected class fields
--   Follow RedScript naming conventions for game API calls
--   Use descriptive names for gang-related variables and methods
--   Comment complex logic, especially game API interactions
+- Use PascalCase for class names and public methods
+- Use camelCase for variables and private methods
+- Use m_varName for private/protected class fields
+- Follow RedScript naming conventions for game API calls
+- Use descriptive names for gang-related variables and methods
+- Comment complex logic, especially game API interactions
+- raw source dumps for api reference: E:\Tools\mods\cp77\redscript\source
 
 ### YAML Configuration
 
--   Use snake_case for file names
--   Keep YAML structure consistent across gang files
--   Use meaningful keys that match gang names
--   Maintain consistent indentation (2 spaces)
+- Use snake_case for file names
+- Keep YAML structure consistent across gang files
+- Use meaningful keys that match gang names
+- Maintain consistent indentation (2 spaces)
 
 ## Development Guidelines
 
 ### Delay system
 
--   used when we want something to happen later, or to throttle requests for a certain activity to be performed
--   managed using the DelaySystem native class, and 'callback handlers'
--   example of a callback handler
+- used when we want something to happen later, or to throttle requests for a certain activity to be performed
+- managed using the DelaySystem native class, and 'callback handlers'
+- example of a callback handler
 
 ```
 public class GRSpawnTrafficCallback extends DelayCallback {
@@ -59,7 +67,7 @@ public class GRSpawnTrafficCallback extends DelayCallback {
 }
 ```
 
--   example of using the callback handler and delay system together, assuming the given class has this.m_delaySystem
+- example of using the callback handler and delay system together, assuming the given class has this.m_delaySystem
 
 ```
 	let delay: Float = 10.0 //seconds
@@ -68,68 +76,29 @@ public class GRSpawnTrafficCallback extends DelayCallback {
 
 ### Thread Safety
 
--   member access between classes must be implemented via getter/setter
-
-#### RWLock (ignore this section)
-
--   only create locking code when asked to do so. locking resources for thread safety is a last resort, better code organisation and execution flow is preferred
--   classes should define `private let m_lockPurpose: RWLock` members, and use them to get safe handles, only when asked for
--   compartmentalise locks by purpose i.e `private let m_SettingsLock: RWLock;` will be responsible for read/write to the settings class
--   avoid overlapping RWLock calls in different scopes, this will probably break things
--   exclusions to this rule:
-    -   private/public/protected member declarations
-    -   OnAttach, OnPlayerAttach, OnRestored, GetInstance : these are threadsafe by default
--   to get/release a WRITE lock
-    -   RWLock.Acquire(somelockvar)
-    -   RWLock.Release(somelockvar)
--   to get/release a READ lock
-
-    -   RWLock.AcquireShared(somelockvar)
-    -   RWLock.ReleaseShared(somelockvar)
-
--   example of a threadsafe getter:
-
-```
-public func GetLastCallAnswered() -> Bool {
-    let result: Bool;
-    RWLock.AcquireShared(this.m_reinforcementLock);
-    result = this.lastCallAnswered;
-	RWLock.ReleaseShared(this.m_reinforcementLock);
-    return result;
-}
-```
-
--   example of threadsafe setter
-
-```
-public func SetHasTrafficRequest(hasTrafficRequest: Bool) -> Void {
-    RWLock.Acquire(this.m_reinforcementLock);
-    this.hasTrafficRequest = hasTrafficRequest;
-	RWLock.Release(this.m_reinforcementLock);
-}
-```
+- member access between classes must be implemented via getter/setter
 
 ### Logging
 
--   Logging always uses the GRLog function.
--   Never prefix log call strings, this is already done by the wrapper function.
--   Use string interpolation e.g GRLog(s"my random log message \\(someVar)")
--   prefer concise log structures e.g "(affiliation), Vehicles: (count)"
+- Logging always uses the GRLog function.
+- Never prefix log call strings, this is already done by the wrapper function.
+- Use string interpolation e.g GRLog(s"my random log message \\(someVar)")
+- prefer concise log structures e.g "(affiliation), Vehicles: (count)"
 
 ### Settings
 
--   All configurable options should go through the Settings system
--   Use descriptive setting names
--   Provide sensible defaults
+- All configurable options should go through the Settings system
+- Use descriptive setting names
+- Provide sensible defaults
 
 ## Notes
 
--   This mod modifies game behavior at runtime
--   Be careful with game API calls to avoid crashes
--   PERFORMANCE IS KING
+- This mod modifies game behavior at runtime
+- Be careful with game API calls to avoid crashes
+- PERFORMANCE IS KING
 
 ## Deployment target
 
 Z:\\GOG\\Cyberpunk 2077
 
--   game root contains the r6 folder, where these files can be deposited without special steps.
+- game root contains the r6 folder, where these files can be deposited without special steps.

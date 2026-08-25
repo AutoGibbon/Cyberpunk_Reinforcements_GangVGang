@@ -31,12 +31,8 @@ public class GRArasakaHandler extends GRGangHandler {
     }
 
     public func GetTurfList() -> array<String> {
-        return [];
+        return ["Northside","CityCenter", "Arroyo_Arasaka_Warehouse"];
     }
-
-	public func IsConsideredTurf(district: ref<District>) -> Bool {
-		return true;
-	}
 }
 
 public class GRArasakaGraceEndCallback extends DelayCallback {

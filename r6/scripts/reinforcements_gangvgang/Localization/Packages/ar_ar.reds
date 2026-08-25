@@ -26,8 +26,8 @@ public class GR_ar_ar extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "احتمالية أن يكون استدعاء الدعم التالي أقوى من مستوى الحرارة الحالي");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "مكافأة الحرارة للاستدعاء القوي");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "كم من الحرارة الإضافية ستحصل عليها الاستدعاءات القوية");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "مكافأة حرارة المنطقة");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "حرارة أولية إضافية عندما تستدعي العصابة في منطقتها الخاصة");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "فرصة الاستدعاء خارج المنطقة");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "احتمالية أن يتم الرد على استدعاء الدعم حتى خارج نطاق العصابة");
         this.Text("GibbonGR-GracePeriod-Category", "فترة السماح");
         this.Text("GibbonGR-Cooldowns-Category", "أوقات الانتظار");
         this.Text("GibbonGR-Heat-Category", "الحرارة");

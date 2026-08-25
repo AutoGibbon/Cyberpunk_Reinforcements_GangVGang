@@ -26,8 +26,8 @@ public class GR_th_th extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "โอกาสที่การเรียกกำลังเสริมครั้งต่อไปจะแข็งแกร่งกว่าระดับความร้อนปัจจุบัน");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "โบนัสความร้อนสำหรับการเรียกที่แข็งแกร่ง");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "การเรียกที่แข็งแกร่งจะมีความร้อนเพิ่มเติมเท่าไหร่");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "โบนัสความร้อนสำหรับพื้นที่");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "ความร้อนเริ่มต้นเพิ่มเติมเมื่อแก๊งเรียกในพื้นที่ของตัวเอง");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "โอกาสการเรียกนอกพื้นที่");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "โอกาสที่การเรียกนอกพื้นที่จะยังคงได้รับการตอบรับ");
         this.Text("GibbonGR-GracePeriod-Category", "ช่วงเวลาประนีประนอม");
         this.Text("GibbonGR-Cooldowns-Category", "คูลดาวน์");
         this.Text("GibbonGR-Heat-Category", "ความร้อน");

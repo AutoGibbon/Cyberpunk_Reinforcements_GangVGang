@@ -3,28 +3,61 @@ import Gibbon.GR.GangHandlers.*
 import Gibbon.GR.Logging.*
 
 @wrapMethod(NPCPuppet)
-protected cb func OnPostInitialize(evt: ref<entPostInitializeEvent>) -> Bool {
-    let outcome = wrappedMethod(evt);
-
+protected cb func OnGameAttached() -> Bool {
+    let outcome = wrappedMethod();
 
     if NPCManager.HasTag(this.GetRecordID(), n"GRModPuppet") {
         let reinSystem: wref<GRReinforcementSystem> = GRReinforcementSystem.GetInstance(GetGameInstance());
         let factionHandler = reinSystem.GetFactionHandler(this);
 
-        this.GRAttitudeFix(factionHandler.GetLastCaller(), factionHandler.GetLastTarget(), factionHandler.GetAttitudeGroup());
+        this.GRAttitudeFix(factionHandler.GetLastCaller(), factionHandler.GetLastTarget(), factionHandler.GetAttitudeGroup(), factionHandler.GetLastSecondaryTarget());
     }
     
     return outcome;
 } 
 
 @addMethod(NPCPuppet)
-protected final func GRAttitudeFix(caller: ref<GameObject>, target: ref<GameObject>, fallbackAttitudeGroup: CName) -> Bool {
+protected final func GRSetHostileTowardsCombatant(combatant: ref<GameObject>) -> Void {
+    if !IsDefined(this) || !IsDefined(combatant) {
+        return;
+    };
+    let attitudeOwner: ref<AttitudeAgent> = this.GetAttitudeAgent();
+    if !IsDefined(attitudeOwner) {
+        return;
+    };
+
+    let attitudeCombatant: ref<AttitudeAgent> = combatant.GetAttitudeAgent();
+    if IsDefined(attitudeCombatant) {
+        attitudeOwner.SetAttitudeTowards(attitudeCombatant, EAIAttitude.AIA_Hostile);
+    };
+
+    let squadmates: array<wref<Entity>>;
+    let squadmate: ref<GameObject>;
+    let attitudeSquadmate: ref<AttitudeAgent>;
+    let i: Int32;
+    if AISquadHelper.GetSquadmates(combatant as ScriptedPuppet, squadmates) {
+        i = 0;
+        while i < ArraySize(squadmates) {
+            squadmate = squadmates[i] as GameObject;
+            if IsDefined(squadmate) {
+                attitudeSquadmate = squadmate.GetAttitudeAgent();
+                if IsDefined(attitudeSquadmate) {
+                    attitudeOwner.SetAttitudeTowards(attitudeSquadmate, EAIAttitude.AIA_Hostile);
+                };
+            };
+            i += 1;
+        };
+    };
+}
+
+@addMethod(NPCPuppet)
+protected final func GRAttitudeFix(caller: ref<GameObject>, target: ref<GameObject>, fallbackAttitudeGroup: CName, secondaryTarget: ref<GameObject>) -> Bool {
     let squadMember: ref<GameObject>;
     let i: Int32;
     let attitudeOwner: ref<AttitudeAgent>;
     let attitudeCaller: ref<AttitudeAgent>;
-    let attitudeTarget: ref<AttitudeAgent>;
     let callerSquadMembers: array<wref<Entity>>;
+    let squadBaseInterface: ref<PuppetSquadInterface>;
     if (IsDefined(this)) {
         attitudeOwner = this.GetAttitudeAgent();
     };
@@ -32,13 +65,9 @@ protected final func GRAttitudeFix(caller: ref<GameObject>, target: ref<GameObje
         return false;
     };
 
-	if (IsDefined(target)) {
-        attitudeTarget = target.GetAttitudeAgent();
-		if IsDefined(attitudeTarget) {
-			attitudeOwner.SetAttitudeTowards(attitudeTarget, EAIAttitude.AIA_Hostile);
-		};
-    };
-    
+    this.GRSetHostileTowardsCombatant(target);
+    this.GRSetHostileTowardsCombatant(secondaryTarget);
+
     // If caller is not defined but owner attitude agent is available, set attitude group to the fallback from the gang handler
     if (!IsDefined(caller)) {
 		GRLog("Caller is not defined, setting attitude group to fallback");
@@ -69,5 +98,11 @@ protected final func GRAttitudeFix(caller: ref<GameObject>, target: ref<GameObje
 			i += 1;
         };
     };
+
+    // Actually join the caller's AI squad structure so squad-level behaviours (shared threats, tickets) apply
+    if (AISquadHelper.GetSquadBaseInterface(caller, squadBaseInterface)) {
+        squadBaseInterface.Join(this);
+    };
+
     return true;
 }

@@ -73,7 +73,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
             aiVehicleMovecommand.clearTrafficOnPath = false;
             aiVehicleMovecommand.forcedStartSpeed = 10.0;
             aiVehicleMovecommand.minSpeed = 30.0;
-            aiVehicleMovecommand.minimumDistanceToTarget = 15.0;
+            aiVehicleMovecommand.minimumDistanceToTarget = RandRangeF(10.0, 55.0);
             aiVehicleMovecommand.targetPosition = Vector4.Vector4To3(targetPosition);
             aiCommandEvent = new AICommandEvent();
             aiCommandEvent.command = aiVehicleMovecommand;

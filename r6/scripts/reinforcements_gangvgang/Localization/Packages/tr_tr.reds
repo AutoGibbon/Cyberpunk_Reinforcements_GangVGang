@@ -26,8 +26,8 @@ public class GR_tr_tr extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Bir sonraki takviye çağrısının mevcut sıcaklık seviyesinden daha güçlü olma şansı");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Güçlü çağrı sıcaklık bonusu");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Güçlü çağrının ne kadar ekstra sıcaklığa sahip olacağı");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Bölge sıcaklık bonusu");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Bir çete kendi bölgesinde çağrı yaptığında ekstra başlangıç sıcaklığı");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Bölge dışı çağrı şansı");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Bölge dışı bir çağrının yine de yanıtlanma şansı");
         this.Text("GibbonGR-GracePeriod-Category", "Lütuf süresi");
         this.Text("GibbonGR-Cooldowns-Category", "Bekleme süreleri");
         this.Text("GibbonGR-Heat-Category", "Sıcaklık");

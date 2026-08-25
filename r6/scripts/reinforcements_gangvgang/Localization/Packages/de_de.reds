@@ -26,8 +26,8 @@ public class GR_de_de extends ModLocalizationPackage{
         this.Text("GibbonGR-StrongCallChance-Description", "Chance dass der nächste Verstärkungsanruf stärker als das aktuelle Hitze-Level sein wird");
         this.Text("GibbonGR-StrongCallHeatBonus-Name", "Starker Anruf Hitze-Bonus");
         this.Text("GibbonGR-StrongCallHeatBonus-Description", "Wie viel extra Hitze der starke Anruf haben wird");
-        this.Text("GibbonGR-TurfHeatBonus-Name", "Gebiet Hitze-Bonus");
-        this.Text("GibbonGR-TurfHeatBonus-Description", "Extra anfängliche Hitze wenn ein Gang auf seinem eigenen Gebiet ruft");
+        this.Text("GibbonGR-NonTurfCallChance-Name", "Chance auf Anruf außerhalb des Reviers");
+        this.Text("GibbonGR-NonTurfCallChance-Description", "Chance, dass ein Anruf außerhalb des eigenen Reviers trotzdem beantwortet wird");
         this.Text("GibbonGR-GracePeriod-Category", "Schonfrist");
         this.Text("GibbonGR-Cooldowns-Category", "Abklingzeiten");
         this.Text("GibbonGR-Heat-Category", "Hitze");
