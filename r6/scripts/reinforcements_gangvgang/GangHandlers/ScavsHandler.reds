@@ -26,7 +26,7 @@ public class GRScavsHandler extends GRGangHandler {
             "JapanTown",
             "Northside",
             "Coastview",
-            "DogTown",
+            "Dogtown",
             "WestWindEstate"
         ];
     }

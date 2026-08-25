@@ -240,11 +240,10 @@ public abstract class GRGangHandler extends ScriptableSystem {
     this.m_lastTarget = originalCaller;
     this.m_lastSecondaryTarget = originalTarget;
     this.m_lastCallerPosition = originalCaller.GetWorldPosition();
-
-    this.m_callSuccessCooldownActive = true;
-    this.OnCallSuccessCooldownStart();
+    this.m_heatLevel = heat;
 
     this.SpawnVehicles(this.m_reinforcementData.GetReinforcementsClamped(heat, this.m_settings.maxVehiclesPerCall));
+    this.m_lastCallAnswered = true;
   }
 }
 
