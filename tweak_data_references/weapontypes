@@ -1,0 +1,58 @@
+# Weapon Damage Types (Power / Tech / Smart) for names used in weapons_used_by_gangs.txt
+#
+# Cyberpunk 2077 classes every gun as one of three damage types, independent of its
+# "role" (pistol/rifle/shotgun/etc):
+#   Power - conventional firearms, ricochet off surfaces/cover
+#   Tech  - charge to fire, penetrate cover/walls at high charge
+#   Smart - guided/homing projectiles, require Smart-Link cyberware to lock on
+#
+# This matters for archetype flavor: a gang built around "Power and Tech" should draw its
+# ranged roster from the two lists below and avoid the Smart list. Classifications below were
+# confirmed via web research this session (Fextralife Power/Tech Weapons pages, Game8 List of
+# Power/Tech Weapons pages) against the common (non-iconic) model name each gang character's
+# $base actually carries - not guessed from the naming convention.
+#
+# Cross-reference weapons_used_by_gangs.txt for which gangs use which of these, and
+# itempresets for which ones have a confirmed standalone Items.Preset_<Name>_Default (or other
+# variant) usable as custom primaryEquipment.
+
+## Power
+ajax          - assault rifle   (M251S Ajax)
+copperhead    - assault rifle   (D5 Copperhead)
+lexington     - pistol          (M-10AF Lexington)
+nova          - revolver        (DR5 Nova)
+overture      - revolver        | Items.Preset_Overture_Neon
+saratoga      - SMG             (M221 Saratoga)
+carnage       - shotgun
+igla          - double-barrel shotgun (DB-4 Igla)
+grad          - sniper rifle    (SPT32 Grad)
+defender      - LMG
+testera       - double-barrel shotgun (DB-2 Testera)
+crusher       - shotgun         | Items.Preset_Crusher_Default
+tactician     - shotgun         (M2038 Tactician)
+masamune      - assault rifle   (HJSH-18 Masamune)
+pulsar        - SMG             (D51/DS1 Pulsar) | Items.Preset_Pulsar_Neon
+nue           - pistol
+kolac         - precision rifle (Rostović Kolac) | Items.Preset_Kolac_Default (heavy precision rifle)
+slaughtomatic - pistol (Budget Arms Slaught-O-Matic, despite the "SMG-sounding" name)
+HMG           - heavy machine gun | Items.Preset_HMG_Default
+LMG           - light machine gun
+
+## Tech
+achilles      - precision rifle (M-179E Achilles) | Items.Preset_Achilles_Default
+nekomata      - sniper rifle (Tsunami Nekomata)
+quasar        - revolver (DR12 Quasar) - NOT the same weapon as the "Comrade's Hammer" iconic, which is Burya-based
+burya         - revolver (RT-46 Burya; "Comrade's Hammer" is its iconic variant)
+satara        - double-barrel shotgun (DB-2 Satara)
+kenshin       - pistol (JKE-X2 Kenshin)
+omaha         - pistol (M-76E Omaha)
+
+## Smart (avoid for a Power/Tech-focused roster)
+ashura, chao, dian, kappa, palica, shingen, sidewinder, yukimura, zhuo
+(see weapons_used_by_gangs.txt "Smart Weapons" section for role/gang/preset detail)
+
+## Unconfirmed / generic - not a specific named model, don't infer type from the token alone
+handgun - Bargest (Kurtz) uses this as a $base token (2kurtz_grunt1_ranged1_handgun_*); genuinely
+          generic in-game weapon, not one of the named models above. Verify actual damage type
+          in Wolvenkit before treating as Power/Tech for a new character.
+rifle   - same caveat as handgun (2kurtz_soldier1_ranged2_rifle_*, etc).

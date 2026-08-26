@@ -1,3 +1,7 @@
+Version 3.1.0
+Add Aldecaldos gang: Claims Badlands and Rancho Coronado as turf, rolling up in nomad convoy vehicles with a Power/Tech-focused loadout.
+Rebalance gang spawns.
+
 Version 3.0.0
 Authority Intervention: Gangs calling for backup now have a chance of the law showing up instead - NCPD, Militech, Barghest, Arasaka, or Kang Tao, depending on whose turf the fight is on. The bigger the fight, the more likely someone official gets involved. Once authority shows up, other gangs will hold off calling in more backup for a short while. Can be disabled in settings.
 Kang Tao added as a new faction: Claims City Center turf, and can respond to bust up fights there alongside Arasaka.

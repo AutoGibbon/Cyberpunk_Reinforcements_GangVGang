@@ -330,6 +330,49 @@ Vehicle.GR_v_sport2_villefort_alvarado_mox:
     tags:
         - !append-once GRModVehicle
 
+# Aldecaldos vehicles
+Vehicle.GR_aldecado_thorton_galena_heat_1:
+    $base: Vehicle.aldecado_thorton_galena_heat_1
+    maxVehiclePassengersCount: 2
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_aldecado_thorton_galena_heat_2:
+    $base: Vehicle.aldecado_thorton_galena_heat_2
+    maxVehiclePassengersCount: 4
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_aldecado_archer_quartz_heat_3:
+    $base: Vehicle.aldecado_archer_quartz_heat_3
+    maxVehiclePassengersCount: 2
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_aldecado_thorton_colby_heat_3:
+    $base: Vehicle.aldecado_thorton_colby_heat_3
+    maxVehiclePassengersCount: 2
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_v_sport2_quadra_type66_nomad:
+    $base: Vehicle.v_sport2_quadra_type66_nomad
+    maxVehiclePassengersCount: 2
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_v_sport2_mizutani_shion_nomad:
+    $base: Vehicle.v_sport2_mizutani_shion_nomad
+    maxVehiclePassengersCount: 2
+    tags:
+        - !append-once GRModVehicle
+
+Vehicle.GR_v_standard3_thorton_mackinaw_nomad:
+    $base: Vehicle.v_standard3_thorton_mackinaw_nomad
+    maxVehiclePassengersCount: 4
+    tags:
+        - !append-once GRModVehicle
+
 # Kang Tao vehicles
 Vehicle.GR_v_standard2_villefort_cortes_kangtao:
     $base: Vehicle.v_standard2_villefort_cortes_kangtao

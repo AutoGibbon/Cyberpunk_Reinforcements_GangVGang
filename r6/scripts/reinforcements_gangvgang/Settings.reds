@@ -140,6 +140,11 @@ public class GRSettings extends ScriptableSystem {
     public let sixthStreetEnabled: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
+    @runtimeProperty("ModSettings.displayName", "Aldecaldos")
+    @runtimeProperty("ModSettings.dependency", "enabled")
+    public let aldecaldosEnabled: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "GibbonGR-Title")
     @runtimeProperty("ModSettings.displayName", "Animals")
     @runtimeProperty("ModSettings.dependency", "enabled")
     public let animalsEnabled: Bool = true;
