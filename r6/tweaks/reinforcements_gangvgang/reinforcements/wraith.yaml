@@ -68,7 +68,7 @@ DynamicSpawnSystem.GRWraithWeakBike4:
           character: Character.GR_wraiths_grunt1_ranged1_pulsar_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithWN1:
+DynamicSpawnSystem.GRWraithNormalSquad1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_nomad_wraith
     unitRecordsPool:
@@ -79,7 +79,7 @@ DynamicSpawnSystem.GRWraithWN1:
           character: Character.GR_wraiths_grunt2_ranged2_pulsar_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithWN2:
+DynamicSpawnSystem.GRWraithNormalSquad2:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sport2_quadra_type66_nomad_wraith
     unitRecordsPool:
@@ -90,7 +90,7 @@ DynamicSpawnSystem.GRWraithWN2:
           character: Character.GR_wraiths_grunt2_ranged2_pulsar_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithWN3:
+DynamicSpawnSystem.GRWraithNormalSquad3:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_nomad_wraith
     unitRecordsPool:
@@ -101,7 +101,7 @@ DynamicSpawnSystem.GRWraithWN3:
           character: Character.GR_wraiths_grunt2_ranged2_copperhead_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithWN4:
+DynamicSpawnSystem.GRWraithNormalSquad4:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard25_thorton_colby_nomad_wraith
     unitRecordsPool:
@@ -112,7 +112,7 @@ DynamicSpawnSystem.GRWraithWN4:
           character: Character.GR_wraiths_grunt2_ranged2_copperhead_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithWN5:
+DynamicSpawnSystem.GRWraithNormalSquad5:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sport2_quadra_type66_nomad_wraith
     unitRecordsPool:
@@ -123,7 +123,7 @@ DynamicSpawnSystem.GRWraithWN5:
           character: Character.GR_wraiths_warrior3_shotgun3_palica_ma_elite
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithRN1:
+DynamicSpawnSystem.GRWraithRareSquad1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sport2_quadra_type66_nomad_wraith
     unitRecordsPool:
@@ -134,7 +134,7 @@ DynamicSpawnSystem.GRWraithRN1:
           character: Character.GR_wraiths_warrior3_shotgun3_palica_ma_elite
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithRN2:
+DynamicSpawnSystem.GRWraithRareSquad2:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_nomad_wraith
     unitRecordsPool:
@@ -145,7 +145,7 @@ DynamicSpawnSystem.GRWraithRN2:
           character: Character.GR_wraiths_grunt2_ranged2_copperhead_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithRN3:
+DynamicSpawnSystem.GRWraithRareSquad3:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_nomad_wraith
     unitRecordsPool:
@@ -156,7 +156,7 @@ DynamicSpawnSystem.GRWraithRN3:
           character: Character.GR_wraiths_grunt2_ranged2_copperhead_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithRN4:
+DynamicSpawnSystem.GRWraithRareSquad4:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard25_thorton_colby_nomad_wraith
     unitRecordsPool:
@@ -167,7 +167,7 @@ DynamicSpawnSystem.GRWraithRN4:
           character: Character.GR_wraiths_grunt2_ranged2_pulsar_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithER1:
+DynamicSpawnSystem.GRWraithEliteSquad1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_nomad_wraith
     unitRecordsPool:
@@ -178,7 +178,7 @@ DynamicSpawnSystem.GRWraithER1:
           character: Character.GR_wraiths_ghost2_sniper2_achilles_ma_rare
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithER2:
+DynamicSpawnSystem.GRWraithEliteSquad2:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sport2_quadra_type66_nomad_wraith
     unitRecordsPool:
@@ -189,7 +189,7 @@ DynamicSpawnSystem.GRWraithER2:
           character: Character.GR_wraiths_operator3_shotgun2_crusher_ma_rare
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithER3:
+DynamicSpawnSystem.GRWraithEliteSquad3:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_nomad_wraith
     unitRecordsPool:
@@ -232,7 +232,7 @@ DynamicSpawnSystem.GRWraithNormalBike4:
           character: Character.GR_wraiths_grunt2_ranged2_pulsar_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRWraithRRRR1:
+DynamicSpawnSystem.GRWraithRareSquad5:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_thorton_galena_nomad
     unitRecordsPool:
@@ -244,7 +244,7 @@ DynamicSpawnSystem.GRWraithRRRR1:
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_wraiths_warrior3_melee3_hammer_wa_rare
-          weight: 1.0
+          weight: 0.5
         - $type: WeightedCharacter
           character: Character.GR_wraiths_warrior3_ranged3_quasar_wa_rare
-          weight: 1.0
+          weight: 0.2

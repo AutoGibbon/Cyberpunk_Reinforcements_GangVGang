@@ -41,7 +41,7 @@
 #reinforcements
 
 # weak:
-DynamicSpawnSystem.GRScavCarNormalTrash1:
+DynamicSpawnSystem.GRScavWeakSquad1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_archer_hella_scavengers
     unitRecordsPool:
@@ -52,7 +52,7 @@ DynamicSpawnSystem.GRScavCarNormalTrash1:
           character: Character.GR_scavenger_grunt2_melee2_knife_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalTrash2:
+DynamicSpawnSystem.GRScavWeakSquad2:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard25_villefort_columbus_scavengers
     unitRecordsPool:
@@ -63,7 +63,7 @@ DynamicSpawnSystem.GRScavCarNormalTrash2:
           character: Character.GR_scavenger_grunt2_ranged2_pulsar_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalTrash3:
+DynamicSpawnSystem.GRScavWeakSquad3:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard25_villefort_columbus_scavengers
     unitRecordsPool:
@@ -74,7 +74,7 @@ DynamicSpawnSystem.GRScavCarNormalTrash3:
           character: Character.GR_scavenger_grunt2_ranged2_copperhead_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeRangeNormal1:
+DynamicSpawnSystem.GRScavWeakBike1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -82,7 +82,7 @@ DynamicSpawnSystem.GRScavBikeRangeNormal1:
           character: Character.GR_scavenger_grunt2_ranged2_pulsar_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeRangeNormal2:
+DynamicSpawnSystem.GRScavWeakBike2:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -90,7 +90,7 @@ DynamicSpawnSystem.GRScavBikeRangeNormal2:
           character: Character.GR_scavenger_grunt2_ranged2_pulsar_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarWeakSquad1:
+DynamicSpawnSystem.GRScavWeakSquad4:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_scavengers
     unitRecordsPool:
@@ -102,35 +102,32 @@ DynamicSpawnSystem.GRScavCarWeakSquad1:
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt2_ranged2_pulsar_wa
-          weight: 1.0
+          weight: 0.5
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt2_melee2_knife_ma
-          weight: 1.0
+          weight: 0.2
 
-DynamicSpawnSystem.GRScavCarWeakSquad2:
+DynamicSpawnSystem.GRScavWeakSquad5:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_scavengers
     unitRecordsPool:
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_grunt2_melee2_knife_ma
+          weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt2_ranged2_copperhead_wa
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt2_ranged2_pulsar_ma
-          weight: 1.0
+          weight: 0.5
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt2_ranged2_pulsar_ma
-          weight: 1.0
-        - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt2_melee2_knife_ma
-          weight: 1.0
+          weight: 0.2
 
-DynamicSpawnSystem.GRScavCarWeakSquad3:
+DynamicSpawnSystem.GRScavWeakSquad6:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_scavengers
     unitRecordsPool:
-        - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt2_ranged2_copperhead_wa
-          weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt2_ranged2_pulsar_ma
           weight: 1.0
@@ -139,11 +136,14 @@ DynamicSpawnSystem.GRScavCarWeakSquad3:
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt2_melee2_knife_wa
-          weight: 1.0
+          weight: 0.5
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_grunt2_ranged2_copperhead_wa
+          weight: 0.2
 
 # normal:
 
-DynamicSpawnSystem.GRScavBikeNormal1:
+DynamicSpawnSystem.GRScavNormalBike1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -151,7 +151,7 @@ DynamicSpawnSystem.GRScavBikeNormal1:
           character: Character.GR_scavenger_grunt1_melee1_fists_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal2:
+DynamicSpawnSystem.GRScavNormalBike2:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -159,7 +159,7 @@ DynamicSpawnSystem.GRScavBikeNormal2:
           character: Character.GR_scavenger_grunt1_melee1_pipewrench_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal3:
+DynamicSpawnSystem.GRScavNormalBike3:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -167,7 +167,7 @@ DynamicSpawnSystem.GRScavBikeNormal3:
           character: Character.GR_scavenger_grunt1_melee1_tireiron_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal4:
+DynamicSpawnSystem.GRScavNormalBike4:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -175,7 +175,7 @@ DynamicSpawnSystem.GRScavBikeNormal4:
           character: Character.GR_scavenger_grunt1_ranged1_nova_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal5:
+DynamicSpawnSystem.GRScavNormalBike5:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -183,7 +183,7 @@ DynamicSpawnSystem.GRScavBikeNormal5:
           character: Character.GR_scavenger_grunt1_ranged1_nova_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal6:
+DynamicSpawnSystem.GRScavNormalBike6:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -191,7 +191,7 @@ DynamicSpawnSystem.GRScavBikeNormal6:
           character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal7:
+DynamicSpawnSystem.GRScavNormalBike7:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -199,7 +199,7 @@ DynamicSpawnSystem.GRScavBikeNormal7:
           character: Character.GR_scavenger_grunt1_ranged1_pulsar_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal8:
+DynamicSpawnSystem.GRScavNormalBike8:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -207,7 +207,7 @@ DynamicSpawnSystem.GRScavBikeNormal8:
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal9:
+DynamicSpawnSystem.GRScavNormalBike9:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -215,7 +215,7 @@ DynamicSpawnSystem.GRScavBikeNormal9:
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal10:
+DynamicSpawnSystem.GRScavNormalBike10:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -223,7 +223,7 @@ DynamicSpawnSystem.GRScavBikeNormal10:
           character: Character.GR_scavenger_elite2_shotgun_igla_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavBikeNormal11:
+DynamicSpawnSystem.GRScavNormalBike11:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
     unitRecordsPool:
@@ -231,7 +231,7 @@ DynamicSpawnSystem.GRScavBikeNormal11:
           character: Character.GR_scavenger_elite2_shotgun_tactician_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalNormal1:
+DynamicSpawnSystem.GRScavNormalSquad1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_thorton_galena
     unitRecordsPool:
@@ -242,7 +242,7 @@ DynamicSpawnSystem.GRScavCarNormalNormal1:
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalNormal2:
+DynamicSpawnSystem.GRScavNormalSquad2:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_archer_hella_scavengers
     unitRecordsPool:
@@ -253,7 +253,7 @@ DynamicSpawnSystem.GRScavCarNormalNormal2:
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalNormal3:
+DynamicSpawnSystem.GRScavNormalSquad3:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_thorton_galena
     unitRecordsPool:
@@ -264,7 +264,7 @@ DynamicSpawnSystem.GRScavCarNormalNormal3:
           character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalNormal4:
+DynamicSpawnSystem.GRScavNormalSquad4:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_archer_hella_scavengers
     unitRecordsPool:
@@ -275,7 +275,7 @@ DynamicSpawnSystem.GRScavCarNormalNormal4:
           character: Character.GR_scavenger_grunt1_ranged1_pulsar_wa
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalNormal5:
+DynamicSpawnSystem.GRScavNormalSquad5:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_archer_hella_scavengers
     unitRecordsPool:
@@ -286,7 +286,7 @@ DynamicSpawnSystem.GRScavCarNormalNormal5:
           character: Character.GR_scavenger_elite3_sniper2_grad_ma
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalNormal6:
+DynamicSpawnSystem.GRScavNormalSquad6:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_archer_hella_scavengers
     unitRecordsPool:
@@ -297,7 +297,7 @@ DynamicSpawnSystem.GRScavCarNormalNormal6:
           character: Character.GR_scavenger_netrunner2_netrunner2_nova_wa_rare
           weight: 1.0
 
-DynamicSpawnSystem.GRScavCarNormalSquad1:
+DynamicSpawnSystem.GRScavNormalSquad7:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_scavengers
     unitRecordsPool:
@@ -309,104 +309,101 @@ DynamicSpawnSystem.GRScavCarNormalSquad1:
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt1_ranged1_pulsar_wa
-          weight: 1.0
+          weight: 0.5
         - $type: WeightedCharacter
           character: Character.GR_scavenger_elite3_sniper2_grad_ma
-          weight: 1.0
+          weight: 0.2
 
-DynamicSpawnSystem.GRScavCarNormalSquad2:
+DynamicSpawnSystem.GRScavNormalSquad8:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
     unitRecordsPool:
         - $type: WeightedCharacter
           character: Character.GR_scavenger_elite2_shotgun_tactician_ma
-          weight: 1.0
-        - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt1_melee1_tireiron_ma
-          weight: 1.0
+          weight: 0.5
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
+          weight: 0.2
 
-DynamicSpawnSystem.GRScavCarNormalSquad3:
+DynamicSpawnSystem.GRScavNormalSquad9:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_scavengers
     unitRecordsPool:
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
-          weight: 1.0
-        - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma
+          character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma
-          weight: 1.0
+          weight: 0.5
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma
+          weight: 0.2
 
-DynamicSpawnSystem.GRScavCarNormalSquad4:
+DynamicSpawnSystem.GRScavNormalSquad10:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
     unitRecordsPool:
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
-          weight: 1.0
-        - $type: WeightedCharacter
           character: Character.GR_scavenger_elite2_shotgun_igla_ma
-          weight: 1.0
-        - $type: WeightedCharacter
-          character: Character.GR_scavenger_elite2_shotgun_tactician_ma
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_fast2_fmelee2rare_knife_ma_rare
           weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
+          weight: 0.5
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_elite2_shotgun_tactician_ma
+          weight: 0.2
 # rare:
 
-DynamicSpawnSystem.GRScavCarNormalRareSquad1:
+DynamicSpawnSystem.GRScavRareSquad1:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_scavengers
     unitRecordsPool:
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt1_ranged1_nova_ma
-          weight: 1.0
-        - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
+          character: Character.GR_scavenger_elite3_sniper2_grad_ma
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_butcher3_hmelee2_machete_mb_rare
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_elite3_sniper2_grad_ma
-          weight: 1.0
+          character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
+          weight: 0.5
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_grunt1_ranged1_nova_ma
+          weight: 0.2
 
-DynamicSpawnSystem.GRScavCarNormalRareSquad2:
+DynamicSpawnSystem.GRScavRareSquad2:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
     unitRecordsPool:
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_elite2_shotgun_tactician_ma
-          weight: 1.0
-        - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
-          weight: 1.0
-        - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_strong3_gunner2_defender_mb_rare
+          character: Character.GR_scavenger_elite2_shotgun_tactician_ma
           weight: 1.0
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_strong3_gunner2_defender_mb_rare
+          weight: 0.5
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
+          weight: 0.2
 
-DynamicSpawnSystem.GRScavCarNormalRareSquad3:
+DynamicSpawnSystem.GRScavRareSquad3:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_scavengers
     unitRecordsPool:
-        - $type: WeightedCharacter
-          character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
-          weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt1_ranged1_pulsar_ma
           weight: 1.0
@@ -415,9 +412,12 @@ DynamicSpawnSystem.GRScavCarNormalRareSquad3:
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_ma
-          weight: 1.0
+          weight: 0.5
+        - $type: WeightedCharacter
+          character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
+          weight: 0.2
 
-DynamicSpawnSystem.GRScavCarNormalRareSquad4:
+DynamicSpawnSystem.GRScavRareSquad4:
     $type: DynamicVehicleData
     vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
     unitRecordsPool:
@@ -425,11 +425,11 @@ DynamicSpawnSystem.GRScavCarNormalRareSquad4:
           character: Character.GR_scavenger_grunt1_ranged1_slaughtomatic_wa
           weight: 1.0
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_elite2_shotgun_igla_ma
+          character: Character.GR_scavenger_netrunner2_netrunner2_nova_wa_rare
           weight: 1.0
         - $type: WeightedCharacter
           character: Character.GR_scavenger_elite2_shotgun_tactician_ma
-          weight: 1.0
+          weight: 0.5
         - $type: WeightedCharacter
-          character: Character.GR_scavenger_netrunner2_netrunner2_nova_wa_rare
-          weight: 1.0
+          character: Character.GR_scavenger_elite2_shotgun_igla_ma
+          weight: 0.2

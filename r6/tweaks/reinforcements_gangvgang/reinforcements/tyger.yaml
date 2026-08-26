@@ -44,7 +44,7 @@
 
 #reinforcements
 # weak
-DynamicSpawnSystem.GRTygerBikeMeleeWeak1:
+DynamicSpawnSystem.GRTygerWeakBike1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -53,7 +53,7 @@ DynamicSpawnSystem.GRTygerBikeMeleeWeak1:
       weight: 1.0
 
 
-DynamicSpawnSystem.GRTygerBikeRangedWeak1:
+DynamicSpawnSystem.GRTygerWeakBike2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -61,7 +61,7 @@ DynamicSpawnSystem.GRTygerBikeRangedWeak1:
       character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRangedWeak2:
+DynamicSpawnSystem.GRTygerWeakBike3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -69,7 +69,7 @@ DynamicSpawnSystem.GRTygerBikeRangedWeak2:
       character: Character.GR_tyger_claws_biker2_ranged2_shingen_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeMeleeNormal1:
+DynamicSpawnSystem.GRTygerNormalBike1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -77,7 +77,7 @@ DynamicSpawnSystem.GRTygerBikeMeleeNormal1:
       character: Character.GR_tyger_claws_gangster1_melee1_knife_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRangedNormal1:
+DynamicSpawnSystem.GRTygerNormalBike2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -85,7 +85,7 @@ DynamicSpawnSystem.GRTygerBikeRangedNormal1:
       character: Character.GR_tyger_claws_biker1_ranged1_nue_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRangedNormal1:
+DynamicSpawnSystem.GRTygerNormalBike2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -93,7 +93,7 @@ DynamicSpawnSystem.GRTygerBikeRangedNormal1:
       character: Character.GR_tyger_claws_biker1_ranged1_nue_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRangedNormal4:
+DynamicSpawnSystem.GRTygerNormalBike3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -101,7 +101,7 @@ DynamicSpawnSystem.GRTygerBikeRangedNormal4:
       character: Character.GR_tyger_claws_biker3_shotgun2_tactician_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRangedNormal5:
+DynamicSpawnSystem.GRTygerNormalBike4:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -112,7 +112,7 @@ DynamicSpawnSystem.GRTygerBikeRangedNormal5:
 
 # normies
 
-DynamicSpawnSystem.GRTygerCarWeakNormal1:
+DynamicSpawnSystem.GRTygerNormalSquad1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_tyger
   unitRecordsPool:
@@ -123,7 +123,7 @@ DynamicSpawnSystem.GRTygerCarWeakNormal1:
       character: Character.GR_tyger_claws_biker1_ranged1_saratoga_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarWeakNormal2:
+DynamicSpawnSystem.GRTygerNormalSquad2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_tyger
   unitRecordsPool:
@@ -134,7 +134,7 @@ DynamicSpawnSystem.GRTygerCarWeakNormal2:
       character: Character.GR_tyger_claws_biker3_shotgun2_tactician_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarWeakNormal3:
+DynamicSpawnSystem.GRTygerNormalSquad3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_tyger
   unitRecordsPool:
@@ -145,7 +145,7 @@ DynamicSpawnSystem.GRTygerCarWeakNormal3:
       character: Character.GR_tyger_claws_biker3_shotgun2_tactician_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarWeakNormal4:
+DynamicSpawnSystem.GRTygerNormalSquad4:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_tyger
   unitRecordsPool:
@@ -156,7 +156,7 @@ DynamicSpawnSystem.GRTygerCarWeakNormal4:
       character: Character.GR_tyger_claws_gangster1_ranged1_nue_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarWeakNormal5:
+DynamicSpawnSystem.GRTygerNormalSquad5:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_tyger
   unitRecordsPool:
@@ -168,7 +168,7 @@ DynamicSpawnSystem.GRTygerCarWeakNormal5:
       weight: 1.0
 
 
-DynamicSpawnSystem.GRTygerCarWeakNormal5:
+DynamicSpawnSystem.GRTygerNormalSquad5:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_tyger
   unitRecordsPool:
@@ -182,7 +182,7 @@ DynamicSpawnSystem.GRTygerCarWeakNormal5:
 
 
 # rares
-DynamicSpawnSystem.GRTygerBikeRare1:
+DynamicSpawnSystem.GRTygerRareBike1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -190,7 +190,7 @@ DynamicSpawnSystem.GRTygerBikeRare1:
       character: Character.GR_tyger_claws_martial_fmelee2_katana_ma_rare
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRare2:
+DynamicSpawnSystem.GRTygerRareBike2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -198,7 +198,7 @@ DynamicSpawnSystem.GRTygerBikeRare2:
       character: Character.GR_tyger_claws_martial_fmelee2_fists_ma_rare
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRare3:
+DynamicSpawnSystem.GRTygerRareBike3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_tyger
   unitRecordsPool:
@@ -206,7 +206,7 @@ DynamicSpawnSystem.GRTygerBikeRare3:
       character: Character.GR_tyger_claws_martial_hmelee2_hammer_mb
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRare4:
+DynamicSpawnSystem.GRTygerRareBike4:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -214,7 +214,7 @@ DynamicSpawnSystem.GRTygerBikeRare4:
       character: Character.GR_tyger_claws_martial_hmelee2_StrongArms_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRare5:
+DynamicSpawnSystem.GRTygerRareBike5:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -222,7 +222,7 @@ DynamicSpawnSystem.GRTygerBikeRare5:
       character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerBikeRare6:
+DynamicSpawnSystem.GRTygerRareBike6:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike1_yaiba_kusanagi_tyger
   unitRecordsPool:
@@ -230,7 +230,7 @@ DynamicSpawnSystem.GRTygerBikeRare6:
       character: Character.GR_tygerclaw_gangster3_netrunner_nue_wa_rare
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarNormalRare1:
+DynamicSpawnSystem.GRTygerRareSquad1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_archer_quartz_tyger
   unitRecordsPool:
@@ -241,7 +241,7 @@ DynamicSpawnSystem.GRTygerCarNormalRare1:
       character: Character.GR_tyger_claws_gangster1_ranged1_copperhead_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarNormalRare2:
+DynamicSpawnSystem.GRTygerRareSquad2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_tyger
   unitRecordsPool:
@@ -252,7 +252,7 @@ DynamicSpawnSystem.GRTygerCarNormalRare2:
       character: Character.GR_tyger_claws_biker1_ranged1_saratoga_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarNormalRare3:
+DynamicSpawnSystem.GRTygerRareSquad3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_tyger
   unitRecordsPool:
@@ -263,7 +263,7 @@ DynamicSpawnSystem.GRTygerCarNormalRare3:
       character: Character.GR_tyger_claws_biker3_shotgun2_tactician_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarNormalRare4:
+DynamicSpawnSystem.GRTygerRareSquad4:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_mizutani_shion_tyger
   unitRecordsPool:
@@ -274,7 +274,7 @@ DynamicSpawnSystem.GRTygerCarNormalRare4:
       character: Character.GR_tyger_claws_gangster1_ranged1_nue_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarNormalRare5:
+DynamicSpawnSystem.GRTygerRareSquad5:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
   unitRecordsPool:
@@ -285,7 +285,7 @@ DynamicSpawnSystem.GRTygerCarNormalRare5:
       character: Character.GR_tyger_claws_gangster1_ranged1_copperhead_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarNormalRare6:
+DynamicSpawnSystem.GRTygerRareSquad6:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
   unitRecordsPool:
@@ -296,7 +296,7 @@ DynamicSpawnSystem.GRTygerCarNormalRare6:
       character: Character.GR_tyger_claws_biker1_ranged1_saratoga_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarNormalRare7:
+DynamicSpawnSystem.GRTygerRareSquad7:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
   unitRecordsPool:
@@ -307,7 +307,7 @@ DynamicSpawnSystem.GRTygerCarNormalRare7:
       character: Character.GR_tyger_claws_gangster1_melee1_knife_wa
       weight: 1.0      
 
-DynamicSpawnSystem.GRTygerCarNormalRare8:
+DynamicSpawnSystem.GRTygerRareSquad8:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_mws_wbr_06_tyger_car_2
   unitRecordsPool:
@@ -319,7 +319,7 @@ DynamicSpawnSystem.GRTygerCarNormalRare8:
       weight: 1.0      
 
 
-DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal1:
+DynamicSpawnSystem.GRTygerRareSquad9:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
@@ -331,12 +331,12 @@ DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal1:
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_gangster1_ranged1_copperhead_wa
-      weight: 1.0      
+      weight: 0.5      
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_gangster2_ranged2_sidewinder_ma
-      weight: 1.0     
+      weight: 0.2     
 
-DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal2:
+DynamicSpawnSystem.GRTygerRareSquad10:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
@@ -348,12 +348,12 @@ DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal2:
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_gangster1_ranged1_nue_ma
-      weight: 1.0      
+      weight: 0.5      
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
-      weight: 1.0  
+      weight: 0.2  
 
-DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal3:
+DynamicSpawnSystem.GRTygerRareSquad11:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
@@ -364,66 +364,66 @@ DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal3:
       character: Character.GR_tyger_claws_martial_hmelee2_StrongArms_ma
       weight: 1.0
     - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_gangster1_melee1_knife_ma
-      weight: 1.0      
-    - $type: WeightedCharacter
       character: Character.GR_tyger_claws_biker2_melee2_baseball_ma
-      weight: 1.0  
+      weight: 0.5      
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_gangster1_melee1_knife_ma
+      weight: 0.2  
 
-DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal4:
+DynamicSpawnSystem.GRTygerRareSquad12:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
+      weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_gangster1_ranged1_copperhead_ma
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_martial_hmelee2_hammer_mb
-      weight: 1.0
+      weight: 0.5      
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_biker1_ranged1_saratoga_ma
-      weight: 1.0      
-    - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
-      weight: 1.0  
+      weight: 0.2  
 
-DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal5:
+DynamicSpawnSystem.GRTygerRareSquad13:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
     - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_gangster1_ranged1_copperhead_ma
+      character: Character.GR_tyger_claws_biker1_ranged1_saratoga_ma
+      weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_martial_fmelee2_fists_ma_rare
-      weight: 1.0
+      weight: 0.5      
     - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_biker1_ranged1_saratoga_ma
-      weight: 1.0      
-    - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
-      weight: 1.0  
+      character: Character.GR_tyger_claws_gangster1_ranged1_copperhead_ma
+      weight: 0.2  
 
-DynamicSpawnSystem.GRTygerCarRareWeakNormalNormal6:
+DynamicSpawnSystem.GRTygerRareSquad14:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
     - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_gangster1_ranged1_copperhead_ma
-      weight: 1.0
-    - $type: WeightedCharacter
       character: Character.GR_tyger_claws_martial_fmelee2_fists_ma_rare
       weight: 1.0
     - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_gangster1_ranged1_copperhead_ma
+      weight: 1.0
+    - $type: WeightedCharacter
       character: Character.GR_tyger_claws_biker1_ranged1_saratoga_ma
-      weight: 1.0      
+      weight: 0.5      
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
-      weight: 1.0  
+      weight: 0.2  
 
 # elite
 
-DynamicSpawnSystem.GRTygerCarEliteRare1:
+DynamicSpawnSystem.GRTygerEliteSquad1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_mws_wbr_06_tyger_car_2
   unitRecordsPool:
@@ -434,7 +434,7 @@ DynamicSpawnSystem.GRTygerCarEliteRare1:
       character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarEliteRare2:
+DynamicSpawnSystem.GRTygerEliteSquad2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_mws_wbr_06_tyger_car_2
   unitRecordsPool:
@@ -445,7 +445,7 @@ DynamicSpawnSystem.GRTygerCarEliteRare2:
       character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarEliteRare3:
+DynamicSpawnSystem.GRTygerEliteSquad3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
   unitRecordsPool:
@@ -456,7 +456,7 @@ DynamicSpawnSystem.GRTygerCarEliteRare3:
       character: Character.GR_tygerclaw_gangster3_netrunner_nue_wa_rare
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarEliteRare4:
+DynamicSpawnSystem.GRTygerEliteSquad4:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
   unitRecordsPool:
@@ -467,7 +467,7 @@ DynamicSpawnSystem.GRTygerCarEliteRare4:
       character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarEliteRare5:
+DynamicSpawnSystem.GRTygerEliteSquad5:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_mws_wbr_06_tyger_car_2
   unitRecordsPool:
@@ -478,7 +478,7 @@ DynamicSpawnSystem.GRTygerCarEliteRare5:
       character: Character.GR_tyger_claws_martial_fmelee2_katana_ma_rare
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarEliteRare6:
+DynamicSpawnSystem.GRTygerEliteSquad6:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport1_quadra_turbo_tyger_claw
   unitRecordsPool:
@@ -489,7 +489,7 @@ DynamicSpawnSystem.GRTygerCarEliteRare6:
       character: Character.GR_tygerclaw_gangster3_netrunner_nue_wa_rare
       weight: 1.0
 
-DynamicSpawnSystem.GRTygerCarRareRareRareNormal1:
+DynamicSpawnSystem.GRTygerRareSquad15:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
@@ -501,12 +501,12 @@ DynamicSpawnSystem.GRTygerCarRareRareRareNormal1:
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
-      weight: 1.0      
+      weight: 0.5      
     - $type: WeightedCharacter
       character: Character.GR_tygerclaw_gangster3_netrunner_nue_wa_rare
-      weight: 1.0  
+      weight: 0.2  
 
-DynamicSpawnSystem.GRTygerCarRareRareRareNormal2:
+DynamicSpawnSystem.GRTygerRareSquad16:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
@@ -514,28 +514,28 @@ DynamicSpawnSystem.GRTygerCarRareRareRareNormal2:
       character: Character.GR_tyger_claws_biker1_ranged1_saratoga_ma
       weight: 1.0
     - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_martial_fmelee2_fists_ma_rare
+      character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
       weight: 1.0
     - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
-      weight: 1.0      
+      character: Character.GR_tyger_claws_martial_fmelee2_fists_ma_rare
+      weight: 0.5      
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_martial_hmelee2_StrongArms_ma
-      weight: 1.0  
+      weight: 0.2  
 
-DynamicSpawnSystem.GRTygerCarRareRareRareNormal3:
+DynamicSpawnSystem.GRTygerRareSquad17:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_mizutani_hozuki
   unitRecordsPool:
+    - $type: WeightedCharacter
+      character: Character.GR_tyger_claws_martial_hmelee2_hammer_mb
+      weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_biker2_ranged2_shingen_ma
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
-      weight: 1.0
+      weight: 0.5      
     - $type: WeightedCharacter
       character: Character.GR_tyger_claws_gangster3_ranged3_sidewinder_ma
-      weight: 1.0      
-    - $type: WeightedCharacter
-      character: Character.GR_tyger_claws_martial_hmelee2_hammer_mb
-      weight: 1.0  
+      weight: 0.2  

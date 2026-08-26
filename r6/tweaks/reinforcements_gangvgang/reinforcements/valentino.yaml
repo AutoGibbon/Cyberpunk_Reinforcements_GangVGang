@@ -84,7 +84,7 @@ DynamicSpawnSystem.GRValentinoWeakBike5:
       character: Character.GR_valentinos_grunt2_ranged2_nue_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWeakBike5:
+DynamicSpawnSystem.GRValentinoWeakBike6:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sportbike3_brennan_apollo_sport
   unitRecordsPool:
@@ -92,7 +92,7 @@ DynamicSpawnSystem.GRValentinoWeakBike5:
       character: Character.GR_valentinos_grunt2_ranged2_overture_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWN1:
+DynamicSpawnSystem.GRValentinoNormalSquad1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_deleon
   unitRecordsPool:
@@ -103,7 +103,7 @@ DynamicSpawnSystem.GRValentinoWN1:
       character: Character.GR_valentinos_grunt1_melee1_baseball_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWN2:
+DynamicSpawnSystem.GRValentinoNormalSquad2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_deleon
   unitRecordsPool:
@@ -114,7 +114,7 @@ DynamicSpawnSystem.GRValentinoWN2:
       character: Character.GR_valentinos_grunt2_ranged2_ajax_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWN3:
+DynamicSpawnSystem.GRValentinoNormalSquad3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_deleon
   unitRecordsPool:
@@ -125,7 +125,7 @@ DynamicSpawnSystem.GRValentinoWN3:
       character: Character.GR_valentinos_grunt2_ranged2_nue_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWN4:
+DynamicSpawnSystem.GRValentinoNormalSquad4:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_thorton_colby_valentinos
   unitRecordsPool:
@@ -136,7 +136,7 @@ DynamicSpawnSystem.GRValentinoWN4:
       character: Character.GR_valentinos_grunt2_ranged2_overture_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWN5:
+DynamicSpawnSystem.GRValentinoNormalSquad5:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_hearse
   unitRecordsPool:
@@ -147,7 +147,7 @@ DynamicSpawnSystem.GRValentinoWN5:
       character: Character.GR_valentinos_grunt1_ranged1_nova_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWN6:
+DynamicSpawnSystem.GRValentinoNormalSquad6:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_hearse
   unitRecordsPool:
@@ -158,7 +158,7 @@ DynamicSpawnSystem.GRValentinoWN6:
       character: Character.GR_valentinos_grunt2_melee2_machete_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWN7:
+DynamicSpawnSystem.GRValentinoNormalSquad7:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_hearse
   unitRecordsPool:
@@ -169,7 +169,7 @@ DynamicSpawnSystem.GRValentinoWN7:
       character: Character.GR_valentinos_grunt2_ranged2_ajax_ma
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoRNNW1:
+DynamicSpawnSystem.GRValentinoRareSquad1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_valentinos
   unitRecordsPool:
@@ -181,46 +181,46 @@ DynamicSpawnSystem.GRValentinoRNNW1:
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt1_ranged1_nova_ma
-      weight: 1.0
+      weight: 0.5
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt1_ranged1_nue_wa
-      weight: 1.0
+      weight: 0.2
 
-DynamicSpawnSystem.GRValentinoRNNW2:
+DynamicSpawnSystem.GRValentinoRareSquad2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_valentinos
   unitRecordsPool:
     - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt3_fmelee2_machete_ma_rare
-      weight: 1.0
-    - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt1_ranged1_nova_ma
       weight: 1.0
     - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt1_melee1_knife_ma
+      character: Character.GR_valentinos_grunt3_fmelee2_machete_ma_rare
       weight: 1.0
     - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_melee1_knife_ma
+      weight: 0.5
+    - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_melee2_machete_ma
-      weight: 1.0
+      weight: 0.2
 
-DynamicSpawnSystem.GRValentinoRNNW3:
+DynamicSpawnSystem.GRValentinoRareSquad3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_chevalier_thrax_valentino
   unitRecordsPool:
     - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt4_hmelee2_fists_mb_rare
-      weight: 1.0
-    - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt1_ranged1_nue_wa
       weight: 1.0
     - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt1_ranged1_nue_ma
+      character: Character.GR_valentinos_grunt4_hmelee2_fists_mb_rare
       weight: 1.0
     - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_ranged1_nue_ma
+      weight: 0.5
+    - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_ranged2_ajax_wa
-      weight: 1.0   
+      weight: 0.2   
 
-DynamicSpawnSystem.GRValentinoRNNW4:
+DynamicSpawnSystem.GRValentinoRareSquad4:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard3_thorton_mackinaw_valentinos
   unitRecordsPool:
@@ -231,28 +231,28 @@ DynamicSpawnSystem.GRValentinoRNNW4:
       character: Character.GR_valentinos_grunt2_melee2_machete_ma
       weight: 1.0
     - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt1_ranged1_nova_ma
-      weight: 1.0
-    - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt1_ranged1_nue_wa
-      weight: 1.0   
+      weight: 0.5
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_ranged1_nova_ma
+      weight: 0.2   
 
-DynamicSpawnSystem.GRValentinoRNNW5:
+DynamicSpawnSystem.GRValentinoRareSquad5:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard3_thorton_mackinaw_valentinos
   unitRecordsPool:
     - $type: WeightedCharacter
-      character: Character.valentinos_strong2_shotgun2_igla_ma_rare
-      weight: 1.0
-    - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_ranged2_ajax_wa
       weight: 1.0
     - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt1_melee1_baseball_ma
+      character: Character.valentinos_strong2_shotgun2_igla_ma_rare
       weight: 1.0
     - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt1_melee1_baseball_ma
+      weight: 0.5
+    - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt1_melee1_knife_wa
-      weight: 1.0   
+      weight: 0.2   
 
 DynamicSpawnSystem.GRValentinoRareBike1:
   $type: DynamicVehicleData
@@ -295,7 +295,7 @@ DynamicSpawnSystem.GRValentinoRareBike5:
       weight: 1.0
 
 
-DynamicSpawnSystem.GRValentinoEW1:
+DynamicSpawnSystem.GRValentinoEliteSquad1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_thorton_colby_valentinos
   unitRecordsPool:
@@ -306,7 +306,7 @@ DynamicSpawnSystem.GRValentinoEW1:
       character: Character.GR_valentinos_grunt2_ranged2_ajax_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoEW2:
+DynamicSpawnSystem.GRValentinoEliteSquad2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_thorton_colby_valentinos
   unitRecordsPool:
@@ -317,7 +317,7 @@ DynamicSpawnSystem.GRValentinoEW2:
       character: Character.GR_valentinos_grunt2_ranged2_nue_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoEW3:
+DynamicSpawnSystem.GRValentinoEliteSquad3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_standard2_thorton_colby_valentinos
   unitRecordsPool:
@@ -328,30 +328,27 @@ DynamicSpawnSystem.GRValentinoEW3:
       character: Character.GR_valentinos_grunt2_ranged2_overture_wa
       weight: 1.0
 
-DynamicSpawnSystem.GRValentinoWWWW1:
+DynamicSpawnSystem.GRValentinoWeakSquad1:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_valentinos
   unitRecordsPool:
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_melee2_knife_ma
-      weight: 1.0
-    - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt2_ranged2_ajax_ma
-      weight: 1.0
-    - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt2_ranged2_ajax_wa
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_ranged2_overture_ma
       weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_ranged2_ajax_wa
+      weight: 0.5
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_ranged2_ajax_ma
+      weight: 0.2
 
-DynamicSpawnSystem.GRValentinoWWWW2:
+DynamicSpawnSystem.GRValentinoWeakSquad2:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_valentinos
   unitRecordsPool:
-    - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt2_melee2_knife_ma
-      weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_melee2_machete_wa
       weight: 1.0
@@ -359,39 +356,42 @@ DynamicSpawnSystem.GRValentinoWWWW2:
       character: Character.GR_valentinos_grunt2_ranged2_nue_ma
       weight: 1.0
     - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_melee2_knife_ma
+      weight: 0.5
+    - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_ranged2_overture_ma
-      weight: 1.0
+      weight: 0.2
 
-DynamicSpawnSystem.GRValentinoWWWW3:
+DynamicSpawnSystem.GRValentinoWeakSquad3:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_valentinos
   unitRecordsPool:
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_melee2_machete_ma
-      weight: 1.0
-    - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt2_melee2_machete_wa
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_ranged2_overture_ma
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_ranged2_ajax_wa
-      weight: 1.0
+      weight: 0.5
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_melee2_machete_wa
+      weight: 0.2
 
-DynamicSpawnSystem.GRValentinoWWWW4:
+DynamicSpawnSystem.GRValentinoWeakSquad4:
   $type: DynamicVehicleData
   vehicleRecord: Vehicle.GR_v_sport2_villefort_alvarado_valentinos
   unitRecordsPool:
-    - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt2_melee2_machete_ma
-      weight: 1.0
-    - $type: WeightedCharacter
-      character: Character.GR_valentinos_grunt2_ranged2_overture_ma
-      weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_ranged2_ajax_wa
       weight: 1.0
     - $type: WeightedCharacter
       character: Character.GR_valentinos_grunt2_ranged2_nue_wa
       weight: 1.0
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_melee2_machete_ma
+      weight: 0.5
+    - $type: WeightedCharacter
+      character: Character.GR_valentinos_grunt2_ranged2_overture_ma
+      weight: 0.2

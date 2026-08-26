@@ -16,22 +16,22 @@ public class GRWraithsData extends GRGangData {
             case 2:  // 1 wn       
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 1);
 
                 return wn;
             case 3: // 1 wn + 1 w bike
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 1);
 
                  let weakBike = GetRandomFrom(
@@ -46,30 +46,30 @@ public class GRWraithsData extends GRGangData {
             case 4: // 2 wn
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2);            
 
                 return wn;           
             case 5:  // rn + wn + w bike 
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 1);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 1);   
 
                  let weakBike = GetRandomFrom(
@@ -83,19 +83,19 @@ public class GRWraithsData extends GRGangData {
             case 6:  // rn + wn + 2w bike  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 1);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 1);   
 
                  let weakBike = GetRandomFrom(
@@ -109,19 +109,19 @@ public class GRWraithsData extends GRGangData {
             case 7:  // rn + 2wn + 1w bike  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 1);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2);   
 
                  let weakBike = GetRandomFrom(
@@ -135,19 +135,19 @@ public class GRWraithsData extends GRGangData {
             case 8: // 2 rn + wn + 1 w bike
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 2);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 1);   
 
                  let weakBike = GetRandomFrom(
@@ -161,44 +161,44 @@ public class GRWraithsData extends GRGangData {
             case 9:  // 2 rn + 2wn
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 2);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2);   
  
                 return ArrayMerge(rn, wn);
             case 10: // er + rn + 2wn + 1 weak bike
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 1);  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 1);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2); 
 
                 let weakBike = GetRandomFrom(
@@ -213,25 +213,25 @@ public class GRWraithsData extends GRGangData {
             case 11: // er + 2rn + nw + 1 weak bike
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 1);  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 2);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 1); 
 
                 let weakBike = GetRandomFrom(
@@ -246,25 +246,25 @@ public class GRWraithsData extends GRGangData {
             case 12: // er + 2rn + 2nw + 1 weak bike
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 1);  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 2);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2); 
 
                 let weakBike = GetRandomFrom(
@@ -279,25 +279,25 @@ public class GRWraithsData extends GRGangData {
             case 13: // er + 3rn + 2nw + 1 weak bike
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 1);  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 3);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2); 
 
                 let weakBike = GetRandomFrom(
@@ -312,25 +312,25 @@ public class GRWraithsData extends GRGangData {
             case 14: // er + 3rn + 2nw + 2 weak bike
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 1);  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 3);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2); 
 
                 let weakBike = GetRandomFrom(
@@ -345,25 +345,25 @@ public class GRWraithsData extends GRGangData {
             case 15: // 2er + 2rn + 2nw + normal bikes   
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 2);  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 2);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2); 
 
                 let nBike = GetRandomFrom(
@@ -378,25 +378,25 @@ public class GRWraithsData extends GRGangData {
             case 16: // 2er + 2rn + 2nw + 2 normal bikes
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 2);  
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 2);  
 
                 let wn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithWN1",
-                        t"DynamicSpawnSystem.GRWraithWN2",
-                        t"DynamicSpawnSystem.GRWraithWN3",
-                        t"DynamicSpawnSystem.GRWraithWN4",
-                        t"DynamicSpawnSystem.GRWraithWN5"
+                        t"DynamicSpawnSystem.GRWraithNormalSquad1",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad2",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad3",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad4",
+                        t"DynamicSpawnSystem.GRWraithNormalSquad5"
                     ], 2); 
 
                 let nBike = GetRandomFrom(
@@ -409,21 +409,21 @@ public class GRWraithsData extends GRGangData {
 
                 return ArrayMerge(ArrayMerge(ArrayMerge(er, rn), wn), nBike);
             case 17: // 2er + rrrr + 2 normal bikes
-                let rrrr = [t"DynamicSpawnSystem.GRWraithRRRR1"];
+                let rrrr = [t"DynamicSpawnSystem.GRWraithRareSquad5"];
 
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 2);  
 
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 1);  
 
                 let nBike = GetRandomFrom(
@@ -436,21 +436,21 @@ public class GRWraithsData extends GRGangData {
 
                 return ArrayMerge(ArrayMerge(ArrayMerge(er, rn), nBike), rrrr);
             case 18: // 2er + rrrr + 3 normal bikes 
-                let rrrr = [t"DynamicSpawnSystem.GRWraithRRRR1"];
+                let rrrr = [t"DynamicSpawnSystem.GRWraithRareSquad5"];
 
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 2);  
 
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 1);  
 
                 let nBike = GetRandomFrom(
@@ -463,21 +463,21 @@ public class GRWraithsData extends GRGangData {
 
                 return ArrayMerge(ArrayMerge(ArrayMerge(er, rn), nBike), rrrr);
             case 19: // 2er + rrrr + 4 normal bikes
-                let rrrr = [t"DynamicSpawnSystem.GRWraithRRRR1"];
+                let rrrr = [t"DynamicSpawnSystem.GRWraithRareSquad5"];
 
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 2);  
 
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 1);  
 
                 let nBike = GetRandomFrom(
@@ -490,21 +490,21 @@ public class GRWraithsData extends GRGangData {
 
                 return ArrayMerge(ArrayMerge(ArrayMerge(er, rn), nBike), rrrr);
             case 20: // 3er + rrrr + 4 normal bikes
-                let rrrr = [t"DynamicSpawnSystem.GRWraithRRRR1"];
+                let rrrr = [t"DynamicSpawnSystem.GRWraithRareSquad5"];
 
                 let er = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithER1",
-                        t"DynamicSpawnSystem.GRWraithER2",
-                        t"DynamicSpawnSystem.GRWraithER3"
+                        t"DynamicSpawnSystem.GRWraithEliteSquad1",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad2",
+                        t"DynamicSpawnSystem.GRWraithEliteSquad3"
                     ], 3);  
 
                 let rn = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRWraithRN1",
-                        t"DynamicSpawnSystem.GRWraithRN2",
-                        t"DynamicSpawnSystem.GRWraithRN3",
-                        t"DynamicSpawnSystem.GRWraithRN4"
+                        t"DynamicSpawnSystem.GRWraithRareSquad1",
+                        t"DynamicSpawnSystem.GRWraithRareSquad2",
+                        t"DynamicSpawnSystem.GRWraithRareSquad3",
+                        t"DynamicSpawnSystem.GRWraithRareSquad4"
                     ], 2);  
 
                 let nBike = GetRandomFrom(

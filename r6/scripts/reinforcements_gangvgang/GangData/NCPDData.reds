@@ -9,21 +9,21 @@ public class GRNCPDData extends GRGangData {
             case 2:  // 1 weak, 1 normal (patrol car 1w/1n)
                 let patrolCar = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDPatrol1",
-                        t"DynamicSpawnSystem.GRNCPDPatrol2",
-                        t"DynamicSpawnSystem.GRNCPDPatrol3",
-                        t"DynamicSpawnSystem.GRNCPDPatrol4",
-                        t"DynamicSpawnSystem.GRNCPDPatrol5"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad1",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad2",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad3",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad4",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad5"
                     ], 1);
                 return patrolCar;
             case 3: // 2 weak, 1 normal (biker + patrol)
                 let patrolCar = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDPatrol1",
-                        t"DynamicSpawnSystem.GRNCPDPatrol2",
-                        t"DynamicSpawnSystem.GRNCPDPatrol3",
-                        t"DynamicSpawnSystem.GRNCPDPatrol4",
-                        t"DynamicSpawnSystem.GRNCPDPatrol5"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad1",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad2",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad3",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad4",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad5"
                     ], 1);
                 let biker = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
@@ -31,29 +31,29 @@ public class GRNCPDData extends GRGangData {
             case 4: // 2 weak, 2 normal (2 patrols)
                 return GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDPatrol1",
-                        t"DynamicSpawnSystem.GRNCPDPatrol2",
-                        t"DynamicSpawnSystem.GRNCPDPatrol3",
-                        t"DynamicSpawnSystem.GRNCPDPatrol4",
-                        t"DynamicSpawnSystem.GRNCPDPatrol5"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad1",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad2",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad3",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad4",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad5"
                     ], 2);           
             case 5:  // 3 normal, 1 rare (standard squad)
                 let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 1);
 
                 return standardSquad;
             case 6:  // 1 weak, 3 normal, 1 rare (standdard squad + bike)
                let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 1);    
                 let biker = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];  
 
@@ -61,18 +61,18 @@ public class GRNCPDData extends GRGangData {
             case 7:  // 1 weak, 4 normal, 1 rare (standard squad + patrol car)
                 let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 1);    
                 let patrolCar = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDPatrol1",
-                        t"DynamicSpawnSystem.GRNCPDPatrol2",
-                        t"DynamicSpawnSystem.GRNCPDPatrol3",
-                        t"DynamicSpawnSystem.GRNCPDPatrol4",
-                        t"DynamicSpawnSystem.GRNCPDPatrol5"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad1",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad2",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad3",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad4",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad5"
                     ], 1); 
 
                 return ArrayMerge(patrolCar, standardSquad);
@@ -86,11 +86,11 @@ public class GRNCPDData extends GRGangData {
                     ], 1);   
                 let patrolCar = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDPatrol1",
-                        t"DynamicSpawnSystem.GRNCPDPatrol2",
-                        t"DynamicSpawnSystem.GRNCPDPatrol3",
-                        t"DynamicSpawnSystem.GRNCPDPatrol4",
-                        t"DynamicSpawnSystem.GRNCPDPatrol5"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad1",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad2",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad3",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad4",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad5"
                     ], 1); 
                 let biker = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
@@ -105,11 +105,11 @@ public class GRNCPDData extends GRGangData {
                     ], 1);   
                 let patrolCar = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDPatrol1",
-                        t"DynamicSpawnSystem.GRNCPDPatrol2",
-                        t"DynamicSpawnSystem.GRNCPDPatrol3",
-                        t"DynamicSpawnSystem.GRNCPDPatrol4",
-                        t"DynamicSpawnSystem.GRNCPDPatrol5"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad1",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad2",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad3",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad4",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad5"
                     ], 2); 
 
                 return ArrayMerge(patrolCar, rrnn);  
@@ -123,11 +123,11 @@ public class GRNCPDData extends GRGangData {
                     ], 2);   
                 let patrolCar = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDPatrol1",
-                        t"DynamicSpawnSystem.GRNCPDPatrol2",
-                        t"DynamicSpawnSystem.GRNCPDPatrol3",
-                        t"DynamicSpawnSystem.GRNCPDPatrol4",
-                        t"DynamicSpawnSystem.GRNCPDPatrol5"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad1",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad2",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad3",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad4",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad5"
                     ], 1); 
                 return ArrayMerge(rare, patrolCar);
             case 11: // 5 normals 3 rares, 1 elite (elite + standard squad)
@@ -140,10 +140,10 @@ public class GRNCPDData extends GRGangData {
                     ], 2);   
                     let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 1);               
                 return ArrayMerge(rare, standardSquad);       
             case 12: // 1 weak, 5 normals, 4 rares, 1 elite (elite + standard squad + bike)
@@ -156,10 +156,10 @@ public class GRNCPDData extends GRGangData {
                     ], 2);   
                     let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 1);               
                 let bike = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
@@ -174,10 +174,10 @@ public class GRNCPDData extends GRGangData {
                     ], 1);   
                     let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 2);               
                 return ArrayMerge(elite, standardSquad);   
             case 14: // 2weak, 6 normals, 4 rares, 1 elite (elite + 2 standard squads + bike)
@@ -190,10 +190,10 @@ public class GRNCPDData extends GRGangData {
                     ], 1);   
                     let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 2);               
                 let bike = [t"DynamicSpawnSystem.GRNCPDWeakBike1", t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
@@ -208,10 +208,10 @@ public class GRNCPDData extends GRGangData {
                     ], 2);   
                     let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 1);               
                 return ArrayMerge(elite, standardSquad);   
             case 16: // 5 normals 5 rares, 2 elite (2 elite + standard quad + bike)
@@ -225,10 +225,10 @@ public class GRNCPDData extends GRGangData {
 
                     let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 1);               
                 let bike = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];
 
@@ -244,18 +244,18 @@ public class GRNCPDData extends GRGangData {
                     
                     let standardSquad = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad1 ",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad2",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad3",
-                        t"DynamicSpawnSystem.GRNCPDStandardSquad4"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad6",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad7",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad8",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad9"
                     ], 1);               
                 	let patrolCar = GetRandomFrom(
                     [
-                        t"DynamicSpawnSystem.GRNCPDPatrol1",
-                        t"DynamicSpawnSystem.GRNCPDPatrol2",
-                        t"DynamicSpawnSystem.GRNCPDPatrol3",
-                        t"DynamicSpawnSystem.GRNCPDPatrol4",
-                        t"DynamicSpawnSystem.GRNCPDPatrol5"
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad1",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad2",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad3",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad4",
+                        t"DynamicSpawnSystem.GRNCPDNormalSquad5"
                     ], 1); 
                 return ArrayMerge(ArrayMerge(elite, standardSquad), patrolCar);   
             case 18: // 6 normals, 6 rares, 2 elite (2 elite + 2standard quad )
