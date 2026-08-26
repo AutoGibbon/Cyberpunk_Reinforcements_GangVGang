@@ -21,6 +21,18 @@ public class GRScavsHandler extends GRGangHandler {
         return system;
     }
 
+    public func IsAuthorityFaction() -> Bool {
+        return false;
+    }
+
+    public func OnCallSuccessCooldownStart() -> Void {
+        this.m_delaySystem.DelayCallback(GRScavCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+    }
+
+    public func OnGraceStart() -> Void {
+        this.m_delaySystem.DelayCallback(GRScavGraceEndCallback.Create(this), this.GetGraceTime(), true);
+    }
+
     public func GetTurfList() -> array<String> {
         return [
             "JapanTown",
@@ -29,15 +41,6 @@ public class GRScavsHandler extends GRGangHandler {
             "Dogtown",
             "WestWindEstate"
         ];
-    }
-
-    public func OnGraceStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRScavGraceEndCallback.Create(this), this.GetGraceTime(), true);
-    }
-
-
-    public func OnCallSuccessCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRScavCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }
 }
 

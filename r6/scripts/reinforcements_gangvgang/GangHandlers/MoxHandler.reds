@@ -20,19 +20,21 @@ public class GRMoxHandler extends GRGangHandler {
         let system: ref<GRMoxHandler> = GameInstance.GetScriptableSystemsContainer(gameInstance).Get(n"Gibbon.GR.GangHandlers.GRMoxHandler") as GRMoxHandler;
         return system;
     }
- 
 
-    public func GetTurfList() -> array<String> {
-        return ["Kabuki", "CharterHill"];
+    public func IsAuthorityFaction() -> Bool {
+        return false;
     }
-    
+
+    public func OnCallSuccessCooldownStart() -> Void {
+        this.m_delaySystem.DelayCallback(GRMoxCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+    }
+
     public func OnGraceStart() -> Void {
         this.m_delaySystem.DelayCallback(GRMoxEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
-
-    public func OnCallSuccessCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRMoxCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+    public func GetTurfList() -> array<String> {
+        return ["Kabuki", "CharterHill"];
     }
 }
 

@@ -21,6 +21,10 @@ public class GRVoodooHandler extends GRGangHandler {
         return system;
     }
 
+    public func IsAuthorityFaction() -> Bool {
+        return false;
+    }
+
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRVoodooCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);

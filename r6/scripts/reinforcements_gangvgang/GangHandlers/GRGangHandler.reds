@@ -42,6 +42,8 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
   public func GetTurfList() -> array<String>;
 
+  public func IsAuthorityFaction() -> Bool;
+
   //promote wref to ref, caller must validate ref when retrieving
   public func GetLastCaller() -> ref<NPCPuppet> {
     return this.m_lastCaller;
@@ -104,14 +106,6 @@ public abstract class GRGangHandler extends ScriptableSystem {
 
   public func IsAvailableForIntervention() -> Bool {
     return !this.m_isDisabled && !this.m_callSuccessCooldownActive;
-  }
-
-  public func IsAuthorityFaction() -> Bool {
-    return Equals(this.m_affiliation, gamedataAffiliation.NCPD)
-        || Equals(this.m_affiliation, gamedataAffiliation.Militech)
-        || Equals(this.m_affiliation, gamedataAffiliation.Barghest)
-        || Equals(this.m_affiliation, gamedataAffiliation.Arasaka)
-        || Equals(this.m_affiliation, gamedataAffiliation.KangTao);
   }
 
   public func HandleReinforcementCall(puppet: ref<NPCPuppet>, target: ref<NPCPuppet>) {

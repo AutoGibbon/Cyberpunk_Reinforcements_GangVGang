@@ -21,6 +21,10 @@ public class GRArasakaHandler extends GRGangHandler {
         return system;
     }
 
+    public func IsAuthorityFaction() -> Bool {
+        return true;
+    }
+
 
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRArasakaCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);

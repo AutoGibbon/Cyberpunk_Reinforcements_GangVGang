@@ -21,6 +21,10 @@ public class GRMilitechHandler extends GRGangHandler {
         return system;
     }
 
+    public func IsAuthorityFaction() -> Bool {
+        return true;
+    }
+
     public func OnCallSuccessCooldownStart() -> Void {
         this.m_delaySystem.DelayCallback(GRMilitechCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
     }

@@ -20,19 +20,21 @@ public class GRTygersHandler extends GRGangHandler {
         let system: ref<GRTygersHandler> = GameInstance.GetScriptableSystemsContainer(gameInstance).Get(n"Gibbon.GR.GangHandlers.GRTygersHandler") as GRTygersHandler;
         return system;
     }
- 
 
-    public func GetTurfList() -> array<String> {
-        return ["Westbrook", "Kabuki"];
+    public func IsAuthorityFaction() -> Bool {
+        return false;
     }
-    
+
+    public func OnCallSuccessCooldownStart() -> Void {
+        this.m_delaySystem.DelayCallback(GRTygerCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+    }
+
     public func OnGraceStart() -> Void {
         this.m_delaySystem.DelayCallback(GRTygerEndCallback.Create(this), this.GetGraceTime(), true);
     }
 
-
-    public func OnCallSuccessCooldownStart() -> Void {
-        this.m_delaySystem.DelayCallback(GRTygerCallSuccessCooldownEndCallback.Create(this), this.GetCallSuccessCooldown(), true);
+    public func GetTurfList() -> array<String> {
+        return ["Westbrook", "Kabuki"];
     }
 }
 

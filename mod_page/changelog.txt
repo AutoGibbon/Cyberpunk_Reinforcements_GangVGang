@@ -1,40 +1,35 @@
+Version 3.0.0
+Authority Intervention: Gangs calling for backup now have a chance of the law showing up instead - NCPD, Militech, Barghest, Arasaka, or Kang Tao, depending on whose turf the fight is on. The bigger the fight, the more likely someone official gets involved. Once authority shows up, other gangs will hold off calling in more backup for a short while. Can be disabled in settings.
+Kang Tao added as a new faction: Claims City Center turf, and can respond to bust up fights there alongside Arasaka.
+Turf overhaul: Arasaka, Militech, NCPD and Scavs turf claims have all been reworked to better reflect where you'd actually expect to run into them. Fights outside a gang's own turf are now less likely to draw reinforcements at all - turf matters more now.
+Reinforcement wave sizes now vary: Replaced the flat max vehicles per call with a min/max range, so backup doesn't always show up in the same size.
+Better squad behaviour for spawned units: Reinforcements now properly join their caller's squad instead of just getting patched attitudes, so they behave more consistently as a unit.
+Compatibility: Spawned NPC Post Combat Fix: Spawned gang members are now tagged so they can be picked up and retreated cleanly by that mod, if installed.
+
 Version 2.0.0
-> Introducing The Mox!
-	- Preferring smart weapons and stun batons, they will now claim the Kabuki area as their turf.
-	- You probably won't see them often unless you have Night City Alive installed.
-	- Added 8 new Moxies units to support this feature.
-	- (sometimes a Mox will spawn and use the appearance of Rita Wheeler. This is not on purpose, I might change it, I might not)
-> NCPD turf changes
-	- Under political pressure and threats of further funding cuts from wealthy voters and coporations alike, NCPD have bolstered their presence in:
-	- City Center, Charter Hill
-> NCPD elite units rework
-	- Maxtac are no longer spawned by this mod, and have been replaced with custom NCPD elites bearing heavy weapons.
-	- Added 5 new Elite NCPD responders to support this rework.
-	- Units come equipped with Crusher, Ajax, Kolac, HMG, Gorilla Arms
-	- NCPD elite units now drive the NCPD Thorton Merrimac, instead of the Maxtac Hellhound.
-	- This lets Maxtac remain the big bad who respond to the only cyberpsycho in town (you, apparently), and not ruin any illusions of their power in Night City
-> Gangs can now be disabled in settings
-> Various combat decision improvements
-	- Removed "Limit Cooldown" - now gangs will just cycle heats and rely on their other cooldowns.
-	- Some values for presets have been adjusted to account for this removal.
+Introducing The Mox!: Preferring smart weapons and stun batons, they will now claim the Kabuki area as their turf. You probably won't see them often unless you have Night City Alive installed. Added 8 new Moxies units to support this feature. (sometimes a Mox will spawn and use the appearance of Rita Wheeler. This is not on purpose, I might change it, I might not)
+NCPD turf changes: Under political pressure and threats of further funding cuts from wealthy voters and coporations alike, NCPD have bolstered their presence in: City Center, Charter Hill.
+NCPD elite units rework: Maxtac are no longer spawned by this mod, and have been replaced with custom NCPD elites bearing heavy weapons. Added 5 new Elite NCPD responders to support this rework. Units come equipped with Crusher, Ajax, Kolac, HMG, Gorilla Arms. NCPD elite units now drive the NCPD Thorton Merrimac, instead of the Maxtac Hellhound. This lets Maxtac remain the big bad who respond to the only cyberpsycho in town (you, apparently), and not ruin any illusions of their power in Night City.
+Gangs can now be disabled in settings
+Various combat decision improvements: Removed "Limit Cooldown" - now gangs will just cycle heats and rely on their other cooldowns. Some values for presets have been adjusted to account for this removal.
 
 Version 1.5.1
-> remove logging calls
+remove logging calls
 
 Version 1.5.0
-> Add new preset modes for easy configuration
-> Balance pass on spawn rates overall
-> Fix a bug that caused far too many spawns
-> Police Sirens work when arriving (sometimes)
+Add new preset modes for easy configuration
+Balance pass on spawn rates overall
+Fix a bug that caused far too many spawns
+Police Sirens work when arriving (sometimes)
 
 Version 1.0.3
-> fix incorrect vehicle record in NCPD tweak data
+fix incorrect vehicle record in NCPD tweak data
 
 Version 1.0.2
-> reviewed and updated all settings localisations
+reviewed and updated all settings localisations
 
 Version 1.0.1
-> update jp-jp localisation, thanks to KeiSagano <3
+update jp-jp localisation, thanks to KeiSagano <3
 
 Version 1.0.0
-> hiya
+hiya

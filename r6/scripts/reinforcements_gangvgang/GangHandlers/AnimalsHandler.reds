@@ -21,6 +21,10 @@ public class GRAnimalsHandler extends GRGangHandler {
         return system;
     }
 
+    public func IsAuthorityFaction() -> Bool {
+        return false;
+    }
+
  
 
 
