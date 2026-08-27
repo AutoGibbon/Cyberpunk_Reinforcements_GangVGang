@@ -82,12 +82,17 @@ async function pack() {
 		}
 		console.log(`Found ${files.length} files to pack`);
 
-		// Create zip using 7zip
+		// Create zip using 7zip. Pass the file list via @listfile instead of on the
+		// command line since Windows has an ~8191-char command length limit.
 		console.log("Creating zip archive...");
-		const filesList = files.map((f) => `"${f}"`).join(" ");
-		const command = `7z a "${path.resolve(OUTPUT_ZIP)}" ${filesList}`;
-
-		execSync(command, { cwd: ".", stdio: "inherit" });
+		const listFile = path.resolve(".", "r6-pack-filelist.txt");
+		fs.writeFileSync(listFile, files.join("\n"), "utf8");
+		try {
+			const command = `7z a "${path.resolve(OUTPUT_ZIP)}" "@${listFile}"`;
+			execSync(command, { cwd: ".", stdio: "inherit" });
+		} finally {
+			fs.unlinkSync(listFile);
+		}
 
 		console.log("\n✅ Pack completed successfully!");
 		console.log(`Created: ${OUTPUT_ZIP}`);
