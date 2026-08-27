@@ -44,7 +44,7 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDNormalSquad7",
                         t"DynamicSpawnSystem.GRNCPDNormalSquad8",
                         t"DynamicSpawnSystem.GRNCPDNormalSquad9"
-                    ], 1);
+                    ], 2);
 
                 return standardSquad;
             case 6:  // 1 weak, 3 normal, 1 rare (standdard squad + bike)
@@ -54,7 +54,7 @@ public class GRNCPDData extends GRGangData {
                         t"DynamicSpawnSystem.GRNCPDNormalSquad7",
                         t"DynamicSpawnSystem.GRNCPDNormalSquad8",
                         t"DynamicSpawnSystem.GRNCPDNormalSquad9"
-                    ], 1);    
+                    ], 2);    
                 let biker = [t"DynamicSpawnSystem.GRNCPDWeakBike1"];  
 
                 return ArrayMerge(biker, standardSquad);

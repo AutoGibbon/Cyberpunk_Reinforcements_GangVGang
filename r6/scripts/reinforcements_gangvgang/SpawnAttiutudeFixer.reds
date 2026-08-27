@@ -16,6 +16,15 @@ protected cb func OnGameAttached() -> Bool {
     return outcome;
 } 
 
+func GRIsSameAffiliation(a: ref<ScriptedPuppet>, b: ref<ScriptedPuppet>) -> Bool {
+    let recordA = TweakDBInterface.GetCharacterRecord(a.GetRecordID());
+    let recordB = TweakDBInterface.GetCharacterRecord(b.GetRecordID());
+    if !IsDefined(recordA) || !IsDefined(recordB) {
+        return false;
+    };
+    return Equals(recordA.Affiliation().Type(), recordB.Affiliation().Type());
+}
+
 @addMethod(NPCPuppet)
 protected final func GRSetHostileTowardsCombatant(combatant: ref<GameObject>) -> Void {
     if !IsDefined(this) || !IsDefined(combatant) {
@@ -26,8 +35,9 @@ protected final func GRSetHostileTowardsCombatant(combatant: ref<GameObject>) ->
         return;
     };
 
+    // guard against squads that end up mixing affiliations - never force hostility onto our own faction
     let attitudeCombatant: ref<AttitudeAgent> = combatant.GetAttitudeAgent();
-    if IsDefined(attitudeCombatant) {
+    if IsDefined(attitudeCombatant) && !GRIsSameAffiliation(this, combatant as ScriptedPuppet) {
         attitudeOwner.SetAttitudeTowards(attitudeCombatant, EAIAttitude.AIA_Hostile);
     };
 
@@ -41,7 +51,7 @@ protected final func GRSetHostileTowardsCombatant(combatant: ref<GameObject>) ->
             squadmate = squadmates[i] as GameObject;
             if IsDefined(squadmate) {
                 attitudeSquadmate = squadmate.GetAttitudeAgent();
-                if IsDefined(attitudeSquadmate) {
+                if IsDefined(attitudeSquadmate) && !GRIsSameAffiliation(this, squadmate as ScriptedPuppet) {
                     attitudeOwner.SetAttitudeTowards(attitudeSquadmate, EAIAttitude.AIA_Hostile);
                 };
             };

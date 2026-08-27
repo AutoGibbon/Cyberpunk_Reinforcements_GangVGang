@@ -35,7 +35,7 @@ public class GRKangTaoHandler extends GRGangHandler {
     }
 
     public func GetTurfList() -> array<String> {
-        return ["CityCenter"];
+        return ["CityCenter", "Wellsprings"];
     }
 }
 

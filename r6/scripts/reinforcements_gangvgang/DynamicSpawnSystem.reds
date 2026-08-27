@@ -37,10 +37,12 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
 					gangHandler = reinSystem.GetFactionHandler(puppet);
                 }
             }
-			//NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
+			NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
         }
         i += 1;
     }
+
+
 
     if !gotModTag || !IsDefined(gangHandler) {
         wrappedMethod(requestResult);
@@ -48,8 +50,17 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
     }
 
 	target = gangHandler.GetLastTarget();
+	let usedSecondaryTarget = false;
+	if !IsDefined(target) {
+		// primary target (e.g. authority intervention's original caller) can die/despawn before spawning
+		// finishes - fall back to the secondary target rather than the stale last-known position
+		target = gangHandler.GetLastSecondaryTarget();
+		usedSecondaryTarget = true;
+	}
 	targetPosition = gangHandler.GetLastCallerPosition();
-   
+
+	GRLog(s"\(gangHandler.m_affiliation), Vehicles: \(ArraySize(wheeledObjects)), Target: \(IsDefined(target)), SecondaryFallback: \(usedSecondaryTarget)");
+
     i = 0;
     while i < ArraySize(wheeledObjects) {
         wheeledObject = wheeledObjects[i];
@@ -57,8 +68,8 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
 		if IsDefined(target) {
             aiVehicleChaseCommand = new AIVehicleChaseCommand();
             aiVehicleChaseCommand.target = target;
-            aiVehicleChaseCommand.distanceMin = TweakDBInterface.GetFloat(t"DynamicSpawnSystem.dynamic_vehicles_chase_setup.distanceMin", 3.0);
-            aiVehicleChaseCommand.distanceMax = TweakDBInterface.GetFloat(t"DynamicSpawnSystem.dynamic_vehicles_chase_setup.distanceMax", 10.0);
+            aiVehicleChaseCommand.distanceMin = TweakDBInterface.GetFloat(t"DynamicSpawnSystem.dynamic_vehicles_chase_setup.distanceMin", 10.0);
+            aiVehicleChaseCommand.distanceMax = TweakDBInterface.GetFloat(t"DynamicSpawnSystem.dynamic_vehicles_chase_setup.distanceMax", 45.0);
             aiVehicleChaseCommand.forcedStartSpeed = 10.0;
             aiVehicleChaseCommand.ignoreChaseVehiclesLimit = true;
             aiVehicleChaseCommand.boostDrivingStats = true;
@@ -73,7 +84,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
             aiVehicleMovecommand.clearTrafficOnPath = false;
             aiVehicleMovecommand.forcedStartSpeed = 10.0;
             aiVehicleMovecommand.minSpeed = 30.0;
-            aiVehicleMovecommand.minimumDistanceToTarget = RandRangeF(10.0, 55.0);
+            aiVehicleMovecommand.minimumDistanceToTarget = RandRangeF(10.0, 45.0);
             aiVehicleMovecommand.targetPosition = Vector4.Vector4To3(targetPosition);
             aiCommandEvent = new AICommandEvent();
             aiCommandEvent.command = aiVehicleMovecommand;
@@ -85,6 +96,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         if Equals(gangHandler.m_affiliation, gamedataAffiliation.NCPD) {
             wheeledObject.GetVehicleComponent().ToggleSiren(true, true);
         }
+
         i += 1;
     }
 	

@@ -20,6 +20,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
     private let m_wraithsHandler: ref<GRWraithsHandler>;
     private let m_ncpdHandler: ref<GRNCPDHandler>;
     private let m_moxHandler: ref<GRMoxHandler>;
+    private let m_aldecaldosHandler: ref<GRAldecaldosHandler>;
 	private let m_gameAttachHandled: Bool = false;
 
     private let m_preventionSystem: ref<PreventionSystem>;
@@ -59,6 +60,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.m_voodooHandler = GRVoodooHandler.GetInstance(theGame);
         this.m_wraithsHandler = GRWraithsHandler.GetInstance(theGame);
         this.m_kangTaoHandler = GRKangTaoHandler.GetInstance(theGame);
+        this.m_aldecaldosHandler = GRAldecaldosHandler.GetInstance(theGame);
 
         // cause we're doing funky stuff with public and private bindings
         this.m_settings.ReconcileSettings();
@@ -100,6 +102,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.m_voodooHandler.ResetGang();
         this.m_wraithsHandler.ResetGang();
         this.m_kangTaoHandler.ResetGang();
+        this.m_aldecaldosHandler.ResetGang();
         this.m_authorityInterventionCooldownActive = false;
     }
 
@@ -118,6 +121,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         this.m_voodooHandler.SetIsDisabled(!this.m_settings.voodooBoysEnabled);
         this.m_wraithsHandler.SetIsDisabled(!this.m_settings.wraithsEnabled);
         this.m_kangTaoHandler.SetIsDisabled(!this.m_settings.kangTaoEnabled);
+        this.m_aldecaldosHandler.SetIsDisabled(!this.m_settings.aldecaldosEnabled);
     }
 
     public static func GetInstance(gameInstance: GameInstance) -> ref<GRReinforcementSystem> {
@@ -164,11 +168,6 @@ public class GRReinforcementSystem extends ScriptableSystem {
         }
 
         if player.IsReplacer() || player.IsJohnnyReplacer() {
-            return false;
-        }
-
-        //No aldecaldos
-        if Equals(ToString((puppet as NPCPuppet).GetAffiliation()), "Aldecaldos") {
             return false;
         }
 
@@ -314,6 +313,8 @@ public class GRReinforcementSystem extends ScriptableSystem {
                 return this.m_ncpdHandler;
             case gamedataAffiliation.TheMox:
                 return this.m_moxHandler;
+            case gamedataAffiliation.Aldecaldos:
+                return this.m_aldecaldosHandler;
             default:
                 break;
         }
@@ -329,7 +330,14 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return;
         }
         
-		if this.GetFactionHandler(puppet).TryCallingReinforcements(puppet) {
+		let puppetHandler = this.GetFactionHandler(puppet);
+		let targetPuppet = target as ScriptedPuppet;
+		// guard against friendly fire mistakenly registered as combat pulling in same-faction backup
+		if IsDefined(targetPuppet) && this.GetFactionHandler(targetPuppet) == puppetHandler {
+			return;
+		}
+
+		if puppetHandler.TryCallingReinforcements(puppet) {
 			this.ReinforcementsCalled(puppet, target);
 		}
     }
@@ -347,7 +355,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
         }
 
         let clampedHeat = Min(callHeat, 20);
-        if clampedHeat < 3 {
+        if clampedHeat < 2 {
             return false;
         }
 
@@ -362,10 +370,10 @@ public class GRReinforcementSystem extends ScriptableSystem {
             chanceMin = 15;
             chanceMax = 50;
         } else if IsDistrictWithinZones(district, ["WestWindEstate", "Coastview"]) {
-            authorityHandler = this.m_ncpdHandler;
-            authorityHeat = clampedHeat / 2;
-            chanceMin = 3;
-            chanceMax = 15;
+            authorityHandler = RandRange(0, 101) <= 50 ? this.m_ncpdHandler : this.m_kangTaoHandler;
+            authorityHeat = clampedHeat * 2;
+            chanceMin = 10;
+            chanceMax = 20;
         } else {
             // ncpd, militech, kangtao, and arasaka all claim overlapping turf (CityCenter etc) -
             // gather whoever actually considers this district theirs and pick one at random
@@ -389,17 +397,21 @@ public class GRReinforcementSystem extends ScriptableSystem {
             } else {
                 authorityHandler = candidates[RandRange(0, ArraySize(candidates) - 1)];
             }
+            
+            chanceMin = 25;
+            chanceMax = 70;
             authorityHeat = clampedHeat * 2;
-            chanceMin = 15;
-            chanceMax = 50;
         }
+
+        authorityHeat = Min(authorityHeat, 5);
 
         if !authorityHandler.IsAvailableForIntervention() {
             return false;
         }
 
-        let t: Float = Cast<Float>(clampedHeat - 3) / 17.0;
-        let chance: Int32 = chanceMin + Cast<Int32>(Cast<Float>(chanceMax - chanceMin) * t * t * t);
+        // square root curve chance to call the pigs
+        let t: Float = Cast<Float>(clampedHeat - 2) / 18.0;
+        let chance: Int32 = chanceMin + Cast<Int32>(Cast<Float>(chanceMax - chanceMin) * SqrtF(t));
         if RandRange(0, 101) > chance {
             return false;
         }

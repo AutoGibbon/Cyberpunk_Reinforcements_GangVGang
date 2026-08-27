@@ -55,8 +55,8 @@ public class GRSettings extends ScriptableSystem {
                 this.initialHeat = 1;
                 this.heatEscalation = 1;
                 this.callsLimit = 3;
-                this.strongCallChance = 15;
-                this.strongCallHeatBonus = 3;
+                this.strongCallChance = 25;
+                this.strongCallHeatBonus = 8;
                 this.minVehiclesPerCall = 1;
                 this.maxVehiclesPerCall = 1;
             } else if Equals(this.presetMode, PresetMode.Balanced) {
@@ -65,10 +65,10 @@ public class GRSettings extends ScriptableSystem {
                 this.callSuccessCooldownMin = 45;
                 this.callSuccessCooldownMax = 60;
                 this.initialHeat = 2;
-                this.heatEscalation = 2;
+                this.heatEscalation = 3;
                 this.callsLimit = 6;
-                this.strongCallChance = 15;
-                this.strongCallHeatBonus = 5;
+                this.strongCallChance = 25;
+                this.strongCallHeatBonus = 8;
                 this.minVehiclesPerCall = 1;
                 this.maxVehiclesPerCall = 2;
             } else if Equals(this.presetMode, PresetMode.RareBigFight) {
@@ -82,14 +82,14 @@ public class GRSettings extends ScriptableSystem {
                 this.strongCallChance = 35;
                 this.strongCallHeatBonus = 5;
                 this.minVehiclesPerCall = 2;
-                this.maxVehiclesPerCall = 3;
+                this.maxVehiclesPerCall = 4;
             } else if Equals(this.presetMode, PresetMode.Chaos) {
                 this.gracePeriodMin = 1;
                 this.gracePeriodMax = 5;
                 this.callSuccessCooldownMin = 45;
                 this.callSuccessCooldownMax = 60;
-                this.initialHeat = 5;
-                this.heatEscalation = 1;
+                this.initialHeat = 10;
+                this.heatEscalation = 3;
                 this.callsLimit = 10;
                 this.strongCallChance = 5;
                 this.strongCallHeatBonus = 3;

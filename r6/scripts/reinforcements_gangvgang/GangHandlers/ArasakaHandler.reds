@@ -35,7 +35,7 @@ public class GRArasakaHandler extends GRGangHandler {
     }
 
     public func GetTurfList() -> array<String> {
-        return ["Northside","CityCenter", "Arroyo_Arasaka_Warehouse"];
+        return ["Northside","CityCenter", "Arroyo"];
     }
 }
 
