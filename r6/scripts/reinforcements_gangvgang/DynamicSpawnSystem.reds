@@ -30,14 +30,15 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
         if !spawnedObject.IsPuppet() && spawnedObject.IsVehicle() {
             ArrayPush(wheeledObjects, spawnedObject as WheeledObject);
         } else {
-            if !gotModTag {
-                puppet = spawnedObject as ScriptedPuppet;
-                if NPCManager.HasTag(puppet.GetRecordID(), n"GRModPuppet") {
+            let candidatePuppet = spawnedObject as ScriptedPuppet;
+            if IsDefined(candidatePuppet) {
+                if !gotModTag && NPCManager.HasTag(candidatePuppet.GetRecordID(), n"GRModPuppet") {
+                    puppet = candidatePuppet;
                     gotModTag = true;
-					gangHandler = reinSystem.GetFactionHandler(puppet);
+                    gangHandler = reinSystem.GetFactionHandler(puppet);
                 }
+                NPCPuppet.ChangeHighLevelState(candidatePuppet, gamedataNPCHighLevelState.Combat);
             }
-			NPCPuppet.ChangeHighLevelState(puppet, gamedataNPCHighLevelState.Combat);
         }
         i += 1;
     }

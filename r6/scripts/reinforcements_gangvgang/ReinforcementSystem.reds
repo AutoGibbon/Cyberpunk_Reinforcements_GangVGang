@@ -149,7 +149,11 @@ public class GRReinforcementSystem extends ScriptableSystem {
         if distanceToTarget > 50.0 {
             return;
         }
-        this.GetFactionHandler(puppet).HandleReinforcementCall(puppet as NPCPuppet, target as NPCPuppet);
+        let puppetHandler = this.GetFactionHandler(puppet);
+        if !IsDefined(puppetHandler) {
+            return;
+        }
+        puppetHandler.HandleReinforcementCall(puppet as NPCPuppet, target as NPCPuppet);
     }
 
     private func ReinforcementsChecksCall(puppet: ref<ScriptedPuppet>, target: ref<GameObject>) -> Bool {
@@ -207,7 +211,12 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        let record = this.m_preventionSystem.GetCurrentDistrict().GetDistrictRecord();
+        let currentDistrict = this.m_preventionSystem.GetCurrentDistrict();
+        if !IsDefined(currentDistrict) {
+            return false;
+        }
+
+        let record = currentDistrict.GetDistrictRecord();
         let nonoZones = [
             "LittleChina_Afterlife",
             "Dogtown_Akebono",
@@ -267,7 +276,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
 
         if !this.m_settings.enabledWhenPlayerIsPassenger && VehicleComponent.IsMountedToVehicle(player.GetGame(), player) {
             let vehicle = player.GetMountedVehicle();
-            if vehicle.IsPlayerMounted() && !vehicle.IsPlayerDriver() {
+            if IsDefined(vehicle) && vehicle.IsPlayerMounted() && !vehicle.IsPlayerDriver() {
                 return false;
             }
         }
@@ -316,7 +325,7 @@ public class GRReinforcementSystem extends ScriptableSystem {
             case gamedataAffiliation.Aldecaldos:
                 return this.m_aldecaldosHandler;
             default:
-                break;
+                return null;
         }
     }
 
@@ -331,6 +340,9 @@ public class GRReinforcementSystem extends ScriptableSystem {
         }
         
 		let puppetHandler = this.GetFactionHandler(puppet);
+		if !IsDefined(puppetHandler) {
+			return;
+		}
 		let targetPuppet = target as ScriptedPuppet;
 		// guard against friendly fire mistakenly registered as combat pulling in same-faction backup
 		if IsDefined(targetPuppet) && this.GetFactionHandler(targetPuppet) == puppetHandler {
