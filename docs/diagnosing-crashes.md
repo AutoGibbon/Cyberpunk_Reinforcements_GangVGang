@@ -5,6 +5,34 @@ Process notes from the 2026-08-30 crash investigation (see
 findings that came out of it). Written so the next crash investigation
 doesn't have to rediscover this from scratch.
 
+## Before trusting any test: confirm the build actually compiled
+
+A redscript compile error in **any one file** fails compilation for the
+**entire** scripts bundle — not just the change you made. When that
+happens, RED4ext/redscript silently falls back to the last
+successfully-compiled cache
+(`r6/cache/modded/final.redscripts.modded`) and the game boots and runs
+completely normally on that stale bytecode. There is no in-game warning;
+the only trace is a log line at that specific launch.
+
+This bit the 2026-08-30 `SpawnRequestFinished` hunt directly: a fix with a
+wrong type (`ref<AIComponent>` instead of the real `ref<AIVehicleAgent>`
+return type of `WheeledObject.GetAIComponent()`) caused an
+`UNRESOLVED_METHOD` error. The very next play session — which then
+crashed — had silently been running the *previous* build the whole time,
+wasting a full test cycle before anyone noticed.
+
+**Before treating any play session as a valid test of a fix**, check both:
+
+1. `r6/logs/redscript_rCURRENT.log` (or the specific rotated
+   `redscript_r<timestamp>.log` covering that launch — logs rotate per
+   launch, named by when they stopped being current) for `ERROR` /
+   `REDScript compilation has failed`.
+2. `r6/cache/modded/final.redscripts.modded`'s mtime — it only updates on a
+   *successful* compile. If it's older than the launch you're checking,
+   that session ran on stale scripts regardless of what source changes
+   were on disk.
+
 ## Where crash reports live
 
 `C:\Users\<user>\AppData\Local\REDEngine\ReportQueue\` — one folder per crash,

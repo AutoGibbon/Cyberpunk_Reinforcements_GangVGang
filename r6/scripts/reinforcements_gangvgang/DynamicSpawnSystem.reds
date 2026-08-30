@@ -19,7 +19,7 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
     let aiVehicleChaseCommand: ref<AIVehicleChaseCommand>;
     let aiVehicleMovecommand: ref<AIVehicleDriveToPointAutonomousCommand>;
     let aiCommandEvent: ref<AICommandEvent>;
-    let vehicleAIComponent: ref<AIComponent>;
+    let vehicleAIComponent: ref<AIVehicleAgent>;
     let vehicleComponent: ref<VehicleComponent>;
 
     if !requestResult.success {
@@ -47,9 +47,6 @@ protected final func SpawnRequestFinished(requestResult: DSSSpawnRequestResult) 
                         puppet = candidatePuppet;
                         gotModTag = true;
                         gangHandler = reinSystem.GetFactionHandler(puppet);
-                    }
-                    if IsDefined(candidatePuppet.GetPuppetStateBlackboard()) {
-                        NPCPuppet.ChangeHighLevelState(candidatePuppet, gamedataNPCHighLevelState.Combat);
                     }
                 }
             }

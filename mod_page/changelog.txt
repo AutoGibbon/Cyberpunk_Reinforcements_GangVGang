@@ -1,3 +1,6 @@
+Version 3.1.2
+Crash fix on enemy spawns.
+
 Version 3.1.1
 Code safety pass - focused on events validation and crashes. 
 

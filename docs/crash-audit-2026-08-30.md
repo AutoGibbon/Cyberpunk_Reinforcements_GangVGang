@@ -182,3 +182,44 @@ the first loop (no `IsDefined()` check before `.IsPuppet()`/`.IsVehicle()`,
 unlike the sibling `SpawnCallback` method). See the write-up for detail.
 Both are now fixed; a future recurrence on a build carrying these fixes
 plus finding #10's would need a new explanation.
+
+## Addendum 3: a tenth report, 17:41:33, and a compile-cache trap
+
+The fix attempt for addendum 2 (retyping `GetAIComponent()`'s result)
+initially used the wrong type (`ref<AIComponent>` instead of the real
+`ref<AIVehicleAgent>`), which failed compilation for the whole scripts
+bundle. Because RED4ext/redscript silently falls back to the last
+successfully-compiled cache on a compile error, the very next play
+session — which crashed again at 17:41:33, same fingerprint, full write-up
+[2026-08-30-174133-redscope.md](crashes/2026-08-30-174133-redscope.md) —
+had actually been running the *previous* build the whole time, not the one
+containing addendum 2's fixes. New general process note captured in
+[diagnosing-crashes.md](diagnosing-crashes.md): check the redscript log for
+a compile failure before trusting any test session, since a failed compile
+gives no in-game indication at all.
+
+Independent of that mixup, a fresh read of the function turned up a scope
+bug rather than another missing null guard: `NPCPuppet
+.ChangeHighLevelState(candidatePuppet, gamedataNPCHighLevelState.Combat)`
+in the first loop ran on *every* puppet in `requestResult.spawnedObjects`
+— unlike the adjacent `gangHandler` assignment in the same block, which is
+correctly gated behind the `GRModPuppet` tag check. Since
+`DynamicSpawnSystem` is a shared vanilla system, this was forcing
+unrelated NPCs (any mod's, any vanilla spawn) into `Combat` state
+game-wide. This crash's `combat: yes` live state — the first in the
+cluster to fire mid-fight — fits that exposure well. The call has been
+removed entirely rather than further null-guarded, since it was never
+correctly scoped to begin with.
+
+**Confirmed via reliable repro** on the build that compiled successfully
+at 17:47:17: enter combat somewhere inaccessible by road (reinforcements
+spawn far away/out of line of sight, making the state-forcing even more
+clearly wrong than usual) → the upstream `ReinforcementsSystem` mod (not
+this mod's own tagged spawns) calls its own backup → player wins → that
+spawn request funnels through this mod's wrapped `SpawnRequestFinished` →
+player re-enters combat as new spawns arrive (vanilla behavior) → crash,
+every time, with the call present; no crash, same sequence, with it
+removed. This crash fingerprint (`0x3258`/`+0x2F098B` via
+`SpawnRequestFinished`) is considered resolved. A future recurrence on a
+build containing this fix is a new bug, not a continuation of this
+cluster.
