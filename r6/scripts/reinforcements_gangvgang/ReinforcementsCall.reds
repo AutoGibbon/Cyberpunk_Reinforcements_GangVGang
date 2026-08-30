@@ -97,6 +97,9 @@ protected final func HandleStimEvent(stimData: ref<StimEventTaskData>) -> Void {
     if !IsDefined(ownerPuppet) {
         return;
     }
+    if !IsDefined(ownerPuppet.GetPuppetStateBlackboard()) {
+        return;
+    }
 
 	if( NPCPuppet.IsInCombatWithTarget(ownerPuppet, GetPlayer(GetGameInstance()))
 	|| !NPCPuppet.IsInCombatWithTarget(ownerPuppet, stimData.cachedEvt.sourceObject)) {

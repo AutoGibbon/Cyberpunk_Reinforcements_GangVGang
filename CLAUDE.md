@@ -62,10 +62,13 @@ public class GRSpawnTrafficCallback extends DelayCallback {
     }
 
     public func Call() -> Void {
+        if !IsDefined(this.handler) { return; }
         this.handler.SpawnTrafficVehiclesCallback();
     }
 }
 ```
+
+- `handler` is a `wref`, not a `ref`, specifically so it can be garbage collected independently of the callback — the target can legitimately be gone by the time `Call()` fires (session end, save load, hot-reload). Every `Call()` implementation must guard with `IsDefined()` before dereferencing, as above. A crash audit (2026-08-29, finding 6) found this guard missing on all 31 callback implementations in the codebase at the time.
 
 - example of using the callback handler and delay system together, assuming the given class has this.m_delaySystem
 
@@ -90,6 +93,20 @@ public class GRSpawnTrafficCallback extends DelayCallback {
 - All configurable options should go through the Settings system
 - Use descriptive setting names
 - Provide sensible defaults
+
+### Null safety
+
+Two crash audits (`docs/crash-audit-2026-08-29.md`, `docs/crash-audit-2026-08-30.md`) found and fixed a recurring set of null-deref crashes, all shaped like the rules below. Treat these as required, not stylistic:
+
+- **After any `as` downcast, check `IsDefined()` before using the result.** `as` returns `null` on a failed cast — this is documented redscript behavior, not an edge case. Only skip the check when the cast is provably an upcast-to-ancestor (e.g. a known `NPCPuppet` cast to `ScriptedPuppet`), which cannot fail.
+- **Check `IsDefined()` on the result of any accessor that can return null** before chaining a call off it — `GetFactionHandler()`, `GetCurrentDistrict()`, `GetOwnerPuppet()`, `GetPuppetStateBlackboard()`, and similar. Don't assume "the engine handles it"; several of these are unguarded even in CDPR's own vanilla code in places.
+- **In a `@wrapMethod`, code placed after `wrappedMethod(...)` is not protected by vanilla's own early-exit guards inside that call.** Control returns to your wrap regardless of what vanilla decided internally. Before writing a wrap, read the actual vanilla implementation being wrapped in the decompiled source dump (`E:\Tools\mods\cp77\redscript\source`) rather than guessing at its contract:
+  - A field vanilla explicitly null-checks is CDPR telling you, from production experience, that it goes null — mirror that guard in the wrap.
+  - Check whether a sibling method in the same vanilla class guards a call yours doesn't; that asymmetry is a strong signal the unguarded one is a trap.
+  - Check where the field/component is actually populated (the assignment, not just the accessor) to know which part of an entity's lifecycle (spawn/attach, vehicle mount/dismount, despawn) it's unsafe during.
+- **Arguments inside a `GRLog(...)` call are evaluated even when logging is a no-op** (`pack.js` disables `LogChannel` calls before zipping, and a build can ship with logging compiled out) — string interpolation arguments are evaluated before the call happens. An unguarded field access inside a log string is a real crash, not a debug-only one.
+
+See `docs/diagnosing-crashes.md` for the crash-report triage process (REDscope, WinDbg, the engine's own `attch/` breadcrumb file) if a new crash needs investigating.
 
 ## Notes
 

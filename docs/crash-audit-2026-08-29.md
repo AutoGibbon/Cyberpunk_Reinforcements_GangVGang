@@ -2,7 +2,7 @@
 
 Null-deref / crash hole hunt across the RedScript sources. Tracked here while fixing one at a time, high to low severity.
 
-Findings 1-5 came from a manual read of the hot paths. Findings 6-7 came from a second pass that checked this codebase against redscript's own documented pitfalls (see Research notes at the bottom) rather than guessing.
+Findings 1-5 came from a manual read of the hot paths. Findings 6-7 came from a second pass that checked this codebase against redscript's own documented pitfalls (see Research notes at the bottom) rather than guessing. Finding 9 and the confirmation note on finding 2 were added 2026-08-30, once real crash reports (see [diagnosing-crashes.md](diagnosing-crashes.md)) gave something to check the earlier findings against.
 
 ## 1. [HIGH] `GetFactionHandler` returns null for unhandled affiliations, callers don't check
 
@@ -23,6 +23,25 @@ Status: **fixed**
 Fix: cast into a per-iteration `candidatePuppet` local, guarded by `IsDefined()` before any use; `ChangeHighLevelState` now applies to each spawned puppet in the batch instead of a stale reference from the first mod-tagged one found.
 
 Status: **fixed**
+
+**Confirmed by a real crash, 2026-08-30.** A player-submitted crash running
+the pre-fix **3.1.0** build produced a REDscope report
+(`REDscope-2026-08-30_15-35-10.crash`, CRASH ID `HJBGKZX7`) with the
+RedScript call stack captured at the exact moment of the fault:
+`SpawnRequestFinished;DSSSpawnRequestResult on gameDynamicSpawnSystem` —
+this exact function, confirming the theory directly rather than by
+inference. Fault fingerprint: read of `0x3258` at
+`Cyberpunk2077.exe+0x2F098B`. The same fingerprint (address and offset,
+verified byte-for-byte identical) also matches two earlier crashes from the
+night of 2026-08-29→30 that were diagnosed blind with raw WinDbg on the
+`.dmp` alone (no RedScript attribution available at the time — see
+[diagnosing-crashes.md](diagnosing-crashes.md)), meaning those were very
+likely this same bug, not a different or new one. Current (3.1.1) code has
+the fix in place (verified by reading the live file); no recurrence
+expected. If this exact fingerprint (`0x3258` / `+0x2F098B`) ever shows up
+again on a build that includes this fix, treat it as a regression or a
+second, different bug producing the same symptom — not a confirmation of
+the original cause.
 
 ## 3. [MEDIUM] Unchecked null `District` from `PreventionSystem.GetCurrentDistrict()`
 
@@ -84,6 +103,99 @@ Fix: `HandleStimEvent` now checks `!IsDefined(stimData) || !IsDefined(stimData.c
 **Reachability note, not itself a null-deref bug:** `StimFilters.CanTriggerAllyHelp` (`reactionComponent.script:71`) lists `Dying` alongside `Gunshot`/`Explosion`/`MeleeHit`/`VehicleHit`/`Alarm`/`Call` as stim types that trigger nearby-ally reactions, confirming `Dying` is the right, primary type to filter (its `sourceObject` is the dying entity itself). But because of the capture/process delay noted above, a same-frame kill could in principle still deliver a `Gunshot`/`CombatHit`/etc. stim whose `sourceObject` died in the interim, past the type filter. This was traced all the way through the call chain (`ReinforcementsChecksCall` → `ReinforcementsCalled` → `GRGangHandler.HandleReinforcementCall` → `SpawnAttiutudeFixer`'s `GRAttitudeFix`/`GRSetHostileTowardsCombatant`) and confirmed safe regardless: every `GetAttitudeAgent()` call site left in the codebase (6 total, all in `SpawnAttiutudeFixer.reds`) already null-checks its result before use — the one that didn't (a `GRLog` interpolation in `GRGangHandler.reds` calling `target.GetAttitudeAgent().GetAttitudeGroup()` unguarded, the likely actual cause of the reported crash) was removed outright rather than guarded. Every other touch on a possibly-dying target (`GetWorldPosition()`, `GetRecordID()`) only reads basic entity-level properties that stay valid on a dying-but-not-yet-destroyed puppet, not components torn down early. `AISquadHelper.GetSquadmates`/`GetSquadMemberInterface` (`aiHelpers`-style script, not native as initially assumed) were read directly and confirmed to guard `IsDefined(obj)` before touching `GetSquadMemberComponent()`, degrading to an empty member list rather than crashing on a null/torn-down puppet. A fully-despawned (not just dying) target is covered separately: `GRGangHandler`'s `m_lastTarget`/`m_lastSecondaryTarget` are `wref<NPCPuppet>` specifically so `DynamicSpawnSystem.reds`'s `GetLastTarget()`/`GetLastSecondaryTarget()` promotion-to-`ref` naturally comes back null once the target is gone, and that call site already checks `IsDefined()` (see finding on the `usedSecondaryTarget` fallback, part of the same safety pass).
 
 Status: **fixed**
+
+## 9. [SPECULATIVE, added defensively] `ownerPuppet.GetPuppetStateBlackboard()` unguarded before `NPCPuppet.IsInCombatWithTarget(...)`
+
+Added 2026-08-30 during a separate crash investigation (two player reports
+of crashes near NPC-vs-NPC fights the player wasn't part of: driving past
+an NCPD crime scene, walking up to scavs exiting a car). Reasoning at the
+time: `ScriptedPuppet.GetPuppetStateBlackboard()` (`scriptedPuppet.reds:1058`)
+returns a bare field with no null guard, `NPCPuppet.IsInCombat`
+(`NPCPuppet.reds:4167-4173`) dereferences it with no check either, the
+field is populated during component-resolve on entity attach
+(`scriptedPuppet.reds:472`) so isn't guaranteed set for a puppet mid-spawn
+or mid-vehicle-transition, and — the strongest corroborating point — CDPR's
+own `minimapMappins.reds:226-227` guards this exact accessor before use
+elsewhere in their own codebase, proving it's known-nullable in practice,
+just inconsistently guarded.
+
+- `r6/scripts/reinforcements_gangvgang/ReinforcementsCall.reds:100` —
+  `if !IsDefined(ownerPuppet.GetPuppetStateBlackboard()) { return; }` added
+  before the `NPCPuppet.IsInCombatWithTarget(...)` calls.
+
+**Status: fix applied, but root cause NOT confirmed — and subsequently
+undermined.** The two crashes that motivated this were never positively
+attributed to this call site (no crash report existed at the time to prove
+it). A REDscope-confirmed crash the same day turned out to be finding #2
+(`SpawnRequestFinished`) instead, sharing the same "unguarded cast during
+spawn-batch/entity-transition processing" shape but a different function
+entirely. It's plausible finding #2 alone explains both original player
+reports too (a crime-scene fight involves a spawn batch; the car-exit
+scenario is exactly the kind of local reinforcement spawn `TryCallingReinforcements`
+would trigger). This guard is cheap and defensible on its own merits — kept
+as hardening — but should not be cited as *the* fix for those two reports
+unless a future crash report actually attributes a fault to this call site.
+
+Status: **hardened, unconfirmed**
+
+## 10. [HIGH, confirmed by reasoning + reproduction shape] `NPCPuppet.ChangeHighLevelState` in the spawn-batch loop hits the same unguarded blackboard read finding #9 theorized about
+
+Added 2026-08-30 (later the same day), following up on a player report of
+the `0x3258`/`Cyberpunk2077+0x2f098b` crash (see
+[crash-audit-2026-08-30.md](crash-audit-2026-08-30.md)) that the reporter
+said happened on **3.1.1** — i.e. *after* this doc's finding #2 fix was
+already live. Same exact fingerprint as finding #2's original confirmation,
+recurring on a build where finding #2's own guard (the `ScriptedPuppet`
+cast check) can no longer be the cause, since that guard was already in
+place.
+
+- `r6/scripts/reinforcements_gangvgang/DynamicSpawnSystem.reds` (pre-fix,
+  line ~43) — `NPCPuppet.ChangeHighLevelState(candidatePuppet,
+  gamedataNPCHighLevelState.Combat)` called unconditionally on every valid
+  puppet in the spawn batch, immediately after it spawns, in the same
+  `SpawnRequestFinished` wrap finding #2 already lives in.
+- Vanilla's `NPCPuppet.ChangeHighLevelState` (`NPCPuppet.reds:1105-1124`)
+  does `if Equals(owner.GetHighLevelStateFromBlackboard(), newState) {
+  return; }` right after its own `IsDefined(owner)` check — and
+  `GetHighLevelStateFromBlackboard` (`scriptedPuppet.reds:1172-1174`) does
+  `this.m_puppetStateBlackboard.GetInt(...)` with **no null check on the
+  blackboard itself**. This is the exact same root cause finding #9
+  theorized (blackboard populated during component-resolve on entity
+  attach, not guaranteed set for a puppet mid-spawn) — just reached
+  through a different call site than finding #9's guard covers
+  (`ChangeHighLevelState` here, vs. `HandleStimEvent`'s
+  `IsInCombatWithTarget` calls there). Finding #9's fix was never applied
+  to this call site.
+
+**Why this fits better than re-litigating finding #2 or the two other
+gaps fixed the same day (the `WheeledObject` cast and an unguarded
+`reinSystem` in the same function):** `reinSystem.GetFactionHandler(...)`
+is this mod's own RedScript, compiled into dynamically-loaded JIT memory —
+a fault inside it (or in the generic RTTI dispatch resolving a null
+receiver) would not resolve to a stable `Cyberpunk2077.exe+0xNNNNNNN`
+static-image offset, and a null-receiver dispatch fault characteristically
+reads a vtable/type-info near the *start* of the object (a `call qword ptr
+[rax+N]` shape — the pattern actually seen in the unrelated `QuestsSystem`
+crash in the 08-30 batch), not a plain `mov` reading one specific field
+12,888 bytes in. The identical caller return address across every
+occurrence of this fingerprint (four so far) also points at one dedicated,
+inlined native accessor reached the same way each time — consistent with
+`IBlackboard.GetInt()` (native, compiled into the shipped .exe), not a
+generic dispatcher reachable from many different call sites.
+
+Fix: guarded the call —
+`if IsDefined(candidatePuppet.GetPuppetStateBlackboard()) { NPCPuppet.ChangeHighLevelState(...); }`
+— so a puppet whose blackboard hasn't resolved yet just skips the state
+change instead of crashing.
+
+**Status: fixed, root cause reasoned but not yet proven.** No REDscope/
+breadcrumb report for the 3.1.1 crash was available (secondhand player
+report only) — this is the strongest available explanation given the
+native fingerprint and the timing (post-finding-#2-fix), not a
+REDscope-confirmed attribution like finding #2 got. If this exact
+fingerprint recurs again on a build with *this* fix in place, that would
+rule this theory out and point back at something else in the same
+function.
 
 ---
 
