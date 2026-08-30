@@ -153,7 +153,11 @@ public class GRReinforcementSystem extends ScriptableSystem {
         if !IsDefined(puppetHandler) {
             return;
         }
-        puppetHandler.HandleReinforcementCall(puppet as NPCPuppet, target as NPCPuppet);
+        let targetPuppet = target as NPCPuppet;
+        if !IsDefined(targetPuppet) {
+            return;
+        }
+        puppetHandler.HandleReinforcementCall(puppet as NPCPuppet, targetPuppet);
     }
 
     private func ReinforcementsChecksCall(puppet: ref<ScriptedPuppet>, target: ref<GameObject>) -> Bool {
@@ -164,6 +168,10 @@ public class GRReinforcementSystem extends ScriptableSystem {
             .GetBlackboardSystem(gi)
             .GetLocalInstanced(player.GetEntityID(), GetAllBlackboardDefs().PlayerStateMachine)
             .GetInt(GetAllBlackboardDefs().PlayerStateMachine.SceneTier) > 1 {
+            return false;
+        }
+
+        if (!IsDefined(target)) {
             return false;
         }
 
@@ -198,11 +206,11 @@ public class GRReinforcementSystem extends ScriptableSystem {
             return false;
         }
 
-        if !this.m_settings.enabledWhenPlayerInCombat && GetPlayer(puppet.GetGame()).IsInCombat() {
+        if !this.m_settings.enabledWhenPlayerInCombat && player.IsInCombat() {
             return false;
         }
 
-        if StatusEffectSystem.ObjectHasStatusEffect(GetPlayer(puppet.GetGame()), t"GameplayRestriction.FistFight") {
+        if StatusEffectSystem.ObjectHasStatusEffect(player, t"GameplayRestriction.FistFight") {
             return false;
         }
 
@@ -447,6 +455,9 @@ public class GRAuthorityInterventionCooldownEndCallback extends DelayCallback {
     }
 
     public func Call() -> Void {
+        if !IsDefined(this.handler) {
+            return;
+        }
         this.handler.OnAuthorityInterventionCooldownEnd();
     }
 }

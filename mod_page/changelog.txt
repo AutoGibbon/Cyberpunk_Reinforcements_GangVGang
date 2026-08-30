@@ -1,3 +1,6 @@
+Version 3.1.1
+Code safety pass - focused on events coming from dead or dying npcs.
+
 Version 3.1.0
 Add Aldecaldos gang: Claims Badlands and Rancho Coronado as turf, rolling up in nomad convoy vehicles with a Power/Tech-focused loadout. Might maybe break some missions idk. Let me know.
 Rebalance gang spawns.
