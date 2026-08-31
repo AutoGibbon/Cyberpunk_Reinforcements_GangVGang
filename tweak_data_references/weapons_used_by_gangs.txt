@@ -1,7 +1,7 @@
 # Weapons Currently Used by Gangs in Reinforcements Gang vs Gang
 #
 # Audited against actual $base character records (r6/tweaks/reinforcements_gangvgang/characters/0_*.yaml)
-# and the custom equipment defs in new_mox_characters/ and new_ncpd_characters/. Fixes vs the previous
+# and the custom equipment defs in characters/custom/mox.yaml and characters/custom/ncpd.yaml. Fixes vs the previous
 # version of this file: merged the HMG/hmg case-duplicate; igla/tactician/testera were each listed
 # verbatim under both Ranged and Shotgun (they're shotguns only, removed the Ranged copy); folded Mox
 # in properly instead of a disconnected "Current Mox Weapons" tail; dropped Arasaka from ajax (not
@@ -21,7 +21,7 @@
 # Watch out for "crusher": it's both a shotgun weapon (shotgun2/3_crusher) AND, unrelated, part of the
 # Militech android's model name (android2_crusher_ma) - don't infer weapon usage from that one.
 #
-# Melee-hybrid pattern (see new_mox_characters/mox_melee2_baton_kappa_wa.yaml): a melee primaryEquipment
+# Melee-hybrid pattern (see characters/custom/mox.yaml, GR_the_mox_melee2_baton_kappa_wa): a melee primaryEquipment
 # can be paired with a pistol secondaryEquipment via ItemSlotHandgunRight + the
 # MeleeHybridPrimaryWeapon(Melee|Ranged)(Equip|Unequip)Condition pairs. Good template for new
 # melee-plus-sidearm characters.

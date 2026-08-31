@@ -1,3 +1,7 @@
+Version 3.1.3
+Shorten r6/tweaks paths to help a player who was hitting windows max path length errors when extracting to game dir.
+People who manually manage their mods should DELETE their `r6/tweaks/reinforcements_gangvgang` folder BEFORE extracting this new version!
+
 Version 3.1.2
 Crash fix on enemy spawns.
 
